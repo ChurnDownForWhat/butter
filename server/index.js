@@ -18,6 +18,8 @@ routes.use(express.static(assetFolder))
 if (process.env.NODE_ENV !== 'test') {
   //
   // The Catch-all Route
+
+
   // This is for supporting browser history pushstate.
   // NOTE: Make sure this route is always LAST.
   //
