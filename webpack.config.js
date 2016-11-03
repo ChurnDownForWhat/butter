@@ -4,10 +4,14 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 
 const common = {
-  entry: path.join(__dirname, 'client'),
+  entry: [
+    path.join(__dirname, 'client'),
+    'webpack-hot-middleware/client'
+  ],
   output: {
     path: path.join(__dirname, 'public'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/'
   },
     resolve: {
     extensions: ['.jsx', '.js', '']
