@@ -21,7 +21,7 @@ export default class App extends React.Component {
       <Router history={hashHistory}>
         <Route path="/" component={LandingPage} />
         <Route path="/cards" component={CardsPage} />
-        <Route path="/rewards" component={RewardsPage} /> *
+        <Route path="/rewards" component={RewardsPage} />
       </Router>
         <Navbar />
         <CreditScore />
