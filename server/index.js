@@ -1,4 +1,3 @@
-var browserify = require('browserify-middleware')
 var express = require('express')
 var Path = require('path')
 
@@ -8,26 +7,17 @@ var routes = express.Router()
 // Provide a browserified file at a specified path
 //
 var vendorLibs = []
-
-routes.get('/vendor-bundle.js', browserify(vendorLibs))
-
-routes.get('/app-bundle.js', browserify('./client/index.js', {
-  external: vendorLibs
-}))
-
 //
 // Example endpoint (also tested in test/server/index_test.js)
 //
 routes.get('/api/tags-example', function(req, res) {
   res.send(['node', 'express', 'browserify', 'mithril'])
 })
-
 //
 // Static assets (html, etc.)
 //
 var assetFolder = Path.resolve(__dirname, '../public')
 routes.use(express.static(assetFolder))
-
 
 if (process.env.NODE_ENV !== 'test') {
   //

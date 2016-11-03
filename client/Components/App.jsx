@@ -11,7 +11,6 @@ class App extends React.Component {
       <div>HELLO WORLD</div>
     )
   }
-
 }
 
 module.exports = App
