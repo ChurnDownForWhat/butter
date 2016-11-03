@@ -1,6 +1,6 @@
 import React from 'react'
 
-export class CardView extends React.Component {
+export default class CardView extends React.Component {
   constructor(props){
     super(props)
   }

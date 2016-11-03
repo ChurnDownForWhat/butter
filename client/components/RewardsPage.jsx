@@ -1,6 +1,7 @@
+import React from 'react'
 import RewardView from './RewardView'
 
-export const RewardsPage = (props) => {
+const RewardsPage = (props) => {
   return (
     <div>
       <div> RewardsPage </div>
@@ -8,3 +9,5 @@ export const RewardsPage = (props) => {
     </div>
   )
 }
+
+export default RewardsPage

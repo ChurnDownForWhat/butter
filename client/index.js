@@ -3,11 +3,10 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import App from './components/App'
 
-let store = createStore(butter)
 
 render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <div>
+    <App/>
+  </div>,
   document.getElementById('app')
 )
