@@ -34,7 +34,7 @@ const common = {
     ]
   },
   plugins: [
-    newExtractTextPlugin('styles.css')
+    new ExtractTextPlugin('styles.css')
   ]
 };
 

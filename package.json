@@ -5,7 +5,11 @@
   "main": "server/index.js",
   "scripts": {
     "start": "nodemon server/ --ignore client/",
-    "test": "./test/run.sh"
+    "test": "./test/run.sh",
+    "start:dev": "nodemon server/server.js",
+    "build": "webpack",
+    "build:watch": "webpack --watch",
+    "dev": "webpack-dev-server"
   },
   "author": "Concatapult <change-me@example.com>",
   "license": "MIT",
@@ -20,6 +24,7 @@
     "css-loader": "^0.25.0",
     "express": "^4.14.0",
     "express-session": "^1.14.2",
+    "extract-text-webpack-plugin": "^1.0.1",
     "jsx-loader": "^0.13.2",
     "knex": "^0.12.6",
     "less": "^2.7.1",
@@ -37,7 +42,8 @@
     "redux": "^3.6.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.3",
-    "webpack-dev-server": "^1.16.2"
+    "webpack-dev-server": "^1.16.2",
+    "webpack-merge": "^0.15.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
