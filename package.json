@@ -1,4 +1,4 @@
- {
+{
   "name": "Butter",
   "version": "0.1.0",
   "description": "The next big thing, created with Concatapult.",
@@ -23,6 +23,7 @@
     "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
     "css-loader": "^0.25.0",
+    "dotenv": "^2.0.0",
     "express": "^4.14.0",
     "express-session": "^1.14.2",
     "extract-text-webpack-plugin": "^1.0.1",
@@ -32,7 +33,7 @@
     "less-loader": "^2.2.3",
     "morgan": "^1.7.0",
     "passport": "^0.3.2",
-    "passport-google": "^0.3.0",
+    "passport-google-oauth": "^1.0.0",
     "pg": "^6.1.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",

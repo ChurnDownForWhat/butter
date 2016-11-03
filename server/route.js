@@ -12,7 +12,7 @@ router.route('user/:id/card').post()
 router.route('user/:id/card').get()
 
 router.route('/auth/google').get(passport.authenticate('google', 
-	{ scope: 'https://www.google.com/m8/feeds' })
+	{ scope: 'https://www.googleapis.com/auth/plus.login' })
 )
 
 router.route('/auth/google/callback').get(passport.authenticate('google', 

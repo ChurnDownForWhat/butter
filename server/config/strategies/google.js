@@ -2,20 +2,16 @@ const passport = require('passport')
 const Strategy = require('passport-google-oauth')
 const User = require('../../models/user')
 
-const GoogleStrategy = Strategy.OAuthStrategy
-
-// Use the GoogleStrategy within Passport.
-//   Strategies in passport require a `verify` function, which accept
-//   credentials (in this case, a token, tokenSecret, and Google profile), and
-//   invoke a callback with a user object.
+const GoogleStrategy = Strategy.OAuth2Strategy
+module.exports = function(){	
 passport.use(new GoogleStrategy({
-    consumerKey: ,
-    consumerSecret: ,
-    callbackURL: "http://www.example.com/auth/google/callback"
+    clientID: process.env.CONKEY,
+    clientSecret: process.env.CONSECRET,
+    callbackURL: "http://localhost:4000/auth/google"
   },
   function(token, tokenSecret, profile, done) {
-      User.findOrCreate({ googleId: profile.id }, function (err, user) {
-        return done(err, user)
-      })
+  	console.log(token)
+    return done(null, profile)
   }
 ))
+}
