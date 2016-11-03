@@ -5,6 +5,8 @@ import CardsPage from './CardsPage'
 import RewardsPage from './RewardsPage'
 import Navbar from './Navbar'
 import CreditScore from './CreditScore'
+import Foundation from 'react-foundation'
+import Less from 'less'
 
 export default class App extends React.Component {
   constructor(props){
@@ -19,7 +21,7 @@ export default class App extends React.Component {
       <Router history={hashHistory}>
         <Route path="/" component={LandingPage} />
         <Route path="/cards" component={CardsPage} />
-        <Route path="/rewards" component={RewardsPage} />
+        <Route path="/rewards" component={RewardsPage} /> *
       </Router>
         <Navbar />
         <CreditScore />
