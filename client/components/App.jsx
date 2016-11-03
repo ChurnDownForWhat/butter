@@ -14,13 +14,14 @@ export default class App extends React.Component {
 
   render () {
     return (
-      <div>
-
-        <Router history={hashHistory}>
-          <Route path='/' component={LandingPage} />
-          <Route path='/cards' component={CardsPage} />
-          <Route path='/rewards' component={RewardsPage} /> *
-        </Router>
+    <div>  
+    
+ 
+      <Router history={hashHistory}>
+        <Route path="/" component={LandingPage} />
+        <Route path="/cards" component={CardsPage} />
+        <Route path="/rewards" component={RewardsPage} />
+      </Router>
         <Navbar />
         <CreditScore />
 
