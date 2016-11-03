@@ -33,6 +33,10 @@ const common = {
       {
         test: /\.png$/,
         loader: 'file-loader'
+      },
+      {
+        test: /\.png$/,
+        loader: 'style!css!less'
       }
     ]
   },
