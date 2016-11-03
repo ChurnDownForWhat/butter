@@ -1,15 +1,7 @@
-import express from 'express'
-import Path from 'path'
-import routes from "route"
+const express = require('express')
+const Path = require('path')
+const routes = require("./route")
 
-//
-// Provide a browserified file at a specified path
-//
-let vendorLibs = []
-//
-// Example endpoint (also tested in test/server/index_test.js)
-//
-//
 // Static assets (html, etc.)
 //
 const assetFolder = Path.resolve(__dirname, '../public')

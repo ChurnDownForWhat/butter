@@ -1,5 +1,5 @@
-import passport from 'passport'
-import user from "../models/user"
+const passport = require('passport')
+const user = require("../models/user")
 
 module.exports = function(app) {
 

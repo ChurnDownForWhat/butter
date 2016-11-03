@@ -1,6 +1,6 @@
-import passport from 'passport'
-import Strategy from 'passport-google-oauth'
-import User from '../../models/user'
+const passport = require('passport')
+const Strategy = require('passport-google-oauth')
+const User = require('../../models/user')
 
 const GoogleStrategy = Strategy.OAuthStrategy
 
