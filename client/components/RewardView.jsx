@@ -1,6 +1,6 @@
 import React from 'react'
 
-export class RewardView extends React.Component {
+export default class RewardView extends React.Component {
   constructor(props){
     super(props)
   }
