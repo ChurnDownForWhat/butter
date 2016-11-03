@@ -1,6 +1,7 @@
 import CardView from './CardView'
+import React from 'react'
 
-export const CardsPage = (props) => {
+const CardsPage = (props) => {
   return (
     <div>  
       <div> Cards Page </div>
@@ -8,3 +9,5 @@ export const CardsPage = (props) => {
     </div>  
   )
 }
+
+export default CardsPage

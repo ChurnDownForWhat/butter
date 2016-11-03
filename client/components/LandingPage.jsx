@@ -1,8 +1,9 @@
+import React from 'react'
 import About from './About'
 import Login from './Login'
 import Signup from './Signup'
 
-export const LandingPage = ( props ) => {
+const LandingPage = ( props ) => {
   
   return (
     <div>  
@@ -12,6 +13,7 @@ export const LandingPage = ( props ) => {
       <Signup />
     </div>
   )
-
 }
+
+export default LandingPage
 
