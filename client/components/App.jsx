@@ -5,6 +5,8 @@ import CardsPage from './CardsPage'
 import RewardsPage from './RewardsPage'
 import Navbar from './Navbar'
 import CreditScore from './CreditScore'
+import Foundation from 'react-foundation'
+import Less from 'less'
 
 export default class App extends React.Component {
   constructor(props){
