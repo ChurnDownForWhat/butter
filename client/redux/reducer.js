@@ -4,6 +4,6 @@ export default function reducer(state,action){
 		case: 'SAMPLE_ACTION':
 			state
 		default:
-			return state;
+			return state
 	}
 }
