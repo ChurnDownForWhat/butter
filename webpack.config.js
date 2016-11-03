@@ -9,6 +9,9 @@ const common = {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js'
   },
+    resolve: {
+    extensions: ['.jsx', '.js', '']
+  },
   module: {
     loaders: [
       {
