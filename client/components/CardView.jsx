@@ -7,7 +7,9 @@ export class CardView extends React.Component {
 
   render(){
     return (
-      <div> Card </div>
+      <div>
+        <div> Card </div>
+      </div>
     )
   }
 }

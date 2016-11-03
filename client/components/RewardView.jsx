@@ -7,7 +7,9 @@ export class RewardView extends React.Component {
 
   render(){
     return (
-      <div> Reward </div>
+      <div>
+        <div> Reward </div>
+      </div>
     )
   }
 }

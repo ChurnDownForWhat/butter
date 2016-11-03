@@ -1,5 +1,7 @@
 export const CreditScore = (props) => {
   return (
-    <div> CreditScore </div>
+    <div>  
+      <div> CreditScore </div>
+    </div>
   )
 }

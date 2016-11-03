@@ -1,5 +1,7 @@
 export const Signup = (props) => {
   return (
-    <div> Signup </div>
+    <div>
+      <div> Signup </div>
+    </div>
   )
 }
