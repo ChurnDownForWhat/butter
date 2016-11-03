@@ -6,7 +6,7 @@ const merge = require('webpack-merge');
 const common = {
   entry: path.join(__dirname, 'client'),
   output: {
-    path: path.join(__dirname, 'server', 'public'),
+    path: path.join(__dirname, 'public'),
     filename: 'bundle.js'
   },
   module: {
