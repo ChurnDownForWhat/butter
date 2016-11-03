@@ -1,12 +1,20 @@
+#! /usr/bin/env node
+require('dotenv').config({silent: true})
+
 const express = require('express')
 const Path = require('path')
-const routes = require('./route')
+const session = require('express-session')
+const routes = require("./route")
+const webpack = require('webpack')
+const config = require('../webpack.config.js')
+const webpackDevMiddleware = require('webpack-dev-middleware')
+const webpackHotMiddleware = require('webpack-hot-middleware')
+const db = require('./config/db')
 
 // Static assets (html, etc.)
 //
 const assetFolder = Path.resolve(__dirname, '../public')
 routes.use(express.static(assetFolder))
-
 if (process.env.NODE_ENV !== 'test') {
   //
   // The Catch-all Route
@@ -24,8 +32,13 @@ if (process.env.NODE_ENV !== 'test') {
   //
   const app = express()
 
+  const compiler = webpack(config)
+  app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }))
+  app.use(webpackHotMiddleware(compiler))
   // Parse incoming request bodies as JSON
   app.use(require('body-parser').json())
+
+  require('./config/passport')(app)
 
   // Mount our main router
   app.use('/', routes)

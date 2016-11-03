@@ -1,13 +1,17 @@
-const path = require('path');
+const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const webpack = require('webpack');
-const merge = require('webpack-merge');
+const webpack = require('webpack')
+const merge = require('webpack-merge')
 
 const common = {
-  entry: path.join(__dirname, 'client'),
+  entry: [
+    path.resolve(__dirname, 'client'),
+    'webpack/hot/only-dev-server'
+  ],
   output: {
-    path: path.join(__dirname, 'public'),
-    filename: 'bundle.js'
+    path: path.resolve(__dirname, 'public'),
+    filename: 'bundle.js',
+    publicPath: '/'
   },
     resolve: {
     extensions: ['.jsx', '.js', '']
@@ -39,9 +43,10 @@ const common = {
   plugins: [
     new ExtractTextPlugin('styles.css'),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
   ]
-};
+}
 
 //config for dev setup
 const devConfig = {
@@ -71,12 +76,12 @@ const prodConfig = {
   // ]
 }
 
-const target = process.env.npm_lifecycle_event;
+const target = process.env.npm_lifecycle_event
 switch (target) {
   case 'dev':
-    module.exports = merge(common, devConfig);
-    break;
+    module.exports = merge(common, devConfig)
+    break
   default:
-    module.exports = merge(common, prodConfig);
-    break;
+    module.exports = merge(common, prodConfig)
+    break
 }
