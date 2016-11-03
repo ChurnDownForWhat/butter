@@ -1,5 +1,7 @@
 export const Navbar = (props) => {
   return (
-    <div> Navbar </div>
+    <div>
+      <div> Navbar </div>
+    </div>
   )
 }

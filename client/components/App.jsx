@@ -14,6 +14,7 @@ export class App extends React.Component {
 
   render(){
     return (
+    <Provider>  
       <Router history={hashHistory}>
         <Route path="/" component={LandingPage} />
         <Route path="/cards" component={CardsPage} />
@@ -21,6 +22,7 @@ export class App extends React.Component {
       </Router>
       <Navbar />
       <CreditScore />
+    </Provider>
     )
   }
 }

@@ -1,5 +1,7 @@
 export const Login = (props) => {
   return (
-    <div> Login </div>
+    <div>
+      <div> Login </div>
+    </div>
   )
 }

@@ -5,10 +5,12 @@ import Signup from './Signup'
 export const LandingPage = ( props ) => {
   
   return (
-    <div> Landing </div>
-    <About />
-    <Login />
-    <Signup />
+    <div>  
+      <div> Landing </div>
+      <About />
+      <Login />
+      <Signup />
+    </div>
   )
 
 }
