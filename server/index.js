@@ -1,22 +1,18 @@
-var express = require('express')
-var Path = require('path')
-
-var routes = express.Router()
+import express from 'express'
+import Path from 'path'
+import routes from "route"
 
 //
 // Provide a browserified file at a specified path
 //
-var vendorLibs = []
+let vendorLibs = []
 //
 // Example endpoint (also tested in test/server/index_test.js)
 //
-routes.get('/api/tags-example', function(req, res) {
-  res.send(['node', 'express', 'browserify', 'mithril'])
-})
 //
 // Static assets (html, etc.)
 //
-var assetFolder = Path.resolve(__dirname, '../public')
+const assetFolder = Path.resolve(__dirname, '../public')
 routes.use(express.static(assetFolder))
 
 if (process.env.NODE_ENV !== 'test') {
@@ -35,7 +31,7 @@ if (process.env.NODE_ENV !== 'test') {
   // We're in development or production mode;
   // create and run a real server.
   //
-  var app = express()
+  const app = express()
 
   // Parse incoming request bodies as JSON
   app.use( require('body-parser').json() )
@@ -44,7 +40,7 @@ if (process.env.NODE_ENV !== 'test') {
   app.use('/', routes)
 
   // Start the server!
-  var port = process.env.PORT || 4000
+  const port = process.env.PORT || 4000
   app.listen(port)
   console.log("Listening on port", port)
 }
