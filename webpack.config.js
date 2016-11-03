@@ -4,10 +4,14 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 
 const common = {
-  entry: path.join(__dirname, 'client'),
+  entry: [
+    path.resolve(__dirname, 'client'),
+    'webpack/hot/only-dev-server'
+  ],
   output: {
-    path: path.join(__dirname, 'public'),
-    filename: 'bundle.js'
+    path: path.resolve(__dirname, 'public'),
+    filename: 'bundle.js',
+    publicPath: '/'
   },
     resolve: {
     extensions: ['.jsx', '.js', '']
@@ -39,7 +43,8 @@ const common = {
   plugins: [
     new ExtractTextPlugin('styles.css'),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
   ]
 }
 

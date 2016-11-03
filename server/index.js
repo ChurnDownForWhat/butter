@@ -5,6 +5,10 @@ const express = require('express')
 const Path = require('path')
 const session = require('express-session')
 const routes = require("./route")
+const webpack = require('webpack')
+const config = require('../webpack.config.js')
+const webpackDevMiddleware = require('webpack-dev-middleware')
+const webpackHotMiddleware = require('webpack-hot-middleware')
 
 // Static assets (html, etc.)
 //
@@ -28,6 +32,9 @@ if (process.env.NODE_ENV !== 'test') {
   //
   const app = express()
 
+  const compiler = webpack(config)
+  app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }))
+  app.use(webpackHotMiddleware(compiler))
   // Parse incoming request bodies as JSON
   app.use( require('body-parser').json() )
 
