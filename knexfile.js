@@ -3,7 +3,7 @@ module.exports = {
   development: {
     client: 'pg',
     connection: {
-      database: 'dev'
+      database: 'Butter_dev'
     },
     pool: {
       min: 2,
@@ -17,7 +17,7 @@ module.exports = {
   test: {
     client: 'pg',
     connection: {
-      database: 'test'
+      database: 'Butter_test'
     },
     pool: {
       min: 2,
