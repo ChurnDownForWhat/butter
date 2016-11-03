@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux'
 
+//A container is a componet that you expect to pass data to
+
+
+
 class SampleContainer extends Component{
 
 	render(){
