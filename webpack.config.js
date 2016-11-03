@@ -1,7 +1,7 @@
-const path = require('path');
+const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const webpack = require('webpack');
-const merge = require('webpack-merge');
+const webpack = require('webpack')
+const merge = require('webpack-merge')
 
 const common = {
   entry: path.join(__dirname, 'client'),
@@ -41,7 +41,7 @@ const common = {
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin()
   ]
-};
+}
 
 //config for dev setup
 const devConfig = {
@@ -71,12 +71,12 @@ const prodConfig = {
   // ]
 }
 
-const target = process.env.npm_lifecycle_event;
+const target = process.env.npm_lifecycle_event
 switch (target) {
   case 'dev':
-    module.exports = merge(common, devConfig);
-    break;
+    module.exports = merge(common, devConfig)
+    break
   default:
-    module.exports = merge(common, prodConfig);
-    break;
+    module.exports = merge(common, prodConfig)
+    break
 }
