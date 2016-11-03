@@ -1,12 +1,14 @@
-import Path from 'path'
-import { Router } from 'express'
-import passport from './config/passport'
+const Path = require('path')
+const router = require('express').Router()
+// import passport from './config/passport'
 
 /*   Routes for user info  */
-Router.route('/user').post()
+router.route('/user').post()
 
-Router.route('/user/:id').get()
+router.route('/user/:id').get()
 
-Router.route('user/:id/card').post()
+router.route('user/:id/card').post()
 
-Router.route('user/:id/card').get()
+router.route('user/:id/card').get()
+
+module.exports = router
