@@ -1,12 +1,15 @@
+#! /usr/bin/env node
+require('dotenv').config({silent: true})
+
 const express = require('express')
 const Path = require('path')
+const session = require('express-session')
 const routes = require("./route")
 
 // Static assets (html, etc.)
 //
 const assetFolder = Path.resolve(__dirname, '../public')
 routes.use(express.static(assetFolder))
-
 if (process.env.NODE_ENV !== 'test') {
   //
   // The Catch-all Route
@@ -27,6 +30,8 @@ if (process.env.NODE_ENV !== 'test') {
 
   // Parse incoming request bodies as JSON
   app.use( require('body-parser').json() )
+
+  require('./config/passport')(app)
 
   // Mount our main router
   app.use('/', routes)
