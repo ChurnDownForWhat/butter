@@ -5,7 +5,7 @@ process.env.NODE_ENV = 'test'
 // Example:
 //  var User = require(__server + '/models/user.js')
 //
-global.__test   = __dirname
+global.__test = __dirname
 global.__server = __dirname + '/../server'
 global.__client = __dirname + '/../client'
 
@@ -13,13 +13,12 @@ global.__client = __dirname + '/../client'
 // Assertions
 //
 var chai = require('chai')
-chai.use( require('chai-subset') )
+chai.use(require('chai-subset'))
 
 // Option 1: Make the `expect` function available in every test file
 global.expect = chai.expect
 // Option 2: Make everything should-able
 // global.should = chai.should()
-
 
 //
 // Helper Functions
@@ -40,8 +39,8 @@ TestHelper.createApp = function (loader) {
   app.testReady = function () {
     // Log all errors
     app.use(function (err, req, res, next) {
-      console.error("==Error==")
-      console.error("   " + err.stack)
+      console.error('==Error==')
+      console.error('   ' + err.stack)
       next(err)
     })
   }
@@ -53,8 +52,8 @@ TestHelper.createApp = function (loader) {
 //
 var Bluebird = require('bluebird')
 
-global.before_ = function (f) { before ( Bluebird.coroutine(f) ) }
-global.beforeEach_ = function (f) { beforeEach ( Bluebird.coroutine(f) ) }
-global.it_ = function (description, f) { it ( description, f && Bluebird.coroutine(f) ) }
-global.xit_ = function (description, f) { xit ( description, f ) }
-global.it_.only = function (description, f) { it.only( description, Bluebird.coroutine(f) ) }
+global.before_ = function (f) { before(Bluebird.coroutine(f)) }
+global.beforeEach_ = function (f) { beforeEach(Bluebird.coroutine(f)) }
+global.it_ = function (description, f) { it(description, f && Bluebird.coroutine(f)) }
+global.xit_ = function (description, f) { xit(description, f) }
+global.it_.only = function (description, f) { it.only(description, Bluebird.coroutine(f)) }

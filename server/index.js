@@ -1,6 +1,6 @@
 const express = require('express')
 const Path = require('path')
-const routes = require("./route")
+const routes = require('./route')
 
 // Static assets (html, etc.)
 //
@@ -11,12 +11,11 @@ if (process.env.NODE_ENV !== 'test') {
   //
   // The Catch-all Route
 
-
   // This is for supporting browser history pushstate.
   // NOTE: Make sure this route is always LAST.
   //
-  routes.get('/*', function(req, res){
-    res.sendFile( assetFolder + '/index.html' )
+  routes.get('/*', function (req, res) {
+    res.sendFile(assetFolder + '/index.html')
   })
 
   //
@@ -26,7 +25,7 @@ if (process.env.NODE_ENV !== 'test') {
   const app = express()
 
   // Parse incoming request bodies as JSON
-  app.use( require('body-parser').json() )
+  app.use(require('body-parser').json())
 
   // Mount our main router
   app.use('/', routes)
@@ -34,7 +33,7 @@ if (process.env.NODE_ENV !== 'test') {
   // Start the server!
   const port = process.env.PORT || 4000
   app.listen(port)
-  console.log("Listening on port", port)
+  console.log('Listening on port', port)
 }
 else {
   // We're in test mode; make this file importable instead.

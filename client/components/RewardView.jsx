@@ -1,11 +1,11 @@
 import React from 'react'
 
 export default class RewardView extends React.Component {
-  constructor(props){
+  constructor (props) {
     super(props)
   }
 
-  render(){
+  render () {
     return (
       <div>
         <div> Reward </div>
