@@ -3,10 +3,10 @@ import React from 'react'
 
 const CardsPage = (props) => {
   return (
-    <div>  
+    <div>
       <div> Cards Page </div>
       <CardView />
-    </div>  
+    </div>
   )
 }
 
