@@ -25,7 +25,7 @@ routes.get('/api/tags-example', function(req, res) {
 //
 // Static assets (html, etc.)
 //
-var assetFolder = Path.resolve(__dirname, '../client/public')
+var assetFolder = Path.resolve(__dirname, '../public')
 routes.use(express.static(assetFolder))
 
 
