@@ -5,8 +5,8 @@ const merge = require('webpack-merge')
 
 const common = {
   entry: [
-    path.resolve(__dirname, 'client'),
-    'webpack/hot/only-dev-server'
+    'webpack-hot-middleware/client',
+    path.resolve(__dirname, 'client')
   ],
   output: {
     path: path.resolve(__dirname, 'public'),

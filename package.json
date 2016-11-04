@@ -4,7 +4,7 @@
   "description": "The next big thing, created with Concatapult.",
   "main": "server/index.js",
   "scripts": {
-    "start": "nodemon server/ --ignore client/ --progress --inline --hot",
+    "start": "nodemon server/index.js --ignore client/components",
     "test": "./test/run.sh",
     "start:dev": "nodemon server/ --ignore client/components --progress --inline --hot",
     "build": "webpack",
@@ -61,6 +61,7 @@
     "npm": "^3.10.9",
     "pre-commit": "^1.1.3",
     "pult-cli": "*",
+    "react-hot-loader": "^3.0.0-beta.6",
     "supertest": "^2.0.0",
     "supertest-as-promised": "^4.0.0"
   },
