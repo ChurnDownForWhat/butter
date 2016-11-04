@@ -7,4 +7,4 @@ const allReducers = combineReducers({
 })
 
 
-export default allReducers;
+export default allReducers
