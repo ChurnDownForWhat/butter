@@ -6,7 +6,7 @@ import Foundation from 'react-foundation'
 const LandingPage = (props) => {
   return (
     <div>
-      <div> Landing TESTING TESTING 1, 2, 3, 4, 5, adddsing text</div>
+      <div> </div>
       <Login />
       <Signup />
     </div>
