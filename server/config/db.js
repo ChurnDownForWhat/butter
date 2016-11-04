@@ -8,7 +8,7 @@ var db = require('knex')(config[env])
 // Export the db object, which will be able to make database connections
 module.exports = db
 
-db.migrate.latest([config]); 
+db.migrate.latest([config])
 
 // Function for your testing suite
 db.deleteEverything = function () {
