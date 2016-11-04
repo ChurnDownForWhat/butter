@@ -13,7 +13,7 @@ const common = {
     filename: 'bundle.js',
     publicPath: '/'
   },
-    resolve: {
+  resolve: {
     extensions: ['.jsx', '.js', '']
   },
   module: {
@@ -37,6 +37,10 @@ const common = {
       {
         test: /\.png$/,
         loader: 'file-loader'
+      },
+      {
+        test: /\.less$/,
+        loader: 'style!css!less'
       }
     ]
   },
@@ -78,10 +82,10 @@ const prodConfig = {
 
 const target = process.env.npm_lifecycle_event
 switch (target) {
-  case 'dev':
-    module.exports = merge(common, devConfig)
-    break
-  default:
-    module.exports = merge(common, prodConfig)
-    break
+case 'dev':
+  module.exports = merge(common, devConfig)
+  break
+default:
+  module.exports = merge(common, prodConfig)
+  break
 }

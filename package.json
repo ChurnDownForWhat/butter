@@ -9,7 +9,8 @@
     "start:dev": "nodemon server/ --ignore client/components --progress --inline --hot",
     "build": "webpack",
     "build:watch": "webpack --watch",
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server",
+    "lint": "./node_modules/.bin/eslint ./server ./client ./client/Components/**.jsx"
   },
   "author": "Concatapult <change-me@example.com>",
   "license": "MIT",
@@ -53,10 +54,17 @@
     "babel-cli": "^6.18.0",
     "chai": "^3.5.0",
     "chai-subset": "^1.3.0",
+    "eslint": "^3.9.1",
+    "install": "^0.8.2",
     "mocha": "^3.1.2",
     "nodemon": "^1.11.0",
+    "npm": "^3.10.9",
+    "pre-commit": "^1.1.3",
     "pult-cli": "*",
     "supertest": "^2.0.0",
     "supertest-as-promised": "^4.0.0"
-  }
+  },
+  "pre-commit": [
+    "lint"
+  ]
 }
