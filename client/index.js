@@ -15,4 +15,4 @@ render(
   document.getElementById('app')
 )
 
-module.hot.accept();
+module.hot.accept()

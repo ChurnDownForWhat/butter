@@ -1,10 +1,10 @@
 //This file will combine all reducers into one big object
-import {combineReducers} from "redux" 
-import sampleReducer from "./sampleReducer"
+import {combineReducers} from 'redux' 
+import sampleReducer from './sampleReducer'
 
 const allReducers = combineReducers({
-	sample:sampleReducer
+  sample:sampleReducer
 })
 
 
-export default allReducers;
+export default allReducers
