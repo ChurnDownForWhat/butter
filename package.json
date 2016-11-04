@@ -10,7 +10,7 @@
     "build": "webpack",
     "build:watch": "webpack --watch",
     "dev": "webpack-dev-server",
-    "lint": "./node_modules/.bin/eslint"
+    "lint": "./node_modules/.bin/eslint ./server ./client ./client/Components/**.jsx"
   },
   "author": "Concatapult <change-me@example.com>",
   "license": "MIT",
