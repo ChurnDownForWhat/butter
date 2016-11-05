@@ -1,0 +1,64 @@
+.page {
+  margin-top: 1em;
+  width: calc(100% - 210px);
+  background: rgba(255,255,255,.75);
+}
+.side-nav {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  max-width: 20%;
+  max-height: 375px;
+  overflow: auto;
+  margin-top: 7em;
+  background: #eee;
+  padding: .5em;
+  border: 3px solid #ddd;
+  box-shadow: 1px 1px 7px #333;
+}
+.nav-options div {
+  margin-top: 1em;
+}
+.nav-options img {
+  width: 70px;
+  border-radius: 50%;
+  height: 70px;
+}
+.nav-options a {
+  color: inherit;
+}
+.nav-options a:hover {
+  text-decoration: inherit;  
+}
+.nav-options div {
+  margin-top: 1em;
+  font-size: 3em;
+  text-align: center;
+  height: 70px;
+  width: 70px;
+  background: #fff;
+  border-radius: 50%;
+}
+.portfolio-item {
+  padding: 1.25em;
+}
+.danger:hover {
+  box-shadow: inset 0px 0px 25px rgba(255, 105, 97,.5);
+}
+.complete:hover {
+  box-shadow: inset 0px 0px 25px rgba(119, 221, 119,.5);
+}
+.progress-bar {
+  background-color: rgb(119, 221, 119);
+}
+.exp-danger {
+  color: rgb(255,105,97);
+}
+.user-stats {
+    margin-top: 45px;
+    background: #eee;
+    padding: .5em;
+}
+body {
+      background: url(https://www.transparenttextures.com/patterns/crisp-paper-ruffles.png);
+}
