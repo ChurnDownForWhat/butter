@@ -6,7 +6,7 @@ import Foundation from 'react-foundation'
 const LandingPage = (props) => {
   return (
     <div>
-      <div> </div>
+      <div> hey </div>
       <Login />
       <Signup />
     </div>
