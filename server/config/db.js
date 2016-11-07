@@ -14,5 +14,10 @@ db.migrate.latest([config])
 db.deleteEverything = function () {
   if (env !== 'test') return Promise.reject()
   // TODO: Delete data from all tables (useful for testing)
-  // return db('users').truncate()
+  return Promise.all([
+    db('Users').truncate(), 
+    db('Cards').truncate(), 
+    db('Categories').truncate(), 
+    db('DefaultCards').truncate()
+  ])
 }
