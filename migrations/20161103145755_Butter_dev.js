@@ -55,7 +55,6 @@ exports.up = function(knex, Promise) {
       table.integer('minSpend')
 
     })
-
   ])
 }
 
