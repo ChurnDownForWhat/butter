@@ -7,7 +7,6 @@ const LandingPage = (props) => {
     <div>
       <div> hey </div>
       <Login />
-      <Signup />
     </div>
   )
 }
