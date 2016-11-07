@@ -1,4 +1,4 @@
-import bookshelf from '../config/db'
+const bookshelf = require('../config/db')
 
 var Card = bookshelf.Model.extend({
   tablename: 'Cards'

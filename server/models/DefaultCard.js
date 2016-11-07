@@ -1,5 +1,5 @@
-import bookshelf from '../config/db'
+const bookshelf = require('../config/db')
 
-var User = bookshelf.Model.extend({
+const DefaultCard = bookshelf.Model.extend({
   tablename: 'DefaultCards'
 })
