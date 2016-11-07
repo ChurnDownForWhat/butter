@@ -1,11 +1,12 @@
 import React from 'react'
 import Login from './Login'
-import Signup from './Signup' 
+import Navbar from './Navbar'
 
 const LandingPage = (props) => {
   return (
     <div>
-      <div> hey </div>
+      This is the landing page, w/ these components:
+      <Navbar />
       <Login />
     </div>
   )

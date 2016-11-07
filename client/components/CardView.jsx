@@ -8,7 +8,7 @@ export default class CardView extends React.Component {
   render () {
     return (
       <div>
-        <div> Card </div>
+        CardView
       </div>
     )
   }

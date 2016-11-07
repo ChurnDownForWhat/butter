@@ -8,7 +8,7 @@ export default class RewardView extends React.Component {
   render () {
     return (
       <div>
-        <div> Reward </div>
+        RewardView
       </div>
     )
   }

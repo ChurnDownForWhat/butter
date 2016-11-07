@@ -4,7 +4,7 @@ import React from 'react'
 const CardsPage = (props) => {
   return (
     <div>
-      <div> Cards Page </div>
+      This is the Cards Page, w/ these components:
       <CardView />
     </div>
   )
