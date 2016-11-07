@@ -12,29 +12,57 @@ exports.up = function(knex, Promise) {
 
     knex.schema.createTable('Cards', function(table){
       table.increments('id').primary()
-      table.string('cardName', 80)
+      table.string('name', 80)
       table.integer('user_id')
       table.foreign('user_id').references('users.id')
-      table.integer('categ_id')
-      table.foreign('categ_id').references('categories.id')
+      table.integer('cardType')
+      table.integer('category_id')
+      table.foreign('category_id').references('categories.id')
       table.integer('balance')
       table.date('expiration')
-      table.date('issued')
-      table.integer('rewards')
-      table.integer('cardNumber')
+      table.date('applicationDate')
+      table.date('spendDeadline')
+      table.date('monthlyBilldate')
+      table.date('annFeeDate')
+      table.date('expCancelDate')
+      table.integer('rewardsAmt')
+      table.integer('last4digits')
+      table.integer('spendTotal')
+      table.integer('annBenefit')
+      table.integer('annFeeAmt')
+      table.integer('waivedFees')
+      table.integer('creditLine')
+      table.integer('signupBonus')
+      table.integer('minSpend')
     }),
 
     knex.schema.createTable('Categories', function(table){
       table.increments('id')
       table.string('category', 30).notNullable()
+      table.string('program', 30)
+    }),
+
+    knex.schema.createTable('DefaultCards', function(table){
+      table.increments('id').primary()
+      table.string('name', 80)
+      table.integer('cardType')
+      table.integer('category_id')
+      table.foreign('category_id').references('categories.id')
+      table.integer('annBenefit')
+      table.integer('annFeeAmt')
+      table.integer('waivedFees')
+      table.integer('signupBonus')
+      table.integer('minSpend')
+
     })
+
   ])
 }
 
 exports.down = function(knex, Promise) {
   return Promise.all([
-    knex.schema.dropTableIfExists('users'),
-    knex.schema.dropTableIfExists('cards'),
-    knex.schema.dropTableIfExists('categories')
+    knex.schema.dropTableIfExists('Users'),
+    knex.schema.dropTableIfExists('Cards'),
+    knex.schema.dropTableIfExists('Categories')
   ])
 }
