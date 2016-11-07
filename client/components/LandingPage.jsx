@@ -13,4 +13,3 @@ const LandingPage = (props) => {
 }
 
 export default LandingPage
-
