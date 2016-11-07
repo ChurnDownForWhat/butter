@@ -1,7 +1,7 @@
 
 exports.up = function(knex, Promise) {
   return Promise.all([
-    knex.schema.createTable('users', function(table){
+    knex.schema.createTable('Users', function(table){
       table.increments('id').primary()
       table.string('firstName', 20).notNullable()
       table.string('lastName', 20).notNullable()
@@ -10,7 +10,7 @@ exports.up = function(knex, Promise) {
       table.integer('creditScore').nullable()
     }),
 
-    knex.schema.createTable('cards', function(table){
+    knex.schema.createTable('Cards', function(table){
       table.increments('id').primary()
       table.string('cardName', 80)
       table.integer('user_id')
@@ -24,7 +24,7 @@ exports.up = function(knex, Promise) {
       table.integer('cardNumber')
     }),
 
-    knex.schema.createTable('categories', function(table){
+    knex.schema.createTable('Categories', function(table){
       table.increments('id')
       table.string('category', 30).notNullable()
     })
