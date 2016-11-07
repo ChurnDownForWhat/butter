@@ -2,9 +2,7 @@ module.exports = {
 
   development: {
     client: 'pg',
-    connection: {
-      database: 'Butter_dev'
-    },
+    connection: 'postgres://auphecqh:L62hxHecYm1VgGWuDs3QgBloecgSVdL7@elmer.db.elephantsql.com:5432/auphecqh',
     pool: {
       min: 2,
       max: 10
