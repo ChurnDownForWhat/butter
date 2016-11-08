@@ -14,7 +14,7 @@ router.route('/api/user/:id').get()
 
 router.route('/api/user/:id').put()
 
-//create card 
+//create card
 router.route('/api/cards').post(Card.createCard)
 //get all cards
 router.route('/api/users/:id/cards').get(Card.getAllCards)
@@ -27,8 +27,8 @@ router.route('/api/cards/:id').delete(Card.removeCard)
 //get default cards
 router.route('/api/default').get()
 
-router.route('/auth/google').get(passport.authenticate('google', 
-  { 
+router.route('/auth/google').get(passport.authenticate('google',
+  {
     scope: [
       'https://www.googleapis.com/auth/userinfo.profile',
       'https://www.googleapis.com/auth/userinfo.email',
@@ -37,7 +37,7 @@ router.route('/auth/google').get(passport.authenticate('google',
   })
 )
 
-router.route('/auth/google/callback').get(passport.authenticate('google', 
+router.route('/auth/google/callback').get(passport.authenticate('google',
 	{ failureRedirect: '/api/login' }),
   (req, res) => {
     res.redirect('/')
