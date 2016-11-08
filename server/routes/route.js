@@ -8,9 +8,9 @@ router.route('/user').post(user.storeUser)
 
 router.route('/user/:id').get()
 
-router.route('user/:id/card').post()
+router.route('/user/:id/card').post()
 
-router.route('user/:id/card').get()
+router.route('/user/:id/card').get()
 
 router.route('/auth/google').get(passport.authenticate('google', 
 	{ scope: 'https://www.googleapis.com/auth/plus.login' })
