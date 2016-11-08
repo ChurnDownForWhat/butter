@@ -2,7 +2,7 @@ const User = require('../models/user')
 
 module.exports = {
 
-  storeUser: (req,res) => {
+  createUser: (req,res) => {
     const body = req.body
     console.log(body)
 
@@ -15,6 +15,7 @@ module.exports = {
           lastName: body.lastName,
           email: body.email,
         }
+        console.log(user)
         User
         .save(newUser)
         .then((id) => {
