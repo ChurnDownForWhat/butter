@@ -11,7 +11,7 @@ router.route('api/user').post()
 
 router.route('api/user/:id').get()
 
-router.route('api/user/:id/').put()
+router.route('api/user/:id').put()
 
 //create card 
 router.route('api/cards').post()
