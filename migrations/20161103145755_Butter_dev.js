@@ -22,7 +22,7 @@ exports.up = function(knex, Promise) {
       table.date('expiration')
       table.date('applicationDate')
       table.date('spendDeadline')
-      table.date('monthlyBilldate')
+      table.integer('monthlyBilldate')
       table.date('annFeeDate')
       table.date('expCancelDate')
       table.integer('rewardsAmt')
