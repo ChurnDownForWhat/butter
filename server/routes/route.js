@@ -3,14 +3,15 @@ const router = require('express').Router()
 const passport = require('passport')
 const user = require('./controllers/user')
 
-/*   Routes for user info  */
-router.route('/user').post(user.storeUser)
+router.get('/', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '../Components/index.js'))
+})
 
-router.route('/user/:id').get()
+router.route('api/user').post()
 
-router.route('/user/:id/card').post()
+router.route('api/user/:id').get()
 
-router.route('/user/:id/card').get()
+router.route('api/user/:id/').put()
 
 //create card 
 router.route('api/cards').post()
@@ -25,15 +26,19 @@ router.route('api/cards/:id').delete()
 //get default cards
 router.route('api/default').get()
 
-router.route('/auth/google').get(passport.authenticate('google', 
+router.route('auth/google').get(passport.authenticate('google', 
 	{ scope: 'https://www.googleapis.com/auth/plus.login' })
 )
 
-router.route('/auth/google/callback').get(passport.authenticate('google', 
-	{ failureRedirect: '/login' }),
+router.route('auth/google/callback').get(passport.authenticate('google', 
+	{ failureRedirect: 'api/login' }),
   (req, res) => {
     res.redirect('/')
   }
 )
+router.route('api/logout').get((req, res) => {
+  req.logout()
+  res.redirect('/')
+})
 
 module.exports = router
