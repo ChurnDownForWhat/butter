@@ -43,6 +43,7 @@ router.route('/auth/google/callback').get(passport.authenticate('google',
     res.redirect('/')
   }
 )
+
 router.route('/api/logout').get((req, res) => {
   req.logout()
   res.redirect('/')
