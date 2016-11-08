@@ -37,8 +37,13 @@ if (process.env.NODE_ENV !== 'test') {
   app.use(webpackHotMiddleware(compiler))
   // Parse incoming request bodies as JSON
   app.use(require('body-parser').json())
-
+  app.use(session({
+    secret: process.env.SUPERSECRET,
+    resave: true,
+    saveUninitialized: true
+  }))
   require('./config/passport')(app)
+
 
   // Mount our main router
   app.use('/', routes)
