@@ -7,15 +7,9 @@ router.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../Components/index.js'))
 })
 
-router.route('/api/user').post(function(req,res,done){
-  console.log(req.body)
-  done()
-},user.createUser)
+router.route('/api/user').post(user.createUser)
 
-router.route('/api/user/:id').get(function(req,res){
-  console.log("TOP KEK")
-  res.send({lol:'suh'})
-})
+router.route('/api/user/:id').get()
 
 router.route('/api/user/:id').put()
 
