@@ -14,25 +14,12 @@ export default class App extends React.Component {
   }
 
   render () {
-    // let height = window.innerHeight
-    // let width = window.innerWidth
-    // let minViewportSize = Math.min( width, height )
-    // let radius = ( minViewportSize * .9 ) / 2
-    // let x = width / 2
-    // let y = height / 2
+
     return (
 
     <div>
 
-    // <svg width = "100%" height = "100%">
-    //   <Pie x = {x}
-    //       y ={y}
-    //       innerRadius = { radius * .35 }
-    //       outerRadius = { radius }
-    //       cornerRadius = {7}
-    //       padAngle = { .02 }
-    //       data = { this.props.data } />
-    // </svg>
+
     
       <Router history={hashHistory}>
         <Route path="/" component={LandingPage} />
@@ -43,3 +30,20 @@ export default class App extends React.Component {
     )
   }
 }
+
+    // let height = window.innerHeight
+    // let width = window.innerWidth
+    // let minViewportSize = Math.min( width, height )
+    // let radius = ( minViewportSize * .9 ) / 2
+    // let x = width / 2
+    // let y = height / 2
+
+    // <svg width = "100%" height = "100%">
+    //   <Pie x = {x}
+    //       y ={y}
+    //       innerRadius = { radius * .35 }
+    //       outerRadius = { radius }
+    //       cornerRadius = {7}
+    //       padAngle = { .02 }
+    //       data = { this.props.data } />
+    // </svg>
