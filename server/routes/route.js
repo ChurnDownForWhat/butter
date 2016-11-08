@@ -1,7 +1,8 @@
 const Path = require('path')
 const router = require('express').Router()
 const passport = require('passport')
-const user = require('../controllers/user')
+const User = require('../controllers/user')
+const Card = require('../controllers/card')
 
 router.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../Components/index.js'))
@@ -20,15 +21,15 @@ router.route('/api/user/:id').get(function(req,res){
 router.route('/api/user/:id').put()
 
 //create card 
-router.route('/api/cards').post()
+router.route('api/cards').post(Card.createCard)
 //get all cards
-router.route('/api/users/:id/cards').get()
+router.route('api/users/:id/cards').get(Card.getAllCards)
 //get one card
-router.route('/api/cards/:id').get()
+router.route('api/cards/:id').get(Card.getOneCard)
 //update card
-router.route('/api/cards/:id').put()
+router.route('api/cards/:id').put(Card.updateCard)
 //delete card
-router.route('/api/cards/:id').delete()
+router.route('api/cards/:id').delete(Card.removeCard)
 //get default cards
 router.route('/api/default').get()
 
