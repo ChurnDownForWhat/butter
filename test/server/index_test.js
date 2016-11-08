@@ -10,7 +10,6 @@ describe('The Server', function () {
   const app = TestHelper.createApp()
   app.use('/', routes)
   app.testReady()
-  // beforeEach(db.deleteEverything)
   // it_('serves an example endpoint', function * () {
   //   //
   //   // Notice how we're in a generator function (indicated by the the *)
@@ -37,19 +36,12 @@ describe('The Server', function () {
   //   }
   // })
   it_('stores a user and responds',function * () {
-    const user = {firstName: "Darion", lastName: "Freeman", email: "test@test.com"}
+    const user = {firstName: "Darion", lastName: "Freeman", email: "pass@test.com"}
     yield request(app)
       .post('/user')
       .send(user)
       .expect(function(response){
-        console.log(response.body)
-      })
-  })
-  it_('should retrieve all users', function * () {
-    yield request(app)
-      .get('/user')
-      .expect(function(response){
-        console.log(response.body)
+        expect(response.body.id).to.be.a("number")
       })
   })
 })

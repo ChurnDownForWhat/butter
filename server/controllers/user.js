@@ -1,4 +1,3 @@
-const Users = require('../collections/users')
 const User = require('../models/user')
 
 module.exports = {
@@ -7,35 +6,29 @@ module.exports = {
     const body = req.body
     console.log(body)
 
-    new User({email: body.email})
-    .fetch()
+    User
+    .fetch(body.email)
     .then((user) => {
       if(!user){
-        const newUser = new User({
+        const newUser = {
           firstName: body.firstName,
           lastName: body.lastName,
           email: body.email,
-        })
-        newUser
-        .save()
-        .then((user) => {
-          console.log(user)
-          return res.status(201).send(user)
+        }
+        User
+        .save(newUser)
+        .then((id) => {
+          console.log(id)
+          return res.status(201).send({id: id})
         })
         .catch((err) => {
-          return res.send({Error: "Could not store user"})
+          return res.status(500).send({Error: err})
         })
       } else {
-        return res.send({Error: "User already exist"})
+        console.log(user)
+        return res.status(403).send({Error: "User already exist"})
       }
 
     })
-  },
-
-  getUsers: (req,res) => {
-    User.fetch()
-      .then((users) => {
-        return res.status(200).send({users: users})
-      })
   }
 }

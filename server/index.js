@@ -9,7 +9,7 @@ const webpack = require('webpack')
 const config = require('../webpack.config.js')
 const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
-const db = require('./config/db')
+
 
 // Static assets (html, etc.)
 //

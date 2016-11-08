@@ -9,16 +9,14 @@ const db = require('knex')(config[env])
 // Export the db object, which will be able to make database connections
 module.exports = db
 
-db.migrate.latest([config])
-
 // Function for your testing suite
 db.deleteEverything = function () {
   if (env !== 'test') return Promise.reject()
   // TODO: Delete data from all tables (useful for testing)
   return Promise.all([
-    db('Users').truncate(), 
+    db('DefaultCards').truncate(),
     db('Cards').truncate(), 
     db('Categories').truncate(), 
-    db('DefaultCards').truncate()
+    db('Users').truncate(), 
   ])
 }
