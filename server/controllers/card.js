@@ -10,21 +10,21 @@ module.exports = {
     .then(() => res.end())
   },
   getAllCards: (req, res) => {
-    const userId = params.id
+    const userId = req.params.id
 
     Card.fetchAll(userId)
     .then(cards => res.send(cards))
     .then(() => res.end())
   },
   getOneCard: (req, res) => {
-    const cardId = params.id
+    const cardId = req.params.id
 
     Card.fetchOne(cardId)
     .then(card => res.send(card))
     .then(() => res.end())
   },
   updateCard: (req, res) => {
-    const cardId = params.id
+    const cardId = req.params.id
     const newInfo = req.body
 
     Card.update(cardId, newInfo)
@@ -32,7 +32,7 @@ module.exports = {
     .then(() => res.end())
   },
   removeCard: (req, res) => {
-    const cardId = params.id
+    const cardId = req.params.id
     
     Card.delete(cardId)
     .then(name => res.send(name))
