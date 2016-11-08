@@ -1,9 +1,10 @@
 const Path = require('path')
 const router = require('express').Router()
 const passport = require('passport')
+const user = require('./controllers/user')
 
 /*   Routes for user info  */
-router.route('/user').post()
+router.route('/user').post(user.storeUser)
 
 router.route('/user/:id').get()
 

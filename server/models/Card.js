@@ -1,6 +1,7 @@
 const db = require('../config/db')
 const bookshelf = require('bookshelf')(db)
 
-var Card = bookshelf.Model.extend({
+const Card = bookshelf.Model.extend({
   tablename: 'Cards'
 })
+module.exports = Card
