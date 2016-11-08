@@ -21,15 +21,15 @@ router.route('/api/user/:id').get(function(req,res){
 router.route('/api/user/:id').put()
 
 //create card 
-router.route('api/cards').post(Card.createCard(req.body))
+router.route('api/cards').post(Card.createCard)
 //get all cards
-router.route('api/users/:id/cards').get(Card.getAllCards(params.id))
+router.route('api/users/:id/cards').get(Card.getAllCards)
 //get one card
-router.route('api/cards/:id').get(Card.getOneCard(params.id))
+router.route('api/cards/:id').get(Card.getOneCard)
 //update card
-router.route('api/cards/:id').put(Card.updateCard(params.id, req.body))
+router.route('api/cards/:id').put(Card.updateCard)
 //delete card
-router.route('api/cards/:id').delete(Card.removeCard(params.id))
+router.route('api/cards/:id').delete(Card.removeCard)
 //get default cards
 router.route('/api/default').get()
 

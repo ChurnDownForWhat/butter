@@ -1,27 +1,39 @@
 const Card = require('../models/Card')
 
+
 module.exports = {
-  createCard: function(newCard){
+  createCard: (req, res) => {
+    const newCard = req.body
+
     Card.save(newCard)
     .then(id => res.send(id))
     .then(() => res.end())
   },
-  getAllCards: function(userId){
+  getAllCards: (req, res) => {
+    const userId = params.id
+
     Card.fetchAll(userId)
     .then(cards => res.send(cards))
     .then(() => res.end())
   },
-  getOneCard: function(cardId){
+  getOneCard: (req, res) => {
+    const cardId = params.id
+
     Card.fetchOne(cardId)
     .then(card => res.send(card))
     .then(() => res.end())
   },
-  updateCard: function(cardId, newInfo){
+  updateCard: (req, res) => {
+    const cardId = params.id
+    const newInfo = req.body
+
     Card.update(cardId, newInfo)
     .then(id => res.send(id))
     .then(() => res.end())
   },
-  removeCard: function(cardId){
+  removeCard: (req, res) => {
+    const cardId = params.id
+    
     Card.delete(cardId)
     .then(name => res.send(name))
     .then(() => res.end())
