@@ -1,7 +1,13 @@
 const db = require('../config/db')
-const bookshelf = require('bookshelf')(db)
 
-const DefaultCard = bookshelf.Model.extend({
-  tablename: 'DefaultCards'
-})
+const DefaultCard = {}
+
+DefaultCard.fetchAll = () => {
+  db('DefaultCards').select('*')
+  .then(rows => rows)
+  .catch(err => err)
+}
+
+
+
 module.exports = DefaultCard
