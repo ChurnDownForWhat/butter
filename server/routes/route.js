@@ -29,11 +29,13 @@ router.route('/api/cards/:id').delete(Card.removeCard)
 router.route('/api/default').get()
 
 router.route('/auth/google').get(passport.authenticate('google', 
-	{ scope: [
-        'https://www.googleapis.com/auth/userinfo.profile',
-        'https://www.googleapis.com/auth/userinfo.email',
-        'https://www.googleapis.com/auth/plus.login'
-    ]})
+  { 
+    scope: [
+      'https://www.googleapis.com/auth/userinfo.profile',
+      'https://www.googleapis.com/auth/userinfo.email',
+      'https://www.googleapis.com/auth/plus.login'
+    ]
+  })
 )
 
 router.route('/auth/google/callback').get(passport.authenticate('google', 
