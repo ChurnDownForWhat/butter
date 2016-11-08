@@ -1,17 +1,17 @@
-const Path = require('path')
+const path = require('path')
 const router = require('express').Router()
 const passport = require('passport')
 const User = require('../controllers/user')
 const Card = require('../controllers/card')
 
 router.get('/', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../Components/index.js'))
+  res.sendFile(path.resolve(__dirname, '../../public/index.html'))
 })
 
 router.route('/api/user').post(function(req,res,done){
   console.log(req.body)
   done()
-},user.createUser)
+}, User.createUser)
 
 router.route('/api/user/:id').get(function(req,res){
   console.log("TOP KEK")
