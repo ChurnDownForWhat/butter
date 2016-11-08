@@ -12,7 +12,7 @@
     "dev": "webpack-dev-server",
     "lint": "./node_modules/.bin/eslint ./server ./client ./client/Components/**.jsx"
   },
-  "author": "Concatapult <change-me@example.com>",
+  "author": "Darion Freeman, Calvin Kniffin, Robert Guajardo, Jason Barnett, Joey Steinberger",
   "license": "MIT",
   "dependencies": {
     "babel-core": "^6.18.2",
