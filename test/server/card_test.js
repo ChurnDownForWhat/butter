@@ -48,6 +48,9 @@ describe('updateCard', function () {
     yield request(app)
     .put('/api/cards/:id')
     .expect(200)
+    .expect(function (response) {
+      expect(response.body).to.be.an('object')
+    })
   })
 })
 
@@ -56,6 +59,9 @@ describe('removeCard', function () {
     yield request(app)
     .delete('api/cards/:id')
     .expect(200)
+    .expect(function (response) {
+      expect(response.body).to.be.a('string')
+    })
   })
 })
 
@@ -64,5 +70,8 @@ describe('getDefaults', function () {
     yield request(app)
     .get('api/defaults')
     .expect(200)
+    .expect(function (response) {
+      expect(response.body).to.be.an('array')
+    })
   })
 })
