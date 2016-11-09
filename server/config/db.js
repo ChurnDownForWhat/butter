@@ -13,10 +13,10 @@ module.exports = db
 db.deleteEverything = function () {
   if (env !== 'test') return Promise.reject()
   // TODO: Delete data from all tables (useful for testing)
-    return Promise.all([
-      db.raw('TRUNCATE TABLE "DefaultCards" CASCADE'),
-      db.raw('TRUNCATE TABLE "Cards" CASCADE'),
-      db.raw('TRUNCATE TABLE "Categories" CASCADE'),
-      db.raw('TRUNCATE TABLE "Users" CASCADE')
-    ])
+  return Promise.all([
+    db.raw('TRUNCATE TABLE "DefaultCards" CASCADE'),
+    db.raw('TRUNCATE TABLE "Cards" CASCADE'),
+    db.raw('TRUNCATE TABLE "Categories" CASCADE'),
+    db.raw('TRUNCATE TABLE "Users" CASCADE')
+  ])
 }
