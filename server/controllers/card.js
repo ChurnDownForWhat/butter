@@ -5,7 +5,7 @@ module.exports = {
   createCard: (req, res) => {
     const newCard = req.body
     Card.save(newCard)
-    .then(id => res.status(201).send(id))
+    .then(id => res.status(201).send({id: id}))
   },
   getAllCards: (req, res) => {
     const userId = req.params.id
@@ -33,7 +33,7 @@ module.exports = {
     const cardId = req.params.id
     
     Card.delete(cardId)
-    .then(numDel => res.send(200, numDel))
+    .then(numDel => res.status(200).send({id: numDel}))
     .then(() => res.end())
   }
 }
