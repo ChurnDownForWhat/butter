@@ -1,4 +1,4 @@
-const path = require('path')
+const Path = require('path')
 const router = require('express').Router()
 const passport = require('passport')
 const User = require('../controllers/user')
@@ -6,7 +6,7 @@ const Card = require('../controllers/card')
 const DefaultCard = require('../controllers/DefaultCardController')
 
 router.get('/', (req, res) => {
-  res.sendFile(Path.resolve(__dirname, '../Components/index.js'))
+  res.sendFile(Path.resolve(__dirname, '../public/index.html'))
 })
 
 router.route('/api/user').post(User.createUser)
