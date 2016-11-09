@@ -5,7 +5,7 @@ const DefaultCard = {}
 DefaultCard.fetchAll = () => 
   db('DefaultCards').select('*')
   .then(rows => rows)
-  .catch(err => console.log('error is', err))
+  .catch(err => 'err is' + err)
 
 
 
