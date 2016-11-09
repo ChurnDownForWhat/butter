@@ -11,7 +11,7 @@ module.exports = {
     const userId = req.params.id
 
     Card.fetchAll(userId)
-    .then(cards => res.send(cards))
+    .then(cards => res.send(200, cards))
     .then(() => res.end())
   },
   getOneCard: (req, res) => {

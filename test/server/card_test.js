@@ -12,6 +12,7 @@ describe('save card', function () {
   it_('stores a card and responds with the card id', function * () {
     const card = { name: 'Mariott Rewards',
                     cardType: 'Visa',
+                    user_id: 1,
                     balance: 1000,
                     expiration: "2018-12-12",
                     applicationDate: "2016-3-4",
@@ -39,7 +40,7 @@ describe('save card', function () {
 describe('getAllCards', function () {
   it_('should return all cards in the database', function * () {
     yield request(app)
-    .get('/api/users/:id/cards')
+    .get('/api/users/1/cards')
     .expect(200)
     .expect(function (res) {
       expect(res.body).to.be.an('array')
@@ -50,7 +51,7 @@ describe('getAllCards', function () {
 describe('getOneCard', function () {
   it_('should return the card name from the database', function * () {
     yield request(app)
-    .get('/api/cards/:id')
+    .get('/api/cards/1')
     .expect(200)
     .expect(function (response) {
       expect(response.body.id).to.equal(request.body.id)
@@ -62,7 +63,7 @@ describe('updateCard', function () {
   it_('should return the updated card info', function * () {
     const card = { name: 'Mariott Rewards' , expCancelDate: 2018/12/12 }
     yield request(app)
-    .put('/api/cards/:id')
+    .put('/api/cards/1')
     .send(card)
     .expect(200)
     .expect(function (response) {
@@ -74,7 +75,7 @@ describe('updateCard', function () {
 describe('removeCard', function () {
   it_('should delete a card from the database', function * () {
     yield request(app)
-    .delete('/api/cards/:id')
+    .delete('/api/cards/1')
     .expect(200)
     .expect(function (response) {
       expect(response.body).to.be.a('string')
