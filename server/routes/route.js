@@ -6,7 +6,7 @@ const Card = require('../controllers/card')
 const DefaultCard = require('../controllers/DefaultCardController')
 
 router.get('/', (req, res) => {
-  res.sendFile(Path.resolve(__dirname, '../public/index.html'))
+  res.sendFile(Path.resolve(__dirname, '../../public/index.html'))
 })
 
 router.route('/api/user').post(User.createUser)
