@@ -22,7 +22,8 @@ Card.update = (id,info) =>
 Card.delete = (id) =>
   db('Cards').where({id:id})
   .del()
-  .then(deleted => deleted)
+  .returning('id')
+  .then(id => id[0])
   .catch(err => err)
 
 Card.save = (cardData) => 
