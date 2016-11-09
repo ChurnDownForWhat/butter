@@ -1,8 +1,13 @@
-export function getUser() {
+
+export function getUser(id) {
   return dispatch => {
-    // dispatch({
-    //   type: ,
-    //   payload:
-    // })
+    $.get(`/api/user/${id}`)
+    .then(res => res.body)
+    .then(user => {
+      dispatch({
+        type: 'GET_USER',
+        payload: user
+      })
+    })
   }
 }
