@@ -56,7 +56,7 @@ describe('save card', function () {
       const response = yield request(app)
       .post('/api/cards')
       .send(card)
-      const cardId = response.body
+      const cardId = response.body.id
       cardIdOne = cardId
       console.log('~~~~~~~~~',cardId)
       expect(cardId).to.be.a('number')
@@ -87,7 +87,7 @@ describe('save card', function () {
       const response = yield request(app)
       .post('/api/cards')
       .send(card)
-      const cardId = response.body
+      const cardId = response.body.id
       cardIdTwo = cardId
       expect(cardId).to.be.a('number')
     } catch(err) {
@@ -167,7 +167,7 @@ describe('removeCard', function () {
       const deletedCard = yield request(app)
       .delete(`/api/cards/${cardIdOne}`)
       .expect(200)
-      const cardId = deletedCard.body
+      const cardId = deletedCard.body.id
       expect(cardId).to.be.a('number')
       expect(cardId).to.equal(cardIdOne)
     } catch(err) {
@@ -180,7 +180,7 @@ describe('removeCard', function () {
       const deletedCard = yield request(app)
       .delete(`/api/cards/${cardIdTwo}`)
       .expect(200)
-      const cardId = deletedCard.body
+      const cardId = deletedCard.body.id
       expect(cardId).to.be.a('number')
       expect(cardId).to.equal(cardIdTwo)
       //maybe test for number of rows in database?
