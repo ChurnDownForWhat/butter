@@ -1,7 +1,6 @@
 import React from 'react'
 import * as d3 from 'd3'
 import Slice from './Slice'
-console.log(d3)
 // const scale = require('d3-scale')
 // const layout = require('d3-shape')
 export default class Pie extends React.Component {
