@@ -1,4 +1,3 @@
-//This file will store data you want into the store
 var cardReducer = function (state = {}, action) {
   console.log('cardReducer was called with state', state, 'and action', action)
 
