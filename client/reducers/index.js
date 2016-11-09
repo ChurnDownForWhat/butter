@@ -1,10 +1,14 @@
 //This file will combine all reducers into one big object
-import {combineReducers} from 'redux' 
-import sampleReducer from './sampleReducer'
+import { combineReducers, createStore } from 'redux' 
+import cardReducer from './cardReducer'
+import userReducer from './userReducer'
 
 const allReducers = combineReducers({
-  sample:sampleReducer
+  user: userReducer,
+  card: cardReducer
 })
 
+var store = createStore(allReducers)
 
-export default allReducers
+console.log('store state after initialization:', store.getState())
+
