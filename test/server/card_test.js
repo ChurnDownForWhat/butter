@@ -8,6 +8,10 @@ const app = TestHelper.createApp()
 app.use('/', routes)
 app.testReady()
 
+before('truncate db tables', function(){
+  db.deleteEverything()
+})
+
 describe('save card', function () {
   it_('stores a card and responds with the ID', function * () {
     const card = { name: 'Mariott Rewards',
