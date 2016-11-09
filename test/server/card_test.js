@@ -32,12 +32,14 @@ describe('save card', function () {
                     creditLine: 1500,
                     signupBonus: 100,
                     minSpend: 3000 }
-    yield request(app)
+    try {
+      const cardId = yield request(app)
       .post('/api/cards')
       .send(card)
-      .expect(function (response) {
-        expect(response.body).to.be.an('number')
-      })
+      expect(cardId).to.be.a('number')
+    } catch(err) {
+
+    }
   })
 })
 
