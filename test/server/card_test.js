@@ -33,12 +33,44 @@ describe('save card', function () {
                     signupBonus: 100,
                     minSpend: 3000 }
     try {
-      const cardId = yield request(app)
+      const response = yield request(app)
       .post('/api/cards')
       .send(card)
+      const cardId = response.body
       expect(cardId).to.be.a('number')
+      expect(cardId).to.equal(1)
     } catch(err) {
-
+      throw new Error(err)
+    }
+  })
+  it_('stores a second card and responds with the ID', function * () {
+  const card = { name: 'Double Cash',
+                  cardType: 'Visa',
+                  user_id: 1,
+                  balance: 1000,
+                  expiration: "2018-12-12",
+                  applicationDate: "2016-3-4",
+                  spendDeadline: '2016-12-12',
+                  monthlyBilldate: 22,
+                  expCancelDate: '2017-12-12',
+                  rewardsAmt: 500,
+                  last4digits: 1211,
+                  spendTotal: 5000,
+                  annBenefit: 300,
+                  annFeeAmt: 50,
+                  waivedFees: true,
+                  creditLine: 1500,
+                  signupBonus: 100,
+                  minSpend: 3000 }
+    try {
+      const response = yield request(app)
+      .post('/api/cards')
+      .send(card)
+      const cardId = response.body
+      expect(cardId).to.be.a('number')
+      expect(cardId).to.equal(2)
+    } catch(err) {
+      throw new Error(err)
     }
   })
 })
@@ -86,6 +118,14 @@ describe('removeCard', function () {
   it_('should delete a card from the database', function * () {
     yield request(app)
     .delete('/api/cards/1')
+    .expect(200)
+    .expect(function (response) {
+      expect(response.body).to.be.a('number')
+    })
+  })
+  it_('should delete a card from the database', function * () {
+    yield request(app)
+    .delete('/api/cards/2')
     .expect(200)
     .expect(function (response) {
       expect(response.body).to.be.a('number')
