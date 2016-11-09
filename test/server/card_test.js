@@ -58,6 +58,7 @@ describe('save card', function () {
       .send(card)
       const cardId = response.body
       cardIdOne = cardId
+      console.log('~~~~~~~~~',cardId)
       expect(cardId).to.be.a('number')
     } catch(err) {
       throw new Error(err)
@@ -99,7 +100,7 @@ describe('getAllCards', function () {
   it_('should return all cards in the database', function * () {
     try {
       const response = yield request(app)
-      .get('/api/users/1/cards')
+      .get(`/api/users/${userId}/cards`)
       .expect(200)
       const cards = response.body
       expect(cards).to.be.an('array')
@@ -136,7 +137,7 @@ describe('updateCard', function () {
       const updated = updatedCard.body
       expect(updated).to.be.an('object')
       expect(updated.name).to.equal('Mariott Rewards')
-      expect(updated.waivedFees).to.be(false)
+      expect(updated.waivedFees).to.equal(false)
       expect(updated.id).to.equal(cardIdOne)
     } catch(err) {
       throw new Error(err);
@@ -147,6 +148,7 @@ describe('updateCard', function () {
     const cardChange = { name: 'Mariott Rewards', cardType: 'MasterCard', monthlyBilldate: 13 }
     try {
       const updatedCard = yield request(app)
+      .put(`/api/cards/${cardIdTwo}`)
       .send(cardChange)
       .expect(200)
       const updated = updatedCard.body
@@ -165,9 +167,9 @@ describe('removeCard', function () {
       const deletedCard = yield request(app)
       .delete(`/api/cards/${cardIdOne}`)
       .expect(200)
-      const cardId = deletedCard.body.id
+      const cardId = deletedCard.body
       expect(cardId).to.be.a('number')
-      expect(cardId).to.equal(cardIdTwo)
+      expect(cardId).to.equal(cardIdOne)
     } catch(err) {
       throw new Error(err)
     }
@@ -178,7 +180,7 @@ describe('removeCard', function () {
       const deletedCard = yield request(app)
       .delete(`/api/cards/${cardIdTwo}`)
       .expect(200)
-      const cardId = deletedCard.body.id
+      const cardId = deletedCard.body
       expect(cardId).to.be.a('number')
       expect(cardId).to.equal(cardIdTwo)
       //maybe test for number of rows in database?
