@@ -1,12 +1,17 @@
 import React from 'react'
 import Login from './Login'
 import Navbar from './Navbar'
-require('../css/landingPage.css')
 require('../../node_modules/bootstrap/dist/css/bootstrap.min.css')
-require('../../node_modules/animate.css/animate.min.css')
-require('../../node_modules/tether/dist/js/tether.min.js')
-require('../../node_modules/jquery-touchswipe/jquery.touchswipe.min.js')
-require('../../node_modules/jquery/dist/jquery.min.js')
+// require('../../node_modules/animate.css/animate.min.css')
+// require('../../node_modules/tether/dist/js/tether.min.js')
+// require('../../node_modules/jquery-touchswipe/jquery.touchswipe.min.js')
+// require('../../node_modules/jquery/dist/jquery.min.js')
+require('../css/landingPage.css')
+require('animate.css')
+require('tether')
+require('jquery')
+require('jquery-touchswipe')
+// require('bootstrap')
 
 
 const LandingPage = (props) => {
@@ -42,7 +47,7 @@ const LandingPage = (props) => {
 
         <div className="mbr-arrow mbr-arrow-floating" aria-hidden="true"><a href="#msg-box8-e"><i className="mbr-arrow-icon"></i></a></div>
       </section>
-  
+
       <section className="mbr-section article mbr-parallax-background" id="msg-box8-e">
         <div className="mbr-overlay" id='mbr-overlay'>
         </div>
