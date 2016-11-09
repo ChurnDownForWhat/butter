@@ -11,12 +11,35 @@ app.testReady()
 before('truncate db tables', function(){
   db.deleteEverything()
 })
+let userId
+let cardIdOne
+let cardIdTwo
+describe('Stores a User', function () {
 
+  it_('stores a user and responds',function * () {
+    const user = {firstName: "Darion", lastName: "Freeman", email: "lel@test.com"}
+    try {
+      //sets response constant
+      const response = yield request(app)
+      .post('/api/user')
+      .send(user)
+      .expect(201)
+      //the user id should be in the resonse body
+      userId = response.body.id
+      console.log(userId)
+      expect(userId).to.be.a("number")
+    } catch(err) {
+
+      throw new Error(err)
+
+    }
+  })
+})
 describe('save card', function () {
   it_('stores a card and responds with the ID', function * () {
     const card = { name: 'Mariott Rewards',
                     cardType: 'Visa',
-                    user_id: 1,
+                    user_id: userId,
                     balance: 1000,
                     expiration: "2018-12-12",
                     applicationDate: "2016-3-4",
@@ -37,8 +60,8 @@ describe('save card', function () {
       .post('/api/cards')
       .send(card)
       const cardId = response.body
+      cardIdOne = cardId
       expect(cardId).to.be.a('number')
-      expect(cardId).to.equal(1)
     } catch(err) {
       throw new Error(err)
     }
@@ -46,7 +69,7 @@ describe('save card', function () {
   it_('stores a second card and responds with the ID', function * () {
   const card = { name: 'Double Cash',
                   cardType: 'Visa',
-                  user_id: 1,
+                  user_id: userId,
                   balance: 1000,
                   expiration: "2018-12-12",
                   applicationDate: "2016-3-4",
@@ -67,8 +90,8 @@ describe('save card', function () {
       .post('/api/cards')
       .send(card)
       const cardId = response.body
+      cardIdTwo = cardId
       expect(cardId).to.be.a('number')
-      expect(cardId).to.equal(2)
     } catch(err) {
       throw new Error(err)
     }
@@ -89,12 +112,13 @@ describe('getAllCards', function () {
 describe('getOneCard', function () {
   it_('should return the card name from the database', function * () {
     yield request(app)
-    .get('/api/cards/27')
+    .get(`/api/cards/${cardIdOne}`)
     .expect(200)
     .expect(function (response) {
+      console.log(response)
       expect(response.body).to.be.an('object')
       expect(response.body.name).to.equal('Mariott Rewards')
-      expect(response.body.id).to.equal(27)
+      expect(response.body.id).to.equal(cardIdOne)
     })
   })
 })
@@ -103,13 +127,13 @@ describe('updateCard', function () {
   it_('should return the updated card info', function * () {
     const card = { name: 'Mariott Rewards' , expCancelDate: '2018-12-12' }
     yield request(app)
-    .put('/api/cards/27')
+    .put(`/api/cards/${cardIdOne}`)
     .send(card)
     .expect(200)
     .expect(function (response) {
       expect(response.body).to.be.an('object')
       expect(response.body.name).to.equal('Mariott Rewards')
-      expect(response.body.id).to.equal(27)
+      expect(response.body.id).to.equal(cardIdOne)
     })
   })
 })
@@ -117,7 +141,7 @@ describe('updateCard', function () {
 describe('removeCard', function () {
   it_('should delete a card from the database', function * () {
     yield request(app)
-    .delete('/api/cards/1')
+    .delete(`/api/cards/${cardIdOne}`)
     .expect(200)
     .expect(function (response) {
       expect(response.body).to.be.a('number')
@@ -125,7 +149,7 @@ describe('removeCard', function () {
   })
   it_('should delete a card from the database', function * () {
     yield request(app)
-    .delete('/api/cards/2')
+    .delete(`/api/cards/${cardIdTwo}`)
     .expect(200)
     .expect(function (response) {
       expect(response.body).to.be.a('number')
