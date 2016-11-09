@@ -35,7 +35,7 @@ const allReducers = combineReducers({
   card: cardReducer
 })
 
-export var store = finalCreateStore(allReducers)
+export const store = finalCreateStore(allReducers)
 
 console.log('store state after initialization:', store.getState())
 
