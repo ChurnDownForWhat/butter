@@ -5,7 +5,7 @@ import cardReducer from './cardReducer'
 import userReducer from './userReducer'
 
 const logMiddleware = ({ dispatch, getState }) => {
-  console.log('Enter Middleware')
+  console.log('Enter logMiddleware')
   return function(next) {
     return function(action) {
       console.log('Action received:', action)
