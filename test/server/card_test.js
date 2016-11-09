@@ -13,17 +13,17 @@ describe('save card', function () {
     const card = { name: 'Mariott Rewards',
                     cardType: 'Visa',
                     balance: 1000,
-                    expiration: 2018/12/12,
-                    applicationDate: 2016/3/4,
-                    spendDeadline: 2016/12/12,
+                    expiration: "2018-12-12",
+                    applicationDate: "2016-3-4",
+                    spendDeadline: '2016-12-12',
                     monthlyBilldate: 22,
-                    expCanceldate: 2017/12/12,
+                    expCancelDate: '2017-12-12',
                     rewardsAmt: 500,
                     last4digits: 1211,
                     spendTotal: 5000,
                     annBenefit: 300,
                     annFeeAmt: 50,
-                    waivedFees: 25,
+                    waivedFees: true,
                     creditLine: 1500,
                     signupBonus: 100,
                     minSpend: 3000 }
@@ -31,7 +31,7 @@ describe('save card', function () {
       .post('/api/cards')
       .send(card)
       .expect(function (response) {
-        expect(response.body.id).to.be.a('number')
+        expect(response.body).to.be.a('number')
       })
   })
 })

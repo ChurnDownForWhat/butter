@@ -4,10 +4,8 @@ const Card = require('../models/Card')
 module.exports = {
   createCard: (req, res) => {
     const newCard = req.body
-
     Card.save(newCard)
-    .then(id => res.send(id))
-    .then(() => res.end())
+    .then(id => res.send(201, id))
   },
   getAllCards: (req, res) => {
     const userId = req.params.id
