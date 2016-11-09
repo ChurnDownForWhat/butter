@@ -25,7 +25,7 @@ var cardReducer = function (state = {}, action) {
     case 'VIEW_ALL_CARDS':
       return {
         ...state,
-        card: action.value
+        user_id: action.value
       }
     case 'GET_DEFAULTS':
       return {

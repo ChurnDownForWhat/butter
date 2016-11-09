@@ -8,7 +8,7 @@ const allReducers = combineReducers({
   card: cardReducer
 })
 
-var store = createStore(allReducers)
+export var store = createStore(allReducers)
 
 console.log('store state after initialization:', store.getState())
 
