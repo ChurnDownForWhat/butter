@@ -16,9 +16,8 @@ module.exports = {
   },
   getOneCard: (req, res) => {
     const cardId = req.params.id
-
     Card.fetchOne(cardId)
-    .then(card => res.send(card))
+    .then(card => res.send(200, card))
     .then(() => res.end())
   },
   updateCard: (req, res) => {
@@ -26,14 +25,15 @@ module.exports = {
     const newInfo = req.body
 
     Card.update(cardId, newInfo)
-    .then(id => res.send(id))
+    .then(id => Card.fetchOne(id))
+    .then(card => res.send(200, card))
     .then(() => res.end())
   },
   removeCard: (req, res) => {
     const cardId = req.params.id
     
     Card.delete(cardId)
-    .then(name => res.send(name))
+    .then(numDel => res.send(200, numDel))
     .then(() => res.end())
   }
 }

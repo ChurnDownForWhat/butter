@@ -9,7 +9,7 @@ app.use('/', routes)
 app.testReady()
 
 describe('save card', function () {
-  it_('stores a card and responds with the card id', function * () {
+  it_('stores a card and responds with the ID', function * () {
     const card = { name: 'Mariott Rewards',
                     cardType: 'Visa',
                     user_id: 1,
@@ -32,7 +32,7 @@ describe('save card', function () {
       .post('/api/cards')
       .send(card)
       .expect(function (response) {
-        expect(response.body).to.be.a('number')
+        expect(response.body).to.be.an('number')
       })
   })
 })
@@ -51,23 +51,27 @@ describe('getAllCards', function () {
 describe('getOneCard', function () {
   it_('should return the card name from the database', function * () {
     yield request(app)
-    .get('/api/cards/1')
+    .get('/api/cards/27')
     .expect(200)
     .expect(function (response) {
-      expect(response.body.id).to.equal(request.body.id)
+      expect(response.body).to.be.an('object')
+      expect(response.body.name).to.equal('Mariott Rewards')
+      expect(response.body.id).to.equal(27)
     })
   })
 })
 
 describe('updateCard', function () {
   it_('should return the updated card info', function * () {
-    const card = { name: 'Mariott Rewards' , expCancelDate: 2018/12/12 }
+    const card = { name: 'Mariott Rewards' , expCancelDate: '2018-12-12' }
     yield request(app)
-    .put('/api/cards/1')
+    .put('/api/cards/27')
     .send(card)
     .expect(200)
     .expect(function (response) {
       expect(response.body).to.be.an('object')
+      expect(response.body.name).to.equal('Mariott Rewards')
+      expect(response.body.id).to.equal(27)
     })
   })
 })
@@ -78,7 +82,7 @@ describe('removeCard', function () {
     .delete('/api/cards/1')
     .expect(200)
     .expect(function (response) {
-      expect(response.body).to.be.a('string')
+      expect(response.body).to.be.a('number')
     })
   })
 })
