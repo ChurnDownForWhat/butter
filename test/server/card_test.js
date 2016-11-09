@@ -28,9 +28,7 @@ describe('Stores a User', function () {
       userId = response.body.id
       expect(userId).to.be.a("number")
     } catch(err) {
-
       throw new Error(err)
-
     }
   })
 })
@@ -129,45 +127,64 @@ describe('getOneCard', function () {
 
 describe('updateCard', function () {
   it_('should return the updated card info', function * () {
-    const card = { name: 'Mariott Rewards' , expCancelDate: '2018-12-12' }
-    yield request(app)
-    .put(`/api/cards/${cardIdOne}`)
-    .send(card)
-    .expect(200)
-    .expect(function (response) {
-      expect(response.body).to.be.an('object')
-      expect(response.body.name).to.equal('Mariott Rewards')
-      expect(response.body.id).to.equal(cardIdOne)
-    })
+    const cardChange = { name: 'Mariott Rewards' , waivedFees: false }
+    try {
+      const updatedCard = yield request(app)
+      .put(`/api/cards/${cardIdOne}`)
+      .send(cardChange)
+      .expect(200)
+      const updated = updatedCard.body
+      expect(updated).to.be.an('object')
+      expect(updated.name).to.equal('Mariott Rewards')
+      expect(updated.waivedFees).to.be(false)
+      expect(updated.id).to.equal(cardIdOne)
+    } catch(err) {
+      throw new Error(err);
+    }
+  })
+
+  it_('should be able to update more than one property', function * () {
+    const cardChange = { name: 'Mariott Rewards', cardType: 'MasterCard', monthlyBilldate: 13 }
+    try {
+      const updatedCard = yield request(app)
+      .send(cardChange)
+      .expect(200)
+      const updated = updatedCard.body
+      expect(updated.name).to.equal('Mariott Rewards')
+      expect(updated.cardType).to.equal('MasterCard')
+      expect(updated.monthlyBilldate).to.equal(13)
+    } catch(err) {
+      throw new Error(err)
+    }
   })
 })
 
 describe('removeCard', function () {
   it_('should delete a card from the database', function * () {
-    yield request(app)
-    .delete(`/api/cards/${cardIdOne}`)
-    .expect(200)
-    .expect(function (response) {
-      expect(response.body).to.be.a('number')
-    })
+    try {
+      const deletedCard = yield request(app)
+      .delete(`/api/cards/${cardIdOne}`)
+      .expect(200)
+      const cardId = deletedCard.body.id
+      expect(cardId).to.be.a('number')
+      expect(cardId).to.equal(cardIdTwo)
+    } catch(err) {
+      throw new Error(err)
+    }
   })
-  it_('should delete a card from the database', function * () {
-    yield request(app)
-    .delete(`/api/cards/${cardIdTwo}`)
-    .expect(200)
-    .expect(function (response) {
-      expect(response.body).to.be.a('number')
-    })
+
+  it_('should be able to delete a second card from the database', function * () {
+    try {
+      const deletedCard = yield request(app)
+      .delete(`/api/cards/${cardIdTwo}`)
+      .expect(200)
+      const cardId = deletedCard.body.id
+      expect(cardId).to.be.a('number')
+      expect(cardId).to.equal(cardIdTwo)
+      //maybe test for number of rows in database?
+      //expect to get the right id back from deleted card
+    } catch(err) {
+      throw new Error(err)
+    }
   })
 })
-
-// describe('getDefaults', function () {
-//   it_('should return all default cards', function * () {
-//     yield request(app)
-//     .get('/api/defaults')
-//     .expect(200)
-//     .expect(function (response) {
-//       expect(response.body).to.be.an('array')
-//     })
-//   })
-// })
