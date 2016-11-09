@@ -3,6 +3,7 @@ const router = require('express').Router()
 const passport = require('passport')
 const User = require('../controllers/user')
 const Card = require('../controllers/card')
+const DefaultCard = require('../controllers/DefaultCardController')
 
 router.get('/', (req, res) => {
   res.sendFile(Path.resolve(__dirname, '../Components/index.js'))
@@ -25,7 +26,7 @@ router.route('/api/cards/:id').put(Card.updateCard)
 //delete card
 router.route('/api/cards/:id').delete(Card.removeCard)
 //get default cards
-router.route('/api/default').get()
+router.route('/api/default').get(DefaultCard.getAllDefaults)
 
 router.route('/auth/google').get(passport.authenticate('google',
   {
