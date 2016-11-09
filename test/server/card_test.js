@@ -26,7 +26,6 @@ describe('Stores a User', function () {
       .expect(201)
       //the user id should be in the resonse body
       userId = response.body.id
-      console.log(userId)
       expect(userId).to.be.a("number")
     } catch(err) {
 
@@ -100,26 +99,31 @@ describe('save card', function () {
 
 describe('getAllCards', function () {
   it_('should return all cards in the database', function * () {
-    yield request(app)
-    .get('/api/users/1/cards')
-    .expect(200)
-    .expect(function (res) {
-      expect(res.body).to.be.an('array')
-    })
+    try {
+      const response = yield request(app)
+      .get('/api/users/1/cards')
+      .expect(200)
+      const cards = response.body
+      expect(cards).to.be.an('array')
+    } catch(err) {
+     throw new Error(err)
+    }
   })
 })
 
 describe('getOneCard', function () {
   it_('should return the card name from the database', function * () {
-    yield request(app)
-    .get(`/api/cards/${cardIdOne}`)
-    .expect(200)
-    .expect(function (response) {
-      console.log(response)
-      expect(response.body).to.be.an('object')
-      expect(response.body.name).to.equal('Mariott Rewards')
-      expect(response.body.id).to.equal(cardIdOne)
-    })
+    try {
+      const response = yield request(app)
+      .get(`/api/cards/${cardIdOne}`)
+      .expect(200)
+      const card = response.body
+      expect(card).to.be.an('object')
+      expect(card.name).to.equal('Mariott Rewards')
+      expect(card.id).to.equal(cardIdOne)
+    } catch(err) {
+      throw new Error(err)
+    }
   })
 })
 
