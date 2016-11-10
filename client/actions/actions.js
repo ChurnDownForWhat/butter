@@ -27,7 +27,7 @@ export function addCard(cardData){
     .then(data => viewAllCards())
 } 
 
-export function deleteCard(cardData){
+export function deleteCard(id){
   return dispatch => 
     $.ajax(`/api/cards/${id}`, {
       type: 'DELETE'
