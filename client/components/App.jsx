@@ -18,11 +18,8 @@ export default class App extends React.Component {
     return (
 
     <div>
-
-
-    
       <Router history={hashHistory}>
-        <Route path="/" component={LandingPage} />
+        <Route path="/" component={CardsPage} />
         <Route path="/cards" component={CardsPage} />
         <Route path="/rewards" component={RewardsPage} />
       </Router>
