@@ -50,7 +50,7 @@ exports.up = function(knex, Promise) {
       table.foreign('category_id').references('Categories.id')
       table.string('annBenefit')
       table.integer('annFeeAmt')
-      table.integer('waivedFees')
+      table.boolean('waivedFees')
       table.integer('signupBonus')
       table.integer('minSpend')
 
