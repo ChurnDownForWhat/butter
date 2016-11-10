@@ -6,7 +6,11 @@ const Card = require('../controllers/card')
 const DefaultCard = require('../controllers/DefaultCardController')
 
 router.get('/', (req, res) => {
-  res.sendFile(Path.resolve(__dirname, '../../public/index.html'))
+  res.sendFile(Path.resolve(__dirname, '../../public/landing.html'))
+})
+
+router.get('/app',(req,res) => {
+    res.sendFile(Path.resolve(__dirname, '../../public/index.html'))
 })
 
 router.route('/api/user').post(User.createUser)
@@ -39,10 +43,9 @@ router.route('/auth/google').get(passport.authenticate('google',
 )
 
 router.route('/auth/google/callback').get(passport.authenticate('google',
-	{ failureRedirect: '/api/login' }),
-  (req, res) => {
-    res.redirect('/')
-  }
+	{ failureRedirect: '/home',
+    successRedirect: '/app' 
+  })
 )
 
 router.route('/api/logout').get((req, res) => {
