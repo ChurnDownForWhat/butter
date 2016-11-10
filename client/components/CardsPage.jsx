@@ -28,20 +28,20 @@ class CardsPage extends React.Component {
     // new Promise((res, rej) => res(this.props.addCard(newCard)))
     // .then(res => console.log("addCard", res))
 
-    new Promise((res, rej) => res(this.props.viewCard('947d296f-566d-4e71-b642-eb283c26f09c')))
-    .then((res) => console.log("viewCard", this.props.card))
+    // new Promise((res, rej) => res(this.props.viewCard('947d296f-566d-4e71-b642-eb283c26f09c')))
+    // .then((res) => console.log("viewCard", this.props.card))
 
-    // new Promise((res, rej) => res(this.props.updateCard(4, {category: 'LIFE'})))
-    // .then(res => console.log("updateCard", res))
+    new Promise((res, rej) => res(this.props.updateCard('947d296f-566d-4e71-b642-eb283c26f09c', {category: 'LIFE'})))
+    .then(res => console.log("updateCard", res))
 
     // new Promise((res, rej) => res(this.props.deleteCard()))
     // .then(console.log("deleteCard", this.props.defaults))
 
-    new Promise((res, rej) => res(this.props.viewAllCards()))
-    .then((res) => console.log("viewAllCards", this.props.cards))
+    // new Promise((res, rej) => res(this.props.viewAllCards()))
+    // .then((res) => console.log("viewAllCards", this.props.cards))
 
-    new Promise((res, rej) => res(this.props.getDefaults()))
-    .then((res) => console.log("defaults", this.props.defaults))
+    // new Promise((res, rej) => res(this.props.getDefaults()))
+    // .then((res) => console.log("defaults", this.props.defaults))
   }
   
   render(){

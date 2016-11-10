@@ -29,16 +29,15 @@ export function addCard(cardData){
 
 export function deleteCard(cardData){
   return dispatch => 
-    $.ajax('/api/cards/:id', {
-      type: 'DELETE',
-      data: cardData
+    $.ajax(`/api/cards/${id}`, {
+      type: 'DELETE'
     })
     .then(data => viewAllCards(data))
 }
 
 export function viewAllCards() {
   return dispatch => 
-    $.get(`/api/cards`)
+    $.get('/api/cards')
     .then(cards =>
       dispatch({
         type: 'VIEW_ALL_CARDS',
@@ -58,11 +57,11 @@ export function viewCard(id) {
     )
 }
 
-export function updateCard(cardData){
+export function updateCard(id, data){
   return dispatch => 
-    $.ajax('/api/cards/:id',{
+    $.ajax(`/api/cards/${id}`,{
       type: 'PUT',
-      data: cardData
+      data: data
     })
     .then(data => viewAllCards(data))
 }
