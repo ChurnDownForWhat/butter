@@ -16,8 +16,8 @@ exports.up = function(knex, Promise) {
       table.integer('user_id')
       table.foreign('user_id').references('Users.id')
       table.string('cardType')
-      table.integer('category_id')
-      table.foreign('category_id').references('Categories.id')
+      table.string('category')
+      table.string('program')
       table.integer('balance')
       table.date('expiration')
       table.date('applicationDate')
@@ -28,7 +28,7 @@ exports.up = function(knex, Promise) {
       table.integer('rewardsAmt')
       table.integer('last4digits')
       table.integer('spendTotal')
-      table.string('annBenefit')
+      table.string('benefit')
       table.integer('annFeeAmt')
       table.boolean('waivedFees')
       table.integer('creditLine')
@@ -36,19 +36,13 @@ exports.up = function(knex, Promise) {
       table.integer('minSpend')
     }),
 
-    knex.schema.createTableIfNotExists('Categories', function(table){
-      table.increments('id')
-      table.string('category', 30).notNullable()
-      table.string('program', 30)
-    }),
-
     knex.schema.createTableIfNotExists('DefaultCards', function(table){
       table.increments('id').primary()
       table.string('name', 80)
       table.string('cardType')
-      table.integer('category_id')
-      table.foreign('category_id').references('Categories.id')
-      table.string('annBenefit')
+      table.string('category')
+      table.string('program')
+      table.string('benefit')
       table.integer('annFeeAmt')
       table.integer('waivedFees')
       table.integer('signupBonus')
