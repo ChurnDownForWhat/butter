@@ -1,5 +1,7 @@
 import React from 'react'
 import { Router, Route, Link, IndexRoute, hashHistory, browserHistory } from 'react-router'
+import { Provider } from 'react-redux'
+import { getUser } from '../actions/actions'
 import LandingPage from './LandingPage'
 import CardsPage from './CardsPage'
 import RewardsPage from './RewardsPage'
@@ -17,13 +19,13 @@ export default class App extends React.Component {
 
     return (
 
-    <div>
+    <Provider store={ this.props.store } >
       <Router history={hashHistory}>
         <Route path="/" component={CardsPage} />
         <Route path="/cards" component={CardsPage} />
         <Route path="/rewards" component={RewardsPage} />
       </Router>
-    </div>
+    </Provider>
     )
   }
 }

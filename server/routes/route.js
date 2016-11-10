@@ -15,14 +15,14 @@ router.get('/app',(req,res) => {
 
 router.route('/api/user').post(User.createUser)
 
-router.route('/api/user/:id').get()
+router.route('/api/user/:id').get((req, res) => res.end("BOB"))
 
 router.route('/api/user/:id').put()
 
 //create card
 router.route('/api/cards').post(Card.createCard)
 //get all cards
-router.route('/api/users/:id/cards').get(Card.getAllCards)
+router.route('/api/user/:id/cards').get(Card.getAllCards)
 //get one card
 router.route('/api/cards/:id').get(Card.getOneCard)
 //update card
@@ -30,7 +30,7 @@ router.route('/api/cards/:id').put(Card.updateCard)
 //delete card
 router.route('/api/cards/:id').delete(Card.removeCard)
 //get default cards
-router.route('/api/default').get(DefaultCard.getAllDefaults)
+router.route('/api/defaults').get(DefaultCard.getAllDefaults)
 
 router.route('/auth/google').get(passport.authenticate('google',
   {

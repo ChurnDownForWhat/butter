@@ -12,11 +12,14 @@ require('tether')
 require('jquery')
 require('jquery-touchswipe')
 // require('bootstrap')
+import Container from '../containers/sampleContainer'
+
 
 
 const LandingPage = (props) => {
   return (
     <div>
+      <Container />
       <section id="menu-7">
           <nav className="navbar navbar-dropdown bg-color transparent navbar-fixed-top">
               <div className="container">
