@@ -5,6 +5,8 @@ const User = require('../controllers/user')
 const Card = require('../controllers/card')
 const DefaultCard = require('../controllers/DefaultCardController')
 
+isAuthed = (req,res,next) => req.isAuthenticated() ? next() : res.redirect('/')   
+
 router.get('/', (req, res) => {
   res.sendFile(Path.resolve(__dirname, '../../public/landing.html'))
 })
