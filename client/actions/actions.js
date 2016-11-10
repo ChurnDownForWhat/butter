@@ -13,7 +13,6 @@ export function getUser(id) {
 export function getDefaults() {
   return dispatch => 
     $.get('/api/defaults')
-    .then(res => res.body)
     .then(defaults => 
       dispatch({
         type: 'GET_DEFAULTS',
@@ -24,22 +23,23 @@ export function getDefaults() {
 
 export function addCard(cardData){
   return dispatch => 
-    $.post('/api/cards',cardData)
-    .then(data => viewAllCards(data))
+    $.post('/api/cards', cardData)
+    .then(data => viewAllCards())
 } 
 
 export function deleteCard(cardData){
   return dispatch => 
-    $ajax
-    .delete('/api/cards/:id', cardData)
+    $.ajax('/api/cards/:id', {
+      type: 'DELETE',
+      data: cardData
+    })
     .then(data => viewAllCards(data))
 }
 
-export function viewAllCards(id) {
+export function viewAllCards() {
   return dispatch => 
-    $.get(`/api/user/${id}/cards`)
-    .then(res => res.body)
-    .then(cards => 
+    $.get(`/api/cards`)
+    .then(cards =>
       dispatch({
         type: 'VIEW_ALL_CARDS',
         payload: cards
@@ -50,7 +50,6 @@ export function viewAllCards(id) {
 export function viewCard(id) {
   return dispatch => 
     $.get(`/api/cards/${id}`)
-    .then(res = res.body)
     .then(card => 
       dispatch({
         type: 'VIEW_CARD',
@@ -61,8 +60,10 @@ export function viewCard(id) {
 
 export function updateCard(cardData){
   return dispatch => 
-    $ajax
-    .put('/api/cards/:id',cardData)
+    $.ajax('/api/cards/:id',{
+      type: 'PUT',
+      data: cardData
+    })
     .then(data => viewAllCards(data))
 }
 

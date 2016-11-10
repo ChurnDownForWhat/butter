@@ -12,7 +12,36 @@ class CardsPage extends React.Component {
   }  
 
   componentDidMount(){
-    //async stuff
+    var newCard = {
+      name: 'Citi DoubleCash',
+      user_id: "21274577-2e7c-40cf-b2c0-6b56f4ceeda9",
+      cardType: 'Citi',
+      benefit: '2% cash back',
+      annFeeAmt: 0,
+      waivedFees: false,
+      category: 'Cash Back',
+      program: 'Citi Rewards',
+      signupBonus: 0,
+      minSpend: 0
+    }
+
+    // new Promise((res, rej) => res(this.props.addCard(newCard)))
+    // .then(res => console.log("addCard", res))
+
+    // new Promise((res, rej) => res(this.props.viewCard(4)))
+    // .then((res) => console.log("viewCard", this.props.card))
+
+    // new Promise((res, rej) => res(this.props.updateCard(4, {category: 'LIFE'})))
+    // .then(res => console.log("updateCard", res))
+
+    // new Promise((res, rej) => res(this.props.getDefaults()))
+    // .then(console.log("deleteCard", res))
+
+    new Promise((res, rej) => res(this.props.viewAllCards()))
+    .then((res) => console.log("viewAllCards", this.props.cards))
+
+    // new Promise((res, rej) => res(this.props.getDefaults()))
+    // .then((res) => console.log("defaults", this.props.defaults))
   }
   
   render(){
@@ -93,14 +122,14 @@ class CardsPage extends React.Component {
 }
 
 
-function mapStateToProps(state){
+function mapStateToProps(store){
   return {
     //object w/ one card data
-    card: state.card,
+    card: store.cardStates.cards,
     //object w/ all user cards data
-    cards: state.cards,
+    cards: store.cardStates.cards,
     //object w/ default cards data
-    defaults: state.defaults
+    defaults: store.cardStates.defaults
   }
 }
 
