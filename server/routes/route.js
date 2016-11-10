@@ -15,7 +15,7 @@ router.get('/app',(req,res) => {
 
 router.route('/api/user').post(User.createUser)
 
-router.route('/api/user/:id').get()
+router.route('/api/user/:id').get((req, res) => res.end("hey"))
 
 router.route('/api/user/:id').put()
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Router, Route, Link, IndexRoute, hashHistory, browserHistory } from 'react-router'
 import { Provider } from 'react-redux'
+import { getUser } from '../actions/actions'
 import LandingPage from './LandingPage'
 import CardsPage from './CardsPage'
 import RewardsPage from './RewardsPage'

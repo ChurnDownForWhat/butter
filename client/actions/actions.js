@@ -1,14 +1,16 @@
 export function getUser(id) {
-  return dispatch => {
+  return dispatch => 
     $.get(`/api/user/${id}`)
-    .then(res => res.body)
+    .then(function(res){
+      console.log("res", res)
+      return res
+    })
     .then(user => {
       dispatch({
         type: 'GET_USER',
         payload: user
       })
     })
-  }
 }
 
 export function getDefaults() {

@@ -4,7 +4,7 @@ import { store } from './reducers/main'
 import App from './components/App'
 
 render(
-  <App store={store}/>,
+  <App store={ store }/>,
   document.getElementById('app')
 )
 
