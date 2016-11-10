@@ -104,7 +104,7 @@ class RewardsPage extends React.Component {
             </div>
         </div>
         </div>
-      )
+    )
   }
 }
 
