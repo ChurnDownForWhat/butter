@@ -20,10 +20,9 @@ class SampleContainer extends Component{
 
   render(){
     return (
-			<ul>
-				<li>one</li>
-				<li>two</li>
-				<li>three</li>
+      <ul>
+				<li>four</li>
+				<li>{this.props.userName}</li>
 			</ul>
     )
   }
@@ -31,7 +30,7 @@ class SampleContainer extends Component{
 
 function mapStateToProps(state){
   return {
-    sample: state.sample
+    userName: state.user.name
   }
 }
 

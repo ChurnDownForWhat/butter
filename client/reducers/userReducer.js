@@ -5,7 +5,7 @@ const userReducer = function (state = {}, action) {
   case 'GET_USER':
     return {
       ...state,
-      user: action.payload
+      name: action.payload
     }
   default:
     return state
