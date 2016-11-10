@@ -12,19 +12,32 @@ class CardsPage extends React.Component {
   }  
 
   componentDidMount(){
-    // new Promise((res, rej) => res(this.props.addCard()))
-    // .then(console.log("addCard", res))
+    var newCard = {
+      name: 'Citi DoubleCash',
+      user_id: "21274577-2e7c-40cf-b2c0-6b56f4ceeda9",
+      cardType: 'Citi',
+      benefit: '2% cash back',
+      annFeeAmt: 0,
+      waivedFees: false,
+      category: 'Cash Back',
+      program: 'Citi Rewards',
+      signupBonus: 0,
+      minSpend: 0
+    }
+
+    // new Promise((res, rej) => res(this.props.addCard(newCard)))
+    // .then(res => console.log("addCard", res))
 
     // new Promise((res, rej) => res(this.props.viewCard(4)))
     // .then((res) => console.log("viewCard", this.props.card))
 
-    // new Promise((res, rej) => res(this.props.updateCard()))
-    // .then(console.log("updateCard", res))
+    // new Promise((res, rej) => res(this.props.updateCard(4, {category: 'LIFE'})))
+    // .then(res => console.log("updateCard", res))
 
     // new Promise((res, rej) => res(this.props.getDefaults()))
     // .then(console.log("deleteCard", res))
 
-    new Promise((res, rej) => res(this.props.viewAllCards('40f2e009-4383-4391-ad67-96e4bbd12c05')))
+    new Promise((res, rej) => res(this.props.viewAllCards()))
     .then((res) => console.log("viewAllCards", this.props.cards))
 
     // new Promise((res, rej) => res(this.props.getDefaults()))
