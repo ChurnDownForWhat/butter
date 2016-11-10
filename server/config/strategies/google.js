@@ -1,6 +1,7 @@
 const passport = require('passport')
 const Strategy = require('passport-google-oauth')
 const User = require('../../models/user')
+const uuid = require('uuid')
 
 const GoogleStrategy = Strategy.OAuth2Strategy
 module.exports = function(){	
@@ -17,13 +18,13 @@ module.exports = function(){
     .then((user) => {
       if(!user){
         const newUser = {
+          id: uuid.v4(),
           email: email,
           firstName: firstName,
           lastName: lastName
         }
         User.save(newUser)
         .then((id) => {
-          newUser.id = id
           newUser.token = token
           return done(null, newUser)
         })

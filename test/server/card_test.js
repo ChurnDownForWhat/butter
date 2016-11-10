@@ -26,7 +26,7 @@ describe('Stores a User', function () {
       .expect(201)
       //the user id should be in the resonse body
       userId = response.body.id
-      expect(userId).to.be.a("number")
+      expect(userId).to.be.a("string")
     } catch(err) {
       throw new Error(err)
     }
@@ -58,8 +58,7 @@ describe('save card', function () {
       .send(card)
       const cardId = response.body.id
       cardIdOne = cardId
-      console.log('~~~~~~~~~',cardId)
-      expect(cardId).to.be.a('number')
+      expect(cardId).to.be.a('string')
     } catch(err) {
       throw new Error(err)
     }
@@ -89,7 +88,7 @@ describe('save card', function () {
       .send(card)
       const cardId = response.body.id
       cardIdTwo = cardId
-      expect(cardId).to.be.a('number')
+      expect(cardId).to.be.a('string')
     } catch(err) {
       throw new Error(err)
     }
@@ -97,12 +96,13 @@ describe('save card', function () {
 })
 
 describe('getAllCards', function () {
-  it_('should return all cards in the database', function * () {
+  it_('should return all cards in the database for a user', function * () {
     try {
       const response = yield request(app)
-      .get(`/api/users/${userId}/cards`)
+      .get(`/api/user/${userId}/cards`)
       .expect(200)
-      const cards = response.body
+      const cards = response.body.cards
+      const user = response.body.user
       expect(cards).to.be.an('array')
     } catch(err) {
      throw new Error(err)
@@ -168,7 +168,7 @@ describe('removeCard', function () {
       .delete(`/api/cards/${cardIdOne}`)
       .expect(200)
       const cardId = deletedCard.body.id
-      expect(cardId).to.be.a('number')
+      expect(cardId).to.be.a('string')
       expect(cardId).to.equal(cardIdOne)
     } catch(err) {
       throw new Error(err)
@@ -181,7 +181,7 @@ describe('removeCard', function () {
       .delete(`/api/cards/${cardIdTwo}`)
       .expect(200)
       const cardId = deletedCard.body.id
-      expect(cardId).to.be.a('number')
+      expect(cardId).to.be.a('string')
       expect(cardId).to.equal(cardIdTwo)
       //maybe test for number of rows in database?
       //expect to get the right id back from deleted card

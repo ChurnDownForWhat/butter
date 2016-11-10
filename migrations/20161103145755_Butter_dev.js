@@ -2,7 +2,7 @@
 exports.up = function(knex, Promise) {
   return Promise.all([
     knex.schema.createTableIfNotExists('Users', function(table){
-      table.increments('id').primary()
+      table.string('id').primary()
       table.string('firstName', 20).notNullable()
       table.string('lastName', 20).notNullable()
       table.string('email', 40)
@@ -11,9 +11,9 @@ exports.up = function(knex, Promise) {
     }),
 
     knex.schema.createTableIfNotExists('Cards', function(table){
-      table.increments('id').primary()
+      table.string('id').primary()
       table.string('name', 80)
-      table.integer('user_id')
+      table.string('user_id')
       table.foreign('user_id').references('Users.id')
       table.string('cardType')
       table.string('category')
