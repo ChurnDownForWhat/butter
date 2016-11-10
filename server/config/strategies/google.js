@@ -29,14 +29,15 @@ module.exports = function(){
           return done(null, newUser)
         })
         .catch((err) => {
-          throw new Error('Failed to save user info!')
+          throw new Error(err)
         })
       } else {
         return done(null, user)
       }
     })
     .catch((err) => {
-      throw new Error('Fetch failed! Failed to contact database!')
+
+      throw new Error(err)
     })   
   }
 ))
