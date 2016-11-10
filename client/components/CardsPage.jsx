@@ -15,8 +15,8 @@ class CardsPage extends React.Component {
     // new Promise((res, rej) => res(this.props.addCard()))
     // .then(console.log("addCard", res))
 
-    new Promise((res, rej) => res(this.props.viewCard(4)))
-    .then((res) => console.log("viewCard", this.props.card))
+    // new Promise((res, rej) => res(this.props.viewCard(4)))
+    // .then((res) => console.log("viewCard", this.props.card))
 
     // new Promise((res, rej) => res(this.props.updateCard()))
     // .then(console.log("updateCard", res))
@@ -24,8 +24,8 @@ class CardsPage extends React.Component {
     // new Promise((res, rej) => res(this.props.getDefaults()))
     // .then(console.log("deleteCard", res))
 
-    // new Promise((res, rej) => res(this.props.viewAllCards('40f2e009-4383-4391-ad67-96e4bbd12c05')))
-    // .then((res) => console.log("viewAllCards", res))
+    new Promise((res, rej) => res(this.props.viewAllCards('40f2e009-4383-4391-ad67-96e4bbd12c05')))
+    .then((res) => console.log("viewAllCards", this.props.cards))
 
     // new Promise((res, rej) => res(this.props.getDefaults()))
     // .then((res) => console.log("defaults", this.props.defaults))
@@ -112,7 +112,7 @@ class CardsPage extends React.Component {
 function mapStateToProps(store){
   return {
     //object w/ one card data
-    card: store.cardStates.card,
+    card: store.cardStates.cards,
     //object w/ all user cards data
     cards: store.cardStates.cards,
     //object w/ default cards data

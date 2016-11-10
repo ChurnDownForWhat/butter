@@ -36,8 +36,8 @@ export function deleteCard(cardData){
 
 export function viewAllCards(id) {
   return dispatch => 
-    $.get(`/api/user/${id}/cards`)
-    .then(cards => 
+    $.get(`/api/cards`)
+    .then(cards =>
       dispatch({
         type: 'VIEW_ALL_CARDS',
         payload: cards

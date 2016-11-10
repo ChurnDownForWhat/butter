@@ -17,7 +17,6 @@ module.exports = {
         user: req.user,
         cards: cards
       }
-      console.log(data)
       return res.status(200).send(data)
     })
     .then(() => res.end())
