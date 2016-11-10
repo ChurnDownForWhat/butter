@@ -15,8 +15,8 @@ class CardsPage extends React.Component {
     // new Promise((res, rej) => res(this.props.addCard()))
     // .then(console.log("addCard", res))
 
-    // new Promise((res, rej) => res(this.props.viewCard()))
-    // .then(console.log("viewCard", res))
+    new Promise((res, rej) => res(this.props.viewCard(4)))
+    .then((res) => console.log("viewCard", this.props.card))
 
     // new Promise((res, rej) => res(this.props.updateCard()))
     // .then(console.log("updateCard", res))
@@ -25,10 +25,10 @@ class CardsPage extends React.Component {
     // .then(console.log("deleteCard", res))
 
     // new Promise((res, rej) => res(this.props.viewAllCards('40f2e009-4383-4391-ad67-96e4bbd12c05')))
-    // .then(console.log("viewAllCards", res))
+    // .then((res) => console.log("viewAllCards", res))
 
-    new Promise((res, rej) => res(this.props.getDefaults()))
-    .then((res) => console.log("defaults", this.props.defaults))
+    // new Promise((res, rej) => res(this.props.getDefaults()))
+    // .then((res) => console.log("defaults", this.props.defaults))
   }
   
   render(){
