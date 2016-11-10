@@ -44,7 +44,7 @@ exports.up = function(knex, Promise) {
       table.string('program')
       table.string('benefit')
       table.integer('annFeeAmt')
-      table.integer('waivedFees')
+      table.boolean('waivedFees')
       table.integer('signupBonus')
       table.integer('minSpend')
 
