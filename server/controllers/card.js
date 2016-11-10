@@ -1,17 +1,25 @@
 const Card = require('../models/Card')
+const uuid = require('uuid')
 
 
 module.exports = {
   createCard: (req, res) => {
     const newCard = req.body
+    newCard.id = uuid.v4()
     Card.save(newCard)
     .then(id => res.status(201).send({id: id}))
   },
   getAllCards: (req, res) => {
-    const userId = req.params.id
-
+    const userId = req.user.id
     Card.fetchAll(userId)
-    .then(cards => res.status(200).send(cards))
+    .then(cards => {
+      const data = {
+        user: req.user,
+        cards: cards
+      }
+      console.log(data)
+      return res.status(200).send(data)
+    })
     .then(() => res.end())
   },
   getOneCard: (req, res) => {

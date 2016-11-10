@@ -1,5 +1,5 @@
 const User = require('../models/user')
-
+const uuid = require('uuid')
 module.exports = {
 
   createUser: (req,res) => {
@@ -10,6 +10,7 @@ module.exports = {
     .then((user) => {
       if(!user){
         const newUser = {
+          id: uuid.v4(),
           firstName: body.firstName,
           lastName: body.lastName,
           email: body.email,

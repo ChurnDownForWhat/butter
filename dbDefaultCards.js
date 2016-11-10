@@ -1,0 +1,288 @@
+[
+  {
+  'name': 'Chase Sapphire Preferred',
+  'cardType': 'Chase',
+  'benefit': 'No foreign transaction fees',
+  'annFeeAmt': 95,
+  'waivedFees': false,
+  'category': 'general points',
+  'program': 'Chase Ultimate Rewards',
+  'signupBonus': 50000,
+  'minSpend': 4000
+  },
+  {
+  'name': 'Mariott Rewards',
+  'cardType': 'Visa',
+  'benefit': 'Free night stay',
+  'annFeeAmt': 85,
+  'waivedFees': false,
+  'category': ,
+  'program': ,
+  'signupBonus': 80000,
+  'minSpend': 3000
+  },
+  {
+  'name': 'Citi DoubleCash',
+  'cardType': 'Citi',
+  'benefit': '2% cash back',
+  'annFeeAmt': 0,
+  'waivedFees': false,
+  'category': ,
+  'program': ,
+  'signupBonus': 0,
+  'minSpend': 0
+  },
+  {
+  'name': 'Capital One Venture',
+  'cardType': 'Capital One',
+  'benefit': 'None',
+  'annFeeAmt': 59,
+  'waivedFees': true,
+  'category': ,
+  'program': ,
+  'signupBonus': 40000,
+  'minSpend': 3000
+  },
+  {
+  'name': 'Citi Prestige',
+  'cardType': 'Citi',
+  'benefit': '$250 Air Travel Credit',
+  'annFeeAmt': 450,
+  'waivedFees': false,
+  'category': ,
+  'program': ,
+  'signupBonus': 50000,
+  'minSpend': 5000
+  },
+  {
+  'name': 'Discover IT',
+  'cardType': 'Discover',
+  'benefit': 'None',
+  'annFeeAmt': 0,
+  'waivedFees': false,
+  'category': ,
+  'program': ,
+  'signupBonus': 0,
+  'minSpend': 0
+  },
+  {
+  'name': 'Chase Freedom',
+  'cardType': 'Visa',
+  'benefit': '1% cash back',
+  'annFeeAmt': 0,
+  'waivedFees': false,
+  'category': ,
+  'program': ,
+  'signupBonus': 150,
+  'minSpend': 500
+  },
+  {
+  'name': 'Fidelity Visa',
+  'cardType': 'Visa',
+  'benefit': '2% unlimited cash back',
+  'annFeeAmt': 0,
+  'waivedFees': false,
+  'category': ,
+  'program': ,
+  'signupBonus': 0,
+  'minSpend':0
+  },
+  {
+  'name': 'IHG Rewards',
+  'cardType': 'MasterCard',
+  'benefit': 'Free night stay',
+  'annFeeAmt': 49,
+  'waivedFees': true,
+  'category': ,
+  'program': ,
+  'signupBonus': 60000,
+  'minSpend': 1000
+  },
+  {
+  'name': 'Ink Cash',
+  'cardType': 'Chase',
+  'benefit': '1% unlimited cash back',
+  'annFeeAmt': 0,
+  'waivedFees': false,
+  'category': ,
+  'program': ,
+  'signupBonus': 300,
+  'minSpend': 3000
+  },
+  {
+  'name': 'Hyatt',
+  'cardType': 'Visa',
+  'benefit': '1 free night',
+  'annFeeAmt': 75,
+  'waivedFees': false,
+  'category': ,
+  'program': ,
+  'signupBonus': 2,
+  'minSpend': 2000
+  },
+  {
+  'name': 'Southwest Rapid Rewards Plus',
+  'cardType': 'Visa',
+  'benefit': '3000 points',
+  'annFeeAmt': 69,
+  'waivedFees': false,
+  'category': ,
+  'program': ,
+  'signupBonus': ,
+  'minSpend':
+  },
+  {
+  'name': 'Southwest Rapid Rewards Premier',
+  'cardType': 'Visa',
+  'benefit': '6000 points',
+  'annFeeAmt': 99,
+  'waivedFees': false,
+  'category': ,
+  'program': ,
+  'signupBonus': 0,
+  'minSpend': 0
+  },
+  {
+  'name': 'Blue Cash',
+  'cardType': 'American Express',
+  'benefit': '1% cash back',
+  'annFeeAmt': 95,
+  'waivedFees': false,
+  'category': ,
+  'program': ,
+  'signupBonus': 250,
+  'minSpend': 1000
+  },
+  {
+  'name': 'Sallie Mae Upromise',
+  'cardType': 'MasterCard',
+  'benefit': '',
+  'annFeeAmt': 0,
+  'waivedFees': false,
+  'category': ,
+  'program': ,
+  'signupBonus': 0,
+  'minSpend': 25
+  },
+  {
+  'name': 'Bank of America Travel Rewards',
+  'cardType': 'Visa',
+  'benefit': '1.5 points for every $1 spent',
+  'annFeeAmt': 0,
+  'waivedFees': false,
+  'category': ,
+  'program': ,
+  'signupBonus': 20000,
+  'minSpend' 1000:
+  },
+  {
+  'name': 'Capital One Quicksilver Cash',
+  'cardType': 'Visa',
+  'benefit': '1.5% cash back',
+  'annFeeAmt': '0',
+  'waivedFees': false,
+  'category': ,
+  'program': ,
+  'signupBonus': 100,
+  'minSpend' 500:
+  },
+  {
+  'name': 'Wells Fargo Cashwise Visa',
+  'cardType': 'Visa',
+  'benefit': 'Visa',
+  'annFeeAmt': '0',
+  'waivedFees': false,
+  'category': ,
+  'program': ,
+  'signupBonus': ,
+  'minSpend':
+  },
+  {
+  'name': 'Chase Freedom Unlimited',
+  'cardType': 'Visa',
+  'benefit': '1.5 % unlimited cash back',
+  'annFeeAmt': 0,
+  'waivedFees': false,
+  'category': ,
+  'program': ,
+  'signupBonus': 150,
+  'minSpend': 500
+  },
+  {
+  'name': 'BankAmericard Cash Rewards',
+  'cardType': 'Visa',
+  'benefit': '',
+  'annFeeAmt': '0',
+  'waivedFees': false,
+  'category': '
+  'program': ,',
+  'signupBonus': 100,
+  'minSpend': 500,
+  },
+  {
+  'name': 'Chase British Airways Visa Signature',
+  'cardType': 'Visa',
+  'benefit': '',
+  'annFeeAmt': 95,
+  'waivedFees': false,
+  'category': '
+  'program': ,',
+  'signupBonus': 50000 ,
+  'minSpend': 3000
+  },
+  {
+  'name': 'Barclay Arrival Plus World Elite MasterCard',
+  'cardType': 'MasterCard',
+  'benefit': '',
+  'annFeeAmt': 89,
+  'waivedFees': true,
+  'category': ,
+  'program': ,
+  'signupBonus': 50000,
+  'minSpend': 3000
+  },
+  {
+  'name': 'Capital One Venture Rewards',
+  'cardType': 'MasterCard',
+  'benefit': '',
+  'annFeeAmt': 59,
+  'waivedFees': true,
+  'category': ,
+  'program': ,
+  'signupBonus': 40000,
+  'minSpend': 3000
+  },
+  {
+  'name': 'Barclays JetBlue Plus',
+  'cardType': 'MasterCard',
+  'benefit': '',
+  'annFeeAmt': 99,
+  'waivedFees': false,
+  'category': ,
+  'program': ,
+  'signupBonus': 30000 ,
+  'minSpend': 1000
+  },
+  {
+  'name': 'Citi Hilton Reserve',
+  'cardType': 'Visa',
+  'benefit': 'Hilton gold membership',
+  'annFeeAmt': 95,
+  'waivedFees': false,
+  'category': ,
+  'program': ,
+  'signupBonus': ,
+  'minSpend': 2500
+  },
+  {
+  'name': 'Starwood Preferred Guest',
+  'cardType': '',
+  'benefit': '',
+  'annFeeAmt': 95,
+  'waivedFees': true,
+  'category': ,
+  'program': ,
+  'signupBonus': 30000,
+  'minSpend': 3000
+  }
+]
