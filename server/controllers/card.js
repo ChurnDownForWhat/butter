@@ -10,13 +10,14 @@ module.exports = {
     .then(id => res.status(201).send({id: id}))
   },
   getAllCards: (req, res) => {
-    const userId = req.params.id
+    const userId = req.user.id
     Card.fetchAll(userId)
     .then(cards => {
       const data = {
         user: req.user,
         cards: cards
       }
+      console.log(data)
       return res.status(200).send(data)
     })
     .then(() => res.end())

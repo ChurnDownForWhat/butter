@@ -35,24 +35,22 @@ export function deleteCard(cardData){
     .then(data => viewAllCards(data))
 }
 
-export function viewAllCards(id) {
+export function viewAllCards() {
   return dispatch => 
-    $.get(`/api/cards`)
+    $.get('/api/cards')
     .then(res => res)
-    .then(cards =>{
-      console.log("cards",cards)
+    .then(cards =>
       dispatch({
         type: 'VIEW_ALL_CARDS',
         payload: cards
       })
-    } 
     )
 }
 
 export function viewCard(id) {
   return dispatch => 
     $.get(`/api/cards/${id}`)
-    .then(res = res)
+    .then(res => res)
     .then(card => 
       dispatch({
         type: 'VIEW_CARD',

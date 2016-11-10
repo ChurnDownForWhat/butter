@@ -13,18 +13,25 @@ class CardsPage extends React.Component {
   componentDidMount(){
     //async stuff
 
-    this.props.viewAllCards(2).then(x =>{console.log(x)})
-    console.log('cards',this.props.cards)
+    this.props.viewAllCards()
+  
   }
   
   render(){
-    return (
+    return (!this.props.cards ?
+        (<div></div>)
+      :
+       (
       <div className="container page">
-
           <div className="row">
               <div className="col-lg-12">
                 <div className="col-md-8">
-                    <h1 className="page-header">Darion Freeman
+                    <h1 className="page-header">
+                    {
+                      this.props.cards.user.firstName
+                      +" "+
+                     this.props.cards.user.lastName
+                    }
                         <small>Credit Cards</small>
                     </h1>
                 </div>
@@ -86,17 +93,18 @@ class CardsPage extends React.Component {
             </div>
           </div>
       </div>
-    )
+    ))
   }
 }
 
 
 function mapStateToProps(state){
+  console.log("state",state)
   return {
     //object w/ one card data
     card: state.card,
     //object w/ all user cards data
-    cards: state.cards,
+    cards: state.card.cards,
     //object w/ default cards data
     defaults: state.defaults
   }
