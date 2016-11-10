@@ -15,6 +15,7 @@ class SampleContainer extends Component{
     .then(function(res){
       console.log("container", res)
     })
+    // console.log("container", this.props.getUser(4))
   }
 
   render(){

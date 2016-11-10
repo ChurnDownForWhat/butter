@@ -5,12 +5,12 @@ export function getUser(id) {
       console.log("res", res)
       return res
     })
-    .then(user => {
+    .then(user => 
       dispatch({
         type: 'GET_USER',
         payload: user
       })
-    })
+    )
 }
 
 export function getDefaults() {
