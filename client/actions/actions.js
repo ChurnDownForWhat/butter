@@ -1,4 +1,3 @@
-
 export function getUser(id) {
   return dispatch => {
     $.get(`/api/user/${id}`)
@@ -21,6 +20,26 @@ export function getDefaults() {
         type: 'GET_DEFAULTS',
         payload: defaults
       })
+    })
+  }
+}
+
+export function addCard(cardData){
+  return dispatch => {
+    $ajax
+    .post('/api/cards',cardData)
+    .then(function(data){
+      // viewAllCards(data)
+    })
+  }
+} 
+
+export function deleteCard(cardData){
+  return dispatch => {
+    $ajax
+    .delete('/api/cards/:id', cardData)
+    .then(function(data){
+      // viewAllCards(data)
     })
   }
 }
@@ -50,3 +69,12 @@ export function viewCard(id) {
     })
   }
 }
+
+export function updateCard(cardData){
+  $ajax
+  .put('/api/cards/:id',cardData)
+  .then(function(){
+    // viewAllCards(data)
+  })
+}
+
