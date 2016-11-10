@@ -31,8 +31,8 @@ const finalCreateStore = applyMiddleware(logMiddleware, thunkMiddleware)(createS
 // const finalCreateStore = applyMiddleware(Thunk)(createStore)
 
 const allReducers = combineReducers({
-  user: userReducer,
-  card: cardReducer
+  userStates: userReducer,
+  cardStates: cardReducer
 })
 
 export const store = finalCreateStore(allReducers)

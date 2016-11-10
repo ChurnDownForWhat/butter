@@ -12,7 +12,23 @@ class CardsPage extends React.Component {
   }  
 
   componentDidMount(){
-    //async stuff
+    // new Promise((res, rej) => res(this.props.addCard()))
+    // .then(console.log("addCard", res))
+
+    // new Promise((res, rej) => res(this.props.viewCard()))
+    // .then(console.log("viewCard", res))
+
+    // new Promise((res, rej) => res(this.props.updateCard()))
+    // .then(console.log("updateCard", res))
+
+    // new Promise((res, rej) => res(this.props.getDefaults()))
+    // .then(console.log("deleteCard", res))
+
+    // new Promise((res, rej) => res(this.props.viewAllCards('40f2e009-4383-4391-ad67-96e4bbd12c05')))
+    // .then(console.log("viewAllCards", res))
+
+    new Promise((res, rej) => res(this.props.getDefaults()))
+    .then((res) => console.log("defaults", this.props.defaults))
   }
   
   render(){
@@ -93,14 +109,14 @@ class CardsPage extends React.Component {
 }
 
 
-function mapStateToProps(state){
+function mapStateToProps(store){
   return {
     //object w/ one card data
-    card: state.card,
+    card: store.cardStates.card,
     //object w/ all user cards data
-    cards: state.cards,
+    cards: store.cardStates.cards,
     //object w/ default cards data
-    defaults: state.defaults
+    defaults: store.cardStates.defaults
   }
 }
 

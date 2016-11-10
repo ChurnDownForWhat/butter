@@ -13,7 +13,6 @@ export function getUser(id) {
 export function getDefaults() {
   return dispatch => 
     $.get('/api/defaults')
-    .then(res => res.body)
     .then(defaults => 
       dispatch({
         type: 'GET_DEFAULTS',
