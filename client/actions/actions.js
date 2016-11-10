@@ -29,7 +29,7 @@ export function addCard(cardData){
     $ajax
     .post('/api/cards',cardData)
     .then(function(data){
-      // viewAllCards(data)
+      viewAllCards(data)
     })
   }
 } 
@@ -39,7 +39,7 @@ export function deleteCard(cardData){
     $ajax
     .delete('/api/cards/:id', cardData)
     .then(function(data){
-      // viewAllCards(data)
+      viewAllCards(data)
     })
   }
 }
@@ -73,8 +73,8 @@ export function viewCard(id) {
 export function updateCard(cardData){
   $ajax
   .put('/api/cards/:id',cardData)
-  .then(function(){
-    // viewAllCards(data)
+  .then(function(data){
+    viewAllCards(data)
   })
 }
 
