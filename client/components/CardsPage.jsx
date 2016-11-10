@@ -4,6 +4,7 @@ import { ProgressBar } from 'react-bootstrap'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Action from '../actions/actions'
+import Sidebar from './Sidebar'
 
 class CardsPage extends React.Component {
   constructor(props){
@@ -17,7 +18,10 @@ class CardsPage extends React.Component {
   render(){
     return (
       <div className="container page">
-
+        <div className="col-md-2">
+          <Sidebar/>
+        </div>
+        <div className="col-md-10">
           <div className="row">
               <div className="col-lg-12">
                 <div className="col-md-8">
@@ -82,6 +86,7 @@ class CardsPage extends React.Component {
               </div>
             </div>
           </div>
+        </div>
       </div>
     )
   }

@@ -1,55 +1,21 @@
 import React from 'react'
 import RewardView from './RewardView'
-require('../../StaticAssets/static rewards/rewards.less')
-require('../../StaticAssets/static rewards/rewards.css')
-require('../../node_modules/bootstrap/dist/css/bootstrap.min.css')
-
-const toggleBtn = document.querySelector('#menu-toggle')
-const menu = document.querySelector('#wrapper')
-// function toggleMenu () {
-//   menu.classList.toggle('toggled')
-// }
+import Sidebar from './Sidebar'
 
 
 const RewardsPage = (props) => {
   return (
-    <div>
+    <div className="container page">
     <div className="background">
-      <div className="row">
-        <div className="logo col-md-5">
-          <h3 className=''>REWARDS</h3>
-        </div>
-        <form className="form-inline">
-          <input className="col-lg-offset-2 col-md-5" placeholder="filter rewards"></input>
-        </form>
+      <div className="col-md-2">
+        <Sidebar/>
       </div>
-      <a href="#menu-toggle" className="btn btn-default" id="menu-toggle">Toggle Menu</a>
-      <div className="toggled" id="wrapper">
-        <div id="sidebar-wrapper">
-            <ul className="sidebar-nav">
-                <li className="sidebar-brand">
-                    <a href="#">Menu</a>
-                </li>
-                <li>
-                    <a href="#">Credit Cards</a>
-                </li>
-                <li>
-                    <a href="#">Rewards</a>
-                </li>
-                <li>
-                    <a href="#">Amazon</a>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Settings</a>
-                </li>
-            </ul>
-        </div>
-        <div id="page-content-wrapper">
+        <div id="page-content-wrapper col-md-12">
           <div className="container-fluid">
             <div className="row">
+              <form className="form-inline">
+                <input className="col-lg-offset-2 col-md-5" placeholder="filter rewards"></input>
+              </form>
               <div className="col-md-6">
                 <div className="tableContainer">
                   <table className="table table-responsive table-hover">
@@ -129,8 +95,6 @@ const RewardsPage = (props) => {
             </div>
           </div>
         </div>
-    </div>
-      // <RewardView />
     </div>
     </div>
   )
