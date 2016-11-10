@@ -24,7 +24,7 @@ router.route('/api/user/:id').put()
 //create card
 router.route('/api/cards').post(Card.createCard)
 //get all cards
-router.route('/api/user/:id/cards').get(Card.getAllCards)
+router.route('/api/cards').get(Card.getAllCards)
 //get one card
 router.route('/api/cards/:id').get(Card.getOneCard)
 //update card
