@@ -12,6 +12,9 @@ class CardsPage extends React.Component {
 
   componentDidMount(){
     //async stuff
+
+    this.props.viewAllCards(2).then(x =>{console.log(x)})
+    console.log('cards',this.props.cards)
   }
   
   render(){

@@ -1,7 +1,7 @@
 export function getUser(id) {
   return dispatch => 
     $.get('/api/user')
-    .then(res => res.body)
+    .then(res => res)
     .then(user => 
       dispatch({
         type: 'GET_USER',
@@ -13,7 +13,7 @@ export function getUser(id) {
 export function getDefaults() {
   return dispatch => 
     $.get('/api/defaults')
-    .then(res => res.body)
+    .then(res => res)
     .then(defaults => 
       dispatch({
         type: 'GET_DEFAULTS',
@@ -37,20 +37,22 @@ export function deleteCard(cardData){
 
 export function viewAllCards(id) {
   return dispatch => 
-    $.get(`/api/user/${id}/cards`)
-    .then(res => res.body)
-    .then(cards => 
+    $.get(`/api/cards`)
+    .then(res => res)
+    .then(cards =>{
+      console.log("cards",cards)
       dispatch({
         type: 'VIEW_ALL_CARDS',
         payload: cards
       })
+    } 
     )
 }
 
 export function viewCard(id) {
   return dispatch => 
     $.get(`/api/cards/${id}`)
-    .then(res = res.body)
+    .then(res = res)
     .then(card => 
       dispatch({
         type: 'VIEW_CARD',
