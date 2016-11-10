@@ -1,7 +1,7 @@
 import React from 'react'
 import RewardView from './RewardView'
-require('../../Static Assets/static rewards/rewards.less')
-require('../../Static Assets/static rewards/rewards.css')
+require('../../StaticAssets/static rewards/rewards.less')
+require('../../StaticAssets/static rewards/rewards.css')
 require('../../node_modules/bootstrap/dist/css/bootstrap.min.css')
 
 const toggleBtn = document.querySelector('#menu-toggle')
