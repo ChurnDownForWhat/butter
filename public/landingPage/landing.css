@@ -1,0 +1,202 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+@import url(https://fonts.googleapis.com/css?family=Lora:400,700);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,300,700);
+
+/*//////////NAVBAR//////////////*/
+  .navbar-fixed-top { 
+    background-color:background-color;
+    color: black;
+    transition: background-color 1s ease 0s,color 1s ease 0s;
+
+  }
+  .navbar-fixed-top.opaque { 
+    background-color: black;
+    color: white;
+    transition: background-color 1s ease 0s,color 1s ease 0s;
+  }
+/*/////////////////////////////*/
+
+/*//////////SECTION 1///////////*/
+  #section1{
+    background-color: #5BC0EB;
+    display: table;
+    height: 100vh;
+    width: 100%; 
+  }
+
+  #section1 .lead {
+    font-family: Lora;
+    font-size: 1.5rem;
+    font-style: italic;
+    margin-top: -1em;
+  }
+
+  #section1 .btn{
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 2px;
+    transition: all .3s ease-in-out; 
+    font-size: 0.75rem !important;
+    line-height: 1.5;
+    padding: 0.75rem 2.1875rem; 
+  }
+
+  #section1 .btn-primary{
+    background-color: #DD4B39;
+    border-color: #c0a375;
+  }
+
+  #section1 .btn-primary:hover{
+    color: #ffffff;
+    background-color: black;
+    border-color: #a07e49;
+  }
+
+  #section1 .title {
+    font-size: 4.39rem;
+    font-weight: 600;
+    letter-spacing: -2px;
+    margin-bottom: 0.2843em;
+  }
+
+  #section1 .cell{
+    display: table-cell;
+    vertical-align: middle; 
+  }
+
+  #section1 .text{
+    color: black;
+  }
+/*/////////////////////////////*/
+
+/*//////////SECTION 2///////////*/
+  #section2 {
+    position: relative;
+    padding-top: 120px;
+    padding-bottom: 120px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #FDE74C;
+  }
+  
+  #section2 .lead {
+    margin-bottom: 0;
+    font-size: 1.07rem;
+    font-weight: 300;
+  }
+
+  #section2 .title {
+    font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: -1px;
+    margin-bottom: 1.5625rem;
+    margin-top: 3.5rem; 
+    margin-top: 0;
+  }
+
+  #section2 .text{
+    color: black;
+  }
+  
+  #section2 .textWrapper{
+    margin-left: 20%;
+  }
+/*/////////////////////////////*/
+
+/*//////////SECTION 3///////////*/
+  #section3{
+    background-color: #9BC53D; 
+    padding-top: 20px; 
+    padding-bottom: 20px;
+    text-align: center;
+  }
+
+  #section3 .title{
+    font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: -1px;
+    margin-bottom: 1.5625rem;
+    margin-top: 3.5rem; 
+  }
+  #section3 .row {
+    position: relative;
+    margin-left: 0 !important;
+    margin-right: 0 !important; 
+  }
+
+  #section3 .card {
+    text-align: center;
+    border: 0;
+    background: none;
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 0; 
+  }
+
+  #section3 .text {
+    margin-bottom: 0;
+    color: black;
+  }
+
+  #section3 .block {
+    background: none;
+    padding: 0; 
+
+  }
+
+  #section3 .blockWrap{
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+  #section3 .textTitle {
+    font-size: 1.25rem;
+    font-weight: bold;
+    letter-spacing: -1px;
+    line-height: 1.2825; 
+  }
+ 
+  #section3 .textTitle + * {
+    padding-top: 1rem; 
+  }
+ 
+  #section3 .textSub {
+    font-style: italic;
+    font-weight: 400;
+    font-size: 0.875rem;
+    font-family: "Lora";
+    margin-top: -1rem;
+    line-height: 1.7857;
+    padding-bottom: 1rem; 
+  }
+/*/////////////////////////////*/
+
+/*//////////FOOTER//////////////*/
+  #footer{
+    background-color: rgb(50, 50, 50); 
+    padding-top: 1.75rem; 
+    padding-bottom: 1.75rem;
+  }
+
+  #footer .text{
+    color:white;
+  }
+/*/////////////////////////////*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

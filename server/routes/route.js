@@ -45,7 +45,7 @@ router.route('/auth/google').get(passport.authenticate('google',
 )
 
 router.route('/auth/google/callback').get(passport.authenticate('google',
-  { failureRedirect: '/home',
+  { failureRedirect: '/',
     successRedirect: '/app' 
   })
 )
