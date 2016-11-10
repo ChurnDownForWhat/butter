@@ -151,30 +151,30 @@
   },
   {
   'name': 'Bank of America Travel Rewards',
-  'cardType': '',
-  'annBenefit': '',
-  'annFeeAmt': '',
-  'waivedFees': '',
+  'cardType': 'Visa',
+  'annBenefit': '1.5 points for every $1 spent',
+  'annFeeAmt': 0,
+  'waivedFees': 'false',
   'category_id': ,
-  'signupBonus': ,
-  'minSpend':
+  'signupBonus': 20000,
+  'minSpend' 1000:
   },
   {
   'name': 'Capital One Quicksilver Cash',
-  'cardType': '',
-  'annBenefit': '',
-  'annFeeAmt': '',
-  'waivedFees': '',
+  'cardType': 'Visa',
+  'annBenefit': '1.5% cash back',
+  'annFeeAmt': '0',
+  'waivedFees': 'false',
   'category_id': ,
-  'signupBonus': ,
-  'minSpend':
+  'signupBonus': 100,
+  'minSpend' 500:
   },
   {
   'name': 'Wells Fargo Cashwise Visa',
   'cardType': 'Visa',
-  'annBenefit': '',
-  'annFeeAmt': '',
-  'waivedFees': '',
+  'annBenefit': 'Visa',
+  'annFeeAmt': '0',
+  'waivedFees': 'false',
   'category_id': ,
   'signupBonus': ,
   'minSpend':
