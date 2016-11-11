@@ -1,3 +1,5 @@
+var DefaultCards = require('../dbDefaultCards')
+
 
 exports.up = function(knex, Promise) {
   return Promise.all([
@@ -47,8 +49,10 @@ exports.up = function(knex, Promise) {
       table.boolean('waivedFees')
       table.integer('signupBonus')
       table.integer('minSpend')
+      table.string('cardImg')
+    }),
 
-    })
+    knex('DefaultCards').insert(DefaultCards)
   ])
 }
 
