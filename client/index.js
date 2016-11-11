@@ -12,3 +12,4 @@ render(
 )
 
 module.hot.accept()
+
