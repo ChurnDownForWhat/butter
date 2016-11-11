@@ -4,21 +4,26 @@
 
 /*//////////NAVBAR//////////////*/
   .navbar-fixed-top { 
+
     background-color:background-color;
     color: black;
     transition: background-color 1s ease 0s,color 1s ease 0s;
 
   }
   .navbar-fixed-top.opaque { 
-    background-color: black;
-    color: white;
     transition: background-color 1s ease 0s,color 1s ease 0s;
+  }
+
+  .navbar-brand h1{
+    border: 2px solid black;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 /*/////////////////////////////*/
 
 /*//////////SECTION 1///////////*/
   #section1{
-    background-color: #5BC0EB;
+    background-color: #12f6e9;   
     display: table;
     height: 100vh;
     width: 100%; 
@@ -52,7 +57,7 @@
   }
 
   #section1 .title {
-    font-size: 4.39rem;
+    font-size: 6rem;
     font-weight: 600;
     letter-spacing: -2px;
     margin-bottom: 0.2843em;
@@ -71,48 +76,46 @@
 /*//////////SECTION 2///////////*/
   #section2 {
     position: relative;
-    padding-top: 120px;
+    padding-top: 100px;
     padding-bottom: 120px;
-    background-position: 50% 50%;
     background-repeat: no-repeat;
     background-size: cover;
-    background-color: #FDE74C;
+    background-color: #58f8ab;
+    height: 100vh;
+    width: 100%; 
   }
   
   #section2 .lead {
     margin-bottom: 0;
-    font-size: 1.07rem;
+    font-size: 1.5rem;
     font-weight: 300;
   }
 
   #section2 .title {
-    font-size: 3rem;
+    font-size: 5rem;
     font-weight: 600;
     letter-spacing: -1px;
     margin-bottom: 1.5625rem;
     margin-top: 3.5rem; 
     margin-top: 0;
   }
-
   #section2 .text{
     color: black;
-  }
-  
-  #section2 .textWrapper{
-    margin-left: 20%;
+
   }
 /*/////////////////////////////*/
 
 /*//////////SECTION 3///////////*/
   #section3{
-    background-color: #9BC53D; 
-    padding-top: 20px; 
-    padding-bottom: 20px;
+    background-color: #a0fb71; 
+    padding-top: 60px; 
     text-align: center;
+    height: 100vh;
+    width: 100%; 
   }
 
   #section3 .title{
-    font-size: 3rem;
+    font-size: 5rem;
     font-weight: 600;
     letter-spacing: -1px;
     margin-bottom: 1.5625rem;
@@ -172,31 +175,11 @@
 
 /*//////////FOOTER//////////////*/
   #footer{
-    background-color: rgb(50, 50, 50); 
     padding-top: 1.75rem; 
     padding-bottom: 1.75rem;
   }
 
   #footer .text{
-    color:white;
+    color:black;
   }
 /*/////////////////////////////*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
