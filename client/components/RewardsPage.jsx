@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { viewAllCards, viewAllRewards } from '../actions/actions'
 import Sidebar from './Sidebar'
+import Pie from './Pie'
 
 
 // want to add getAllCards. and display those in the rewards table.
@@ -13,7 +14,6 @@ class RewardsPage extends React.Component {
   }
 
   componentDidMount(){
-
     this.props.viewAllCards()
     .then(function (respon){
       console.log('respon is', respon)
@@ -23,7 +23,6 @@ class RewardsPage extends React.Component {
     .then(function (response){
       console.log('REWARDS ARE NOW', response)
     })
-
   }
 
   render() {
@@ -63,7 +62,17 @@ class RewardsPage extends React.Component {
                     </div>
                   </div>
                   <div className="col-md-6 col-md-offset-1">
-                    <div className="piechart"></div>
+                    <div className="piechart">
+                      <svg width = "100%" height = "100%">
+                        <Pie x={window.innerWidth/2}
+                             y={window.innerHeight/2}
+                             innerRadius={( Math.min( window.innerWidth, window.innerHeight ) * .9 ) / 2*.35}
+                             outerRadius={( Math.min( window.innerWidth, window.innerHeight ) * .9 ) / 2}
+                             cornerRadius={7}
+                             padAngle={.02}
+                             data={this.props.cards.cards} />
+                      </svg>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -76,7 +85,6 @@ class RewardsPage extends React.Component {
 
 function mapStateToProps(store){
   return {
-    //object w/ all user cards data
     cards: store.cardStates.cards,
     rewards: store.cardStates.rewards
   }
