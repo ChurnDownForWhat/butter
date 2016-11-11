@@ -6,13 +6,13 @@ const Card = require('../controllers/card')
 const DefaultCard = require('../controllers/DefaultCardController')
 const testData = 
 
-isAuthed = (req,res,next) => req.isAuthenticated() ? next() : res.redirect('/')   
+isAuthed = (req,res,next) => req.isAuthenticated() ? next() : res.redirect('/landing')   
 
-router.get('/', (req, res) => {
+router.route('/landing').get((req, res) => {
   res.sendFile(Path.resolve(__dirname, '../../public/landing.html'))
 })
 
-router.get('/app',(req,res) => {
+router.route('/').get(isAuthed,(req,res) => {
   res.sendFile(Path.resolve(__dirname, '../../public/index.html'))
 })
 
@@ -47,14 +47,14 @@ router.route('/auth/google').get(passport.authenticate('google',
 )
 
 router.route('/auth/google/callback').get(passport.authenticate('google',
-  { failureRedirect: '/',
-    successRedirect: '/app' 
+  { failureRedirect: '/landing',
+    successRedirect: '/' 
   })
 )
 
 router.route('/api/logout').get((req, res) => {
   req.logout()
-  res.redirect('/')
+  res.redirect('/landing')
 })
 
 module.exports = router

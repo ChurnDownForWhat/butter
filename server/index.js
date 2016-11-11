@@ -45,8 +45,10 @@ if (process.env.NODE_ENV !== 'test') {
     saveUninitialized: true
   }))
   require('./config/passport')(app)
-
-
+  app.use((req,res,next) => {
+    console.log(req.user)
+    return next()
+  })
   // Mount our main router
   app.use('/', routes)
 
