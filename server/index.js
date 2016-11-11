@@ -9,6 +9,7 @@ const webpack = require('webpack')
 const config = require('../webpack.config.js')
 const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
+const bodyParser = require('body-parser')
 
 
 // Static assets (html, etc.)
@@ -36,7 +37,8 @@ if (process.env.NODE_ENV !== 'test') {
   app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }))
   app.use(webpackHotMiddleware(compiler))
   // Parse incoming request bodies as JSON
-  app.use(require('body-parser').json())
+  app.use(bodyParser.json())
+  app.use(bodyParser.urlencoded({extended: true}))
   app.use(session({
     secret: process.env.SUPERSECRET,
     resave: true,

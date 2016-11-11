@@ -2,6 +2,7 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { viewAllCards } from '../actions/actions'
+import Sidebar from './Sidebar'
 
 class RewardsPage extends React.Component {
 
@@ -9,23 +10,19 @@ class RewardsPage extends React.Component {
     super(props)
   }
 
-  render(){
+  render() {
     return (
-      <div>
+      <div className="container page">
       <div className="background">
-        <div className="row">
-          <div className="logo col-md-5">
-            <h3 className=''>REWARDS</h3>
-          </div>
-          <form className="form-inline">
-            <input className="col-lg-offset-2 col-md-5" placeholder="filter rewards"></input>
-          </form>
+        <div className="col-md-2">
+          <Sidebar/>
         </div>
-        <a href="#menu-toggle" className="btn btn-default" id="menu-toggle">Toggle Menu</a>
-        <div className="toggled" id="wrapper">
-          <div id="page-content-wrapper">
+          <div id="page-content-wrapper col-md-12">
             <div className="container-fluid">
               <div className="row">
+                <form className="form-inline">
+                  <input className="col-lg-offset-2 col-md-5" placeholder="filter rewards"></input>
+                </form>
                 <div className="col-md-6">
                   <div className="tableContainer">
                     <table className="table table-responsive table-hover">
@@ -95,19 +92,18 @@ class RewardsPage extends React.Component {
                           <td></td>
                           <td></td>
                         </tr>
-                      </tbody>
-                    </table>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
-                </div>
-                <div className="col-md-6 col-md-offset-1">
-                  <div className="piechart"></div>
+                  <div className="col-md-6 col-md-offset-1">
+                    <div className="piechart"></div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-      </div>
-      </div>
-      </div>
+        </div>
+        </div>
     )
   }
 }

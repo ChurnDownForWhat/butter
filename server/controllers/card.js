@@ -17,7 +17,6 @@ module.exports = {
         user: req.user,
         cards: cards
       }
-      console.log(data)
       return res.status(200).send(data)
     })
     .then(() => res.end())
@@ -31,7 +30,6 @@ module.exports = {
   updateCard: (req, res) => {
     const cardId = req.params.id
     const newInfo = req.body
-
     Card.update(cardId, newInfo)
     .then(id => Card.fetchOne(id))
     .then(card => res.status(200).send(card))

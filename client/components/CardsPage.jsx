@@ -4,6 +4,7 @@ import { ProgressBar } from 'react-bootstrap'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Action from '../actions/actions'
+import Sidebar from './Sidebar'
 
 class CardsPage extends React.Component {
   constructor(props){
@@ -15,6 +16,7 @@ class CardsPage extends React.Component {
 
     this.props.viewAllCards()
   
+
   }
   
   render(){
@@ -23,6 +25,10 @@ class CardsPage extends React.Component {
       :
        (
       <div className="container page">
+        <div className="col-md-2">
+          <Sidebar/>
+        </div>
+        <div className="col-md-10">
           <div className="row">
               <div className="col-lg-12">
                 <div className="col-md-8">
@@ -92,21 +98,21 @@ class CardsPage extends React.Component {
               </div>
             </div>
           </div>
+        </div>
       </div>
     ))
   }
 }
 
 
-function mapStateToProps(state){
-  console.log("state",state)
+function mapStateToProps(store){
   return {
     //object w/ one card data
-    card: state.card,
+    card: store.cardStates.card,
     //object w/ all user cards data
-    cards: state.card.cards,
+    cards: store.cardStates.cards,
     //object w/ default cards data
-    defaults: state.defaults
+    defaults: store.cardStates.defaults
   }
 }
 

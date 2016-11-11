@@ -30,8 +30,10 @@ Card.save = (cardData) =>
   db('Cards')
   .insert(cardData)
   .returning('id')
-  .then(id => id[0])
-  .catch(err => err)
+  .then(id => { 
+    console.log(id)
+    id[0]})
+  .catch(err => {console.log(err)})
 
 
 module.exports = Card

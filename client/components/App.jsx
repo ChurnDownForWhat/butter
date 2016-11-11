@@ -8,6 +8,7 @@ import Navbar from './Navbar'
 import CreditScore from './CreditScore'
 import Pie from './Pie'
 import Slice from './Slice'
+import Sidebar from './Sidebar'
 
 export default class App extends React.Component {
   constructor (props) {
