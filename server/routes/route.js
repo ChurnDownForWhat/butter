@@ -8,12 +8,12 @@ const testData =
 
 isAuthed = (req,res,next) => req.isAuthenticated() ? next() : res.redirect('/landing')   
 
-router.get('/', isAuthed,(req, res) => {
-  res.sendFile(Path.resolve(__dirname, '../../public/index.html'))
+router.route('/landing').get((req, res) => {
+  res.sendFile(Path.resolve(__dirname, '../../public/landing.html'))
 })
 
-router.get('/landing',(req,res) => {
-  res.sendFile(Path.resolve(__dirname, '../../public/landing.html'))
+router.route('/').get(isAuthed,(req,res) => {
+  res.sendFile(Path.resolve(__dirname, '../../public/index.html'))
 })
 
 router.route('/api/user').post(User.createUser)
