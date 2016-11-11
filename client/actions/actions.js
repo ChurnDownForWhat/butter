@@ -1,7 +1,7 @@
 export function getUser(id) {
   return dispatch => 
     $.get('/api/user')
-    .then(res => res.body)
+    .then(res => res)
     .then(user => 
       dispatch({
         type: 'GET_USER',

@@ -12,40 +12,18 @@ class CardsPage extends React.Component {
   }  
 
   componentDidMount(){
-    // var newCard = {
-    //   name: 'Citi DoubleCash',
-    //   user_id: "21274577-2e7c-40cf-b2c0-6b56f4ceeda9",
-    //   cardType: 'Citi',
-    //   benefit: '2% cash back',
-    //   annFeeAmt: 0,
-    //   waivedFees: false,
-    //   category: 'Cash Back',
-    //   program: 'Citi Rewards',
-    //   signupBonus: 0,
-    //   minSpend: 0
-    // }
+    //async stuff
 
-    // new Promise((res, rej) => res(this.props.addCard(newCard)))
-    // .then(res => console.log("addedCard", res))
+    this.props.viewAllCards()
+  
 
-    // new Promise((res, rej) => res(this.props.viewCard('947d296f-566d-4e71-b642-eb283c26f09c')))
-    // .then((res) => console.log("viewCard", this.props.card))
-
-    // new Promise((res, rej) => res(this.props.updateCard('0bfeab10-7823-4847-bb4b-a2ecc1c4f9b2', {category: 'LIFE'})))
-    // .then(res => console.log("updatedCard", res))
-
-    // new Promise((res, rej) => res(this.props.deleteCard('b7a0afe0-644e-4f85-8ce9-052e98315303')))
-    // .then(res => console.log("deletedCard", res))
-
-    // new Promise((res, rej) => res(this.props.viewAllCards()))
-    // .then((res) => console.log("viewAllCards", this.props.cards))
-
-    // new Promise((res, rej) => res(this.props.getDefaults()))
-    // .then((res) => console.log("defaults", this.props.defaults))
   }
   
   render(){
-    return (
+    return (!this.props.cards ?
+        (<div></div>)
+      :
+       (
       <div className="container page">
         <div className="col-md-2">
           <Sidebar/>
@@ -54,7 +32,12 @@ class CardsPage extends React.Component {
           <div className="row">
               <div className="col-lg-12">
                 <div className="col-md-8">
-                    <h1 className="page-header">Darion Freeman
+                    <h1 className="page-header">
+                    {
+                      this.props.cards.user.firstName
+                      +" "+
+                     this.props.cards.user.lastName
+                    }
                         <small>Credit Cards</small>
                     </h1>
                 </div>
@@ -117,7 +100,7 @@ class CardsPage extends React.Component {
           </div>
         </div>
       </div>
-    )
+    ))
   }
 }
 

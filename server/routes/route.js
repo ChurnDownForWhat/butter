@@ -4,6 +4,7 @@ const passport = require('passport')
 const User = require('../controllers/user')
 const Card = require('../controllers/card')
 const DefaultCard = require('../controllers/DefaultCardController')
+const testData = 
 
 isAuthed = (req,res,next) => req.isAuthenticated() ? next() : res.redirect('/')   
 
@@ -24,6 +25,7 @@ router.route('/api/user/:id').put()
 //create card
 router.route('/api/cards').post(Card.createCard)
 //get all cards
+
 router.route('/api/cards').get(Card.getAllCards)
 //get one card
 router.route('/api/cards/:id').get(Card.getOneCard)
