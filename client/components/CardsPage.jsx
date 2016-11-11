@@ -26,16 +26,16 @@ class CardsPage extends React.Component {
     // }
 
     // new Promise((res, rej) => res(this.props.addCard(newCard)))
-    // .then(res => console.log("addCard", res))
+    // .then(res => console.log("addedCard", res))
 
     // new Promise((res, rej) => res(this.props.viewCard('947d296f-566d-4e71-b642-eb283c26f09c')))
     // .then((res) => console.log("viewCard", this.props.card))
 
-    // new Promise((res, rej) => res(this.props.updateCard('947d296f-566d-4e71-b642-eb283c26f09c', {category: 'LIFE'})))
-    // .then(res => console.log("updateCard", res))
+    // new Promise((res, rej) => res(this.props.updateCard('0bfeab10-7823-4847-bb4b-a2ecc1c4f9b2', {category: 'LIFE'})))
+    // .then(res => console.log("updatedCard", res))
 
-    new Promise((res, rej) => res(this.props.deleteCard('947d296f-566d-4e71-b642-eb283c26f09c')))
-    .then(console.log("deletedCard"))
+    // new Promise((res, rej) => res(this.props.deleteCard('b7a0afe0-644e-4f85-8ce9-052e98315303')))
+    // .then(res => console.log("deletedCard", res))
 
     // new Promise((res, rej) => res(this.props.viewAllCards()))
     // .then((res) => console.log("viewAllCards", this.props.cards))

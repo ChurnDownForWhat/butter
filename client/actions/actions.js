@@ -24,7 +24,13 @@ export function getDefaults() {
 export function addCard(cardData){
   return dispatch => 
     $.post('/api/cards', cardData)
-    .then(data => viewAllCards())
+    .then($.get('/api/cards'))
+    .then(cards =>
+      dispatch({
+        type: 'VIEW_ALL_CARDS',
+        payload: cards
+      })
+    )
 } 
 
 export function deleteCard(id){
@@ -32,7 +38,13 @@ export function deleteCard(id){
     $.ajax(`/api/cards/${id}`, {
       type: 'DELETE'
     })
-    .then(data => viewAllCards(data))
+    .then($.get('/api/cards'))
+    .then(cards =>
+      dispatch({
+        type: 'VIEW_ALL_CARDS',
+        payload: cards
+      })
+    )
 }
 
 export function viewAllCards() {
@@ -63,6 +75,12 @@ export function updateCard(id, data){
       type: 'PUT',
       data: data
     })
-    .then(data => viewAllCards(data))
+    .then($.get('/api/cards'))
+    .then(cards =>
+      dispatch({
+        type: 'VIEW_ALL_CARDS',
+        payload: cards
+      })
+    )
 }
 
