@@ -22,15 +22,13 @@ router.route('/api/user').get(isAuthed,(req, res) => res.json(req.user))
 
 router.route('/api/user/:id').put()
 
-//create card
+//create card or update a card
 router.route('/api/cards').post(Card.createCard)
-//get all cards
 
+//get all cards
 router.route('/api/cards').get(Card.getAllCards)
 //get one card
 router.route('/api/cards/:id').get(Card.getOneCard)
-//update card
-router.route('/api/cards/:id').put(Card.updateCard)
 //delete card
 router.route('/api/cards/:id').delete(Card.removeCard)
 //get default cards
