@@ -58,6 +58,32 @@ export function viewAllCards() {
     )
 }
 
+export function viewAllRewards() {
+  return dispatch => 
+    $.get('/api/cards')
+    .then(rewards => {
+      return rewards.cards
+    }).then((rewards) => {
+      var noRepeats = rewards
+      for(var i = 0; i < noRepeats.length; i++){
+        for(var k = 0; k < noRepeats.length; k++){
+          if(noRepeats[i].program === noRepeats[k].program && k !== i){
+            noRepeats[i].rewardsAmt += noRepeats[k].rewardsAmt
+            noRepeats.splice(k, 1)
+          }
+        }
+      }
+      return noRepeats
+    })
+    .then(rewards => 
+      dispatch({
+        type: 'VIEW_ALL_REWARDS',
+        payload: rewards
+      })
+    )
+
+}
+
 export function viewCard(id) {
   return dispatch => 
     $.get(`/api/cards/${id}`)

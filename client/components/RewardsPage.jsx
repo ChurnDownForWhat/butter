@@ -1,13 +1,29 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { viewAllCards } from '../actions/actions'
+import { viewAllCards, viewAllRewards } from '../actions/actions'
 import Sidebar from './Sidebar'
 
+
+// want to add getAllCards. and display those in the rewards table.
 class RewardsPage extends React.Component {
 
   constructor(props){
     super(props)
+  }
+
+  componentDidMount(){
+
+    this.props.viewAllCards()
+    .then(function (respon){
+      console.log('respon is', respon)
+    })
+
+    this.props.viewAllRewards()
+    .then(function (response){
+      console.log('REWARDS ARE NOW', response)
+    })
+
   }
 
   render() {
@@ -36,62 +52,15 @@ class RewardsPage extends React.Component {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr className="">
-                          <th scope="row">1</th>
-                          <td>Virgin Elevate</td>
-                          <td>Airline</td>
-                          <td>1935</td>
-                          <td>link</td>
-                        </tr>
-                        <tr className="er">
-                          <th scope="row">2</th>
-                          <td>Hilton HHonors</td>
-                          <td>Hotel</td>
-                          <td>582</td>
-                          <td>link</td>
-                        </tr>
-                        <tr className="ess">
-                          <th scope="row">3</th>
-                          <td>SPG</td>
-                          <td>General</td>
-                          <td>15,487</td>
-                          <td>link</td>
-                        </tr>
-                          <tr className="">
-                          <th scope="row">4</th>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                          <tr className="">
-                          <th scope="row">5</th>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                          <tr className="">
-                          <th scope="row">6</th>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                          <tr className="">
-                          <th scope="row">7</th>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                          <tr className="">
-                          <th scope="row">8</th>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
+                      {this.props.rewards.map(function(val, i){
+                        return (<tr className=""> 
+                                <th scope="row"> {i +1} </th>
+                                  <td>{val.program}</td>
+                                  <td>{val.category}</td>
+                                  <td>{val.rewardsAmt}</td>
+                              </tr>
+                        )
+                      })}
                         </tbody>
                       </table>
                     </div>
@@ -109,17 +78,20 @@ class RewardsPage extends React.Component {
 }
 
 
-function mapStateToProps(state){
+function mapStateToProps(store){
   return {
     //object w/ all user cards data
-    cards: state.cards
+    cards: store.cardStates.cards,
+    rewards: store.cardStates.rewards
   }
 }
 
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
-    viewAllCards: viewAllCards
+    viewAllCards: viewAllCards,
+    viewAllRewards: viewAllRewards
   }, dispatch)
+
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(RewardsPage)
