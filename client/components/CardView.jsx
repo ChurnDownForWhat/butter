@@ -17,36 +17,37 @@ class CardView extends React.Component {
   render() {
     return (
       <div className="container">
-      <div className="col-md-12">
-        <h3>{this.props.card.name}</h3>
-      <div className ="col-md-12">
-        {this.props.card.balance}/{this.props.card.minSpend}
+        <div className="col-md-12">
+          <h3>{this.props.card.name}</h3>
+        </div>
+        <div className ="col-md-12">
+          {this.props.card.balance}/{this.props.card.minSpend}
+        </div>
+        <div className ="col-md-6">
+          Sign Up bonus:{this.props.card.signupBonus}
+        </div>
+        <div className ="col-md-6">
+          Deadline:{this.props.card.spendDeadline}
+        </div>
+        <div className ="col-md-8">
+          {this.props.card.cardType}/{this.props.card.category}
+        </div>
+        <div className ="col-md-4">
+          {this.props.card.program}
+        </div>
+        <div className ="col-md-4">
+          Points:{this.props.card.rewardsAmt}
+        </div>
+        <div className ="col-md-4">
+          Application Date:{this.props.card.applicationDate}
+        </div>
+        <div className ="col-md-4">
+          Cancel Date:{this.props.card.expCancelDate}
+        </div>
+        <div className ="col-md-4">
+          Expiration:{this.props.card.expiration}
+        </div>
       </div>
-      <div className ="col-md-6">
-        Sign Up bonus:{this.props.card.signupBonus}
-      </div>
-      <div className ="col-md-6">
-        Deadline:{this.props.card.spendDeadline}
-      </div>
-      <div className ="col-md-8">
-        {this.props.card.cardType}/{this.props.card.category}
-      </div>
-      <div className ="col-md-4">
-        {this.props.card.program}
-      </div>
-      <div className ="col-md-4">
-        Points:{this.props.card.rewardsAmt}
-      </div>
-      <div className ="col-md-4">
-        Application Date:{this.props.card.applicationDate}
-      </div>
-      <div className ="col-md-4">
-        Cancel Date:{this.props.card.expCancelDate}
-      </div>
-      <div className ="col-md-4">
-        Expiration:{this.props.card.expiration}
-      </div>
-
     )
   }
 }
