@@ -69,8 +69,7 @@ class RewardsPage extends React.Component {
                              innerRadius={( Math.min( window.innerWidth, window.innerHeight ) * .9 ) / 2*.35}
                              outerRadius={( Math.min( window.innerWidth, window.innerHeight ) * .9 ) / 2}
                              cornerRadius={7}
-                             padAngle={.02}
-                             data={[5, 2, 7, 1, 1, 3, 4, 9]} />
+                             padAngle={.02} />
                       </svg>
                     </div>
                   </div>
@@ -81,7 +80,6 @@ class RewardsPage extends React.Component {
     )
   }
 }
-
 
 function mapStateToProps(store){
   return {
@@ -99,3 +97,6 @@ function matchDispatchToProps(dispatch){
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(RewardsPage)
+
+
+
