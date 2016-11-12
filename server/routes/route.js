@@ -22,6 +22,7 @@ router.route('/api/user').get(isAuthed,(req, res) => res.json(req.user))
 
 router.route('/api/user/:id').put()
 
+
 //create card
 router.route('/api/cards').post(Card.createCard)
 //get all cards

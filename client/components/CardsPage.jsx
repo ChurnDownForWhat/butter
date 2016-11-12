@@ -50,7 +50,11 @@ class CardsPage extends React.Component {
 
   }
   
+  click(e){
+    this.props.viewCard(e.target.id)
+  }
   render(){
+    console.log('Card',this.props.card)
     return (!this.props.cards ?
         (<div></div>)
       :
@@ -64,19 +68,39 @@ class CardsPage extends React.Component {
                   <h1 className="page-header">
                   {
                     this.props.cards.user.firstName
-                    +" "+
+                    +' '+
                     this.props.cards.user.lastName
                   }
-                    <small>{this.props.cards.user.email}</small>
+                    <small> {this.props.cards.user.email}</small>
                   </h1>
                   <div className="row">
                     <div className="col-lg-12">
-                      <div className="col-md-8">
-                      </div>
-                      <div className="col-md-4 user-stats">
-                      <span className="col-md-12"><strong>Reward Points:</strong>167870</span>
-                      <span className="col-md-12"><strong>Deadlines Met:</strong>1</span>
-                      </div>
+                      {
+
+                        this.props.cards.cards.map((card, i) =>
+                        { 
+
+                          var date = new Intl.DateTimeFormat('en', 
+                            {
+                              month: 'long',
+                              year:'numeric',
+                              day:'numeric' 
+                            }).format(new Date(card.spendDeadline))
+
+                          return (
+                          <div key={i}>
+
+                            <div onClick={this.click.bind(this)} className='cardName' id={card.id}>{card.name}</div> {date} 
+                            <div className="progress">
+                              <div id='progressBar'className="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="600" aria-valuemin="0" aria-valuemax="3000">
+                                {card.spendTotal + '/' + card.minSpend}
+                              </div>
+                            </div>
+                          </div>
+                          )
+                        })
+                        
+                      }
                     </div>
                 </div>
                 </div>
