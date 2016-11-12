@@ -36,7 +36,6 @@ module.exports = function(){
       }
     })
     .catch((err) => {
-
       throw new Error(err)
     })   
   }
