@@ -68,7 +68,7 @@ class CardsPage extends React.Component {
                     +" "+
                     this.props.cards.user.lastName
                   }
-                    <small> Credit Cards</small>
+                    <small>{this.props.cards.user.email}</small>
                   </h1>
                   <div className="row">
                     <div className="col-lg-12">
