@@ -110,3 +110,20 @@ export function updateCard(id, data){
     )
 }
 
+export function getPieData() {
+  return dispatch => 
+    $.get('/api/cards')
+    .then(cards => 
+      cards.cards.reduce(function(data, card){
+        data[card.category] ? 
+          data[card.category] += card.rewardsAmt
+          : data[card.category] = card.rewardsAmt
+      }, {})
+    )
+    .then(data =>
+      dispatch({
+        type: 'GET_PIE_DATA',
+        payload: data
+      })
+    )
+}

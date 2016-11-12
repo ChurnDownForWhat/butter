@@ -5,7 +5,7 @@ import Slice from './Slice'
 // const layout = require('d3-shape')
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { viewAllCards } from '../actions/actions'
+import * as Action from '../actions/actions'
 
 class Pie extends React.Component {
   constructor (props) {
@@ -15,7 +15,8 @@ class Pie extends React.Component {
   }
 
   componentDidMount(){
-    
+    this.props.getPieData()
+    .then(res => {console.log(this.props.pieData)})
   }
 
 
@@ -23,22 +24,10 @@ class Pie extends React.Component {
     return `translate(${x}, ${y})`
   }
 
-  //TO DO: get this data to the pie
-  mapPieData(){
-    return this.props.viewAllCards()
-    .then(() => this.props.cards.cards)
-    .then(cards => cards.map(card =>
-      [card.category, card.rewardsAmt]
-    ))
-    .then(data => result = data)
-  }
-
-  render () {
+  render (data) {
     let { x, y } = this.props
     // let data = this.mapPieData()
-    // console.log('data', data)
     let pie = d3.pie()
-    console.log(this.mapPieData())
     return (
       <g transform = { this.translate(x, y) }>
         { pie(data).map(this.renderSlice) }
@@ -64,14 +53,16 @@ class Pie extends React.Component {
 function mapStateToProps(store){
   return {
     //object w/ all user cards data
-    cards: store.cardStates.cards
+    cards: store.cardStates.cards,
+    pieData: store.cardStates.pieData
 
   }
 }
 
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
-    viewAllCards: viewAllCards
+    viewAllCards: Action.viewAllCards,
+    getPieData: Action.getPieData
   }, dispatch)
 }
 
