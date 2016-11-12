@@ -64,11 +64,11 @@ export function viewAllRewards() {
     .then(rewards => {
       return rewards.cards
     }).then((rewards) => {
-      const rewardAmt = rewards.reduce((acc,card) =>(
+      const rewardAmt = rewards.reduce((acc, card) => (
           acc[card.program] ? 
-          acc[card.program][rewardsAmt] += card.rewardsAmt : 
-          acc[card.program] = {rewardsAmt:card.rewardsAmt,program:card.program,category:card.category}
-        ,acc),{})
+          acc[card.program].rewardsAmt += card.rewardsAmt : 
+          acc[card.program] = {rewardsAmt: card.rewardsAmt, program: card.program, category: card.category}
+      ), {})
       return Object.keys(rewardAmt).map((it) => rewardAmt[it])
     })
     .then(rewards => 

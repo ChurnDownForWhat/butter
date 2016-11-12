@@ -29,13 +29,16 @@ class CardsPage extends React.Component {
 
   filterCards(e){
     e.preventDefault()
-
-    var filtered = this.state.cards.filter(card =>
-      card.name.toLowerCase().includes(e.target.value.toLowerCase()))
-    
-    this.setState({
-      cards: filtered
-    })
+    var filtered
+    if (e.keyCode === 8){
+      filtered = this.props.cards.cards.filter(card =>
+        card.name.toLowerCase().includes(e.target.value.toLowerCase()))
+      this.setState({cards: filtered})
+    } else {
+      filtered = this.state.cards.filter(card =>
+        card.name.toLowerCase().includes(e.target.value.toLowerCase()))
+    }
+    this.setState({cards: filtered})
   }
 
   render(){
@@ -56,7 +59,10 @@ class CardsPage extends React.Component {
                     this.props.cards.user.lastName
                   }
                     <small> {this.props.cards.user.email}</small>
-                    <small> <input onChange={(e) => this.filterCards(e)} placeholder="filter/add cards"/> </small>
+                    <small> 
+                      <input onKeyUp={this.filterCards.bind(this)} 
+                             placeholder="filter/add cards"/> 
+                    </small>
                   </h1>
                   <div className="row">
                     <div className="col-lg-12">
