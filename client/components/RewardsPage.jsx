@@ -21,7 +21,7 @@ class RewardsPage extends React.Component {
 
     this.props.viewAllRewards()
     .then(function (response){
-      console.log('REWARDS ARE NOW', response);
+      console.log('REWARDS ARE NOW', response)
     })
 
   }
