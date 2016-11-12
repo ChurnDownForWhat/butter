@@ -3,19 +3,28 @@ import * as d3 from 'd3'
 import Slice from './Slice'
 // const scale = require('d3-scale')
 // const layout = require('d3-shape')
-export default class Pie extends React.Component {
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import * as Action from '../actions/actions'
+
+class Pie extends React.Component {
   constructor (props) {
     super(props)
     this.colorScale = d3.schemeCategory10
     this.renderSlice = this.renderSlice.bind(this)
   }
 
+  componentDidMount(){
+    this.props.getPieData()
+  }
+
+
   translate (x, y) {
     return `translate(${x}, ${y})`
   }
 
   render () {
-    let { x, y, data } = this.props
+    let { x, y, data} = this.props
     let pie = d3.pie()
     return (
       <g transform = { this.translate(x, y) }>
@@ -32,9 +41,31 @@ export default class Pie extends React.Component {
             outerRadius = { outerRadius }
             cornerRadius = { cornerRadius }
             padAngle = { padAngle }
-            value = { value }
-            label = { value.data }
+            value = { value[1] }
+            label = { value[0] }
             fill = { this.colorScale[i] } />
     )
   }
 }
+
+function mapStateToProps(store){
+  return {
+    //object w/ all user cards data
+    cards: store.cardStates.cards,
+    data: store.cardStates.data
+
+  }
+}
+
+function matchDispatchToProps(dispatch){
+  return bindActionCreators({
+    viewAllCards: Action.viewAllCards,
+    getPieData: Action.getPieData
+  }, dispatch)
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(Pie)
+
+//INSERT INTO "Cards"(id, "rewardsAmt", user_id, category) VALUES ()
+
+//DELETE FROM "Cards" WHERE "user_id" = "db1648a9-daef-4e0a-96bc-13026ad68373"

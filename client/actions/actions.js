@@ -110,3 +110,14 @@ export function updateCard(id, data){
     )
 }
 
+export function getPieData() {
+  return dispatch => 
+    $.get('/api/cards')
+    .then(res => res.cards.map(card => [card.category.toLowerCase(), card.remwardsAmt]))
+    .then(data => 
+      dispatch({
+        type: 'GET_PIE_DATA',
+        payload: data
+      })
+    )
+}
