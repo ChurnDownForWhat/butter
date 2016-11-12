@@ -5,7 +5,6 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Action from '../actions/actions'
 import Sidebar from './Sidebar'
-require('../css/sidebar.css')
 
 class CardsPage extends React.Component {
   constructor(props){
