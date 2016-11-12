@@ -5,4 +5,3 @@ public/*.js
 public/*.css
 public/*.map
 .env
-.sass-cache
