@@ -28,14 +28,11 @@ class RewardsPage extends React.Component {
 
   render() {
     return (
-      <div className="container page">
-      <div className="background">
-        <div className="col-md-2">
-          <Sidebar/>
-        </div>
-          <div id="page-content-wrapper col-md-12">
-            <div className="container-fluid">
-              <div className="row">
+     <div id='wrapper'>
+       <Sidebar/>
+         <div id='page-content-wrapper'>
+           <div className='container-fluid'>
+             <div className='row'>
                 <form className="form-inline">
                   <input className="col-lg-offset-2 col-md-5" placeholder="filter rewards"></input>
                 </form>
@@ -71,7 +68,6 @@ class RewardsPage extends React.Component {
                 </div>
               </div>
             </div>
-        </div>
         </div>
     )
   }
