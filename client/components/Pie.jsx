@@ -16,7 +16,6 @@ class Pie extends React.Component {
 
   componentDidMount(){
     this.props.getPieData()
-    .then(res => {console.log(this.props.pieData)})
   }
 
 
@@ -24,9 +23,8 @@ class Pie extends React.Component {
     return `translate(${x}, ${y})`
   }
 
-  render (data) {
-    let { x, y } = this.props
-    // let data = this.mapPieData()
+  render () {
+    let { x, y, data} = this.props
     let pie = d3.pie()
     return (
       <g transform = { this.translate(x, y) }>
@@ -54,7 +52,7 @@ function mapStateToProps(store){
   return {
     //object w/ all user cards data
     cards: store.cardStates.cards,
-    pieData: store.cardStates.pieData
+    data: store.cardStates.data
 
   }
 }
@@ -67,3 +65,7 @@ function matchDispatchToProps(dispatch){
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(Pie)
+
+//INSERT INTO "Cards"(id, "rewardsAmt", user_id, category) VALUES ()
+
+//DELETE FROM "Cards" WHERE "user_id" = "db1648a9-daef-4e0a-96bc-13026ad68373"
