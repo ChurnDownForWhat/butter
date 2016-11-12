@@ -1,0 +1,12 @@
+#progressBar{
+  width: calc(1456/3000*100%);
+}
+
+.progress-bar {
+  background-color: rgb(119, 221, 119);
+}
+
+.cardName:hover{
+  color: red;
+  cursor: pointer;
+}
