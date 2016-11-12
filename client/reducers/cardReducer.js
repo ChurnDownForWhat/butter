@@ -32,6 +32,11 @@ const cardReducer = function (state = {}, action) {
       ...state,
       defaults: action.payload
     }
+  case 'VIEW_ALL_REWARDS':
+    return {
+      ...state,
+      rewards: action.payload
+    }
   default:
     return state
   }

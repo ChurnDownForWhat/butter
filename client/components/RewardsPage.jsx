@@ -1,7 +1,7 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { viewAllCards } from '../actions/actions'
+import { viewAllCards, viewAllRewards } from '../actions/actions'
 import Sidebar from './Sidebar'
 
 
@@ -16,9 +16,13 @@ class RewardsPage extends React.Component {
 
     this.props.viewAllCards()
     .then(function (respon){
-      console.log('respon is', respon);
-    });
+      console.log('respon is', respon)
+    })
 
+    this.props.viewAllRewards()
+    .then(function (response){
+      console.log('REWARDS ARE NOW', response);
+    })
 
   }
 
@@ -48,15 +52,14 @@ class RewardsPage extends React.Component {
                         </tr>
                       </thead>
                       <tbody>
-                      {this.props.cards.cards.map(function(val, i){
-                        
+                      {this.props.rewards.map(function(val, i){
                         return (<tr className=""> 
                                 <th scope="row"> {i +1} </th>
                                   <td>{val.program}</td>
                                   <td>{val.category}</td>
                                   <td>{val.rewardsAmt}</td>
                               </tr>
-                              )
+                        )
                       })}
                         </tbody>
                       </table>
@@ -78,14 +81,17 @@ class RewardsPage extends React.Component {
 function mapStateToProps(store){
   return {
     //object w/ all user cards data
-    cards: store.cardStates.cards
+    cards: store.cardStates.cards,
+    rewards: store.cardStates.rewards
   }
 }
 
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
-    viewAllCards: viewAllCards
+    viewAllCards: viewAllCards,
+    viewAllRewards: viewAllRewards
   }, dispatch)
+
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(RewardsPage)
