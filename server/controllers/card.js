@@ -5,9 +5,20 @@ const uuid = require('uuid')
 module.exports = {
   createCard: (req, res) => {
     const newCard = req.body
-    newCard.id = uuid.v4()
-    Card.save(newCard)
-    .then(id => res.status(201).send({id: id}))
+    if(newCard.id){
+      Card.update(newCard.id, newCard)
+      .then(id => Card.fetchOne(id))
+      .then(card => res.status(200).send(card))
+      .then(() => res.end())
+      .catch((err) => {
+        console.log(err)
+        return res.send('ERROR: COULD NOT SAVE USER')
+      })
+    } else{
+      newCard.id = uuid.v4()
+      Card.save(newCard)
+      .then(id => res.status(201).send({id: id}))
+    }
   },
   getAllCards: (req, res) => {
     const userId = req.user.id
@@ -24,14 +35,6 @@ module.exports = {
   getOneCard: (req, res) => {
     const cardId = req.params.id
     Card.fetchOne(cardId)
-    .then(card => res.status(200).send(card))
-    .then(() => res.end())
-  },
-  updateCard: (req, res) => {
-    const cardId = req.params.id
-    const newInfo = req.body
-    Card.update(cardId, newInfo)
-    .then(id => Card.fetchOne(id))
     .then(card => res.status(200).send(card))
     .then(() => res.end())
   },
