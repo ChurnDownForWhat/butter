@@ -79,6 +79,7 @@ export function viewAllRewards() {
           acc[card.program][rewardsAmt] += card.rewardsAmt : 
           acc[card.program] = {rewardsAmt:card.rewardsAmt,program:card.program,category:card.category}
         ,acc),{})
+      console.log("blah",rewardAmt)
       return Object.keys(rewardAmt).map((it) => rewardAmt[it])
     })
     .then(rewards => 
