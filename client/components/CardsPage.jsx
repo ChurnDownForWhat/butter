@@ -5,7 +5,12 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Action from '../actions/actions'
 import Sidebar from './Sidebar'
+<<<<<<< f8bce4e9095bd9bf1ad68ed71f0cd26878b4befd
 import Popup from "react-popup"
+=======
+import NewCard from './NewCard'
+import Popup from 'react-popup'
+>>>>>>> renders new card popup
 
 class CardsPage extends React.Component {
   constructor(props){
@@ -36,7 +41,16 @@ class CardsPage extends React.Component {
     this.setState({cards: filtered})
   }
 
+  addCardPopup(e){
+    Popup.create({
+      content: <NewCard />,
+      noOverlay: true
+    })
+  }
+
   render(){
+    const cardViewer = (this.state.view ? <CardView /> : <div></div>)
+
     return (!this.props.cards ?
         (<div></div>)
       :
@@ -57,11 +71,13 @@ class CardsPage extends React.Component {
                     <small> {this.props.cards.user.email}</small>
                     <small> 
                       <input onKeyUp={this.filterCards.bind(this)} 
-                             placeholder="filter/add cards"/> 
+                             placeholder="filter cards"/> 
                     </small>
-                  </h1>
+                    <small><button onClick={(e) => this.addCardPopup(e)} >Add a Card</button></small>
+                  </h1> 
                   <div className="row">
                     <div className="col-lg-12">
+                      <Popup />
                       {
                         this.state.cards.map((card, i) =>
                         { 
