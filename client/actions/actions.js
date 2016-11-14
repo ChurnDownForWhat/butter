@@ -74,9 +74,9 @@ export function viewAllRewards() {
       //   }
       // }
       // return noRepeats
-      const rewardAmount = rewards.reduce((acc,card) =>(
-          acc[card.program] ? 
-          acc[card.program][rewardsAmt] += card.rewardsAmt : 
+      let rewardAmount = rewards.reduce((acc,card) =>
+          (acc[card.program] ? 
+          acc[card.program]['rewardsAmt'] += card.rewardsAmt : 
           acc[card.program] = {rewardsAmt:card.rewardsAmt,program:card.program,category:card.category}
         ,acc),{})
       return Object.keys(rewardAmount).map((it) => rewardAmount[it])
