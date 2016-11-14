@@ -49,6 +49,7 @@ class RewardsPage extends React.Component {
                       </thead>
                       <tbody>
                       {this.props.rewards.map(function(val, i){
+                        console.log("?", val)
                         return (<tr className=""> 
                                 <th scope="row"> {i +1} </th>
                                   <td>{val.program}</td>
