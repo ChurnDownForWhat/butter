@@ -11,6 +11,7 @@ class CardsPage extends React.Component {
   constructor(props){
     super(props)
     this.state = {
+      view: false,
       cards: []
     }
   }  
@@ -26,6 +27,7 @@ class CardsPage extends React.Component {
   
   click(e){
     this.props.viewCard(e.target.id)
+    this.setState({view: true})
   }
 
   filterCards(e){
@@ -36,11 +38,14 @@ class CardsPage extends React.Component {
   }
 
   render(){
+    console.log('Card',this.props.card)
+    const cardViewer = (this.state.view ? <CardView /> : <div></div>)
     return (!this.props.cards ?
         (<div></div>)
       :
        (
         <div id='wrapper'>
+        {cardViewer}
           <Sidebar/>
           <div id='page-content-wrapper'>
             <div className='container-fluid'>
@@ -69,10 +74,8 @@ class CardsPage extends React.Component {
                               year:'numeric',
                               day:'numeric' 
                             }).format(new Date(card.spendDeadline))
-
                           return (
                           <div key={i}>
-
                             <div onClick={this.click.bind(this)} className='cardName' id={card.id}>{card.name}</div> {date} 
                             <div className="progress">
                               <div id='progressBar'className="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="600" aria-valuemin="0" aria-valuemax="3000">
@@ -104,7 +107,6 @@ class CardsPage extends React.Component {
             //           </div>
             //         </div>
             //     </div>
-
             //     <div className="row">
             //       <div className="col-md-12">
             //         <div className="col-md-4 portfolio-item">
@@ -187,5 +189,3 @@ function matchDispatchToProps(dispatch){
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(CardsPage)
-
-
