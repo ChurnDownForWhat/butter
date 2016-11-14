@@ -6,17 +6,16 @@ import * as Action from '../actions/actions'
 import Sidebar from './Sidebar'
 
 class CardView extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props)
   }  
 
-  componentDidMount(){
-    this.props.viewCard(this.props.id)
+  componentDidMount() {
+    console.log(this.props)
   }
-
   render() {
     return (
-      <div className="container">
+      <div className="container card-view">
         <div className="col-md-12">
           <h3>{this.props.card.name}</h3>
         </div>
@@ -60,7 +59,7 @@ function mapStateToProps(store){
   }
 }
 
-function matchDispatchToProps(dispatch){
+function matchDispatchToProps(dispatch) {
   return bindActionCreators({
     addCard: Action.addCard,
     deleteCard: Action.deleteCard,

@@ -64,11 +64,21 @@ export function viewAllRewards() {
     .then(rewards => {
       return rewards.cards
     }).then((rewards) => {
-      const rewardAmt = rewards.reduce((acc, card) => (
+      // var noRepeats = rewards
+      // for(var i = 0; i < noRepeats.length; i++){
+      //   for(var k = 0; k < noRepeats.length; k++){
+      //     if(noRepeats[i].program === noRepeats[k].program && k !== i){
+      //       noRepeats[i].rewardsAmt += noRepeats[k].rewardsAmt
+      //       noRepeats.splice(k, 1)
+      //     }
+      //   }
+      // }
+      // return noRepeats
+      const rewardAmt = rewards.reduce((acc,card) =>(
           acc[card.program] ? 
-          acc[card.program].rewardsAmt += card.rewardsAmt : 
-          acc[card.program] = {rewardsAmt: card.rewardsAmt, program: card.program, category: card.category}
-      ), {})
+          acc[card.program][rewardsAmt] += card.rewardsAmt : 
+          acc[card.program] = {rewardsAmt:card.rewardsAmt,program:card.program,category:card.category}
+        ,acc),{})
       return Object.keys(rewardAmt).map((it) => rewardAmt[it])
     })
     .then(rewards => 
@@ -106,14 +116,3 @@ export function updateCard(id, data){
     )
 }
 
-export function getPieData() {
-  return dispatch => 
-    $.get('/api/cards')
-    .then(res => res.cards.map(card => [card.category.toLowerCase(), card.remwardsAmt]))
-    .then(data => 
-      dispatch({
-        type: 'GET_PIE_DATA',
-        payload: data
-      })
-    )
-}
