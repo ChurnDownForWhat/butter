@@ -1,7 +1,7 @@
 # Butter
 
 A butter solution to churning, this application aims to
-solve a UI/UX problem faced by many churners. B
+solve a UI/UX problem faced by many churners currently using spreadsheets. While full of information, spreadsheets aren't easy to look at, and butter solves that issue. With just a glance, a user will be able to see pertinent information about their rewards and card spending status, helping them make decisions to earn more rewards.
 
 ## Getting Started
 
@@ -22,20 +22,28 @@ $ npm test                 # runs all tests
 $ npm test server/index.js # runs tests in a single file
 ```
 
-## Hot Module Reloading
+### Hot Module Reloading
 
+Butter uses webpack's hot module reloading to update packages and refresh pages without having to restart the server or reload the page manually.
+
+### PostgreSQL
+
+Something, something, jason's got this, dark side
 
 ## Deployment
 
+Something, something, digitalocean, dark side
 
 ## Built With
 
 - ReactJS with Redux
 - NodeJS with Express
-- D3 - for data visualization
-- Passport - for user authentication
+- D3
+- Passport
+- PostgreSQL
 
 ## Authors
+
 - Joey Steinberger - Product Owner - @Josamuel on Github
 - Darion Freeman - Scrum Master - @Darionfman on Github
 - Jason Barnett - Team Member - @jhbarnett on Github
