@@ -1,7 +1,7 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { viewAllCards, viewAllRewards } from '../actions/actions'
+import { viewAllCards, viewAllRewards, getPieData } from '../actions/actions'
 import Sidebar from './Sidebar'
 import Pie from './Pie'
 
