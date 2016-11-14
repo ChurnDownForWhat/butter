@@ -2,21 +2,7 @@ const cardReducer = function (state = {}, action) {
   console.log('cardReducer was called with state', state, 'and action', action)
 
   switch (action.type) {
-  // case 'ADD_CARD':
-  //   return {
-  //     ...state,
-  //     card: action.payload
-  //   }
-  // case 'DELETE_CARD':
-  //   return {
-  //     ...state,
-  //     card: action.payload
-  //   }
-  // case 'UPDATE_CARD':
-  //   return {
-  //     ...state,
-  //     card: action.payload
-  //   }
+
   case 'VIEW_CARD':
     return {
       ...state,
@@ -36,6 +22,11 @@ const cardReducer = function (state = {}, action) {
     return {
       ...state,
       rewards: action.payload
+    }
+  case 'GET_PIE_DATA':
+    return {
+      ...state,
+      data: action.payload
     }
   default:
     return state

@@ -12,4 +12,4 @@ render(
 )
 
 module.hot.accept()
-// data = {[5, 2, 7, 1, 1, 3, 4, 9]}
+
