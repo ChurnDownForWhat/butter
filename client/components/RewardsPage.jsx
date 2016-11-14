@@ -1,25 +1,37 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { viewAllCards } from '../actions/actions'
+import { viewAllCards, viewAllRewards } from '../actions/actions'
 import Sidebar from './Sidebar'
+import Pie from './Pie'
 
+
+// want to add getAllCards. and display those in the rewards table.
 class RewardsPage extends React.Component {
 
   constructor(props){
     super(props)
   }
 
+  componentDidMount(){
+    this.props.viewAllCards()
+    .then(function (respon){
+      console.log('respon is', respon)
+    })
+
+    this.props.viewAllRewards()
+    .then(function (response){
+      console.log('REWARDS ARE NOW', response)
+    })
+  }
+
   render() {
     return (
-      <div className="container page">
-      <div className="background">
-        <div className="col-md-2">
-          <Sidebar/>
-        </div>
-          <div id="page-content-wrapper col-md-12">
-            <div className="container-fluid">
-              <div className="row">
+     <div id='wrapper'>
+       <Sidebar/>
+         <div id='page-content-wrapper'>
+           <div className='container-fluid'>
+             <div className='row'>
                 <form className="form-inline">
                   <input className="col-lg-offset-2 col-md-5" placeholder="filter rewards"></input>
                 </form>
@@ -36,90 +48,57 @@ class RewardsPage extends React.Component {
                         </tr>
                       </thead>
                       <tbody>
-                        <tr className="">
-                          <th scope="row">1</th>
-                          <td>Virgin Elevate</td>
-                          <td>Airline</td>
-                          <td>1935</td>
-                          <td>link</td>
-                        </tr>
-                        <tr className="er">
-                          <th scope="row">2</th>
-                          <td>Hilton HHonors</td>
-                          <td>Hotel</td>
-                          <td>582</td>
-                          <td>link</td>
-                        </tr>
-                        <tr className="ess">
-                          <th scope="row">3</th>
-                          <td>SPG</td>
-                          <td>General</td>
-                          <td>15,487</td>
-                          <td>link</td>
-                        </tr>
-                          <tr className="">
-                          <th scope="row">4</th>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                          <tr className="">
-                          <th scope="row">5</th>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                          <tr className="">
-                          <th scope="row">6</th>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                          <tr className="">
-                          <th scope="row">7</th>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                          <tr className="">
-                          <th scope="row">8</th>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
+                      {this.props.rewards.map(function(val, i){
+                        return (<tr className=""> 
+                                <th scope="row"> {i +1} </th>
+                                  <td>{val.program}</td>
+                                  <td>{val.category}</td>
+                                  <td>{val.rewardsAmt}</td>
+                              </tr>
+                        )
+                      })}
                         </tbody>
                       </table>
                     </div>
                   </div>
-                  <div className="col-md-6 col-md-offset-1">
-                    <div className="piechart"></div>
-                  </div>
+                 { 
+                 //  <div className="col-md-6 col-md-offset-1">
+                 //   <div className="piechart">
+                 //     <svg width = "100%" height = "100%">
+                 //       <Pie x={window.innerWidth/2}
+                 //            y={window.innerHeight/2}
+                 //            innerRadius={( Math.min( window.innerWidth, window.innerHeight ) * .9 ) / 2*.35}
+                 //            outerRadius={( Math.min( window.innerWidth, window.innerHeight ) * .9 ) / 2}
+                 //            cornerRadius={7}
+                 //            padAngle={.02} />
+                 //     </svg>
+                 //   </div>
+                 // </div>
+                  }
                 </div>
               </div>
             </div>
-        </div>
         </div>
     )
   }
 }
 
-
-function mapStateToProps(state){
+function mapStateToProps(store){
   return {
-    //object w/ all user cards data
-    cards: state.cards
+    cards: store.cardStates.cards,
+    rewards: store.cardStates.rewards
   }
 }
 
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
-    viewAllCards: viewAllCards
+    viewAllCards: viewAllCards,
+    viewAllRewards: viewAllRewards
   }, dispatch)
+
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(RewardsPage)
+
+
+

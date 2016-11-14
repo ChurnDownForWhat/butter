@@ -58,6 +58,28 @@ export function viewAllCards() {
     )
 }
 
+export function viewAllRewards() {
+  return dispatch => 
+    $.get('/api/cards')
+    .then(rewards => {
+      return rewards.cards
+    }).then((rewards) => {
+      const rewardAmt = rewards.reduce((acc,card) =>(
+          acc[card.program] ? 
+          acc[card.program][rewardsAmt] += card.rewardsAmt : 
+          acc[card.program] = {rewardsAmt:card.rewardsAmt,program:card.program,category:card.category}
+        ,acc),{})
+      return Object.keys(rewardAmt).map((it) => rewardAmt[it])
+    })
+    .then(rewards => 
+      dispatch({
+        type: 'VIEW_ALL_REWARDS',
+        payload: rewards
+      })
+    )
+
+}
+
 export function viewCard(id) {
   return dispatch => 
     $.get(`/api/cards/${id}`)
@@ -84,3 +106,14 @@ export function updateCard(id, data){
     )
 }
 
+export function getPieData() {
+  return dispatch => 
+    $.get('/api/cards')
+    .then(res => res.cards.map(card => [card.category.toLowerCase(), card.remwardsAmt]))
+    .then(data => 
+      dispatch({
+        type: 'GET_PIE_DATA',
+        payload: data
+      })
+    )
+}
