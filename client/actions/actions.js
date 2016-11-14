@@ -64,6 +64,16 @@ export function viewAllRewards() {
     .then(rewards => {
       return rewards.cards
     }).then((rewards) => {
+      // var noRepeats = rewards
+      // for(var i = 0; i < noRepeats.length; i++){
+      //   for(var k = 0; k < noRepeats.length; k++){
+      //     if(noRepeats[i].program === noRepeats[k].program && k !== i){
+      //       noRepeats[i].rewardsAmt += noRepeats[k].rewardsAmt
+      //       noRepeats.splice(k, 1)
+      //     }
+      //   }
+      // }
+      // return noRepeats
       const rewardAmt = rewards.reduce((acc,card) =>(
           acc[card.program] ? 
           acc[card.program][rewardsAmt] += card.rewardsAmt : 

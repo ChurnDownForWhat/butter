@@ -5,12 +5,13 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Action from '../actions/actions'
 import Sidebar from './Sidebar'
-
 class CardsPage extends React.Component {
   constructor(props){
     super(props)
+    this.state = {
+      view: false
+    }
   }  
-
   componentDidMount(){
      //async stuff
 
@@ -52,14 +53,17 @@ class CardsPage extends React.Component {
   
   click(e){
     this.props.viewCard(e.target.id)
+    this.setState({edit: !this.state.edit})
   }
   render(){
     console.log('Card',this.props.card)
+    const cardViewer = (this.state.edit ? <CardView /> : <div></div>)
     return (!this.props.cards ?
         (<div></div>)
       :
        (
         <div id='wrapper'>
+        {cardViewer}
           <Sidebar/>
           <div id='page-content-wrapper'>
             <div className='container-fluid'>
