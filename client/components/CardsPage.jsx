@@ -5,59 +5,40 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Action from '../actions/actions'
 import Sidebar from './Sidebar'
+
 class CardsPage extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      edit: false
+      view: false,
+      cards: []
     }
   }  
+
   componentDidMount(){
-     //async stuff
-
-
-    // var newCard = {
-    //   name: 'Citi DoubleCash',
-    //   user_id: "21274577-2e7c-40cf-b2c0-6b56f4ceeda9",
-    //   cardType: 'Citi',
-    //   benefit: '2% cash back',
-    //   annFeeAmt: 0,
-    //   waivedFees: false,
-    //   category: 'Cash Back',
-    //   program: 'Citi Rewards',
-    //   signupBonus: 0,
-    //   minSpend: 0
-    // }
-
     this.props.viewAllCards()
-
-    // new Promise((res, rej) => res(this.props.addCard(newCard)))
-    // .then(res => console.log("addCard", res))
-
-    // new Promise((res, rej) => res(this.props.viewCard(4)))
-    // .then((res) => console.log("viewCard", this.props.card))
-
-    // new Promise((res, rej) => res(this.props.updateCard(4, {category: 'LIFE'})))
-    // .then(res => console.log("updateCard", res))
-
-    // new Promise((res, rej) => res(this.props.getDefaults()))
-    // .then(console.log("deleteCard", res))
-
-    // new Promise((res, rej) => res(this.props.viewAllCards()))
-    // .then((res) => console.log("viewAllCards", this.props.cards))
-
-    // new Promise((res, rej) => res(this.props.getDefaults()))
-    // .then((res) => console.log("defaults", this.props.defaults))
-
+    .then( res => 
+      this.setState({
+        cards: this.props.cards.cards
+      })
+    )
   }
   
   click(e){
     this.props.viewCard(e.target.id)
-    this.setState({edit: !this.state.edit})
+    this.setState({view: true})
   }
+
+  filterCards(e){
+    var filtered = this.props.cards.cards.filter(card =>
+      card.name.toLowerCase().includes(e.target.value.toLowerCase()))
+    
+    this.setState({cards: filtered})
+  }
+
   render(){
     console.log('Card',this.props.card)
-    const cardViewer = (this.state.edit ? <CardView /> : <div></div>)
+    const cardViewer = (this.state.view ? <CardView /> : <div></div>)
     return (!this.props.cards ?
         (<div></div>)
       :
@@ -76,24 +57,24 @@ class CardsPage extends React.Component {
                     this.props.cards.user.lastName
                   }
                     <small> {this.props.cards.user.email}</small>
+                    <small> 
+                      <input onKeyUp={this.filterCards.bind(this)} 
+                             placeholder="filter/add cards"/> 
+                    </small>
                   </h1>
                   <div className="row">
                     <div className="col-lg-12">
                       {
-
-                        this.props.cards.cards.map((card, i) =>
+                        this.state.cards.map((card, i) =>
                         { 
-
                           var date = new Intl.DateTimeFormat('en', 
                             {
                               month: 'long',
                               year:'numeric',
                               day:'numeric' 
                             }).format(new Date(card.spendDeadline))
-
                           return (
                           <div key={i}>
-
                             <div onClick={this.click.bind(this)} className='cardName' id={card.id}>{card.name}</div> {date} 
                             <div className="progress">
                               <div id='progressBar'className="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="600" aria-valuemin="0" aria-valuemax="3000">
@@ -103,7 +84,6 @@ class CardsPage extends React.Component {
                           </div>
                           )
                         })
-                        
                       }
                     </div>
                 </div>
@@ -126,7 +106,6 @@ class CardsPage extends React.Component {
             //           </div>
             //         </div>
             //     </div>
-
             //     <div className="row">
             //       <div className="col-md-12">
             //         <div className="col-md-4 portfolio-item">
@@ -209,5 +188,3 @@ function matchDispatchToProps(dispatch){
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(CardsPage)
-
-
