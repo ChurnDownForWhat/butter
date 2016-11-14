@@ -74,5 +74,4 @@ function matchDispatchToProps(dispatch){
   }, dispatch)
 }
 
-
 export default connect(mapStateToProps, matchDispatchToProps)(Pie)

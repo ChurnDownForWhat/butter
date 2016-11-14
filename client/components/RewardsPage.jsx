@@ -92,7 +92,6 @@ class RewardsPage extends React.Component {
                       </table>
                     </div>
                   </div>
-
                   <div className="col-md-6 col-md-offset-1">
                    <div className="piechart">
                      <svg width = "200%" height = "200%">
@@ -105,7 +104,6 @@ class RewardsPage extends React.Component {
                      </svg>
                    </div>
                  </div>
-
                 </div>
               </div>
             </div>

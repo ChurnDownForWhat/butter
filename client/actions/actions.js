@@ -33,7 +33,6 @@ export function addCard(cardData){
     )
 }
 
-
 export function deleteCard(id, i){
   return dispatch => 
     $.ajax({
