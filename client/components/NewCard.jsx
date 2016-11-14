@@ -47,8 +47,9 @@ class NewCard extends React.Component {
 
   renderSuggestion(suggestion) {
     return (
-      <div>
-        {suggestion.name}
+      <div className="suggestion">
+        <img src={suggestion.cardImg} />
+        <div className="name"> {suggestion.name} </div>
       </div>
     )
   }

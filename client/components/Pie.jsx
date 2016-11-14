@@ -65,7 +65,3 @@ function matchDispatchToProps(dispatch){
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(Pie)
-
-//INSERT INTO "Cards"(id, "rewardsAmt", user_id, category) VALUES ()
-
-//DELETE FROM "Cards" WHERE "user_id" = "db1648a9-daef-4e0a-96bc-13026ad68373"
