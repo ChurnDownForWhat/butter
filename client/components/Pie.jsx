@@ -64,4 +64,7 @@ function matchDispatchToProps(dispatch){
   }, dispatch)
 }
 
+
+export default connect(mapStateToProps, matchDispatchToProps)(Pie)
+
 export default connect(mapStateToProps, matchDispatchToProps)(Pie)
