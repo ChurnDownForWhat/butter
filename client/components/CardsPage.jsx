@@ -5,12 +5,9 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Action from '../actions/actions'
 import Sidebar from './Sidebar'
-<<<<<<< f8bce4e9095bd9bf1ad68ed71f0cd26878b4befd
 import Popup from "react-popup"
-=======
 import NewCard from './NewCard'
-import Popup from 'react-popup'
->>>>>>> renders new card popup
+import { DropdownButton, ButtonToolbar, MenuItem } from 'react-bootstrap'
 
 class CardsPage extends React.Component {
   constructor(props){
@@ -22,7 +19,7 @@ class CardsPage extends React.Component {
 
   componentDidMount(){
     this.props.viewAllCards()
-    .then( res => 
+    .then(res => 
       this.setState({
         cards: this.props.cards.cards
       })
@@ -37,15 +34,7 @@ class CardsPage extends React.Component {
   filterCards(e){
     var filtered = this.props.cards.cards.filter(card =>
       card.name.toLowerCase().includes(e.target.value.toLowerCase()))
-    
     this.setState({cards: filtered})
-  }
-
-  addCardPopup(e){
-    Popup.create({
-      content: <NewCard />,
-      noOverlay: true
-    })
   }
 
   render(){
@@ -73,7 +62,15 @@ class CardsPage extends React.Component {
                       <input onKeyUp={this.filterCards.bind(this)} 
                              placeholder="filter cards"/> 
                     </small>
-                    <small><button onClick={(e) => this.addCardPopup(e)} >Add a Card</button></small>
+                    <small>
+                      <ButtonToolbar>
+                        <DropdownButton bsSize="large" title="Add A Card" id="dropdown-size-large">
+                          <MenuItem eventKey="1" onSelect={(e) => Popup.alert(<NewCard />)}>Quick</MenuItem>
+                          <MenuItem divider />
+                          <MenuItem eventKey="2">Detailed</MenuItem>
+                        </DropdownButton>
+                      </ButtonToolbar>
+                    </small>
                   </h1> 
                   <div className="row">
                     <div className="col-lg-12">
