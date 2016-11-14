@@ -1,11 +1,13 @@
 # Butter
 
-A new project in the making.
+A butter solution to churning, this application aims to
+solve a UI/UX problem faced by many churners. B
 
 ## Getting Started
 
 ```
-$ yarn
+$ yarn        # installs dependencies
+$ yarn start  # starts the development server
 
 ```
 
@@ -20,10 +22,24 @@ $ npm test                 # runs all tests
 $ npm test server/index.js # runs tests in a single file
 ```
 
-## Generators
+## Hot Module Reloading
 
-No generators installed (yet). Installing one will populate this section in the README.
 
-## Made with Concatapult
+## Deployment
 
-See [the `pult` docs](https://github.com/Concatapult/pult#readme) for adding additional modules to this boilerplate.
+
+## Built With
+
+- ReactJS with Redux
+- NodeJS with Express
+- D3 - for data visualization
+- Passport - for user authentication
+
+## Authors
+- Joey Steinberger - Product Owner - @Josamuel on Github
+- Darion Freeman - Scrum Master - @Darionfman on Github
+- Jason Barnett - Team Member - @jhbarnett on Github
+- Calvin Kniffin - Team Member - @calkniffin on Github
+- Robert Guajardo - Team Member - @Robalexg on Github
+
+## License
