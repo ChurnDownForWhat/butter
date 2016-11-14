@@ -3,18 +3,76 @@ import { Button, ButtonGroup} from 'react-bootstrap'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Action from '../actions/actions'
+import Autosuggest from 'react-autosuggest'
 
 class NewCard extends React.Component {
   constructor(props){
     super(props)
+
+    this.state = {
+      value: '',
+      suggestions: []
+    }
+  }
+
+  componentDidMount(){
+    this.props.getDefaults()
+    .then(res => 
+      this.setState({
+        suggestions: this.props.defaults
+      })
+    )
+  }
+
+  onChange(event, { newValue, method }){
+    this.setState({ value: newValue })
+  }
+  
+  onSuggestionsFetchRequested({ value }){
+    this.setState({ suggestions: this.getSuggestions(value) })
+  }
+
+  onSuggestionsClearRequested(){
+    this.setState({ suggestions: [] })
+  }
+
+  getSuggestions(value) {
+    const escapedValue = value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    if (escapedValue === '') return []
+    const regex = new RegExp('\\b' + escapedValue, 'i')
+    return this.props.defaults.filter(defaultCard => regex.test(this.getSuggestionValue(defaultCard)))
+  }
+
+  getSuggestionValue(suggestion) { return `${suggestion.name}` }
+
+  renderSuggestion(suggestion) {
+    return (
+      <div>
+        {suggestion.name}
+      </div>
+    )
   }
 
   render(){
+
+    const { value, suggestions } = this.state
+    const inputProps = {
+      placeholder: "Add A Card",
+      value,
+      onChange: this.onChange.bind(this)
+    }
+
     return (
       <div className='col-lg-12'>
         <div className="">
           <div className='row'>
-            <input placeholder="card name" className="col-xs-4" />
+            <Autosuggest className="col-xs-4" 
+              suggestions={suggestions}
+              onSuggestionsFetchRequested={this.onSuggestionsFetchRequested.bind(this)}
+              onSuggestionsClearRequested={this.onSuggestionsClearRequested.bind(this)}
+              getSuggestionValue={this.getSuggestionValue.bind(this)}
+              renderSuggestion={this.renderSuggestion.bind(this)}
+              inputProps={inputProps} />
           </div>
           <div className='row'>
             <input placeholder="exp date" className="col-xs-1" />
