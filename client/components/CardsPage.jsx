@@ -28,15 +28,9 @@ class CardsPage extends React.Component {
   }
 
   filterCards(e){
-    e.preventDefault()
-    var filtered
-    if (e.keyCode === 8){
-      filtered = this.props.cards.cards.filter(card =>
-        card.name.toLowerCase().includes(e.target.value.toLowerCase()))
-    } else {
-      filtered = this.state.cards.filter(card =>
-        card.name.toLowerCase().includes(e.target.value.toLowerCase()))
-    }
+    var filtered = this.props.cards.cards.filter(card =>
+      card.name.toLowerCase().includes(e.target.value.toLowerCase()))
+    
     this.setState({cards: filtered})
   }
 
