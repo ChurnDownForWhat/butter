@@ -4,17 +4,27 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Action from '../actions/actions'
 import Sidebar from './Sidebar'
+import CardEdit from "./CardEditView"
 
 class CardView extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      edit: false
+    }
   }  
 
   componentDidMount() {
     console.log(this.props)
   }
   render() {
+
     return (
+      this.state.edit 
+      ?
+      (<CardEdit />)
+      :
+      (
       <div className="container card-view">
         <div className="col-md-12">
           <h3>{this.props.card.name}</h3>
@@ -46,7 +56,11 @@ class CardView extends React.Component {
         <div className ="col-md-4">
           Expiration:{this.props.card.expiration}
         </div>
+        <div onClick={(e)=>{this.setState({edit: !this.state.edit})}} >
+          EDIT THIS SHIT!!
+        </div>
       </div>
+      )
     )
   }
 }

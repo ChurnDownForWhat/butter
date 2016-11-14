@@ -5,12 +5,12 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Action from '../actions/actions'
 import Sidebar from './Sidebar'
+import Popup from "react-popup"
 
 class CardsPage extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      view: false,
       cards: []
     }
   }  
@@ -25,8 +25,8 @@ class CardsPage extends React.Component {
   }
   
   click(e){
-    this.props.viewCard(e.target.id)
-    this.setState({view: true})
+    return this.props.viewCard(e.target.id)
+    .then((card) => Popup.alert(<CardView />))
   }
 
   filterCards(e){
@@ -37,14 +37,12 @@ class CardsPage extends React.Component {
   }
 
   render(){
-    console.log('Card',this.props.card)
-    const cardViewer = (this.state.view ? <CardView /> : <div></div>)
     return (!this.props.cards ?
         (<div></div>)
       :
        (
         <div id='wrapper'>
-        {cardViewer}
+          <Popup />
           <Sidebar/>
           <div id='page-content-wrapper'>
             <div className='container-fluid'>
@@ -75,12 +73,8 @@ class CardsPage extends React.Component {
                             }).format(new Date(card.spendDeadline))
                           return (
                           <div key={i}>
-                            <div onClick={this.click.bind(this)} className='cardName' id={card.id}>{card.name}</div> {date} 
-                            <div className="progress">
-                              <div id='progressBar'className="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="600" aria-valuemin="0" aria-valuemax="3000">
-                                {card.spendTotal + '/' + card.minSpend}
-                              </div>
-                            </div>
+                            <div onClick={(this.click.bind(this))} className='cardName' id={card.id}>{card.name}</div> {date}
+                            <ProgressBar bsStyle="success" active now={card.spendTotal/card.minSpend*100} />
                           </div>
                           )
                         })
