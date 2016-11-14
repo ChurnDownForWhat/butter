@@ -7,19 +7,18 @@ exports.up = function(knex, Promise) {
       table.string('id').primary()
       table.string('firstName', 20).notNullable()
       table.string('lastName', 20).notNullable()
-      table.string('email', 40)
-      table.unique('email').notNullable()
+      table.string('email', 40).unique().notNullable()
       table.integer('creditScore').nullable()
     }),
 
     knex.schema.createTableIfNotExists('Cards', function(table){
       table.string('id').primary()
-      table.string('name', 80)
+      table.string('name', 80).notNullable()
       table.string('user_id')
       table.foreign('user_id').references('Users.id')
       table.string('cardType').defaultTo('None Entered')
-      table.string('category').defaultTo('None Entered')
-      table.string('program').defaultTo('None Entered')
+      table.string('category').defaultTo('Misc')
+      table.string('program').defaultTo('Misc')
       table.integer('balance').defaultTo(0)
       table.date('expiration').notNullable()
       table.date('applicationDate').notNullable()
@@ -30,7 +29,7 @@ exports.up = function(knex, Promise) {
       table.integer('rewardsAmt').defaultTo(0)
       table.integer('last4digits').defaultTo(0)
       table.integer('spendTotal').defaultTo(0)
-      table.string('benefit').defaultTo(none entered)
+      table.string('benefit').defaultTo('None Entered')
       table.integer('annFeeAmt').defaultTo(0)
       table.boolean('waivedFees').defaultTo(false);
       table.integer('creditLine').defaultTo(0)
@@ -59,7 +58,6 @@ exports.up = function(knex, Promise) {
 exports.down = function(knex, Promise) {
   return Promise.all([
     knex.schema.dropTableIfExists('Users'),
-    knex.schema.dropTableIfExists('Cards'),
-    knex.schema.dropTableIfExists('Categories')
+    knex.schema.dropTableIfExists('Cards')
   ])
 }
