@@ -1,4 +1,4 @@
-export function getUser(id) {
+export function getUser() {
   return dispatch => 
     $.get('/api/user')
     .then(res => res)
