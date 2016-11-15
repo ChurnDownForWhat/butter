@@ -12,6 +12,7 @@ class Pie extends React.Component {
     super(props)
     this.colorScale = d3.schemeCategory10
     this.renderSlice = this.renderSlice.bind(this)
+    // this.data = [5, 2, 7, 1, 1, 3, 4, 9]
   }
 
   componentDidMount(){
