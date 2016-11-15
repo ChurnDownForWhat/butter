@@ -1,4 +1,5 @@
-var DefaultCards = require('../dbDefaultCards')
+let DefaultCards = require('../dbDefaultCards')
+let RewardLinks = require('../rewardLinks')
 
 
 exports.up = function(knex, Promise) {
@@ -35,6 +36,7 @@ exports.up = function(knex, Promise) {
       table.integer('creditLine').defaultTo(0)
       table.integer('signupBonus').defaultTo(0)
       table.integer('minSpend').defaultTo(0)
+      table.string('cardImg').defaultTo('http://www.creditcardapplications.com/blog/wp-content/uploads/2012/10/blank-card.png')
     }),
 
     knex.schema.createTableIfNotExists('DefaultCards', function(table){
@@ -51,7 +53,14 @@ exports.up = function(knex, Promise) {
       table.string('cardImg')
     }),
 
+    knex.schema.createTableIfNotExists('RewardLinks', function(table){
+      table.increments('id').primary()
+      table.string('programName')
+      table.string('portalLink')
+    }),
+
     knex('DefaultCards').insert(DefaultCards)
+    knex('RewardLinks').insert(RewardLinks)
   ])
 }
 

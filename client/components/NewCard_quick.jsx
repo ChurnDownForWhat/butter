@@ -1,17 +1,18 @@
 import React from 'react'
-import { Button, ButtonGroup} from 'react-bootstrap'
+import { Button, ButtonGroup, Modal } from 'react-bootstrap'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Action from '../actions/actions'
 import Autosuggest from 'react-autosuggest'
 
-class NewCard extends React.Component {
+class QuickNewCard extends React.Component {
   constructor(props){
     super(props)
 
     this.state = {
       value: '',
-      suggestions: []
+      suggestions: [],
+      newCard: {}
     }
   }
 
@@ -26,15 +27,13 @@ class NewCard extends React.Component {
 
   createCard(e){
     e.preventDefault()
-    
     const cardName = this.state.value
-    let finalCard = this.props.defaults.filter(card => card.name === cardName)[0]
+    let finalCard = this.state.newCard || {}
     finalCard.expDate = document.getElementById("expDate").value
     finalCard.spendTotal = Number(document.getElementById("spendTotal").value)
     finalCard.minSpend = Number(document.getElementById("minSpend").value)
-
-    console.log(finalCard)
-    // this.props.addCard()
+    finalCard.id = null
+    this.props.addCard(finalCard)
   }
 
   onChange(event, { newValue, method }){
@@ -57,6 +56,7 @@ class NewCard extends React.Component {
   }
 
   getSuggestionValue(suggestion) { 
+    this.setState({newCard: suggestion})
     return `${suggestion.name}` 
   }
 
@@ -79,33 +79,34 @@ class NewCard extends React.Component {
     }
 
     return (
-      <div className='col-lg-12'>
-        <div className="">
-          <div className='row'>
-            <Autosuggest className="col-xs-4" 
-              suggestions={suggestions}
-              onSuggestionsFetchRequested={this.onSuggestionsFetchRequested.bind(this)}
-              onSuggestionsClearRequested={this.onSuggestionsClearRequested.bind(this)}
-              getSuggestionValue={this.getSuggestionValue.bind(this)}
-              renderSuggestion={this.renderSuggestion.bind(this)}
-              inputProps={inputProps} />
-            <input id="expDate" placeholder="exp date" className="col-xs-1" />
-            <input id="spendTotal" placeholder="spendTotal" className="col-xs-1" />
-            { this.state.minSpend ? <div> {this.state.minSpend} </div> :
-              <input id="minSpend" placeholder="minSpend" className="col-xs-1" /> 
-            }
-            <ButtonGroup className="buttonGroup">
-              <Button onClick={this.createCard.bind(this)} > Create Card </Button>
-              <Button> Edit Details </Button>
-              <Button> Cancel </Button>
-            </ButtonGroup>
+      <Modal show={this.props.show} onHide={this.props.onHide} >
+        <div className='col-lg-12'>
+          <div className="">
+            <div className='row'>
+              <Autosuggest className="col-xs-4" 
+                suggestions={suggestions}
+                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested.bind(this)}
+                onSuggestionsClearRequested={this.onSuggestionsClearRequested.bind(this)}
+                getSuggestionValue={this.getSuggestionValue.bind(this)}
+                renderSuggestion={this.renderSuggestion.bind(this)}
+                inputProps={inputProps} />
+              <input type="date" id="expDate" className="col-xs-2" placeholder="exp date"/>
+              <input type="number" id="spendTotal" placeholder="spendTotal" className="col-xs-1" />
+
+              <input type="number" id="minSpend" placeholder="minSpend" className="col-xs-1" /> 
+              <ButtonGroup className="buttonGroup">
+                <Button onClick={this.createCard.bind(this)} > Create Card </Button>
+                <Button onClick={(e) => this.props.switch(e) } > More Details </Button>
+                <Button onClick={this.props.onHide}> Cancel </Button>
+              </ButtonGroup>
+            </div>
+          </div>
+          <div className='progress row'>
+            <div id='progressBar'className="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="600" aria-valuemin="0" aria-valuemax="3000">
+            </div>
           </div>
         </div>
-        <div className='progress row'>
-          <div id='progressBar'className="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="600" aria-valuemin="0" aria-valuemax="3000">
-          </div>
-        </div>
-      </div>
+      </Modal>
     )
   }
 }
@@ -123,4 +124,4 @@ function matchDispatchToProps(dispatch){
   }, dispatch)
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(NewCard)
+export default connect(mapStateToProps, matchDispatchToProps)(QuickNewCard)

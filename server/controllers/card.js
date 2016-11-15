@@ -17,7 +17,8 @@ module.exports = {
     } else{
       newCard.id = uuid.v4()
       Card.save(newCard)
-      .then(id => res.status(201).send({id: id}))
+      .then(id => {
+        res.status(201).send({id: id})})
     }
   },
   getAllCards: (req, res) => {
