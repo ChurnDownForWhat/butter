@@ -18,6 +18,7 @@ class CardView extends React.Component {
   }
   render() {
     return (
+      <h1>Amazon Page</h1>
     )
   }
 }
