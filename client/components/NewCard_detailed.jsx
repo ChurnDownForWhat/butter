@@ -29,10 +29,12 @@ class DetailedNewCard extends React.Component {
     e.preventDefault()
     const cardName = this.state.value
     let finalCard = this.props.defaults.filter(card => card.name === cardName)[0]
-    finalCard.expDate = document.getElementById("expDate").value
-    finalCard.spendTotal = Number(document.getElementById("spendTotal").value)
-    finalCard.minSpend = Number(document.getElementById("minSpend").value)
-    finalCard.id = null
+    console.log(finalCard)
+
+    // finalCard.expDate = document.getElementById("expDate").value
+    // finalCard.spendTotal = Number(document.getElementById("spendTotal").value)
+    // finalCard.minSpend = Number(document.getElementById("minSpend").value)
+    // finalCard.id = null
     // this.props.addCard(finalCard)
   }
 
@@ -56,6 +58,7 @@ class DetailedNewCard extends React.Component {
   }
 
   getSuggestionValue(suggestion) { 
+    this.setState({newCard: suggestion})
     return `${suggestion.name}` 
   }
 
