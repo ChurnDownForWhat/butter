@@ -24,7 +24,12 @@ class Pie extends React.Component {
   }
 
   render () {
+<<<<<<< d8e4ad43f80f3e6f7cf6406cbf26eea29496b12c
     let { x, y, data } = this.props
+=======
+    let { x, y, data} = this.props
+    console.log('this.props',this.props)
+>>>>>>> Pie chart not throwing errors anymore, still won't render
     let pie = d3.pie()
 
     return (
@@ -35,6 +40,7 @@ class Pie extends React.Component {
   }
 
   renderSlice (value, i) {
+
     let { innerRadius, outerRadius, cornerRadius, padAngle, startAngle, endAngle, data} = this.props
     let total = data.reduce((acc, curr) => curr[1] ? acc += curr[1] : null)
     startAngle = (value.data[1] * Math.PI * 2) / total
