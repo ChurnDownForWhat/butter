@@ -3,8 +3,8 @@ const router = require('express').Router()
 const passport = require('passport')
 const User = require('../controllers/user')
 const Card = require('../controllers/card')
+const Amazon = require('../controllers/amazonController')
 const DefaultCard = require('../controllers/DefaultCardController')
-const testData = 
 
 isAuthed = (req,res,next) => req.isAuthenticated() ? next() : res.redirect('/landing')   
 
@@ -33,6 +33,8 @@ router.route('/api/cards/:id').get(Card.getOneCard)
 router.route('/api/cards/:id').delete(Card.removeCard)
 //get default cards
 router.route('/api/defaults').get(DefaultCard.getAllDefaults)
+// amazon cards 
+router.route('/api/amazonSearch/').get(Amazon.getDefault)
 
 router.route('/auth/google').get(passport.authenticate('google',
   {

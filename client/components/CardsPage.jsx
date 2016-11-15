@@ -23,11 +23,6 @@ class CardsPage extends React.Component {
         cards: this.props.cards.cards
       })
     )
-
-    this.props.getAmazonDefault()
-    .then(res => {
-      console.log(res)
-    })
   }
   
   click(e){

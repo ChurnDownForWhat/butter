@@ -117,7 +117,7 @@ export function updateCard(id, data){
 
 export function getAmazonDefault() {
   return dispatch => 
-    $.get('api/amazonSearch')
+    $.get('/api/amazonSearch/')
     .then(items => 
       dispatch({
         type: 'GET_AMAZON_DEFAULTS',

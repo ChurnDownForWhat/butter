@@ -15,10 +15,19 @@ class CardView extends React.Component {
     .then(function(items){
       console.log(items)
     })  
+
+    console.log("This is the poorpsojf",this.props.amazonItems)
   }
   render() {
     return (
-      <h1>Amazon Page</h1>
+      
+        <div>
+        {
+          this.props.amazonItems.map((x) => 
+            <div>x.ItemSearchResponse.Items.ItemAttributes.Title</div>)
+        }
+        </div>
+      
     )
   }
 }

@@ -11,7 +11,7 @@ const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 const bodyParser = require('body-parser')
 const util = require('util')
-OperationHelper = require('apac').OperationHelper
+const OperationHelper = require('apac').OperationHelper
 
 var opHelper = new OperationHelper({
   awsId:     process.env.AWSID,
@@ -21,12 +21,13 @@ var opHelper = new OperationHelper({
 
 opHelper.execute('ItemSearch', {
   'SearchIndex': 'All',
-  'Keywords': 'Amazon gift card',
+  'Keywords': 'Amazon gift cards',
   'ResponseGroup': 'ItemAttributes,Images'
 }, function(error, results) {
-  if (error) { console.log('Error: ' + error + '\n')}
-  console.log('Results:\n' + util.inspect(results) + '\n')
-  console.log('RESULTS ARE', util.inspect(results.ItemSearchResponse.Items.Item))
+  if (error) { console.log('Error: ' + error + '\n') }
+  // console.log('Results HEYYY:\n' + util.inspect(results) + '\n')
+  // console.log('RESULTS ARE!~!~!~!', util.inspect(results.ItemSearchResponse.Items.Item))
+  // util.inspect(results.ItemSearchResponse.Items.Item[0].ItemAttributes.ListPrice.FormattedPrice
 })
 
 // Static assets (html, etc.)
