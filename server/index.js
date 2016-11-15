@@ -64,7 +64,7 @@ if (process.env.NODE_ENV !== 'test') {
   }))
   require('./config/passport')(app)
   app.use((req,res,next) => {
-    console.log(req.user)
+    // console.log(req.user)
     return next()
   })
   // Mount our main router

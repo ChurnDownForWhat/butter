@@ -36,6 +36,7 @@ exports.up = function(knex, Promise) {
       table.integer('creditLine').defaultTo(0)
       table.integer('signupBonus').defaultTo(0)
       table.integer('minSpend').defaultTo(0)
+      table.string('cardImg').defaultTo('http://www.creditcardapplications.com/blog/wp-content/uploads/2012/10/blank-card.png')
     }),
 
     knex.schema.createTableIfNotExists('DefaultCards', function(table){

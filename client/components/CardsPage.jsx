@@ -73,7 +73,6 @@ class CardsPage extends React.Component {
                   </h1> 
                   <div className="row">
                     <div className="col-lg-12">
-                      <Popup />
                       {
                         this.state.cards.map((card, i) =>
                         { 

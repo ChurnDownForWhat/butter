@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import * as Action from '../actions/actions'
 import Autosuggest from 'react-autosuggest'
 
-class NewCard extends React.Component {
+class QuickNewCard extends React.Component {
   constructor(props){
     super(props)
 
@@ -89,9 +89,7 @@ class NewCard extends React.Component {
               inputProps={inputProps} />
             <input type="date" id="expDate" className="col-xs-2" placeholder="exp date"/>
             <input type="number" id="spendTotal" placeholder="spendTotal" className="col-xs-1" />
-            { this.state.minSpend ? <div> {this.state.minSpend} </div> :
-              <input type="number" id="minSpend" placeholder="minSpend" className="col-xs-1" /> 
-            }
+            <input type="number" id="minSpend" placeholder="minSpend" className="col-xs-1" /> 
             <ButtonGroup className="buttonGroup">
               <Button onClick={this.createCard.bind(this)} > Create Card </Button>
               <Button> Edit Details </Button>
@@ -121,4 +119,4 @@ function matchDispatchToProps(dispatch){
   }, dispatch)
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(NewCard)
+export default connect(mapStateToProps, matchDispatchToProps)(QuickNewCard)
