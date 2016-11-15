@@ -16,7 +16,7 @@ class CardsPage extends React.Component {
     this.state = {
       cards: [],
       showQuick: false,
-      showDetailed: false
+      showDetailed: false,
       showModal: false
     }
   }  
