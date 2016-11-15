@@ -42,8 +42,8 @@ class CardsPage extends React.Component {
   }
 
   render(){
-    let closeQuick = () => this.setState({ showQuick: false });
-    let closeDetailed = () => this.setState({ showDetailed: false });
+    let closeQuick = () => this.setState({ showQuick: false })
+    let closeDetailed = () => this.setState({ showDetailed: false })
 
     return (!this.props.cards ?
         (<div></div>)
