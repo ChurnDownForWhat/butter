@@ -12,8 +12,11 @@ amazon.getDefault = () =>
   opHelper.execute('ItemSearch', {
     'SearchIndex': 'All',
     'Keywords': 'Amazon Gift Cards',
-    'ResponseGroup': 'ItemAttributes,Images'
-  }).then(response => response.result)
+    'ResponseGroup': 'ItemAttributes,Images,Reviews'
+  }).then(response => {
+    console.log("IMPLICT RETURN SUCK", response.result.ItemSearchResponse.Items)
+
+    return response.result.ItemSearchResponse.Items})
 
 
 amazon.getAll = (param) =>

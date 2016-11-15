@@ -4,6 +4,7 @@ import { store } from './reducers/main'
 import App from './components/App'
 require('./css/sidebar.css')
 require('./css/creditCardsPage.css')
+require('./css/amazon.css')
 
 
 render(
