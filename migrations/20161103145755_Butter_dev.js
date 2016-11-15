@@ -1,4 +1,5 @@
-var DefaultCards = require('../dbDefaultCards')
+let DefaultCards = require('../dbDefaultCards')
+let RewardLinks = require('../rewardLinks')
 
 
 exports.up = function(knex, Promise) {
@@ -51,7 +52,14 @@ exports.up = function(knex, Promise) {
       table.string('cardImg')
     }),
 
+    knex.schema.createTableIfNotExists('RewardLinks', function(table){
+      table.increments('id').primary()
+      table.string('programName')
+      table.string('portalLink')
+    }),
+
     knex('DefaultCards').insert(DefaultCards)
+    knex('RewardLinks').insert(RewardLinks)
   ])
 }
 
