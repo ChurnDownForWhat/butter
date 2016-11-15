@@ -192,8 +192,8 @@ class DetailedNewCard extends React.Component {
               </form>
               <ButtonGroup className="buttonGroup">
                 <Button onClick={this.createCard.bind(this)} > Create Card </Button>
-                <Button> Edit Details </Button>
-                <Button> Cancel </Button>
+                <Button onClick={(e) => this.props.switch(e) } > Less Details </Button>
+                <Button onClick={this.props.onHide} > Cancel </Button>
               </ButtonGroup>
             </div>
           </div>
