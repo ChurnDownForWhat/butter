@@ -61,7 +61,9 @@ body {
 .react-autosuggest__suggestions-list {
   margin: 0;
   padding: 0;
+  max-height: 500px;
   list-style-type: none;
+  overflow-y: auto;
 }
 
 .react-autosuggest__suggestion {
@@ -102,4 +104,12 @@ body {
 
 .react-autosuggest__suggestion--focused .highlight {
   color: #120000;
+}
+
+.mm-popup__close {
+  display: none;
+}
+
+.buttonGroup {
+  float: right;
 }

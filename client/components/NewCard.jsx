@@ -24,6 +24,19 @@ class NewCard extends React.Component {
     )
   }
 
+  createCard(e){
+    e.preventDefault()
+    
+    const cardName = this.state.value
+    let finalCard = this.props.defaults.filter(card => card.name === cardName)[0]
+    finalCard.expDate = document.getElementById("expDate").value
+    finalCard.spendTotal = Number(document.getElementById("spendTotal").value)
+    finalCard.minSpend = Number(document.getElementById("minSpend").value)
+
+    console.log(finalCard)
+    // this.props.addCard()
+  }
+
   onChange(event, { newValue, method }){
     this.setState({ value: newValue })
   }
@@ -33,7 +46,7 @@ class NewCard extends React.Component {
   }
 
   onSuggestionsClearRequested(){
-    this.setState({ suggestions: [] })
+    this.setState({ suggestions: []})
   }
 
   getSuggestions(value) {
@@ -43,7 +56,9 @@ class NewCard extends React.Component {
     return this.props.defaults.filter(defaultCard => regex.test(this.getSuggestionValue(defaultCard)))
   }
 
-  getSuggestionValue(suggestion) { return `${suggestion.name}` }
+  getSuggestionValue(suggestion) { 
+    return `${suggestion.name}` 
+  }
 
   renderSuggestion(suggestion) {
     return (
@@ -74,17 +89,17 @@ class NewCard extends React.Component {
               getSuggestionValue={this.getSuggestionValue.bind(this)}
               renderSuggestion={this.renderSuggestion.bind(this)}
               inputProps={inputProps} />
+            <input id="expDate" placeholder="exp date" className="col-xs-1" />
+            <input id="spendTotal" placeholder="spendTotal" className="col-xs-1" />
+            { this.state.minSpend ? <div> {this.state.minSpend} </div> :
+              <input id="minSpend" placeholder="minSpend" className="col-xs-1" /> 
+            }
+            <ButtonGroup className="buttonGroup">
+              <Button onClick={this.createCard.bind(this)} > Create Card </Button>
+              <Button> Edit Details </Button>
+              <Button> Cancel </Button>
+            </ButtonGroup>
           </div>
-          <div className='row'>
-            <input placeholder="exp date" className="col-xs-1" />
-            <input placeholder="spendTotal" className="col-xs-1" />
-            <input placeholder="minSpend" className="col-xs-1" /> 
-          </div>
-          <ButtonGroup>
-            <Button> Create Card </Button>
-            <Button> Edit Details </Button>
-            <Button> Cancel </Button>
-          </ButtonGroup>
         </div>
         <div className='progress row'>
           <div id='progressBar'className="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="600" aria-valuemin="0" aria-valuemax="3000">
