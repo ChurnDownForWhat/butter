@@ -5,7 +5,6 @@ import { viewAllCards, viewAllRewards } from '../actions/actions'
 import Sidebar from './Sidebar'
 import Pie from './Pie'
 
-
 // want to add getAllCards. and display those in the rewards table.
 class RewardsPage extends React.Component {
 
@@ -14,15 +13,7 @@ class RewardsPage extends React.Component {
   }
 
   componentDidMount(){
-    this.props.viewAllCards()
-    .then(function (respon){
-      console.log('respon is', respon)
-    })
-
     this.props.viewAllRewards()
-    .then(function (response){
-      console.log('REWARDS ARE NOW', response)
-    })
   }
 
   render() {
@@ -49,7 +40,6 @@ class RewardsPage extends React.Component {
                       </thead>
                       <tbody>
                       {this.props.rewards.map(function(val, i){
-                        console.log("?", val)
                         return (<tr className=""> 
                                 <th scope="row"> {i +1} </th>
                                   <td>{val.program}</td>
@@ -86,14 +76,12 @@ class RewardsPage extends React.Component {
 
 function mapStateToProps(store){
   return {
-    cards: store.cardStates.cards,
     rewards: store.cardStates.rewards
   }
 }
 
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
-    viewAllCards: viewAllCards,
     viewAllRewards: viewAllRewards
   }, dispatch)
 
