@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, ButtonGroup} from 'react-bootstrap'
+import { Button, ButtonGroup, Modal } from 'react-bootstrap'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Action from '../actions/actions'
@@ -79,32 +79,34 @@ class QuickNewCard extends React.Component {
     }
 
     return (
-      <div className='col-lg-12'>
-        <div className="">
-          <div className='row'>
-            <Autosuggest className="col-xs-4" 
-              suggestions={suggestions}
-              onSuggestionsFetchRequested={this.onSuggestionsFetchRequested.bind(this)}
-              onSuggestionsClearRequested={this.onSuggestionsClearRequested.bind(this)}
-              getSuggestionValue={this.getSuggestionValue.bind(this)}
-              renderSuggestion={this.renderSuggestion.bind(this)}
-              inputProps={inputProps} />
-            <input type="date" id="expDate" className="col-xs-2" placeholder="exp date"/>
-            <input type="number" id="spendTotal" placeholder="spendTotal" className="col-xs-1" />
+      <Modal show={this.props.show} onHide={this.props.onHide} >
+        <div className='col-lg-12'>
+          <div className="">
+            <div className='row'>
+              <Autosuggest className="col-xs-4" 
+                suggestions={suggestions}
+                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested.bind(this)}
+                onSuggestionsClearRequested={this.onSuggestionsClearRequested.bind(this)}
+                getSuggestionValue={this.getSuggestionValue.bind(this)}
+                renderSuggestion={this.renderSuggestion.bind(this)}
+                inputProps={inputProps} />
+              <input type="date" id="expDate" className="col-xs-2" placeholder="exp date"/>
+              <input type="number" id="spendTotal" placeholder="spendTotal" className="col-xs-1" />
 
-            <input type="number" id="minSpend" placeholder="minSpend" className="col-xs-1" /> 
-            <ButtonGroup className="buttonGroup">
-              <Button onClick={this.createCard.bind(this)} > Create Card </Button>
-              <Button> Edit Details </Button>
-              <Button> Cancel </Button>
-            </ButtonGroup>
+              <input type="number" id="minSpend" placeholder="minSpend" className="col-xs-1" /> 
+              <ButtonGroup className="buttonGroup">
+                <Button onClick={this.createCard.bind(this)} > Create Card </Button>
+                <Button> Edit Details </Button>
+                <Button> Cancel </Button>
+              </ButtonGroup>
+            </div>
+          </div>
+          <div className='progress row'>
+            <div id='progressBar'className="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="600" aria-valuemin="0" aria-valuemax="3000">
+            </div>
           </div>
         </div>
-        <div className='progress row'>
-          <div id='progressBar'className="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="600" aria-valuemin="0" aria-valuemax="3000">
-          </div>
-        </div>
-      </div>
+      </Modal>
     )
   }
 }

@@ -15,7 +15,8 @@ class CardsPage extends React.Component {
     super(props)
     this.state = {
       cards: [],
-      show: 0
+      showQuick: false,
+      showDetailed: false
     }
   }  
 
@@ -41,12 +42,14 @@ class CardsPage extends React.Component {
   }
 
   render(){
+    let closeQuick = () => this.setState({ showQuick: false });
+    let closeDetailed = () => this.setState({ showDetailed: false });
+
     return (!this.props.cards ?
         (<div></div>)
       :
        (
         <div id='wrapper'>
-          <Popup />
           <Sidebar/>
           <div id='page-content-wrapper'>
             <div className='container-fluid'>
@@ -66,8 +69,8 @@ class CardsPage extends React.Component {
                     <small>
                       <ButtonToolbar>
                         <DropdownButton bsSize="large" title="Add A Card" id="dropdown-size-large">
-                          <MenuItem eventKey="1" onSelect={(e) => this.setState({show: "quick"})}>Quick</MenuItem>
-                          <MenuItem eventKey="2" onSelect={(e) => this.setState({show: "detailed"})}>Detailed</MenuItem>
+                          <MenuItem eventKey="1" onSelect={(e) => this.setState({showQuick: true})}>Quick</MenuItem>
+                          <MenuItem eventKey="2" onSelect={(e) => this.setState({showDetailed: true})}>Detailed</MenuItem>
                         </DropdownButton>
                       </ButtonToolbar>
                     </small>
@@ -97,6 +100,8 @@ class CardsPage extends React.Component {
               </div>
             </div>
           </div>
+          <QuickNewCard show={this.state.showQuick} onHide={closeQuick} />
+          <DetailedNewCard show={this.state.showDetailed} onHide={closeDetailed} />
         </div>
     ))
   }
