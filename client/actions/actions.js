@@ -87,7 +87,6 @@ export function viewAllRewards() {
         payload: rewards
       })
     )
-
 }
 
 export function viewCard(id) {
@@ -114,5 +113,16 @@ export function updateCard(id, data){
         payload: cards
       })
     )
+}
+
+export function getAmazonDefault() {
+  return dispatch => 
+    $.get('/api/amazonSearch/')
+    .then(items => 
+      dispatch({
+        type: 'GET_AMAZON_DEFAULTS',
+        payload: items
+      })
+    ) 
 }
 

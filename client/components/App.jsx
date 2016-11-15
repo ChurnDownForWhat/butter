@@ -9,6 +9,7 @@ import CreditScore from './CreditScore'
 import Pie from './Pie'
 import Slice from './Slice'
 import Sidebar from './Sidebar'
+import Amazon from './Amazon'
 
 export default class App extends React.Component {
   constructor (props) {
@@ -24,6 +25,7 @@ export default class App extends React.Component {
         <Route path="/" component={CardsPage} />
         <Route path="/cards" component={CardsPage} />
         <Route path="/rewards" component={RewardsPage} />
+        <Route path='/amazon' component={Amazon}/>
       </Router>
     </Provider>
     )

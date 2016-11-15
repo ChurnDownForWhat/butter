@@ -1,8 +1,11 @@
-import amazon from '../models/amazonModel.js'
+const amazon = require('../models/amazonModel')
 
 module.exports = {
   getDefault: (req, res) => {
-    res.status(200).send()
+
+   amazon.getDefault().then(x => {
+    res.status(200).send(x)
+   })
   },
 
   getAll: (req, res) => {
