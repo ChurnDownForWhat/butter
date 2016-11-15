@@ -25,6 +25,9 @@ class CardView extends React.Component {
     console.log(submitItem)
     this.props.addCard(submitItem)
   }
+  edit(){
+    this.setState({edit: true})
+  }
   componentDidMount() {
     console.log(this.props)
   }
@@ -61,6 +64,9 @@ class CardView extends React.Component {
         </div>
         <div className ="col-md-4">
           Expiration:{this.props.card.expiration}
+        </div>
+        <div onClick={this.edit.bind(this)}>
+          edit
         </div>
         <div onClick={this.props.close}>
          close
