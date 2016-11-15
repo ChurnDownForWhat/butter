@@ -11,7 +11,8 @@ class DetailedNewCard extends React.Component {
 
     this.state = {
       value: '',
-      suggestions: []
+      suggestions: [],
+      newCard: {}
     }
   }
 
@@ -25,17 +26,28 @@ class DetailedNewCard extends React.Component {
   }
 
   createCard(e){
-    console.log(e.target)
     e.preventDefault()
     const cardName = this.state.value
-    let finalCard = this.props.defaults.filter(card => card.name === cardName)[0]
-    console.log(finalCard)
-
+    let finalCard = this.state.newCard || {}
+    finalCard.name = this.state.value
+    finalCard.last4digits = document.getElementById("last4digits").value
+    finalCard.annFeeAmt = document.getElementById("annFeeAmt").value
+    finalCard.annFeeDate = document.getElementById("annFeeDate").value
+    finalCard.waivedFees = document.getElementById("waivedFees").value
+    finalCard.signupBonus = document.getElementById("signupBonus").value
+    finalCard.spendDeadline = document.getElementById("spendDeadline").value
+    finalCard.monthlyBillDate = document.getElementById("monthlyBillDate").value
+    finalCard.applicationDate = document.getElementById("applicationDate").value
+    finalCard.benefit = document.getElementById("benefit").value
+    finalCard.expCancelDate = document.getElementById("expCancelDate").value
     // finalCard.expDate = document.getElementById("expDate").value
-    // finalCard.spendTotal = Number(document.getElementById("spendTotal").value)
-    // finalCard.minSpend = Number(document.getElementById("minSpend").value)
-    // finalCard.id = null
-    // this.props.addCard(finalCard)
+    finalCard.spendTotal = Number(document.getElementById("spendTotal").value)
+    finalCard.minSpend = Number(document.getElementById("minSpend").value)
+    finalCard.id = null
+
+    // console.log(finalCard)
+
+    this.props.addCard(finalCard)
   }
 
   onChange(event, { newValue, method }){
@@ -174,9 +186,6 @@ class DetailedNewCard extends React.Component {
                     <span className="col-md-3"> Planned Cancellation Date </span>
                   </div> 
                   <br/>
-                  <div className="bottomFormItem">
-                    <input id="submit" type="submit" className="creditInputForm col-md-4"/>
-                  </div> 
                 </ul>
               </div>
             </form>
