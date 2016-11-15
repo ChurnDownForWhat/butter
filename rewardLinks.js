@@ -1,54 +1,16 @@
-module.exports = [
+module.exports = 
   {
-    'programName': 'Chase Ultimate Rewards',
-    'portalLink': 'https://www.chase.com/ultimaterewards'
-  },
-  {
-    'programName': 'Marriot Rewards',
-    'portalLink': 'http://www.marriott.com/rewards/rewards-program.mi'
-  },
-  {
-    'programName': 'Capital One Miles',
-    'portalLink': 'https://verified.capitalone.com/sic-ui/#/esignin?Product=Card&Action=Rewards'
-  },
-  {
-    'programName': 'Citi ThankYou Rewards',
-    'portalLink': 'https://www.thankyou.com/cms/thankyou'
-  },
-  {
-    'programName': 'IHG Rewards Club',
-    'portalLink': 'https://www.ihg.com/rewardsclub/us/en/home'
-  },
-  {
-    'programName': 'Hyatt Gold Passport',
-    'portalLink': 'https://goldpassport.hyatt.com/content/gp/en/home.html'
-  },
-  {
-    'programName': 'Southwest Rapid Rewards',
-    'portalLink': 'https://www.southwest.com/rapidrewards'
-  },
-  {
-    'programName': 'Bank of America Preferred Rewards',
-    'portalLink': 'https://www.managerewardsonline.bankofamerica.com/RWDapp/ns/home?mc=barrwd'
-  },
-  {
-    'programName': 'Avios',
-    'portalLink': 'https://www.avios.com/av/en_gb/'
-  },
-  {
-    'programName': 'Barclay',
-    'portalLink': 'https://home.barclaycardus.com/'
-  },
-  {
-    'programName': 'JetBlue TrueBlue',
-    'portalLink': 'https://trueblue.jetblue.com/web/trueblue/home'
-  },
-  {
-    'programName': 'Starpoints',
-    'portalLink': 'http://www.starwoodhotels.com/preferredguest/account/starpoints/redeem/index.html?language=en_US'
-  },
-  {
-    'programName': 'HHonors',
-    'portalLink': 'http://hhonors3.hilton.com/en/index.html?WT.srch=1'
+    'Chase Ultimate Rewards':'https://www.chase.com/ultimaterewards',
+    'Marriot Rewards':'http://www.marriott.com/rewards/rewards-program.mi',
+    'Capital One Miles':'https://verified.capitalone.com/sic-ui/#/esignin?Product=Card&Action=Rewards',
+    'Citi ThankYou Rewards':'https://www.thankyou.com/cms/thankyou',
+    'IHG Rewards Club':'https://www.ihg.com/rewardsclub/us/en/home',
+    'Hyatt Gold Passport':'https://goldpassport.hyatt.com/content/gp/en/home.html',
+    'Southwest Rapid Rewards':'https://www.southwest.com/rapidrewards',
+    'Bank of America Preferred Rewards':'https://www.managerewardsonline.bankofamerica.com/RWDapp/ns/home?mc=barrwd',
+    'Avios':'https://www.avios.com/av/en_gb/',
+    'Barclay':'https://home.barclaycardus.com/',
+    'JetBlue TrueBlue':'https://trueblue.jetblue.com/web/trueblue/home',
+    'Starpoints':'http://www.starwoodhotels.com/preferredguest/account/starpoints/redeem/index.html?language=en_US',
+    'HHonors':'http://hhonors3.hilton.com/en/index.html?WT.srch=1'
   }
-]
