@@ -39,8 +39,6 @@ class CardsPage extends React.Component {
   }
 
   render(){
-    const cardViewer = (this.state.view ? <CardView /> : <div></div>)
-
     return (!this.props.cards ?
         (<div></div>)
       :
