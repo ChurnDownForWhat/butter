@@ -46,7 +46,7 @@ const cardEditView = ({ defaults, props, card, addCard }) => {
           </div>
           <br/>
           <div className="bottomFormItem">
-            <input id="spendDeadline" className="creditInputForm col-md-4" placeholder="Spend Deadline"/>
+            <input id="spendDeadline" type="date" className="creditInputForm col-md-4" placeholder="Spend Deadline"/>
             <span className="col-md-3"> Spend Deadline </span>
           </div> 
           <br/>
