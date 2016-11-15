@@ -24,12 +24,12 @@ amazon.getAll = (param) =>
     'SearchIndex': 'All',
     'Keywords': param,
     'ResponseGroup': 'ItemAttributes,Images'
-  }, function(error, results) {
-    if (error) { console.log('Error: ' + error + '\n') }
+  }).then(response => {
+    console.log("THE PARAM IS WORKING YAYAYAY", response.result.ItemSearchResponse.Items)
+    return util.inspect(results.ItemSearchResponse.Items)
+  })
   // console.log('Results:\n' + util.inspect(results) + '\n')
   // console.log('RESULTS ARE!~!~!~!', util.inspect(results.ItemSearchResponse.Items.Item))
   // util.inspect(results.ItemSearchResponse.Items.Item[0].ItemAttributes.ListPrice.FormattedPrice
-    return util.inspect(results.ItemSearchResponse.Items.Item)
-  })
 
 module.exports = amazon
