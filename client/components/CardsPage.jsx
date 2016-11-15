@@ -35,11 +35,18 @@ class CardsPage extends React.Component {
     return this.props.viewCard(e.target.id)
     .then((card) => this.setState({showModal: true}))
   }
+
   close(){
     this.setState({
       showModal: false
     })
   }
+
+  switchAddViews(e){
+    this.setState({ showQuick: !this.state.showQuick })
+    this.setState({ showDetailed: !this.state.showDetailed })
+  }
+
   filterCards(e){
     var filtered = this.props.cards.filter(card =>
       card.name.toLowerCase().includes(e.target.value.toLowerCase()))
@@ -55,6 +62,8 @@ class CardsPage extends React.Component {
        (
         <div id='wrapper'>
           <CardView show={this.state.showModal} close={this.close.bind(this)}/>
+          <QuickNewCard show={this.state.showQuick} switch={this.switchAddViews.bind(this)} onHide={closeQuick} />
+          <DetailedNewCard show={this.state.showDetailed} switch={this.switchAddViews.bind(this)} onHide={closeDetailed} />
           <Sidebar/>
           <div id='page-content-wrapper'>
             <div className='container-fluid'>
@@ -105,8 +114,6 @@ class CardsPage extends React.Component {
               </div>
             </div>
           </div>
-          <QuickNewCard show={this.state.showQuick} onHide={closeQuick} />
-          <DetailedNewCard show={this.state.showDetailed} onHide={closeDetailed} />
         </div>
     ))
   }

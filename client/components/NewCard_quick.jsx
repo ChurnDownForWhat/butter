@@ -96,8 +96,8 @@ class QuickNewCard extends React.Component {
               <input type="number" id="minSpend" placeholder="minSpend" className="col-xs-1" /> 
               <ButtonGroup className="buttonGroup">
                 <Button onClick={this.createCard.bind(this)} > Create Card </Button>
-                <Button> Edit Details </Button>
-                <Button> Cancel </Button>
+                <Button onClick={(e) => this.props.switch(e) } > More Details </Button>
+                <Button onClick={this.props.onHide}> Cancel </Button>
               </ButtonGroup>
             </div>
           </div>
