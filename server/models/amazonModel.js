@@ -16,7 +16,8 @@ amazon.getDefault = () =>
   }).then(response => {
     console.log("IMPLICT RETURN SUCK", response.result.ItemSearchResponse.Items)
 
-    return response.result.ItemSearchResponse.Items})
+    return response.result.ItemSearchResponse.Items
+  })
 
 
 amazon.getAll = (param) =>
@@ -26,7 +27,7 @@ amazon.getAll = (param) =>
     'ResponseGroup': 'ItemAttributes,Images'
   }).then(response => {
     console.log("THE PARAM IS WORKING YAYAYAY", response.result.ItemSearchResponse.Items)
-    return util.inspect(results.ItemSearchResponse.Items)
+    return response.result.ItemSearchResponse.Items 
   })
   // console.log('Results:\n' + util.inspect(results) + '\n')
   // console.log('RESULTS ARE!~!~!~!', util.inspect(results.ItemSearchResponse.Items.Item))
