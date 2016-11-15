@@ -22,8 +22,21 @@ class CardView extends React.Component {
   }
 
   render() {
-    var itemArr = this.props.amazonItems.name.Item
-    console.log('itemArr is' , itemArr)
+    const itemArr = this.props.amazonItems.name === "No Results" ? 
+      <h1>No Results</h1> 
+     :
+      this.props.amazonItems.name.Item.map((x,i) => 
+        <div  key={i}id="amazonArray" className="col-md-12">
+          <div className='row '>
+          <a href= {x.DetailPageURL}>
+            <img className="amazonImage" src={x.MediumImage.URL}/>
+          </a>
+          </div>
+          <div className='row amazonRow'>
+            {x.ItemAttributes.Title}
+          </div>
+        </div>
+      )
     return (
       <div id='wrapper'>
           <Sidebar/>
@@ -32,21 +45,7 @@ class CardView extends React.Component {
           <input placeholder="Amazon Search" onKeyUp={this.onSearch.bind(this)}/>
             <div className='row'>
               <div className="col-md-12">
-
-              {
-                itemArr.map((x,i) => 
-                  <div  key={i}id="amazonArray" className="col-md-12">
-                    <div className='row '>
-                    <a href= {x.DetailPageURL}>
-                      <img className="amazonImage" src={x.MediumImage.URL}/>
-                    </a>
-                    </div>
-                    <div className='row amazonRow'>
-                      {x.ItemAttributes.Title}
-                    </div>
-                  </div>
-                )
-              }
+              {itemArr}
               </div>
             </div>
           </div>
