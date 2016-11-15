@@ -22,7 +22,7 @@ export default class Slice extends React.Component {
   }
 
   render () {
-    let { value, label, fill, innerRadius = 0, outerRadius, cornerRadius, props, padAngle } = this.props
+    let { value, label, fill, innerRadius, outerRadius, cornerRadius, props, padAngle } = this.props
 
     if ( this.state.isHovered ) {
       outerRadius *= 1.1
@@ -32,14 +32,15 @@ export default class Slice extends React.Component {
       .outerRadius( outerRadius )
       .cornerRadius( cornerRadius )
       .padAngle( padAngle )
-      console.log(arc(value.toString()))
+      .endAngle(Math.PI * 2)
+      console.log(...arc.centroid(value))
 
     return (
       <g onMouseOver = { this.onMouseOver }
         onMouseOut = { this.onMouseOut }
         { ...props }>
-      <path d = { arc(value.toString()) } fill = { fill } />
-      <text transform = { this.translate( ...arc.centroid(value.toString()) )}
+      <path d = { arc(value) } fill = { fill } />
+      <text transform = { this.translate( ...arc.centroid(value) )}
             dy = ".35em"
             className = "label">
             {label}

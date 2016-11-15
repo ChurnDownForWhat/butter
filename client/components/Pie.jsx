@@ -12,6 +12,7 @@ class Pie extends React.Component {
     super(props)
     this.colorScale = d3.schemeCategory10
     this.renderSlice = this.renderSlice.bind(this)
+    // this.data = [5, 2, 7, 1, 1, 3, 4, 9]
   }
 
   componentDidMount(){
@@ -41,8 +42,8 @@ class Pie extends React.Component {
             outerRadius = { outerRadius }
             cornerRadius = { cornerRadius }
             padAngle = { padAngle }
-            value = { (value.data[1])/1000 }
-            label = { value.data[0] }
+            value = { value.data[0] }
+            label = { 'working' }
             fill = { this.colorScale[i] } />
     )
   }
