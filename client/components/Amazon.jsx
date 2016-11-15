@@ -29,7 +29,7 @@ class CardView extends React.Component {
           <Sidebar/>
         <div id='page-content-wrapper'>
           <div className='container-fluid'>
-          <input onKeyUp={this.onSearch.bind(this)}/>
+          <input placeholder="Amazon Search" onKeyUp={this.onSearch.bind(this)}/>
             <div className='row'>
               <div className="col-md-12">
 

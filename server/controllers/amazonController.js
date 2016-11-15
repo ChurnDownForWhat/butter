@@ -2,16 +2,17 @@ const amazon = require('../models/amazonModel')
 
 module.exports = {
   getDefault: (req, res) => {
-    amazon.getDefault().then(x => {
-      res.status(200).send(x)
+    amazon.getDefault().then(items => {
+      res.status(200).send(items)
     })
   },
 
   getAll: (req, res) => {
-    var searchTerm = req.body
-    amazon.getAll(searchTerm)
-    console.log('SEARCH TERM IS', searchTerm)
-    res.status(200).send()
+    var searchTerm = req.body.searchTerm
+    amazon.getAll(searchTerm).then(items => {
+      console.log("items",items)
+      res.status(200).send(items)
+    })
   }
 
 }
