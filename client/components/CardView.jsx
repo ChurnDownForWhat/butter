@@ -17,10 +17,13 @@ class CardView extends React.Component {
     const domForm = document.getElementById("credit-card-form").elements
     const submitItem = Object.keys(domForm).slice(15)
     .reduce((acc,e) =>{
-      if(e != 'submit') acc[e] = domForm[e].value
+      if(e != 'submit' && domForm[e].value != "") acc[e] = domForm[e].value
       return acc
-    },{}) 
+    },{})
+
+    submitItem.id = this.props.card.id
     console.log(submitItem)
+    this.props.addCard(submitItem)
   }
   componentDidMount() {
     console.log(this.props)
@@ -30,7 +33,7 @@ class CardView extends React.Component {
     return (
       this.state.edit 
       ?
-      (<CardEdit addCard={this.collectForm} card={this.props.card} />)
+      (<CardEdit addCard={this.collectForm.bind(this)} card={this.props.card} />)
       :
       (
       <div className="container card-view">

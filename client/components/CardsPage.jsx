@@ -18,10 +18,11 @@ class CardsPage extends React.Component {
   }  
 
   componentDidMount(){
+    this.props.getUser()
     this.props.viewAllCards()
     .then(res => 
       this.setState({
-        cards: this.props.cards.cards
+        cards: this.props.cards
       })
     )
   }
@@ -32,14 +33,12 @@ class CardsPage extends React.Component {
   }
 
   filterCards(e){
-    var filtered = this.props.cards.cards.filter(card =>
+    var filtered = this.props.cards.filter(card =>
       card.name.toLowerCase().includes(e.target.value.toLowerCase()))
     this.setState({cards: filtered})
   }
 
   render(){
-    const cardViewer = (this.state.view ? <CardView /> : <div></div>)
-
     return (!this.props.cards ?
         (<div></div>)
       :
@@ -53,11 +52,11 @@ class CardsPage extends React.Component {
                 <div className='col-lg-12'>
                   <h1 className="page-header">
                   {
-                    this.props.cards.user.firstName
+                    this.props.user.firstName
                     +' '+
-                    this.props.cards.user.lastName
+                    this.props.user.lastName
                   }
-                    <small> {this.props.cards.user.email}</small>
+                    <small> {this.props.user.email}</small>
                     <small> 
                       <input onKeyUp={this.filterCards.bind(this)} 
                              placeholder="filter cards"/> 
@@ -174,6 +173,7 @@ class CardsPage extends React.Component {
 
 function mapStateToProps(store){
   return {
+    user: store.userStates.user,
     //object w/ one card data
     card: store.cardStates.card,
     //object w/ all user cards data
@@ -190,7 +190,9 @@ function matchDispatchToProps(dispatch){
     deleteCard: Action.deleteCard,
     viewAllCards: Action.viewAllCards,
     viewCard: Action.viewCard,
-    updateCard: Action.updateCard
+    updateCard: Action.updateCard,
+    getUser: Action.getUser
+
   }, dispatch)
 }
 

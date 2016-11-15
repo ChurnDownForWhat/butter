@@ -23,13 +23,7 @@ module.exports = {
   getAllCards: (req, res) => {
     const userId = req.user.id
     Card.fetchAll(userId)
-    .then(cards => {
-      const data = {
-        user: req.user,
-        cards: cards
-      }
-      return res.status(200).send(data)
-    })
+    .then(cards => res.status(200).send(cards))
     .then(() => res.end())
   },
   getOneCard: (req, res) => {
