@@ -6,7 +6,8 @@ import { connect } from 'react-redux'
 import * as Action from '../actions/actions'
 import Sidebar from './Sidebar'
 import Popup from "react-popup"
-import NewCard from './NewCard'
+import QuickNewCard from './NewCard_quick'
+import DetailedNewCard from './NewCard_detailed'
 import { DropdownButton, ButtonToolbar, MenuItem } from 'react-bootstrap'
 
 class CardsPage extends React.Component {
@@ -64,9 +65,8 @@ class CardsPage extends React.Component {
                     <small>
                       <ButtonToolbar>
                         <DropdownButton bsSize="large" title="Add A Card" id="dropdown-size-large">
-                          <MenuItem eventKey="1" onSelect={(e) => Popup.alert(<NewCard />)}>Quick</MenuItem>
-                          <MenuItem divider />
-                          <MenuItem eventKey="2">Detailed</MenuItem>
+                          <MenuItem eventKey="1" onSelect={(e) => Popup.alert(<QuickNewCard />)}>Quick</MenuItem>
+                          <MenuItem eventKey="2" onSelect={(e) => Popup.alert(<DetailedNewCard />)}>Detailed</MenuItem>
                         </DropdownButton>
                       </ButtonToolbar>
                     </small>
