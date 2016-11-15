@@ -61,9 +61,7 @@ export function viewAllCards() {
 export function viewAllRewards() {
   return dispatch => 
     $.get('/api/cards')
-    .then(rewards => {
-      return rewards.cards
-    }).then((rewards) => {
+    .then((rewards) => {
       // var noRepeats = rewards
       // for(var i = 0; i < noRepeats.length; i++){
       //   for(var k = 0; k < noRepeats.length; k++){
@@ -74,7 +72,7 @@ export function viewAllRewards() {
       //   }
       // }
       // return noRepeats
-      let rewardAmount = rewards.reduce((acc,card) =>
+      let rewardAmount = rewards.reduce((acc, card) =>
           (acc[card.program] ? 
           acc[card.program]['rewardsAmt'] += card.rewardsAmt : 
           acc[card.program] = {rewardsAmt:card.rewardsAmt,program:card.program,category:card.category}
