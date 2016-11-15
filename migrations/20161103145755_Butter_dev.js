@@ -51,6 +51,12 @@ exports.up = function(knex, Promise) {
       table.string('cardImg')
     }),
 
+    knex.schema.createTableIfNotExists('RewardLinks', function(table){
+      table.increments('id').primary()
+      table.string('programName')
+      table.string('portalLink')
+    }),
+
     knex('DefaultCards').insert(DefaultCards)
   ])
 }
