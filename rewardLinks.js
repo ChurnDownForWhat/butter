@@ -29,7 +29,7 @@ module.exports = [
   },
   {
     'programName': 'Bank of America Preferred Rewards',
-    'portalLink': 'https://www.bankofamerica.com/'
+    'portalLink': 'https://www.managerewardsonline.bankofamerica.com/RWDapp/ns/home?mc=barrwd'
   },
   {
     'programName': 'Avios',

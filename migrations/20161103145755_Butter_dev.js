@@ -1,4 +1,5 @@
-var DefaultCards = require('../dbDefaultCards')
+let DefaultCards = require('../dbDefaultCards')
+let RewardLinks = require('../rewardLinks')
 
 
 exports.up = function(knex, Promise) {
@@ -58,6 +59,7 @@ exports.up = function(knex, Promise) {
     }),
 
     knex('DefaultCards').insert(DefaultCards)
+    knex('RewardLinks').insert(RewardLinks)
   ])
 }
 
