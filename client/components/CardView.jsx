@@ -4,17 +4,35 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Action from '../actions/actions'
 import Sidebar from './Sidebar'
+import CardEdit from "./CardEditView"
 
 class CardView extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      edit: false
+    }
   }  
-
+  collectForm() {
+    const domForm = document.getElementById("credit-card-form").elements
+    const submitItem = Object.keys(domForm).slice(15)
+    .reduce((acc,e) =>{
+      if(e != 'submit') acc[e] = domForm[e].value
+      return acc
+    },{}) 
+    console.log(submitItem)
+  }
   componentDidMount() {
     console.log(this.props)
   }
   render() {
+
     return (
+      this.state.edit 
+      ?
+      (<CardEdit addCard={this.collectForm} card={this.props.card} />)
+      :
+      (
       <div className="container card-view">
         <div className="col-md-12">
           <h3>{this.props.card.name}</h3>
@@ -46,7 +64,11 @@ class CardView extends React.Component {
         <div className ="col-md-4">
           Expiration:{this.props.card.expiration}
         </div>
+        <div onClick={(e)=>{this.setState({edit: !this.state.edit})}} >
+          EDIT THIS SHIT!!
+        </div>
       </div>
+      )
     )
   }
 }
