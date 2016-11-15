@@ -8,13 +8,14 @@ import Sidebar from './Sidebar'
 import Popup from "react-popup"
 import QuickNewCard from './NewCard_quick'
 import DetailedNewCard from './NewCard_detailed'
-import { DropdownButton, ButtonToolbar, MenuItem } from 'react-bootstrap'
+import { DropdownButton, ButtonToolbar, MenuItem, Modal } from 'react-bootstrap'
 
 class CardsPage extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      cards: []
+      cards: [],
+      show: 0
     }
   }  
 
@@ -65,8 +66,8 @@ class CardsPage extends React.Component {
                     <small>
                       <ButtonToolbar>
                         <DropdownButton bsSize="large" title="Add A Card" id="dropdown-size-large">
-                          <MenuItem eventKey="1" onSelect={(e) => Popup.alert(<QuickNewCard />)}>Quick</MenuItem>
-                          <MenuItem eventKey="2" onSelect={(e) => Popup.alert(<DetailedNewCard />)}>Detailed</MenuItem>
+                          <MenuItem eventKey="1" onSelect={(e) => this.setState({show: "quick"})}>Quick</MenuItem>
+                          <MenuItem eventKey="2" onSelect={(e) => this.setState({show: "detailed"})}>Detailed</MenuItem>
                         </DropdownButton>
                       </ButtonToolbar>
                     </small>
@@ -96,74 +97,6 @@ class CardsPage extends React.Component {
               </div>
             </div>
           </div>
-          {
-            // <div className="container page">
-            //   <div className="col-md-2">
-            //   </div>
-            //   <div className="col-md-10">
-            //     <div className="row">
-            //         <div className="col-lg-12">
-            //           <div className="col-md-8">
-            //           </div>
-            //           <div className="col-md-4 user-stats">
-            //           <span className="col-md-12"><strong>Reward Points:</strong>167870</span>
-            //           <span className="col-md-12"><strong>Deadlines Met:</strong>1</span>
-            //           </div>
-            //         </div>
-            //     </div>
-            //     <div className="row">
-            //       <div className="col-md-12">
-            //         <div className="col-md-4 portfolio-item">
-            //             <a href="#">
-            //                 <img className="img-responsive" src="https://dummyimage.com/600x400/eeeeee/333&text=Credit+Card" alt="" />
-            //             </a>
-            //             <h3>
-            //                 <a href="#">Credit Card Name</a>
-            //             </h3>
-            //             <p><strong>Spend Deadline: </strong>March 3, 2017</p>
-            //             <p>$1456/$3000</p>
-            //             <ProgressBar bsStyle="success" active now={1456/3000*100} />
-                        
-            //         </div>
-            //         <div className="col-md-4 portfolio-item danger">
-            //             <a href="#">
-            //                 <img className="img-responsive" src="https://dummyimage.com/600x400/eeeeee/333&text=Credit+Card" alt="" />
-            //             </a>
-            //             <h3>
-            //                 <a href="#">Credit Card Name</a>
-            //             </h3>
-            //             <p className="exp-danger"><strong>Spend Deadline: </strong>December 1, 2016</p>
-            //             <p>$2700/$3000</p>
-            //             <ProgressBar bsStyle="success" active now={2700/3000*100} />
-            //         </div>
-            //         <div className="col-md-4 portfolio-item complete">
-            //             <a href="#">
-            //                 <img className="img-responsive" src="https://dummyimage.com/600x400/eeeeee/333&text=Credit+Card" alt="" />
-            //             </a>
-            //             <h3>
-            //                 <a href="#">Credit Card Name</a>
-            //             </h3>
-            //             <p><strong>Spend Deadline: </strong>February 1, 2016</p>
-            //             <p>$3000/$3000</p>
-            //             <ProgressBar bsStyle="success" active now={3000/3000*100} />
-            //         </div>
-            //       </div>
-            //       </div>
-            //     <div className="row">
-            //       <div className="col-md-12">
-            //         <div className="col-md-4 portfolio-item">
-            //             <a href="#">
-            //                 <img className="img-responsive" src="https://dummyimage.com/600x400/eeeeee/333&text=New+Credit+Card+" alt="" />
-            //             </a>
-            //             <h3>
-            //                 <a href="#">Click to create New Card</a>
-            //             </h3>
-            //         </div>
-            //       </div>
-            //     </div>
-            //   </div>
-            // </div>
-          }
         </div>
     ))
   }
