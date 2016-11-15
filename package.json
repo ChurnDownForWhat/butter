@@ -48,6 +48,7 @@
     "passport-google-oauth": "^1.0.0",
     "pg": "^6.1.0",
     "react": "^15.3.2",
+    "react-autosuggest": "^7.0.1",
     "react-bootstrap": "^0.30.6",
     "react-dom": "^15.3.2",
     "react-native": "^0.36.1",
