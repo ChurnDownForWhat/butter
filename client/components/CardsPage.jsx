@@ -5,19 +5,21 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Action from '../actions/actions'
 import Sidebar from './Sidebar'
+import Popup from "react-popup"
+import NewCard from './NewCard'
+import { DropdownButton, ButtonToolbar, MenuItem } from 'react-bootstrap'
 
 class CardsPage extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      view: false,
       cards: []
     }
   }  
 
   componentDidMount(){
     this.props.viewAllCards()
-    .then( res => 
+    .then(res => 
       this.setState({
         cards: this.props.cards.cards
       })
@@ -25,26 +27,25 @@ class CardsPage extends React.Component {
   }
   
   click(e){
-    this.props.viewCard(e.target.id)
-    this.setState({view: true})
+    return this.props.viewCard(e.target.id)
+    .then((card) => Popup.alert(<CardView />))
   }
 
   filterCards(e){
     var filtered = this.props.cards.cards.filter(card =>
       card.name.toLowerCase().includes(e.target.value.toLowerCase()))
-    
     this.setState({cards: filtered})
   }
 
   render(){
-    console.log('Card',this.props.card)
-    const cardViewer = (this.state.view ? <CardView/> : <div></div>)
+    const cardViewer = (this.state.view ? <CardView /> : <div></div>)
+
     return (!this.props.cards ?
         (<div></div>)
       :
        (
         <div id='wrapper'>
-        {cardViewer}
+          <Popup />
           <Sidebar/>
           <div id='page-content-wrapper'>
             <div className='container-fluid'>
@@ -59,11 +60,21 @@ class CardsPage extends React.Component {
                     <small> {this.props.cards.user.email}</small>
                     <small> 
                       <input onKeyUp={this.filterCards.bind(this)} 
-                             placeholder="filter/add cards"/> 
+                             placeholder="filter cards"/> 
                     </small>
-                  </h1>
+                    <small>
+                      <ButtonToolbar>
+                        <DropdownButton bsSize="large" title="Add A Card" id="dropdown-size-large">
+                          <MenuItem eventKey="1" onSelect={(e) => Popup.alert(<NewCard />)}>Quick</MenuItem>
+                          <MenuItem divider />
+                          <MenuItem eventKey="2">Detailed</MenuItem>
+                        </DropdownButton>
+                      </ButtonToolbar>
+                    </small>
+                  </h1> 
                   <div className="row">
                     <div className="col-lg-12">
+                      <Popup />
                       {
                         this.state.cards.map((card, i) =>
                         { 
@@ -75,12 +86,8 @@ class CardsPage extends React.Component {
                             }).format(new Date(card.spendDeadline))
                           return (
                           <div key={i}>
-                            <div onClick={this.click.bind(this)} className='cardName' id={card.id}>{card.name}</div> {date} 
-                            <div className="progress">
-                              <div id='progressBar'className="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="600" aria-valuemin="0" aria-valuemax="3000">
-                                {card.spendTotal + '/' + card.minSpend}
-                              </div>
-                            </div>
+                            <div onClick={(this.click.bind(this))} className='cardName' id={card.id}>{card.name}</div> {date}
+                            <ProgressBar bsStyle="success" active now={card.spendTotal/card.minSpend*100} />
                           </div>
                           )
                         })
@@ -183,7 +190,7 @@ function matchDispatchToProps(dispatch){
     deleteCard: Action.deleteCard,
     viewAllCards: Action.viewAllCards,
     viewCard: Action.viewCard,
-    updateCard: Action.updateCard  
+    updateCard: Action.updateCard
   }, dispatch)
 }
 
