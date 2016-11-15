@@ -11,7 +11,8 @@ class QuickNewCard extends React.Component {
 
     this.state = {
       value: '',
-      suggestions: []
+      suggestions: [],
+      newCard: {}
     }
   }
 
@@ -27,7 +28,7 @@ class QuickNewCard extends React.Component {
   createCard(e){
     e.preventDefault()
     const cardName = this.state.value
-    let finalCard = this.props.defaults.filter(card => card.name === cardName)[0]
+    let finalCard = this.state.newCard || {}
     finalCard.expDate = document.getElementById("expDate").value
     finalCard.spendTotal = Number(document.getElementById("spendTotal").value)
     finalCard.minSpend = Number(document.getElementById("minSpend").value)
@@ -55,6 +56,7 @@ class QuickNewCard extends React.Component {
   }
 
   getSuggestionValue(suggestion) { 
+    this.setState({newCard: suggestion})
     return `${suggestion.name}` 
   }
 
