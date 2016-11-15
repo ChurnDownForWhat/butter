@@ -12,9 +12,6 @@ class CardView extends React.Component {
 
   componentDidMount() {
     this.props.getAmazonDefault()
-    // .then(function(items){
-    //   console.log('ITEMS ARE', items)
-    // })
   }
 
 

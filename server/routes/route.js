@@ -31,6 +31,8 @@ router.route('/api/cards/:id').delete(Card.removeCard)
 router.route('/api/defaults').get(DefaultCard.getAllDefaults)
 // amazon cards 
 router.route('/api/amazonSearch/').get(Amazon.getDefault)
+// router.route
+router.route('/api/amazonSearch/').post(Amazon.getAll)
 
 router.route('/auth/google').get(passport.authenticate('google',
   {
