@@ -101,7 +101,7 @@ class RewardsPage extends React.Component {
                             innerRadius={( Math.min( window.innerWidth, window.innerHeight ) * .7 ) / 2 *.35}
                             outerRadius={( Math.min( window.innerWidth, window.innerHeight ) * .7 ) / 2}
                             cornerRadius={5}
-                            padAngle={.05}/>
+                            padAngle={.02}/>
                      </svg>
                    </div>
                  </div>
