@@ -1,5 +1,5 @@
 import React from 'react'
-import { ProgressBar } from 'react-bootstrap'
+import { ProgressBar, Modal } from 'react-bootstrap'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Action from '../actions/actions'
@@ -29,13 +29,8 @@ class CardView extends React.Component {
     console.log(this.props)
   }
   render() {
-
-    return (
-      this.state.edit 
-      ?
-      (<CardEdit addCard={this.collectForm.bind(this)} card={this.props.card} />)
-      :
-      (
+    let cardCompView = (<div></div>)
+    if(this.props.card) cardCompView = (      
       <div className="container card-view">
         <div className="col-md-12">
           <h3>{this.props.card.name}</h3>
@@ -67,12 +62,17 @@ class CardView extends React.Component {
         <div className ="col-md-4">
           Expiration:{this.props.card.expiration}
         </div>
-        <div onClick={(e)=>{this.setState({edit: !this.state.edit})}} >
-          EDIT THIS SHIT!!
-        </div>
+        <div onClick={this.props.close}>
+         close
+         </div>
       </div>
-      )
     )
+    if(this.state.edit) cardCompView = (<CardEdit addCard={this.collectForm.bind(this)} card={this.props.card} />)
+    return (
+      <Modal show={this.props.show} onHide={this.props.close}>
+        {cardCompView}
+      </Modal>
+    )   
   }
 }
 function mapStateToProps(store){

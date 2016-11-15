@@ -16,7 +16,8 @@ class CardsPage extends React.Component {
     this.state = {
       cards: [],
       showQuick: false,
-      showDetailed: false
+      showDetailed: false,
+      showModal: false
     }
   }  
 
@@ -32,9 +33,13 @@ class CardsPage extends React.Component {
   
   click(e){
     return this.props.viewCard(e.target.id)
-    .then((card) => Popup.alert(<CardView />))
+    .then((card) => this.setState({showModal: true}))
   }
-
+  close(){
+    this.setState({
+      showModal: false
+    })
+  }
   filterCards(e){
     var filtered = this.props.cards.filter(card =>
       card.name.toLowerCase().includes(e.target.value.toLowerCase()))
@@ -44,12 +49,12 @@ class CardsPage extends React.Component {
   render(){
     let closeQuick = () => this.setState({ showQuick: false })
     let closeDetailed = () => this.setState({ showDetailed: false })
-
     return (!this.props.cards ?
         (<div></div>)
       :
        (
         <div id='wrapper'>
+          <CardView show={this.state.showModal} close={this.close.bind(this)}/>
           <Sidebar/>
           <div id='page-content-wrapper'>
             <div className='container-fluid'>
