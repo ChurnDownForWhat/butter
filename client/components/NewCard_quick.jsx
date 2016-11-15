@@ -89,6 +89,7 @@ class QuickNewCard extends React.Component {
               inputProps={inputProps} />
             <input type="date" id="expDate" className="col-xs-2" placeholder="exp date"/>
             <input type="number" id="spendTotal" placeholder="spendTotal" className="col-xs-1" />
+
             <input type="number" id="minSpend" placeholder="minSpend" className="col-xs-1" /> 
             <ButtonGroup className="buttonGroup">
               <Button onClick={this.createCard.bind(this)} > Create Card </Button>
