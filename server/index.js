@@ -10,7 +10,24 @@ const config = require('../webpack.config.js')
 const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 const bodyParser = require('body-parser')
+const util = require('util')
+OperationHelper = require('apac').OperationHelper;
 
+var opHelper = new OperationHelper({
+    awsId:     process.env.AWSID,
+    awsSecret: process.env.AWSECRET,
+    assocId:   process.env.AWASSOCIATEID
+})
+
+opHelper.execute('ItemSearch', {
+    'SearchIndex': 'All',
+    'Keywords': 'Amazon gift card',
+    'ResponseGroup': 'ItemAttributes,Images'
+}, function(error, results) {
+    if (error) { console.log('Error: ' + error + "\n"); }
+    console.log("Results:\n" + util.inspect(results) + "\n");
+    console.log('RESULTS ARE', util.inspect(results.ItemSearchResponse.Items.Item))
+});
 
 // Static assets (html, etc.)
 //

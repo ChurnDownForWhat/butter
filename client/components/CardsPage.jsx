@@ -23,6 +23,11 @@ class CardsPage extends React.Component {
         cards: this.props.cards.cards
       })
     )
+
+    this.props.getAmazonDefault()
+    .then(res => {
+      console.log(res)
+    })
   }
   
   click(e){
@@ -39,7 +44,7 @@ class CardsPage extends React.Component {
 
   render(){
     console.log('Card',this.props.card)
-    const cardViewer = (this.state.view ? <CardView /> : <div></div>)
+    const cardViewer = (this.state.view ? <CardView/> : <div></div>)
     return (!this.props.cards ?
         (<div></div>)
       :
@@ -184,7 +189,7 @@ function matchDispatchToProps(dispatch){
     deleteCard: Action.deleteCard,
     viewAllCards: Action.viewAllCards,
     viewCard: Action.viewCard,
-    updateCard: Action.updateCard
+    updateCard: Action.updateCard  
   }, dispatch)
 }
 

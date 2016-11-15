@@ -74,13 +74,12 @@ export function viewAllRewards() {
       //   }
       // }
       // return noRepeats
-      const rewardAmt = rewards.reduce((acc,card) =>(
-          acc[card.program] ? 
-          acc[card.program][rewardsAmt] += card.rewardsAmt : 
+      let rewardAmount = rewards.reduce((acc,card) =>
+          (acc[card.program] ? 
+          acc[card.program]['rewardsAmt'] += card.rewardsAmt : 
           acc[card.program] = {rewardsAmt:card.rewardsAmt,program:card.program,category:card.category}
         ,acc),{})
-      console.log("blah",rewardAmt)
-      return Object.keys(rewardAmt).map((it) => rewardAmt[it])
+      return Object.keys(rewardAmount).map((it) => rewardAmount[it])
     })
     .then(rewards => 
       dispatch({
@@ -88,7 +87,6 @@ export function viewAllRewards() {
         payload: rewards
       })
     )
-
 }
 
 export function viewCard(id) {
@@ -115,5 +113,16 @@ export function updateCard(id, data){
         payload: cards
       })
     )
+}
+
+export function getAmazonDefault() {
+  return dispatch => 
+    $.get('api/amazonSearch')
+    .then(items => 
+      dispatch({
+        type: 'GET_AMAZON_DEFAULTS',
+        payload: items
+      })
+    ) 
 }
 

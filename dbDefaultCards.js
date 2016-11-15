@@ -49,6 +49,7 @@ module.exports = [
   },
   {
   'name': 'Citi Prestige Credit Card',
+  'cardType': 'Citi'
   'benefit': 'No foreign transaction fees',
   'annFeeAmt': 450,
   'waivedFees': false,
