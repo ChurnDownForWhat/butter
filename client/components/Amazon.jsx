@@ -19,7 +19,7 @@ class CardView extends React.Component {
 
 
   render() {
-    var itemArr = this.props.amazonItems.name.Item;
+    var itemArr = this.props.amazonItems.name.Item
     console.log('itemArr is' , itemArr)
     return (
       <div id='wrapper'>

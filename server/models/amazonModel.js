@@ -14,9 +14,9 @@ amazon.getDefault = () =>
     'Keywords': 'Amazon Gift Cards',
     'ResponseGroup': 'ItemAttributes,Images,Reviews'
   }).then(response => {
-  console.log("IMPLICT RETURN SUCK", response.result.ItemSearchResponse.Items)
+    console.log("IMPLICT RETURN SUCK", response.result.ItemSearchResponse.Items)
 
-  return response.result.ItemSearchResponse.Items})
+    return response.result.ItemSearchResponse.Items})
 
 
 amazon.getAll = (param) =>
