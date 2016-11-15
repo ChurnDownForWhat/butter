@@ -12,11 +12,14 @@ class CardView extends React.Component {
 
   componentDidMount() {
     this.props.getAmazonDefault()
-    // .then(function(items){
-    //   console.log('ITEMS ARE', items)
-    // })
   }
 
+  onSearch(e){
+    if(e.keyCode === 13){
+      this.props.getAmazonSearch(e.target.value)
+      e.target.value = ''
+    }
+  }
 
   render() {
     var itemArr = this.props.amazonItems.name.Item
@@ -26,12 +29,13 @@ class CardView extends React.Component {
           <Sidebar/>
         <div id='page-content-wrapper'>
           <div className='container-fluid'>
+          <input onKeyUp={this.onSearch.bind(this)}/>
             <div className='row'>
               <div className="col-md-12">
 
               {
-                itemArr.map((x) => 
-                  <div id="amazonArray" className="col-md-12">
+                itemArr.map((x,i) => 
+                  <div  key={i}id="amazonArray" className="col-md-12">
                     <div className='row '>
                     <a href= {x.DetailPageURL}>
                       <img className="amazonImage" src={x.MediumImage.URL}/>
@@ -59,7 +63,8 @@ function mapStateToProps(store){
 
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({
-    getAmazonDefault: Action.getAmazonDefault
+    getAmazonDefault: Action.getAmazonDefault,
+    getAmazonSearch: Action.getAmazonSearch
   }, dispatch)
 }
 

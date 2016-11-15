@@ -124,3 +124,14 @@ export function getAmazonDefault() {
     ) 
 }
 
+export function getAmazonSearch(searchTerm) {
+  return dispatch => 
+    $.post('/api/amazonSearch/',searchTerm)
+    .then(items => 
+      dispatch({
+        type: 'GET_AMAZON_SEARCH',
+        payload: items
+      })
+    ) 
+}
+

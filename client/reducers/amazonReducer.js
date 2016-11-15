@@ -7,6 +7,11 @@ const amazonReducer = function (state = {}, action) {
       ...state,
       name: action.payload
     }
+  case 'GET_AMAZON_SEARCH':
+    return {
+      ...state,
+      name: action.payload
+    }
   default:
     return state
   }
