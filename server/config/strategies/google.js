@@ -17,7 +17,6 @@ module.exports = function(){
     User.fetch(email)
     .then((user) => {
       if(!user){
-        console.log('user', user)
         const newUser = {
           id: uuid.v4(),
           email: email,
