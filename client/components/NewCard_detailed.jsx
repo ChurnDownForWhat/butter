@@ -41,12 +41,14 @@ class DetailedNewCard extends React.Component {
     finalCard.applicationDate = document.getElementById("applicationDate").value
     finalCard.benefit = document.getElementById("benefit").value
     finalCard.expCancelDate = document.getElementById("expCancelDate").value
-    // finalCard.expDate = document.getElementById("expDate").value
+    // finalCard.expiration = document.getElementById("expDate").value
     finalCard.spendTotal = Number(document.getElementById("spendTotal").value)
     finalCard.minSpend = Number(document.getElementById("minSpend").value)
     finalCard.id = null
 
-    // console.log(finalCard)
+    for (var k in finalCard){
+      if (!finalCard[k]) finalCard[k] = undefined 
+    }
 
     this.props.addCard(finalCard)
   }
