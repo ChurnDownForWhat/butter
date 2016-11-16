@@ -4,7 +4,7 @@ const User = require('../../models/user')
 const uuid = require('uuid')
 
 const GoogleStrategy = Strategy.OAuth2Strategy
-module.exports = function(){	
+module.exports = function(){
   passport.use(new GoogleStrategy({
     clientID: process.env.CONKEY,
     clientSecret: process.env.CONSECRET,
@@ -17,6 +17,7 @@ module.exports = function(){
     User.fetch(email)
     .then((user) => {
       if(!user){
+        console.log('user', user)
         const newUser = {
           id: uuid.v4(),
           email: email,
@@ -37,7 +38,7 @@ module.exports = function(){
     })
     .catch((err) => {
       throw new Error(err)
-    })   
+    })
   }
 ))
 }

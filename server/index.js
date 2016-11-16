@@ -2,7 +2,6 @@
 require('dotenv').config({silent: true})
 
 const express = require('express')
-const stormpath = require('express-stormpath')
 const Path = require('path')
 const session = require('express-session')
 const routes = require('./routes/route')
@@ -13,23 +12,6 @@ const webpackHotMiddleware = require('webpack-hot-middleware')
 const bodyParser = require('body-parser')
 const util = require('util')
 const OperationHelper = require('apac').OperationHelper
-
-var opHelper = new OperationHelper({
-  awsId:     process.env.AWSID,
-  awsSecret: process.env.AWSECRET,
-  assocId:   process.env.AWASSOCIATEID
-})
-
-opHelper.execute('ItemSearch', {
-  'SearchIndex': 'All',
-  'Keywords': 'Amazon gift cards',
-  'ResponseGroup': 'ItemAttributes,Images'
-}, function(error, results) {
-  if (error) { console.log('Error: ' + error + '\n') }
-  // console.log('Results HEYYY:\n' + util.inspect(results) + '\n')
-  // console.log('RESULTS ARE!~!~!~!', util.inspect(results.ItemSearchResponse.Items.Item))
-  // util.inspect(results.ItemSearchResponse.Items.Item[0].ItemAttributes.ListPrice.FormattedPrice
-})
 
 // Static assets (html, etc.)
 //
@@ -51,25 +33,6 @@ if (process.env.NODE_ENV !== 'test') {
   // create and run a real server.
   //
   const app = express()
-  app.use(stormpath.init(app, {
-    web: {
-      login: {
-        enabled: true
-      },
-      logout: {
-        enabled: true
-      },
-      me: {
-        enabled: false
-      },
-      oauth2: {
-        enabled: false
-      },
-      register: {
-        enabled: false
-      }
-    }
-  }))
 
   const compiler = webpack(config)
   app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }))
@@ -99,7 +62,3 @@ else {
   // We're in test mode; make this file importable instead.
   module.exports = routes
 }
-
-app.on('stormpath.ready', function () {
-  console.log('Stormpath Ready')
-})
