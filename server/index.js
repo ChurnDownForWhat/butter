@@ -2,6 +2,7 @@
 require('dotenv').config({silent: true})
 
 const express = require('express')
+const stormpath = require('express-stormpath')
 const Path = require('path')
 const session = require('express-session')
 const routes = require('./routes/route')
@@ -50,6 +51,25 @@ if (process.env.NODE_ENV !== 'test') {
   // create and run a real server.
   //
   const app = express()
+  app.use(stormpath.init(app, {
+    web: {
+      login: {
+        enabled: true
+      },
+      logout: {
+        enabled: true
+      },
+      me: {
+        enabled: false
+      },
+      oauth2: {
+        enabled: false
+      },
+      register: {
+        enabled: false
+      }
+    }
+  }))
 
   const compiler = webpack(config)
   app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }))
@@ -79,3 +99,7 @@ else {
   // We're in test mode; make this file importable instead.
   module.exports = routes
 }
+
+app.on('stormpath.ready', function () {
+  console.log('Stormpath Ready')
+})
