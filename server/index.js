@@ -13,23 +13,6 @@ const bodyParser = require('body-parser')
 const util = require('util')
 const OperationHelper = require('apac').OperationHelper
 
-var opHelper = new OperationHelper({
-  awsId:     process.env.AWSID,
-  awsSecret: process.env.AWSECRET,
-  assocId:   process.env.AWASSOCIATEID
-})
-
-opHelper.execute('ItemSearch', {
-  'SearchIndex': 'All',
-  'Keywords': 'Amazon gift cards',
-  'ResponseGroup': 'ItemAttributes,Images'
-}, function(error, results) {
-  if (error) { console.log('Error: ' + error + '\n') }
-  // console.log('Results HEYYY:\n' + util.inspect(results) + '\n')
-  // console.log('RESULTS ARE!~!~!~!', util.inspect(results.ItemSearchResponse.Items.Item))
-  // util.inspect(results.ItemSearchResponse.Items.Item[0].ItemAttributes.ListPrice.FormattedPrice
-})
-
 // Static assets (html, etc.)
 //
 const assetFolder = Path.resolve(__dirname, '../public')
