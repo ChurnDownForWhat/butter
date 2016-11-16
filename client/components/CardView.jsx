@@ -28,6 +28,10 @@ class CardView extends React.Component {
   edit(){
     this.setState({edit: true})
   }
+  closeEdit(){
+    this.setState({edit: false})
+    this.props.close()
+  }
   componentDidMount() {
     console.log(this.props)
   }
@@ -68,14 +72,14 @@ class CardView extends React.Component {
         <div onClick={this.edit.bind(this)}>
           edit
         </div>
-        <div onClick={this.props.close}>
+        <div onClick={this.closeEdit.bind(this)}>
          close
          </div>
       </div>
     )
     if(this.state.edit) cardCompView = (<CardEdit addCard={this.collectForm.bind(this)} card={this.props.card} />)
     return (
-      <Modal show={this.props.show} onHide={this.props.close}>
+      <Modal show={this.props.show} onHide={this.closeEdit.bind(this)}>
         {cardCompView}
       </Modal>
     )   
