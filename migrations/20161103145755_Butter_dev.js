@@ -59,7 +59,8 @@ exports.up = function(knex, Promise) {
 
 exports.down = function(knex, Promise) {
   return Promise.all([
+    knex.schema.dropTableIfExists('Cards'),
     knex.schema.dropTableIfExists('Users'),
-    knex.schema.dropTableIfExists('Cards')
+    knex.schema.dropTableIfExists('DefaultCards')
   ])
 }
