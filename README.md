@@ -41,32 +41,6 @@ We initially deployed our database on a website called ElephantSQL.  The free ti
 
 ### React & Redux
 
-### Passport
-Butter uses PassportJs for Google authentication and is located in directory location '/server/config'
-
-Application id and secrets for Google are stored in environment variables CONKEY (for id) and CONSECRET (for secret).
-
-Remember to store .env file in the root of the application and utilize dotenv node module.
-
-- User info
-  A logged in users info has reference in the request body server-side within the request.user attribute.
-
--Emails
-  A user must allow access to their google email address for the app to log them in.
-
-### Passport
-Butter uses PassportJs for Google authentication and is located in directory location '/server/config'
-
-Application id and secrets for Google are stored in environment variables CONKEY (for id) and CONSECRET (for secret).
-
-Remember to store .env file in the root of the application and utilize dotenv node module.
-
-- User info
-  A logged in users info has reference in the request body server-side within the request.user attribute.
-
--Emails
-  A user must allow access to their google email address for the app to log them in.
-
 ## Built With
 - ReactJS with Redux
 - NodeJS with Express
@@ -80,6 +54,17 @@ Remember to store .env file in the root of the application and utilize dotenv no
 ### D3
 
 ### PassPort
+Butter uses PassportJs for Google authentication and is located in directory location '/server/config'
+
+Application id and secrets for Google are stored in environment variables CONKEY (for id) and CONSECRET (for secret).
+
+Remember to store .env file in the root of the application and utilize dotenv node module.
+
+- User info
+  A logged in users info has reference in the request body server-side within the request.user attribute.
+
+-Emails
+  A user must allow access to their google email address for the app to log them in.
 
 ###  APIs Used
 We are using the Amazon Product Advertising API for our amazon page.  This allows a user to search for an Amazon product on our website and then click on that item to take them to the Amazon page where they can purchase it.  When a user clicks our application's ID is associated with that click, which means we'd get the referral fees.  As with any API key, don't upload yours online by writing it into your server file and then pushing that up.  Store it and any other user specific information as an environment variable in a .env file.
