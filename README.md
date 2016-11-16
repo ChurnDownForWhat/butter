@@ -47,14 +47,13 @@ We initially deployed our database on a website called ElephantSQL.  The free ti
 - D3
 - Passport
 - PostgreSQL
->>>>>>> Modifies layout for card form and adds passport info to the readme
 
 ### Express & Node
 
 ### D3
 
-### PassPort
-Butter uses PassportJs for Google authentication and is located in directory location '/server/config'
+### Passport
+Butter uses PassportJs for Google authentication, our Passport information is located in directory location '/server/config'
 
 Application id and secrets for Google are stored in environment variables CONKEY (for id) and CONSECRET (for secret).
 
@@ -63,7 +62,7 @@ Remember to store .env file in the root of the application and utilize dotenv no
 - User info
   A logged in users info has reference in the request body server-side within the request.user attribute.
 
--Emails
+- Emails
   A user must allow access to their google email address for the app to log them in.
 
 ###  APIs Used
