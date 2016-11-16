@@ -3,10 +3,10 @@ module.exports = {
   development: {
     client: 'pg',
     connection: {
-      host: '159.203.127.229',
-      user: 'abutterapp',
-      password: 'churn',
-      database: 'abutterapp'
+      host: process.env.DOIP,
+      user: process.env.DBUSER,
+      password: process.env.DBPASS,
+      database: process.env.DBNAME
     },
     migrations: {
       tableName: 'knex_migrations'

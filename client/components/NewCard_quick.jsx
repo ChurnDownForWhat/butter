@@ -29,7 +29,7 @@ class QuickNewCard extends React.Component {
     e.preventDefault()
     const cardName = this.state.value
     let finalCard = this.state.newCard || {}
-    finalCard.expDate = document.getElementById("expDate").value
+    finalCard.expiration = document.getElementById("expDate").value
     finalCard.spendTotal = Number(document.getElementById("spendTotal").value)
     finalCard.minSpend = Number(document.getElementById("minSpend").value)
     finalCard.id = null
