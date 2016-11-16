@@ -54,6 +54,19 @@ Remember to store .env file in the root of the application and utilize dotenv no
 -Emails
   A user must allow access to their google email address for the app to log them in.
 
+### Passport
+Butter uses PassportJs for Google authentication and is located in directory location '/server/config'
+
+Application id and secrets for Google are stored in environment variables CONKEY (for id) and CONSECRET (for secret).
+
+Remember to store .env file in the root of the application and utilize dotenv node module.
+
+- User info
+  A logged in users info has reference in the request body server-side within the request.user attribute.
+
+-Emails
+  A user must allow access to their google email address for the app to log them in.
+
 ## Built With
 - ReactJS with Redux
 - NodeJS with Express
