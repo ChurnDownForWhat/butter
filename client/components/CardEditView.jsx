@@ -3,7 +3,7 @@ import React from 'react'
 const cardEditView = ({ defaults, props, card, addCard }) => {
 
   return (
-    <div className="container col-md-12">
+    <div className="container">
     <form onSubmit={addCard} id="credit-card-form" className="col-sm-12">
       <div className="row">
         <ul className="col-sm-12">
@@ -25,7 +25,8 @@ const cardEditView = ({ defaults, props, card, addCard }) => {
               <input type="text" id="last4digits" className="creditInputForm col-md-4" defaultValue={card.last4digits || ""} placeholder="Last Four Digits"></input>
               <span className="col-md-3"> Last Four Digits </span>
             </div>
-          <br/></ul>
+          <br/>
+        </ul>
       </div>
       <div className="row">
       <div className="col-md-12">
