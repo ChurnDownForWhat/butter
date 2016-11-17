@@ -35,12 +35,12 @@ class Pie extends React.Component {
   }
 
   renderSlice (value, i) {
-    let { innerRadius, outerRadius, cornerRadius, padAngle, startAngle, endAngle } = this.props
+    let { innerRadius, outerRadius, cornerRadius, padAngle, startAngle = 0, endAngle } = this.props
     return (
       <Slice key={i}
             innerRadius = { innerRadius }
-            startAngle = { startAngle }
-            endAngle = { endAngle }
+            startAngle = { startAngle * value.data[1]}
+            endAngle = { endAngle * value.data[1] + Math.PI *.7}
             outerRadius = { outerRadius }
             cornerRadius = { cornerRadius }
             padAngle = { padAngle }
