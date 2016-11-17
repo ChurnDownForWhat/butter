@@ -1,5 +1,5 @@
 import React from 'react'
-import { ProgressBar, Modal, Button, Col, Row, Grid } from 'react-bootstrap'
+import { ProgressBar, Modal, Button, Col, Row, Grid, FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Action from '../actions/actions'
@@ -35,6 +35,17 @@ class CardView extends React.Component {
   componentDidMount() {
     console.log(this.props)
   }
+
+  FieldGroup({ id, label, help, ...props }) {
+    return (
+      <FormGroup controlId={id}>
+        <ControlLabel>{label}</ControlLabel>
+        <FormControl {...props} />
+        {help && <HelpBlock>{help}</HelpBlock>}
+      </FormGroup>
+    )
+  }
+
   render() {
     let cardCompView = (<div></div>)
     if(this.props.card) cardCompView = (      
@@ -93,7 +104,7 @@ class CardView extends React.Component {
          </Row>
       </Grid>
     )
-    if(this.state.edit) cardCompView = (<CardEdit addCard={this.collectForm.bind(this)} card={this.props.card} />)
+    if(this.state.edit) cardCompView = (<CardEdit addCard={this.collectForm.bind(this)} FieldGroup={this.FieldGroup} card={this.props.card} />)
     return (
       <Modal show={this.props.show} onHide={this.closeEdit.bind(this)}>
         {cardCompView}
