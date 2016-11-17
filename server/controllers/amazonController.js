@@ -15,7 +15,7 @@ module.exports = {
         console.log("no results")
         res.status(200).send("No Results")
       }else{
-        console.log("results")
+        console.log("results are ", items)
         res.status(200).send(items)
         
       }
