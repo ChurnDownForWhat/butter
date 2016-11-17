@@ -25,8 +25,7 @@ module.exports = {
             "unix"
         ],
         "quotes": [
-            "warn",
-            "single"
+            "off"
         ],
         "semi": [
             "error",
