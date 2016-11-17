@@ -43,13 +43,6 @@ Our database utilizes PostgreSQL to manage information-rich tables and relations
 
 ### React & Redux
 
-## Built With
-- ReactJS with Redux
-- NodeJS with Express
-- D3
-- Passport
-- PostgreSQL
-
 ### Express & Node
 
 ### D3
