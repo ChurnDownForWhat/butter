@@ -22,24 +22,24 @@ export default class Slice extends React.Component {
   }
 
   render () {
-    let { value, label, fill, innerRadius, outerRadius, cornerRadius, props, padAngle } = this.props
+    let { value, label, fill, innerRadius, outerRadius, cornerRadius, props, padAngle, startAngle, endAngle } = this.props
 
     if ( this.state.isHovered ) {
       outerRadius *= 1.1
     }
     let arc = d3.arc()
+      .startAngle( startAngle )
       .innerRadius( innerRadius )
       .outerRadius( outerRadius )
       .cornerRadius( cornerRadius )
       .padAngle( padAngle )
-      .endAngle(Math.PI * 2)
-      console.log(...arc.centroid(value))
+      .endAngle( endAngle )
 
     return (
       <g onMouseOver = { this.onMouseOver }
         onMouseOut = { this.onMouseOut }
         { ...props }>
-      <path d = { arc(value) } fill = { fill } />
+      <path d = { arc(this.props) } fill = { fill } />
       <text transform = { this.translate( ...arc.centroid(value) )}
             dy = ".35em"
             className = "label">
