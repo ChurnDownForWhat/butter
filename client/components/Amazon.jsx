@@ -12,6 +12,10 @@ class CardView extends React.Component {
 
   componentDidMount() {
     this.props.getAmazonDefault()
+    .then(function(x){
+      console.log('X IS', x.payload.Item )
+                  // [0].ItemAttributes.ListPrice.FormattedPrice)
+    })
   }
 
   onSearch(e){
@@ -25,18 +29,28 @@ class CardView extends React.Component {
     const itemArr = this.props.amazonItems.name === "No Results" ? 
       <h1>No Results</h1> 
      :
-      this.props.amazonItems.name.Item.map((x,i) => 
-        <div  key={i}id="amazonArray" className="col-md-12">
-          <div className='row '>
-          <a href= {x.DetailPageURL}>
+      this.props.amazonItems.name.Item.map((x,i) => {
+        if(!x.MediumImage){
+          x.MediumImage = 'Cannot Find Image'
+        }if(!x.ItemAttributes.ListPrice){
+          x.ItemAttributes.ListPrice = 'Cannot Find Price'
+        }if(x.ItemAttributes.Title.length > 100){
+          x.ItemAttributes.Title = x.ItemAttributes.Title.slice(0, 100)
+        }
+        return <div  key={i}id="amazonArray" className="col-md-4">
+          <div className='row'>
+          <a href= {x.DetailPageURL} className="col-md-6" >
             <img className="amazonImage" src={x.MediumImage.URL}/>
           </a>
+          <div className="formattedPrice col-md-6">
+              {x.ItemAttributes.ListPrice.FormattedPrice}
           </div>
-          <div className='row amazonRow'>
+          </div>
+          <div className='row amazonRow col-md-8'>
             {x.ItemAttributes.Title}
           </div>
         </div>
-      )
+      })
     return (
       <div id='wrapper'>
           <Sidebar/>

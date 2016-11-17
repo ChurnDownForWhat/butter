@@ -2,7 +2,12 @@ module.exports = {
 
   development: {
     client: 'pg',
-    connection: 'postgres://auphecqh:L62hxHecYm1VgGWuDs3QgBloecgSVdL7@elmer.db.elephantsql.com:5432/auphecqh',
+    connection: {
+      host: process.env.DOIP,
+      user: process.env.DBUSER,
+      password: process.env.DBPASS,
+      database: process.env.DBNAME
+    },
     migrations: {
       tableName: 'knex_migrations'
     }

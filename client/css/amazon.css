@@ -1,13 +1,17 @@
 #amazonArray{
-  font-size: 10px;
-  margin-bottom: 15px;
-  margin-top: 15px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  height: 200px;
 }
 
 
 .amazonImage{
-  height:150;
+  height: 140;
   width: auto;
+}
+
+.formattedPrice{
+  font: bold;
+  text-align: center;
+  display: inline-block;
 }
