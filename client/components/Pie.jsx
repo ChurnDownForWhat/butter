@@ -12,23 +12,17 @@ class Pie extends React.Component {
     super(props)
     this.colorScale = d3.schemeCategory10
     this.renderSlice = this.renderSlice.bind(this)
+
   }
 
   componentDidMount(){
     this.props.getPieData()
+    // this.setState({total: this.getTotalRewards()})
   }
 
 
   translate (x, y) {
     return `translate(${x}, ${y})`
-  }
-
-  getTotalRewards() {
-    return this.props.data.reduce(function(curr, acc) {
-      if(curr){
-        acc += curr
-      }
-    }, 0)
   }
 
   render () {
