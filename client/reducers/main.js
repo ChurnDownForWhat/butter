@@ -9,7 +9,6 @@ const logMiddleware = ({ dispatch, getState }) => {
   console.log('Enter logMiddleware')
   return function(next) {
     return function(action) {
-      console.log('Action received:', action)
       return next(action)
     }
   }
@@ -20,7 +19,6 @@ const thunkMiddleware = ({ dispatch, getState }) => {
   return function(next) {
     console.log('Function "next" provided:', next)
     return function (action) {
-      console.log('Handling action:', action)
       return typeof action === 'function' ?
         action(dispatch, getState) :
         next(action)
