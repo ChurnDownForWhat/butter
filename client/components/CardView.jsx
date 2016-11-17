@@ -1,5 +1,5 @@
 import React from 'react'
-import { ProgressBar, Modal, Button, Col, Row } from 'react-bootstrap'
+import { ProgressBar, Modal, Button, Col, Row, Grid } from 'react-bootstrap'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Action from '../actions/actions'
@@ -38,14 +38,15 @@ class CardView extends React.Component {
   render() {
     let cardCompView = (<div></div>)
     if(this.props.card) cardCompView = (      
-      <div className="container card-view">
-      <Row>
-        <Col md={12}>
-          <h3>{this.props.card.name}</h3>
-        </Col>
-        <Col md={1}>
-          {this.props.card.balance}/{this.props.card.minSpend}
-        </Col>
+      <Grid>
+        <Row>
+        <Row>
+          <Col md={12}>
+            <h3>{this.props.card.name}</h3>
+          </Col>
+          <Col md={1}>
+            {this.props.card.balance}/{this.props.card.minSpend}
+          </Col>
         </Row>
         <Row>
           <Col md={6}>
@@ -56,38 +57,41 @@ class CardView extends React.Component {
           </Col>
         </Row> 
         <Row>
-        <Col md={8}>
-          {this.props.card.cardType}/{this.props.card.category}
-        </Col>
-        <Col md={4}>
-          {this.props.card.program}
-        </Col>
+          <Col md={8}>
+            {this.props.card.cardType}/{this.props.card.category}
+          </Col>
+          <Col md={4}>
+            {this.props.card.program}
+          </Col>
         </Row>
         <Row>
-        <Col md={4}>
-          Points:{this.props.card.rewardsAmt}
-        </Col>
-        <Col md={4}>
-          Application Date:{this.props.card.applicationDate}
-        </Col>
-        <Col md={4}>
-          Cancel Date:{this.props.card.expCancelDate}
-        </Col>
+          <Col md={4}>
+            Points:{this.props.card.rewardsAmt}
+          </Col>
+          <Col md={4}>
+            Application Date:{this.props.card.applicationDate}
+          </Col>
+          <Col md={4}>
+            Cancel Date:{this.props.card.expCancelDate}
+          </Col>
         </Row>
         <Row>
+          <Col md={12}>
+            Expiration:{this.props.card.expiration}
+          </Col>
+        </Row>
         <Col md={12}>
-          Expiration:{this.props.card.expiration}
-        </Col>
-        </Row>
-        <Modal.footer>
+        <Modal.Footer>
           <Button onClick={this.edit.bind(this)}>
             edit
           </Button>
           <Button onClick={this.closeEdit.bind(this)}>
            close
            </Button>
-         </Modal.footer>
-      </div>
+         </Modal.Footer>
+         </Col>
+         </Row>
+      </Grid>
     )
     if(this.state.edit) cardCompView = (<CardEdit addCard={this.collectForm.bind(this)} card={this.props.card} />)
     return (
