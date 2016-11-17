@@ -27,6 +27,7 @@ class Pie extends React.Component {
   render () {
     let { x, y, data} = this.props
     let pie = d3.pie()
+    // pie(data
     return (
       <g transform = { this.translate(x, y) }>
         { pie(data).map(this.renderSlice) }
@@ -35,17 +36,17 @@ class Pie extends React.Component {
   }
 
   renderSlice (value, i) {
-    let { innerRadius, outerRadius, cornerRadius, padAngle, startAngle = 0, endAngle } = this.props
+    let { innerRadius, outerRadius, cornerRadius, padAngle, startAngle, endAngle } = this.props
     return (
       <Slice key={i}
             innerRadius = { innerRadius }
-            startAngle = { startAngle * value.data[1]}
-            endAngle = { endAngle * value.data[1] + Math.PI *.7}
+            startAngle = {value.data[1]/360}
+            endAngle = { (value.data[1] + value.data[1]) / 360}
             outerRadius = { outerRadius }
             cornerRadius = { cornerRadius }
             padAngle = { padAngle }
             value = { value.data[1] }
-            label = { value.data[0] }
+            label = { value.data[0] + '\n' + value.data[1] }
             fill = { this.colorScale[i] } />
     )
   }
