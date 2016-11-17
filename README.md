@@ -3,7 +3,7 @@
 A butter solution to churning.  We've created a single portal to track and help meet your churning goals.  See a card's information you need to at a glance, and use the rewards page to view pertinent information about your points in different award programs.  Need to meet minimum spend for a card with only a few days left?  Buy what you need, be it Amazon credit cards(which never expire!) or your favorite book from our Amazon page so you can get that sign-up bonus and go on that trip you've been dreaming about or pocket that cash.  
 
 ## Getting Started
-First, you will need to create a file named .env to easily record project specific environment variables. You will need one's for google authentication (see google.js), Amazon API (see amazonModel.js), and DB management (see knexfile.js). Prior to starting the server, a database must be linked through the knexfile too.
+First, you will need to create a file named .env to conveniently record project specific environment variables. You will need one's for google authentication (see google.js), Amazon API (see amazonModel.js), and DB management (see knexfile.js). Prior to starting the server, a database must be linked through the knexfile too.
 
 ```
 $ yarn        # install dependencies
@@ -25,27 +25,15 @@ $ npm test server/index.js # runs tests in a single file
 ### Built With
 - React with Redux
 - Node with Express
-- D3
-- Passport
 - PostgreSQL
+- Passport
+- D3.js
 
-### WebPack
-
-##Everything Else WebPack
-
-##Hot Module Reloading
+###Hot Module Reloading
 Butter uses webpack's hot module reloading to update packages and refresh pages without having to restart the server or reload the page manually, making it quicker and easier to see your changes in real time. This feature is a part of our webpack setup, so all you need to do is start the server.  
 
 ### PostgreSQL
 Our database utilizes PostgreSQL to manage information-rich tables and relationships. PostgreSQL's documentation will instruct you in setting up your local database. Our application then uses Knex migrations to quickly update schemas and also switch between database instances. By default, our application directs to development mode.
-
-### Deployment
-
-### React & Redux
-
-### Express & Node
-
-### D3
 
 ### Passport
 Butter uses PassportJs for Google authentication, our Passport information is located in directory location '/server/config'
