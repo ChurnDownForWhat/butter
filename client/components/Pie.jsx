@@ -16,6 +16,7 @@ class Pie extends React.Component {
 
   componentDidMount(){
     this.props.getPieData()
+    // this.setState({total: this.getTotalRewards()})
   }
 
 
@@ -32,7 +33,7 @@ class Pie extends React.Component {
   }
 
   render () {
-    let { x, y, data} = this.props
+    let { x, y, data } = this.props
     let pie = d3.pie()
     return (
       <g transform = { this.translate(x, y) }>
