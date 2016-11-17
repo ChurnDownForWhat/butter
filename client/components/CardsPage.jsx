@@ -42,7 +42,6 @@ class CardsPage extends React.Component {
     })
   }
   deleteClick(e){
-    console.log('KEY IS', e.target.parentElement)
     this.props.deleteCard(e.target.id, e.target.key)
     e.target.parentElement.parentElement.remove()
   }
@@ -108,13 +107,13 @@ class CardsPage extends React.Component {
                             }).format(new Date(card.spendDeadline))
 
                           return (
-                          <div key={i}>
+                          <div key={i} ref="cardDiv">
                             <div className="row">
                             <div onClick={(this.click.bind(this))} className='cardName col-md-11' id={card.id}>
                               {card.name}          
                             </div> 
                               <button className="remove-comment col-md-1" 
-                                onClick={(this.deleteClick.bind(this))} id={card.id} > &times; 
+                                onClick={(this.deleteClick.bind(this))} id={card.id} ref="removeButton"> &times; 
                               </button>
                             </div>
                             {date}
