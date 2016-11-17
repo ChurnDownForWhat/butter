@@ -12,7 +12,6 @@ module.exports = {
       .then(card => res.status(200).send(card))
       .then(() => res.end())
       .catch((err) => {
-        console.log(err)
         return res.send('ERROR: COULD NOT SAVE USER')
       })
     } else{
