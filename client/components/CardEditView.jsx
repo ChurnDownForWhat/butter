@@ -2,7 +2,7 @@ import React from 'react'
 import { Modal, Button, Col, Row, Grid, ControlLabel, FormControl, Checkbox, FormGroup } from 'react-bootstrap'
 
 const cardEditView = ({ defaults, props, card, addCard, FieldGroup, cancel }) => {
-
+  let form = {}
   return (
     <Grid>
       <Row>
@@ -13,7 +13,7 @@ const cardEditView = ({ defaults, props, card, addCard, FieldGroup, cancel }) =>
       </Col>
       </Row>
       <Row>
-        <form onSubmit={addCard} id="credit-card-form">
+        <form onSubmit={(e) => addCard(e,form)} id="credit-card-form" ref={(el)=> form = el}>
         <Row>
           <Col md={5}>
             <FieldGroup 
@@ -37,7 +37,7 @@ const cardEditView = ({ defaults, props, card, addCard, FieldGroup, cancel }) =>
           </Col>
           <Col md={3}>
             <FieldGroup 
-              id='Cate'
+              id='Category'
               type='text'
               label='Last 4 Digits'
               placeholder='XXXX'

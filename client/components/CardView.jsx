@@ -13,11 +13,12 @@ class CardView extends React.Component {
       edit: false
     }
   }  
-  collectForm() {
-    const domForm = document.getElementById("credit-card-form").elements
-    const submitItem = Object.keys(domForm).slice(15)
-    .reduce((acc,e) =>{
-      if(e != 'submit' && domForm[e].value != "") acc[e] = domForm[e].value
+  collectForm(e,el) {
+    e.preventDefault()
+    const domForm = el.elements
+    const submitItem = Object.keys(domForm).slice(18)
+    .reduce((acc,id) =>{
+      if(id != 'submit' && domForm[id].value != "") acc[id] = domForm[id].value
       return acc
     },{})
 
@@ -36,7 +37,7 @@ class CardView extends React.Component {
     this.setState({edit: false})
   }
   componentDidMount() {
-    console.log(this.props)
+    console.log('~~~~~~~~~',this.props)
   }
 
   FieldGroup({ id, label, help, ...props }) {
