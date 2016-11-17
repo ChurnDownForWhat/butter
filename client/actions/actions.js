@@ -33,18 +33,12 @@ export function addCard(cardData){
     )
 } 
 
-export function deleteCard(id){
+export function deleteCard(id, i){
   return dispatch => 
-    $.ajax(`/api/cards/${id}`, {
-      type: 'DELETE'
+    $.ajax({
+      type: 'DELETE',
+      url: `/api/cards/${id}`
     })
-    .then($.get('/api/cards'))
-    .then(cards =>
-      dispatch({
-        type: 'VIEW_ALL_CARDS',
-        payload: cards
-      })
-    )
 }
 
 export function viewAllCards() {

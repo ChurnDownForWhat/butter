@@ -28,7 +28,7 @@ exports.up = function(knex, Promise) {
       table.date('annFeeDate').nullable()
       table.date('expCancelDate').nullable()
       table.integer('rewardsAmt').defaultTo(0)
-      table.integer('last4digits').defaultTo(0)
+      table.integer('last4digits').defaultTo(0)  
       table.integer('spendTotal').defaultTo(0)
       table.string('benefit').defaultTo('None Entered')
       table.integer('annFeeAmt').defaultTo(0)

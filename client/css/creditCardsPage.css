@@ -113,6 +113,7 @@ body {
 .buttonGroup {
   float: right;
 }
+
 .modal .container {
     width: 100%;
     padding: 0 30px;
@@ -122,4 +123,5 @@ body {
 }
 .modal-footer .btn-default {
     width: 80%;
+
 }

@@ -12,10 +12,6 @@ class CardView extends React.Component {
 
   componentDidMount() {
     this.props.getAmazonDefault()
-    .then(function(x){
-      console.log('X IS', x.payload.Item )
-                  // [0].ItemAttributes.ListPrice.FormattedPrice)
-    })
   }
 
   onSearch(e){

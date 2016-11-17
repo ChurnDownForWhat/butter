@@ -26,6 +26,11 @@ const cardReducer = function (state = {}, action) {
     return {
       ...state,
       data: action.payload
+    } 
+  case 'DELETE':
+    return {
+      ...state,
+      cards: action.payload
     }
   default:
     return state

@@ -41,6 +41,10 @@ class CardsPage extends React.Component {
       showModal: false
     })
   }
+  deleteClick(e){
+    this.props.deleteCard(e.target.id, e.target.key)
+    e.target.parentElement.parentElement.remove()
+  }
 
   switchAddViews(e){
     this.setState({ showQuick: !this.state.showQuick })
@@ -56,6 +60,7 @@ class CardsPage extends React.Component {
   render(){
     let closeQuick = () => this.setState({ showQuick: false })
     let closeDetailed = () => this.setState({ showDetailed: false })
+
     return (!this.props.cards ?
         (<div></div>)
       :
@@ -101,9 +106,18 @@ class CardsPage extends React.Component {
                               year:'numeric',
                               day:'numeric' 
                             }).format(new Date(card.spendDeadline))
+
                           return (
-                          <div key={i}>
-                            <div onClick={(this.click.bind(this))} className='cardName' id={card.id}>{card.name}</div> {date}
+                          <div key={i} ref="cardDiv">
+                            <div className="row">
+                            <div onClick={(this.click.bind(this))} className='cardName col-md-11' id={card.id}>
+                              {card.name}          
+                            </div> 
+                              <button className="remove-comment col-md-1" 
+                                onClick={(this.deleteClick.bind(this))} id={card.id} ref="removeButton"> &times; 
+                              </button>
+                            </div>
+                            {date}
                             <ProgressBar bsStyle="success" active now={card.spendTotal/card.minSpend*100} />
                           </div>
                           )
