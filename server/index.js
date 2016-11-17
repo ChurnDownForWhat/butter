@@ -11,6 +11,7 @@ const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 const bodyParser = require('body-parser')
 
+
 // Static assets (html, etc.)
 //
 const assetFolder = Path.resolve(__dirname, '../public')

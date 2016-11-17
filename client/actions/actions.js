@@ -126,8 +126,6 @@ export function getAmazonSearch(searchTerm) {
         type: 'GET_AMAZON_SEARCH',
         payload: items
       })
-    ).catch(function(){
-      console.log("errrrr")
-    }) 
+    )
 }
 

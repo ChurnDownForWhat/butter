@@ -1,5 +1,5 @@
 import React from 'react'
-import { ProgressBar, Modal } from 'react-bootstrap'
+import { ProgressBar, Modal, Button, Col, Row, Grid, FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Action from '../actions/actions'
@@ -32,52 +32,86 @@ class CardView extends React.Component {
     this.setState({edit: false})
     this.props.close()
   }
+  cancel(){
+    this.setState({edit: false})
+  }
   componentDidMount() {
     console.log(this.props)
   }
+
+  FieldGroup({ id, label, help, ...props }) {
+    return (
+      <FormGroup controlId={id}>
+        <ControlLabel>{label}</ControlLabel>
+        <FormControl {...props} />
+        {help && <HelpBlock>{help}</HelpBlock>}
+      </FormGroup>
+    )
+  }
+
   render() {
     let cardCompView = (<div></div>)
     if(this.props.card) cardCompView = (      
-      <div className="container card-view">
-        <div className="col-md-12">
-          <h3>{this.props.card.name}</h3>
-        </div>
-        <div className ="col-md-12">
-          {this.props.card.balance}/{this.props.card.minSpend}
-        </div>
-        <div className ="col-md-6">
-          Sign Up bonus:{this.props.card.signupBonus}
-        </div>
-        <div className ="col-md-6">
-          Deadline:{this.props.card.spendDeadline}
-        </div>
-        <div className ="col-md-8">
-          {this.props.card.cardType}/{this.props.card.category}
-        </div>
-        <div className ="col-md-4">
-          {this.props.card.program}
-        </div>
-        <div className ="col-md-4">
-          Points:{this.props.card.rewardsAmt}
-        </div>
-        <div className ="col-md-4">
-          Application Date:{this.props.card.applicationDate}
-        </div>
-        <div className ="col-md-4">
-          Cancel Date:{this.props.card.expCancelDate}
-        </div>
-        <div className ="col-md-4">
-          Expiration:{this.props.card.expiration}
-        </div>
-        <div onClick={this.edit.bind(this)}>
-          edit
-        </div>
-        <div onClick={this.closeEdit.bind(this)}>
-         close
-         </div>
-      </div>
+      <Grid>
+        <Row>
+        <Row>
+          <Col md={12}>
+            <h3>{this.props.card.name}</h3>
+          </Col>
+          <Col md={1}>
+            {this.props.card.balance}/{this.props.card.minSpend}
+          </Col>
+        </Row>
+        <Row>
+          <Col md={6}>
+            Sign Up bonus:{this.props.card.signupBonus}
+          </Col>
+          <Col md={6}>
+            Deadline:{this.props.card.spendDeadline}
+          </Col>
+        </Row> 
+        <Row>
+          <Col md={8}>
+            {this.props.card.cardType}/{this.props.card.category}
+          </Col>
+          <Col md={4}>
+            {this.props.card.program}
+          </Col>
+        </Row>
+        <Row>
+          <Col md={4}>
+            Points:{this.props.card.rewardsAmt}
+          </Col>
+          <Col md={4}>
+            Application Date:{this.props.card.applicationDate}
+          </Col>
+          <Col md={4}>
+            Cancel Date:{this.props.card.expCancelDate}
+          </Col>
+        </Row>
+        <Row>
+          <Col md={12}>
+            Expiration:{this.props.card.expiration}
+          </Col>
+        </Row>
+        <Col md={12}>
+        <Modal.Footer>
+          <Col md={6} className="left-button">
+          <Button onClick={this.edit.bind(this)}>
+            edit
+          </Button>
+          </Col>
+          <Col md={6} className="right-button">
+          <Button onClick={this.closeEdit.bind(this)}>
+           close
+           </Button>
+           </Col>
+         </Modal.Footer>
+         </Col>
+         </Row>
+      </Grid>
     )
-    if(this.state.edit) cardCompView = (<CardEdit addCard={this.collectForm.bind(this)} card={this.props.card} />)
+    if(this.state.edit) cardCompView = (<CardEdit addCard={this.collectForm.bind(this)} FieldGroup={this.FieldGroup} card={this.props.card} cancel={this.cancel.bind(this)} />)
     return (
       <Modal show={this.props.show} onHide={this.closeEdit.bind(this)}>
         {cardCompView}

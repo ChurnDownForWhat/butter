@@ -99,7 +99,8 @@ class CardsPage extends React.Component {
                       {
                         this.state.cards.map((card, i) =>
                         { 
-                          var date = new Intl.DateTimeFormat('en', 
+                          var date = 
+                          new Intl.DateTimeFormat('en', 
                             {
                               month: 'long',
                               year:'numeric',

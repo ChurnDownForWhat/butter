@@ -49,11 +49,11 @@ module.exports = [
   },
   {
   'name': 'Citi Prestige Credit Card',
-  'cardType': 'Citi'
+  'cardType': 'Citi',
   'benefit': 'No foreign transaction fees',
   'annFeeAmt': 450,
   'waivedFees': false,
-  'category': 'ThankYou Points',
+  'category': 'General Points',
   'program': 'Citi ThankYou Rewards',
   'signupBonus': 50000,
   'minSpend': 5000,

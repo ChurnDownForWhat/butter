@@ -29,23 +29,26 @@ class DetailedNewCard extends React.Component {
     e.preventDefault()
     const cardName = this.state.value
     let finalCard = this.state.newCard || {}
+    
     finalCard.name = this.state.value
-    finalCard.last4digits = document.getElementById("last4digits").value
-    finalCard.annFeeAmt = document.getElementById("annFeeAmt").value
+    finalCard.last4digits = Number(document.getElementById("last4digits").value)
+    finalCard.annFeeAmt = Number(document.getElementById("annFeeAmt").value)
     finalCard.annFeeDate = document.getElementById("annFeeDate").value
     finalCard.waivedFees = document.getElementById("waivedFees").value
     finalCard.signupBonus = document.getElementById("signupBonus").value
     finalCard.spendDeadline = document.getElementById("spendDeadline").value
-    finalCard.monthlyBillDate = document.getElementById("monthlyBillDate").value
+    finalCard.monthlyBilldate = Number(document.getElementById("monthlyBillDate").value)
     finalCard.applicationDate = document.getElementById("applicationDate").value
     finalCard.benefit = document.getElementById("benefit").value
     finalCard.expCancelDate = document.getElementById("expCancelDate").value
-    // finalCard.expDate = document.getElementById("expDate").value
+    // finalCard.expiration = document.getElementById("expDate").value
     finalCard.spendTotal = Number(document.getElementById("spendTotal").value)
     finalCard.minSpend = Number(document.getElementById("minSpend").value)
     finalCard.id = null
 
-    // console.log(finalCard)
+    for (var k in finalCard){
+      if (!finalCard[k]) finalCard[k] = undefined 
+    }
 
     this.props.addCard(finalCard)
   }
@@ -151,14 +154,14 @@ class DetailedNewCard extends React.Component {
                     </div> 
                     <br/>
                     <div className="bottomFormItem">
-                      <input type="text" id="monthlyBillDate" className="creditInputForm col-md-4" placeholder="Bill Due Date"></input>
+                      <input type="number" id="monthlyBillDate" className="creditInputForm col-md-4" placeholder="Bill Due Date"></input>
                       <span className="col-md-3"> Monthly Bill Due Date </span>
                     </div>
                     <br/>
                   </ul>
                   <ul className="col-sm-6">
                     <div className="bottomFormItem">
-                      <input id="applicationDate" className="creditInputForm col-md-4" placeholder="Application Date"/>
+                      <input type="date" id="applicationDate" className="creditInputForm col-md-4" placeholder="Application Date"/>
                       <span className="col-md-3"> Application Date </span>
                     </div>
                     <br/>
@@ -178,12 +181,12 @@ class DetailedNewCard extends React.Component {
                     </div>
                     <br/>
                      <div className="bottomFormItem">
-                      <input id="annFeeDate" className="creditInputForm col-md-4" placeholder="Annual Fee Date"/>
+                      <input type="date" id="annFeeDate" className="creditInputForm col-md-4" placeholder="Annual Fee Date"/>
                       <span className="col-md-3"> Annual Fee Date </span>
                     </div> 
                     <br/>
                     <div className="bottomFormItem">
-                      <input id="expCancelDate" className="creditInputForm col-md-4" placeholder="Planned Cancellation Date"/>
+                      <input type="date" id="expCancelDate" className="creditInputForm col-md-4" placeholder="Planned Cancellation Date"/>
                       <span className="col-md-3"> Planned Cancellation Date </span>
                     </div> 
                     <br/>
