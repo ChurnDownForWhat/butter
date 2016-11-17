@@ -1,5 +1,5 @@
 const cardReducer = function (state = {}, action) {
-  console.log('cardReducer was called with state', state, 'and action', action)
+  // console.log('cardReducer was called with state', state, 'and action', action)
 
   switch (action.type) {
   case 'VIEW_CARD':

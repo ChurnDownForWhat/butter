@@ -1,5 +1,5 @@
 const amazonReducer = function (state = {}, action) {
-  console.log('amazonReducer was called with state', state, 'and action', action)
+  // console.log('amazonReducer was called with state', state, 'and action', action)
 
   switch (action.type) {
   case 'GET_AMAZON_DEFAULTS':
