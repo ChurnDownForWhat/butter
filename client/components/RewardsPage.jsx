@@ -98,8 +98,6 @@ class RewardsPage extends React.Component {
                      <svg width = "200%" height = "200%">
                        <Pie x={window.innerWidth/4}
                             y={window.innerHeight/4}
-                            startAngle={ 0 }
-                            endAngle={ Math.PI }
                             innerRadius={( Math.min( window.innerWidth, window.innerHeight ) * .9 ) / 2 *.35}
                             outerRadius={( Math.min( window.innerWidth, window.innerHeight ) * .9 ) / 2}
                             cornerRadius={5}
