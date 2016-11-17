@@ -95,7 +95,7 @@ class RewardsPage extends React.Component {
 
                   <div className="col-md-6 col-md-offset-1">
                    <div className="piechart">
-                     <svg width = "200%" height = "200%">
+                     <svg width = "100%" height = "100%">
                        <Pie x={window.innerWidth/4}
                             y={window.innerHeight/4}
                             innerRadius={( Math.min( window.innerWidth, window.innerHeight ) * .9 ) / 2 *.35}

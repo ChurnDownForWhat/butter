@@ -22,7 +22,7 @@ export default class Slice extends React.Component {
   }
 
   render () {
-    let { value, label, fill, innerRadius, outerRadius, cornerRadius, props, padAngle, startAngle, endAngle = 0 } = this.props
+    let { value, label, fill, innerRadius, outerRadius, cornerRadius, props, padAngle, startAngle, endAngle} = this.props
 
     if ( this.state.isHovered ) {
       outerRadius *= 1.1
@@ -34,9 +34,7 @@ export default class Slice extends React.Component {
       .cornerRadius( cornerRadius )
       .padAngle( padAngle )
       .endAngle( endAngle )
-
-
-      console.log('startAngle', startAngle, 'endAngle', endAngle)
+      console.log('value', value)
 
     return (
       <g onMouseOver = { this.onMouseOver }
