@@ -1,12 +1,13 @@
 # Butter
 
-A butter solution to churning.  We've created a single portal to track and help meet you're churning goals.  See a card's information you need to at a glance, and use the rewards page to view pertinent information about your points in different award programs.  Need to meet minimum spend for a card with only a few days left?  Buy what you need, be it Amazon credit cards(which never expire!) or your favorite book from our Amazon page so you can get that sign-up bonus and go on that trip you've been dreaming about or pocket that cash.  
+A butter solution to churning.  We've created a single portal to track and help meet your churning goals.  See a card's information you need to at a glance, and use the rewards page to view pertinent information about your points in different award programs.  Need to meet minimum spend for a card with only a few days left?  Buy what you need, be it Amazon credit cards(which never expire!) or your favorite book from our Amazon page so you can get that sign-up bonus and go on that trip you've been dreaming about or pocket that cash.  
 
 ## Getting Started
+First, you will need to create a file named .env to easily record project specific environment variables. You will need one's for google authentication (see google.js), Amazon API (see amazonModel.js), and DB management (see knexfile.js). Prior to starting the server, a database must be linked through the knexfile too.
 
 ```
-$ yarn        # installs dependencies
-$ yarn start  # starts the development server
+$ yarn        # install dependencies
+$ yarn start  # start the development server
 
 ```
 
@@ -16,6 +17,7 @@ Now visit [localhost:4000](http://localhost:4000/)
 There is a basic test framework in your `test/` folder. Here's how to use it:
 
 ```bash
+$ export NODE_ENV=Test     # set environment to test to for test-specific DB
 $ npm test                 # runs all tests
 $ npm test server/index.js # runs tests in a single file
 ```
@@ -35,7 +37,7 @@ $ npm test server/index.js # runs tests in a single file
 Butter uses webpack's hot module reloading to update packages and refresh pages without having to restart the server or reload the page manually, making it quicker and easier to see your changes in real time. This feature is a part of our webpack setup, so all you need to do is start the server.  
 
 ### PostgreSQL
-We initially deployed our database on a website called ElephantSQL.  The free tier of this website is severly restricted and we were running with 'too many connections' issues fairly regularly with 5 developers consistently logging in and testing the application.  
+Our database utilizes PostgreSQL to manage information-rich tables and relationships. PostgreSQL's documentation will instruct you in setting up your local database. Our application then uses Knex migrations to quickly update schemas and also switch between database instances. By default, our application directs to development mode.
 
 ### Deployment
 
