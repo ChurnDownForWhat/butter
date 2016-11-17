@@ -23,7 +23,6 @@ class CardView extends React.Component {
     },{})
 
     submitItem.id = this.props.card.id
-    console.log(submitItem)
     this.props.addCard(submitItem)
   }
   edit(){
@@ -37,7 +36,6 @@ class CardView extends React.Component {
     this.setState({edit: false})
   }
   componentDidMount() {
-    console.log('~~~~~~~~~',this.props)
   }
 
   FieldGroup({ id, label, help, ...props }) {
