@@ -117,3 +117,9 @@ body {
     width: 100%;
     padding: 0 30px;
 }
+.left-button button {
+    float: left;
+}
+.modal-footer .btn-default {
+    width: 80%;
+}

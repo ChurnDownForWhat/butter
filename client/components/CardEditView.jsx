@@ -1,7 +1,7 @@
 import React from 'react'
 import { Modal, Button, Col, Row, Grid, ControlLabel, FormControl, Checkbox, FormGroup } from 'react-bootstrap'
 
-const cardEditView = ({ defaults, props, card, addCard, FieldGroup }) => {
+const cardEditView = ({ defaults, props, card, addCard, FieldGroup, cancel }) => {
 
   return (
     <Grid>
@@ -13,7 +13,7 @@ const cardEditView = ({ defaults, props, card, addCard, FieldGroup }) => {
       </Col>
       </Row>
       <Row>
-        <form>
+        <form onSubmit={addCard} id="credit-card-form">
         <Row>
           <Col md={5}>
             <FieldGroup 
@@ -37,14 +37,45 @@ const cardEditView = ({ defaults, props, card, addCard, FieldGroup }) => {
           </Col>
           <Col md={3}>
             <FieldGroup 
-              id='last4digits'
-              type='number'
+              id='Cate'
+              type='text'
               label='Last 4 Digits'
               placeholder='XXXX'
               defaultValue={card.last4digits || ''}
             />
           </Col>
         </Row>
+        <Row>
+          <Col md={5}>
+            <FormGroup controlId="cardType">
+              <ControlLabel>Reward Category</ControlLabel>
+              <FormControl componentClass="select" placeholder="select">
+                <option value="Cash Back">Cash Back</option>
+                <option value="General Points">General Points</option>
+                <option value="Miles">Miles</option>
+                <option value="Hotel">Hotel</option>
+              </FormControl>
+            </FormGroup>
+          </Col>
+          <Col md={4}>
+            <FieldGroup 
+              id='program'
+              type='text'
+              label='Program'
+              placeholder='Program Title'
+              defaultValue={card.program || ''}
+            />
+          </Col>
+          <Col md={3}>
+            <FieldGroup 
+              id='rewardsAmt'
+              type='number'
+              label='Rewards Amount'
+              placeholder='XXXX.XX'
+              defaultValue={card.rewardsAmt || ''}
+            />
+          </Col>
+        </Row>        
         <Row>
           <Col md={6}>
             <FieldGroup 
@@ -65,6 +96,26 @@ const cardEditView = ({ defaults, props, card, addCard, FieldGroup }) => {
             />
           </Col>
         </Row>
+        <Row>
+          <Col md={6}>
+            <FieldGroup 
+              id='applicationDate'
+              type='date'
+              label='Application Date'
+              placeholder='XX/XX/XXXX'
+              defaultValue={card.applicationDate || ''}
+            />
+          </Col>
+          <Col md={6}>
+            <FieldGroup 
+              id='expCancelDate'
+              type='date'
+              label='Expected Cancel Date'
+              placeholder='XX/XX/XXXX'
+              defaultValue={card.expCancelDate || ''}
+            />
+          </Col>
+        </Row>        
         <Row>
           <Col md={6}>
             <FieldGroup 
@@ -129,65 +180,26 @@ const cardEditView = ({ defaults, props, card, addCard, FieldGroup }) => {
               <Checkbox>Annual Fee Waived?</Checkbox>
             </FormGroup>
           </Col>
-        </Row>        
+        </Row>
+        <Row>
+        <Modal.Footer>
+          <Col md={12}>
+            <Col md={6} className="left-button">
+            <Button onClick={cancel}>
+              Cancel
+            </Button>
+            </Col>
+            <Col md={6} className="right-button">
+            <Button type="submit">
+              Submit
+            </Button>
+            </Col>
+          </Col>
+        </Modal.Footer>
+        </Row>
         </form>
       </Row>
     </Grid>
-    //       <div className="bottomFormItem">
-    //         <input type="text" id="minSpend" className="creditInputForm col-md-4" placeholder="Minimum Spend"></input>
-    //         <span className="col-md-3"> Minimum Spend </span>
-    //       </div>
-    //       <br/>
-    //       <div className="bottomFormItem">
-    //         <input id="spendDeadline" type="date" className="creditInputForm col-md-4" placeholder="Spend Deadline"/>
-    //         <span className="col-md-3"> Spend Deadline </span>
-    //       </div> 
-    //       <br/>
-    //       <div className="bottomFormItem">
-    //         <input type="text" id="monthlyBillDate" className="creditInputForm col-md-4" placeholder="Bill Due Date"></input>
-    //         <span className="col-md-3"> Monthly Bill Due Date </span>
-    //       </div>
-    //       <br/>
-    //     </ul>
-    //     <ul className="col-sm-6">
-    //       <div className="bottomFormItem">
-    //         <input id="applicationDate" className="creditInputForm col-md-4" placeholder="Application Date"/>
-    //         <span className="col-md-3"> Application Date </span>
-    //       </div>
-    //       <br/>
-    //       <div className="bottomFormItem">
-    //         <input type="text" id="benefit" className="creditInputForm col-md-4" placeholder="Annual Benefit"></input>
-    //         <span className="col-md-3"> Annual Benefit </span>
-    //       </div>
-    //       <br/>
-    //       <div className="bottomFormItem">
-    //         <input type="text" id="annFeeAmt" className="creditInputForm col-md-4" placeholder="Annual Fee"></input>
-    //         <span className="col-md-3"> Annual Fee </span>
-    //       </div>
-    //       <br/>
-    //       <div className="bottomFormItem">
-    //         <input id="waivedFees" type="checkbox"></input>
-    //         <span className="col-md-3"> Annual Fee Waived First Year? </span>
-    //       </div>
-    //       <br/>
-    //     </ul>
-    //     </div>
-    //        <div className="bottomFormItem">
-    //         <input id="annFeeDate" className="creditInputForm col-md-4" placeholder="Annual Fee Date"/>
-    //         <span className="col-md-6"> Annual Fee Date </span>
-    //       </div> 
-    //       <br/>
-    //       <div className="bottomFormItem">
-    //         <input id="expCancelDate" className="creditInputForm col-md-4" placeholder="Planned Cancellation Date"/>
-    //         <span className="col-md-6"> Planned Cancellation Date </span>
-    //       </div> 
-    //       <br/>
-    //       <div className="bottomFormItem">
-    //         <input id="submit" type="submit" className="creditInputForm col-md-4"/>
-    //       </div> 
-    //   </div>
-    // </form>
-    // </div>
   )
 }
 

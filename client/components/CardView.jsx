@@ -32,6 +32,9 @@ class CardView extends React.Component {
     this.setState({edit: false})
     this.props.close()
   }
+  cancel(){
+    this.setState({edit: false})
+  }
   componentDidMount() {
     console.log(this.props)
   }
@@ -93,18 +96,22 @@ class CardView extends React.Component {
         </Row>
         <Col md={12}>
         <Modal.Footer>
+          <Col md={6} className="left-button">
           <Button onClick={this.edit.bind(this)}>
             edit
           </Button>
+          </Col>
+          <Col md={6} className="right-button">
           <Button onClick={this.closeEdit.bind(this)}>
            close
            </Button>
+           </Col>
          </Modal.Footer>
          </Col>
          </Row>
       </Grid>
     )
-    if(this.state.edit) cardCompView = (<CardEdit addCard={this.collectForm.bind(this)} FieldGroup={this.FieldGroup} card={this.props.card} />)
+    if(this.state.edit) cardCompView = (<CardEdit addCard={this.collectForm.bind(this)} FieldGroup={this.FieldGroup} card={this.props.card} cancel={this.cancel.bind(this)} />)
     return (
       <Modal show={this.props.show} onHide={this.closeEdit.bind(this)}>
         {cardCompView}
