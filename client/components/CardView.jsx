@@ -1,5 +1,5 @@
 import React from 'react'
-import { ProgressBar, Modal, Button, Col, Row, Grid, FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap'
+import * as Bs from 'react-bootstrap'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Action from '../actions/actions'
@@ -13,6 +13,7 @@ class CardView extends React.Component {
       edit: false
     }
   }  
+
   collectForm(e,el) {
     e.preventDefault()
     const domForm = el.elements
@@ -21,10 +22,11 @@ class CardView extends React.Component {
       if(id != 'submit' && domForm[id].value != "") acc[id] = domForm[id].value
       return acc
     },{})
-
+    console.log(submitItem)
     submitItem.id = this.props.card.id
     this.props.addCard(submitItem)
   }
+
   edit(){
     this.setState({edit: true})
   }
@@ -35,86 +37,116 @@ class CardView extends React.Component {
   cancel(){
     this.setState({edit: false})
   }
+  dateIt(date) {
+    let d = new Date(date),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear()
+
+    if (month.length < 2) month = '0' + month
+    if (day.length < 2) day = '0' + day
+
+    return [year, month, day].join('-')
+  }
   componentDidMount() {
   }
 
   FieldGroup({ id, label, help, ...props }) {
     return (
-      <FormGroup controlId={id}>
-        <ControlLabel>{label}</ControlLabel>
-        <FormControl {...props} />
-        {help && <HelpBlock>{help}</HelpBlock>}
-      </FormGroup>
+      <Bs.FormGroup controlId={id}>
+        <Bs.ControlLabel>{label}</Bs.ControlLabel>
+        <Bs.FormControl {...props} />
+        {help && <Bs.HelpBlock>{help}</Bs.HelpBlock>}
+      </Bs.FormGroup>
     )
   }
-
   render() {
     let cardCompView = (<div></div>)
     if(this.props.card) cardCompView = (      
-      <Grid>
-        <Row>
-        <Row>
-          <Col md={12}>
+      <Bs.Grid>
+        <Bs.Row>
+        <Bs.Row>
+          <Bs.Col md={12}>
             <h3>{this.props.card.name}</h3>
-          </Col>
-          <Col md={1}>
-            {this.props.card.balance}/{this.props.card.minSpend}
-          </Col>
-        </Row>
-        <Row>
-          <Col md={6}>
+          </Bs.Col>
+          <Bs.Col md={1}>
+            {this.props.card.spendTotal}/{this.props.card.minSpend}
+          </Bs.Col>
+        </Bs.Row>
+        <Bs.Row>
+          <Bs.Col md={6}>
             Sign Up bonus:{this.props.card.signupBonus}
-          </Col>
-          <Col md={6}>
-            Deadline:{this.props.card.spendDeadline}
-          </Col>
-        </Row> 
-        <Row>
-          <Col md={8}>
+          </Bs.Col>
+          <Bs.Col md={6}>
+            Deadline:{new Intl.DateTimeFormat('en', 
+              {
+                month: 'long',
+                year:'numeric',
+                day:'numeric' 
+              }).format(new Date(this.props.card.spendDeadline))}
+          </Bs.Col>
+        </Bs.Row> 
+        <Bs.Row>
+          <Bs.Col md={8}>
             {this.props.card.cardType}/{this.props.card.category}
-          </Col>
-          <Col md={4}>
+          </Bs.Col>
+          <Bs.Col md={4}>
             {this.props.card.program}
-          </Col>
-        </Row>
-        <Row>
-          <Col md={4}>
+          </Bs.Col>
+        </Bs.Row>
+        <Bs.Row>
+          <Bs.Col md={4}>
             Points:{this.props.card.rewardsAmt}
-          </Col>
-          <Col md={4}>
-            Application Date:{this.props.card.applicationDate}
-          </Col>
-          <Col md={4}>
-            Cancel Date:{this.props.card.expCancelDate}
-          </Col>
-        </Row>
-        <Row>
-          <Col md={12}>
-            Expiration:{this.props.card.expiration}
-          </Col>
-        </Row>
-        <Col md={12}>
-        <Modal.Footer>
-          <Col md={6} className="left-button">
-          <Button onClick={this.edit.bind(this)}>
+          </Bs.Col>
+          <Bs.Col md={4}>
+            Application Date:{new Intl.DateTimeFormat('en', 
+              {
+                month: 'long',
+                year:'numeric',
+                day:'numeric' 
+              }).format(new Date(this.props.card.applicationDate))}
+          </Bs.Col>
+          <Bs.Col md={4}>
+            Cancel Date:{new Intl.DateTimeFormat('en', 
+              {
+                month: 'long',
+                year:'numeric',
+                day:'numeric' 
+              }).format(new Date(this.props.card.expCancelDate))}
+          </Bs.Col>
+        </Bs.Row>
+        <Bs.Row>
+          <Bs.Col md={12}>
+            Expiration:{new Intl.DateTimeFormat('en', 
+              {
+                month: 'long',
+                year:'numeric',
+                day:'numeric' 
+              }).format(new Date(this.props.card.expiration))}
+          </Bs.Col>
+        </Bs.Row>
+        <Bs.Col md={12}>
+        <Bs.Modal.Footer>
+          <Bs.Col md={6} className="left-button">
+          <Bs.Button onClick={this.edit.bind(this)}>
             edit
-          </Button>
-          </Col>
-          <Col md={6} className="right-button">
-          <Button onClick={this.closeEdit.bind(this)}>
+          </Bs.Button>
+          </Bs.Col>
+          <Bs.Col md={6} className="right-button">
+          <Bs.Button onClick={this.closeEdit.bind(this)}>
            close
-           </Button>
-           </Col>
-         </Modal.Footer>
-         </Col>
-         </Row>
-      </Grid>
+           </Bs.Button>
+           </Bs.Col>
+         </Bs.Modal.Footer>
+         </Bs.Col>
+         </Bs.Row>
+      </Bs.Grid>
     )
-    if(this.state.edit) cardCompView = (<CardEdit addCard={this.collectForm.bind(this)} FieldGroup={this.FieldGroup} card={this.props.card} cancel={this.cancel.bind(this)} />)
+    if(this.state.edit) cardCompView = (<CardEdit addCard={this.collectForm.bind(this)} FieldGroup={this.FieldGroup} dateIt={this.dateIt} card={this.props.card} cancel={this.cancel.bind(this)} />)
     return (
-      <Modal show={this.props.show} onHide={this.closeEdit.bind(this)}>
+      <Bs.Modal show={this.props.show} onHide={this.closeEdit.bind(this)}>
         {cardCompView}
-      </Modal>
+      </Bs.Modal>
     )   
   }
 }
