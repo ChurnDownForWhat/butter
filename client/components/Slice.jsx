@@ -34,7 +34,6 @@ export default class Slice extends React.Component {
       .cornerRadius( cornerRadius )
       .padAngle( padAngle )
       .endAngle( endAngle )
-      console.log('value', value)
 
     return (
       <g onMouseOver = { this.onMouseOver }
