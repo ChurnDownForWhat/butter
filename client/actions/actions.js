@@ -1,8 +1,8 @@
 export function getUser() {
-  return dispatch => 
+  return dispatch =>
     $.get('/api/user')
     .then(res => res)
-    .then(user => 
+    .then(user =>
       dispatch({
         type: 'GET_USER',
         payload: user
@@ -11,9 +11,9 @@ export function getUser() {
 }
 
 export function getDefaults() {
-  return dispatch => 
+  return dispatch =>
     $.get('/api/defaults')
-    .then(defaults => 
+    .then(defaults =>
       dispatch({
         type: 'GET_DEFAULTS',
         payload: defaults
@@ -22,7 +22,7 @@ export function getDefaults() {
 }
 
 export function addCard(cardData){
-  return dispatch => 
+  return dispatch =>
     $.post('/api/cards', cardData)
     .then($.get('/api/cards'))
     .then(cards =>
@@ -31,10 +31,10 @@ export function addCard(cardData){
         payload: cards
       })
     )
-} 
+}
 
 export function deleteCard(id, i){
-  return dispatch => 
+  return dispatch =>
     $.ajax({
       type: 'DELETE',
       url: `/api/cards/${id}`
@@ -42,9 +42,9 @@ export function deleteCard(id, i){
 }
 
 export function viewAllCards() {
-  return dispatch => 
+  return dispatch =>
     $.get('/api/cards')
-    .then(cards => 
+    .then(cards =>
       dispatch({
         type: 'VIEW_ALL_CARDS',
         payload: cards
@@ -53,7 +53,7 @@ export function viewAllCards() {
 }
 
 export function viewAllRewards() {
-  return dispatch => 
+  return dispatch =>
     $.get('/api/cards')
     .then((rewards) => {
       // var noRepeats = rewards
@@ -67,13 +67,13 @@ export function viewAllRewards() {
       // }
       // return noRepeats
       let rewardAmount = rewards.reduce((acc, card) =>
-          (acc[card.program] ? 
-          acc[card.program]['rewardsAmt'] += card.rewardsAmt : 
+          (acc[card.program] ?
+          acc[card.program]['rewardsAmt'] += card.rewardsAmt :
           acc[card.program] = {rewardsAmt:card.rewardsAmt,program:card.program,category:card.category}
         ,acc),{})
       return Object.keys(rewardAmount).map((it) => rewardAmount[it])
     })
-    .then(rewards => 
+    .then(rewards =>
       dispatch({
         type: 'VIEW_ALL_REWARDS',
         payload: rewards
@@ -82,9 +82,9 @@ export function viewAllRewards() {
 }
 
 export function viewCard(id) {
-  return dispatch => 
+  return dispatch =>
     $.get(`/api/cards/${id}`)
-    .then(card => 
+    .then(card =>
       dispatch({
         type: 'VIEW_CARD',
         payload: card
@@ -93,7 +93,7 @@ export function viewCard(id) {
 }
 
 export function updateCard(id, data){
-  return dispatch => 
+  return dispatch =>
     $.ajax(`/api/cards/${id}`,{
       type: 'PUT',
       data: data
@@ -108,20 +108,20 @@ export function updateCard(id, data){
 }
 
 export function getAmazonDefault() {
-  return dispatch => 
+  return dispatch =>
     $.get('/api/amazonSearch/')
-    .then(items => 
+    .then(items =>
       dispatch({
         type: 'GET_AMAZON_DEFAULTS',
         payload: items
       })
-    ) 
+    )
 }
 
 export function getAmazonSearch(searchTerm) {
-  return dispatch => 
+  return dispatch =>
     $.post('/api/amazonSearch/',{searchTerm:searchTerm})
-    .then(items => 
+    .then(items =>
       dispatch({
         type: 'GET_AMAZON_SEARCH',
         payload: items
@@ -129,3 +129,14 @@ export function getAmazonSearch(searchTerm) {
     )
 }
 
+export function getPieData() {
+  return dispatch =>
+    $.get('/api/cards')
+    .then(res => res.map(card => [card.category.toLowerCase(), card.rewardsAmt]))
+    .then(data =>
+      dispatch({
+        type: 'GET_PIE_DATA',
+        payload: data
+      })
+    )
+}
