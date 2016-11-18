@@ -1,21 +1,21 @@
 import React from 'react'
-import { Modal, Button, Col, Row, Grid, ControlLabel, FormControl, Checkbox, FormGroup } from 'react-bootstrap'
+import * as Bs from 'react-bootstrap'
 
 const cardEditView = ({ defaults, props, card, addCard, FieldGroup, cancel }) => {
   let form = {}
   return (
-    <Grid>
-      <Row>
-      <Col md={12}>
-        <Modal.Header>
-          <Modal.Title>Edit {card.name}</Modal.Title>
-        </Modal.Header>
-      </Col>
-      </Row>
-      <Row>
+    <Bs.Grid>
+      <Bs.Row>
+      <Bs.Col md={12}>
+        <Bs.Modal.Header>
+          <Bs.Modal.Title>Edit {card.name}</Bs.Modal.Title>
+        </Bs.Modal.Header>
+      </Bs.Col>
+      </Bs.Row>
+      <Bs.Row>
         <form onSubmit={(e) => addCard(e,form)} id="credit-card-form" ref={(el)=> form = el}>
-        <Row>
-          <Col md={5}>
+        <Bs.Row>
+          <Bs.Col md={5}>
             <FieldGroup 
               id='name'
               type='text'
@@ -23,19 +23,19 @@ const cardEditView = ({ defaults, props, card, addCard, FieldGroup, cancel }) =>
               placeholder='Insert Card Name'
               defaultValue={card.name}
             />
-          </Col>
-          <Col md={4}>
-            <FormGroup controlId="cardType">
-              <ControlLabel>Card Type</ControlLabel>
-              <FormControl componentClass="select" placeholder="select">
+          </Bs.Col>
+          <Bs.Col md={4}>
+            <Bs.FormGroup controlId="cardType">
+              <Bs.ControlLabel>Card Type</Bs.ControlLabel>
+              <Bs.FormControl componentClass="select" placeholder="select">
                 <option value="MasterCard">MasterCard</option>
                 <option value="Visa">Visa</option>
                 <option value="American Express">American Express</option>
                 <option value="Discover">Discover</option>
-              </FormControl>
-            </FormGroup>
-          </Col>
-          <Col md={3}>
+              </Bs.FormControl>
+            </Bs.FormGroup>
+          </Bs.Col>
+          <Bs.Col md={3}>
             <FieldGroup 
               id='Category'
               type='text'
@@ -43,21 +43,21 @@ const cardEditView = ({ defaults, props, card, addCard, FieldGroup, cancel }) =>
               placeholder='XXXX'
               defaultValue={card.last4digits || ''}
             />
-          </Col>
-        </Row>
-        <Row>
-          <Col md={5}>
-            <FormGroup controlId="cardType">
-              <ControlLabel>Reward Category</ControlLabel>
-              <FormControl componentClass="select" placeholder="select">
+          </Bs.Col>
+        </Bs.Row>
+        <Bs.Row>
+          <Bs.Col md={5}>
+            <Bs.FormGroup controlId="cardType">
+              <Bs.ControlLabel>Reward Category</Bs.ControlLabel>
+              <Bs.FormControl componentClass="select" placeholder="select">
                 <option value="Cash Back">Cash Back</option>
                 <option value="General Points">General Points</option>
                 <option value="Miles">Miles</option>
                 <option value="Hotel">Hotel</option>
-              </FormControl>
-            </FormGroup>
-          </Col>
-          <Col md={4}>
+              </Bs.FormControl>
+            </Bs.FormGroup>
+          </Bs.Col>
+          <Bs.Col md={4}>
             <FieldGroup 
               id='program'
               type='text'
@@ -65,8 +65,8 @@ const cardEditView = ({ defaults, props, card, addCard, FieldGroup, cancel }) =>
               placeholder='Program Title'
               defaultValue={card.program || ''}
             />
-          </Col>
-          <Col md={3}>
+          </Bs.Col>
+          <Bs.Col md={3}>
             <FieldGroup 
               id='rewardsAmt'
               type='number'
@@ -74,10 +74,10 @@ const cardEditView = ({ defaults, props, card, addCard, FieldGroup, cancel }) =>
               placeholder='XXXX.XX'
               defaultValue={card.rewardsAmt || ''}
             />
-          </Col>
-        </Row>        
-        <Row>
-          <Col md={6}>
+          </Bs.Col>
+        </Bs.Row>        
+        <Bs.Row>
+          <Bs.Col md={6}>
             <FieldGroup 
               id='expiration'
               type='date'
@@ -85,8 +85,8 @@ const cardEditView = ({ defaults, props, card, addCard, FieldGroup, cancel }) =>
               placeholder='XX/XX/XXXX'
               defaultValue={card.expiration || ''}
             />
-          </Col>
-          <Col md={6}>
+          </Bs.Col>
+          <Bs.Col md={6}>
             <FieldGroup 
               id='monthlyBilldate'
               type='date'
@@ -94,10 +94,10 @@ const cardEditView = ({ defaults, props, card, addCard, FieldGroup, cancel }) =>
               placeholder='XX/XX/XXXX'
               defaultValue={card.monthlyBilldate || ''}
             />
-          </Col>
-        </Row>
-        <Row>
-          <Col md={6}>
+          </Bs.Col>
+        </Bs.Row>
+        <Bs.Row>
+          <Bs.Col md={6}>
             <FieldGroup 
               id='applicationDate'
               type='date'
@@ -105,8 +105,8 @@ const cardEditView = ({ defaults, props, card, addCard, FieldGroup, cancel }) =>
               placeholder='XX/XX/XXXX'
               defaultValue={card.applicationDate || ''}
             />
-          </Col>
-          <Col md={6}>
+          </Bs.Col>
+          <Bs.Col md={6}>
             <FieldGroup 
               id='expCancelDate'
               type='date'
@@ -114,10 +114,10 @@ const cardEditView = ({ defaults, props, card, addCard, FieldGroup, cancel }) =>
               placeholder='XX/XX/XXXX'
               defaultValue={card.expCancelDate || ''}
             />
-          </Col>
-        </Row>        
-        <Row>
-          <Col md={6}>
+          </Bs.Col>
+        </Bs.Row>        
+        <Bs.Row>
+          <Bs.Col md={6}>
             <FieldGroup 
               id='signupBonus'
               type='text'
@@ -125,8 +125,8 @@ const cardEditView = ({ defaults, props, card, addCard, FieldGroup, cancel }) =>
               placeholder='Sign up bonus'
               defaultValue={card.signupBonus || ''}
             />
-          </Col>
-          <Col md={6}>
+          </Bs.Col>
+          <Bs.Col md={6}>
             <FieldGroup 
               id='spendTotal'
               type='number'
@@ -134,10 +134,10 @@ const cardEditView = ({ defaults, props, card, addCard, FieldGroup, cancel }) =>
               placeholder='XXXX.XX'
               defaultValue={card.spendTotal || ''}
             />
-          </Col>                    
-        </Row>
-        <Row>
-          <Col md={6}>
+          </Bs.Col>                    
+        </Bs.Row>
+        <Bs.Row>
+          <Bs.Col md={6}>
             <FieldGroup 
               id='minSpend'
               type='number'
@@ -145,8 +145,8 @@ const cardEditView = ({ defaults, props, card, addCard, FieldGroup, cancel }) =>
               placeholder='XXXX.XX'
               defaultValue={card.minSpend || ''}
             />
-          </Col>
-          <Col md={6}>
+          </Bs.Col>
+          <Bs.Col md={6}>
             <FieldGroup 
               id='spendDeadline'
               type='date'
@@ -154,10 +154,10 @@ const cardEditView = ({ defaults, props, card, addCard, FieldGroup, cancel }) =>
               placeholder='XX/XX/XXXX'
               defaultValue={card.spendDeadline || ''}
             />
-          </Col>
-        </Row>
-        <Row>
-          <Col md={4}>
+          </Bs.Col>
+        </Bs.Row>
+        <Bs.Row>
+          <Bs.Col md={4}>
             <FieldGroup 
               id='annFeeAmt'
               type='number'
@@ -165,8 +165,8 @@ const cardEditView = ({ defaults, props, card, addCard, FieldGroup, cancel }) =>
               placeholder='XXXX.XX'
               defaultValue={card.annFeeAmt || ''}
             />
-          </Col>
-          <Col md={5}>
+          </Bs.Col>
+          <Bs.Col md={5}>
             <FieldGroup 
               id='annFeeDate'
               type='date'
@@ -174,32 +174,32 @@ const cardEditView = ({ defaults, props, card, addCard, FieldGroup, cancel }) =>
               placeholder='XX/XX/XXXX'
               defaultValue={card.annFeeDate || ''}
             />
-          </Col>
-          <Col md={3}>
-            <FormGroup>
-              <Checkbox>Annual Fee Waived?</Checkbox>
-            </FormGroup>
-          </Col>
-        </Row>
-        <Row>
-        <Modal.Footer>
-          <Col md={12}>
-            <Col md={6} className="left-button">
-            <Button onClick={cancel}>
+          </Bs.Col>
+          <Bs.Col md={3}>
+            <Bs.FormGroup>
+              <Bs.Checkbox>Annual Fee Waived?</Bs.Checkbox>
+            </Bs.FormGroup>
+          </Bs.Col>
+        </Bs.Row>
+        <Bs.Row>
+        <Bs.Modal.Footer>
+          <Bs.Col md={12}>
+            <Bs.Col md={6} className="left-button">
+            <Bs.Button onClick={cancel}>
               Cancel
-            </Button>
-            </Col>
-            <Col md={6} className="right-button">
-            <Button type="submit">
+            </Bs.Button>
+            </Bs.Col>
+            <Bs.Col md={6} className="right-button">
+            <Bs.Button type="submit">
               Submit
-            </Button>
-            </Col>
-          </Col>
-        </Modal.Footer>
-        </Row>
+            </Bs.Button>
+            </Bs.Col>
+          </Bs.Col>
+        </Bs.Modal.Footer>
+        </Bs.Row>
         </form>
-      </Row>
-    </Grid>
+      </Bs.Row>
+    </Bs.Grid>
   )
 }
 
