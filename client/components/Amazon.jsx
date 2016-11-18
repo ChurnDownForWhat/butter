@@ -1,5 +1,4 @@
 import React from 'react'
-import { ProgressBar } from 'react-bootstrap'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Action from '../actions/actions'
@@ -33,8 +32,14 @@ class CardView extends React.Component {
   onSearch(e){
     if(e.keyCode === 13){
       this.props.getAmazonSearch(e.target.value)
+      //clears the input box after the search has been entered.
       e.target.value = ''
     }
+  }
+
+  buttonClickSearch(){
+    this.props.getAmazonSearch(this.refs.inputVal.value)
+    this.refs.inputVal.value = ''
   }
 
   render() {
@@ -70,7 +75,17 @@ class CardView extends React.Component {
         </div>
         <div id='page-content-wrapper' className={this.state.hover}>
           <div className='container-fluid'>
-          <input placeholder="Amazon Search" onKeyUp={this.onSearch.bind(this)}/>
+          <div className='row amazonTop'>
+            <h1> Welcome to the Amazon Search Page! </h1> 
+          </div>
+          <div className='row amazonTop'>
+            <div className='input-group col-md-4 amazonSearchBar'>
+              <input className='form-control' placeholder="Amazon Search" ref="inputVal" onKeyUp={this.onSearch.bind(this)}/>
+              <span className='input-group-btn'>
+                <button className="btn btn-default" onClick={this.buttonClickSearch.bind(this)}> hey</button>
+              </span>
+            </div>
+          </div>
             <div className='row'>
               <div className="col-md-12">
               {itemArr}

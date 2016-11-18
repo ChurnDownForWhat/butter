@@ -1,17 +1,27 @@
-#amazonArray{
+#amazonArray {
   margin-bottom: 30px;
   margin-top: 30px;
   height: 200px;
 }
 
 
-.amazonImage{
+.amazonImage {
   height: 140;
   width: auto;
 }
 
-.formattedPrice{
+.formattedPrice {
   font: bold;
   text-align: center;
   display: inline-block;
+}
+
+.amazonSearchBar {
+  margin-left: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.amazonTop {
+  background-color: #F49AC2;
 }

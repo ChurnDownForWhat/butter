@@ -1,4 +1,5 @@
 module.exports = {
+
    // for elephant  connection: 'postgres://auphecqh:L62hxHecYm1VgGWuDs3QgBloecgSVdL7@elmer.db.elephantsql.com:5432/auphecqh',
  development: {
    client: 'pg',
