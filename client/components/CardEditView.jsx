@@ -37,7 +37,7 @@ const cardEditView = ({ defaults, props, card, addCard, FieldGroup, cancel }) =>
           </Bs.Col>
           <Bs.Col md={3}>
             <FieldGroup 
-              id='Category'
+              id='last4digits'
               type='text'
               label='Last 4 Digits'
               placeholder='XXXX'
@@ -46,7 +46,7 @@ const cardEditView = ({ defaults, props, card, addCard, FieldGroup, cancel }) =>
           </Bs.Col>
         </Bs.Row>
         <Bs.Row>
-          <Bs.Col md={5}>
+          <Bs.Col md={4}>
             <Bs.FormGroup controlId="cardType">
               <Bs.ControlLabel>Reward Category</Bs.ControlLabel>
               <Bs.FormControl componentClass="select" placeholder="select">
@@ -66,7 +66,7 @@ const cardEditView = ({ defaults, props, card, addCard, FieldGroup, cancel }) =>
               defaultValue={card.program || ''}
             />
           </Bs.Col>
-          <Bs.Col md={3}>
+          <Bs.Col md={4}>
             <FieldGroup 
               id='rewardsAmt'
               type='number'
