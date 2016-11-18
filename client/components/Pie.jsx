@@ -16,20 +16,11 @@ class Pie extends React.Component {
 
   componentDidMount(){
     this.props.getPieData()
-    // this.setState({total: this.getTotalRewards()})
   }
 
 
   translate (x, y) {
     return `translate(${x}, ${y})`
-  }
-
-  getTotalRewards() {
-    return this.props.data.reduce(function(curr, acc) {
-      if(curr){
-        acc += curr
-      }
-    }, 0)
   }
 
   render () {
