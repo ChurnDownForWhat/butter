@@ -26,6 +26,7 @@ class Pie extends React.Component {
   render () {
     let { x, y, data } = this.props
     let pie = d3.pie()
+
     return (
       <g transform = { this.translate(x, y) }>
         { pie(data).map(this.renderSlice) }
