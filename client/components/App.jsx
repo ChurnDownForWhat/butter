@@ -14,13 +14,16 @@ import Amazon from './Amazon'
 export default class App extends React.Component {
   constructor (props) {
     super(props)
+    this.state = {
+      hover: ''
+    }
   }
 
   render () {
     return (
       <div>
     <Provider store={ this.props.store } >
-        <Router history={hashHistory}>
+        <Router blah='hey' history={hashHistory}>
         <Route path="/" component={CardsPage}/>
         <Route path="/cards" component={CardsPage} />
         <Route path="/rewards" component={RewardsPage} />
