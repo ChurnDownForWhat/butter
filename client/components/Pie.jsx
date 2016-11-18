@@ -12,12 +12,10 @@ class Pie extends React.Component {
     super(props)
     this.colorScale = d3.schemeCategory10
     this.renderSlice = this.renderSlice.bind(this)
-
   }
 
   componentDidMount(){
     this.props.getPieData()
-    // this.setState({total: this.getTotalRewards()})
   }
 
 
@@ -36,6 +34,7 @@ class Pie extends React.Component {
   }
 
   renderSlice (value, i) {
+
     let { innerRadius, outerRadius, cornerRadius, padAngle, startAngle, endAngle, data} = this.props
     let total = data.reduce((acc, curr) => curr[1] ? acc += curr[1] : null)
     startAngle = (value.data[1] * Math.PI * 2) / total
