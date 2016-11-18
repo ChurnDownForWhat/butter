@@ -89,10 +89,10 @@ const cardEditView = ({ dateIt,defaults, props, card, addCard, FieldGroup, cance
           <Bs.Col md={6}>
             <FieldGroup 
               id='monthlyBilldate'
-              type='date'
+              type='number'
               label='Monthly Bill Date'
-              placeholder='XX/XX/XXXX'
-              defaultValue={dateIt(card.monthlyBilldate) || ''}
+              placeholder='XX'
+              defaultValue={card.monthlyBilldate || ''}
             />
           </Bs.Col>
         </Bs.Row>
