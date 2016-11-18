@@ -82,6 +82,7 @@ class CardsPage extends React.Component {
         </Bs.Button>
       </div>
     )
+    console.log("Cards Children",this.state.cards)
 
     return (
       <div id='wrapper'>
