@@ -101,16 +101,27 @@ class CardsPage extends React.Component {
             </Bs.Row>
             <Bs.Row>
               <Bs.Panel className='cards-panel' header={title}>
+                <input onKeyUp={this.filterCards.bind(this)} placeholder="filter cards"/> 
                 <Bs.Row>
                   {
                     this.state.cards.map((card,i) =>{
+                      var date = new Intl.DateTimeFormat('en', 
+                        {
+                          month: 'long',
+                          year:'numeric',
+                          day:'numeric' 
+                        }).format(new Date(card.spendDeadline))
                       return (
                         <Bs.Col md={4} key={i}>
                           <Bs.Panel className='cards'>
                             <div className='removeButton' onClick={(this.deleteClick.bind(this))} id={card.id} ref="removeButton">
                               <i className="fa fa-times" aria-hidden="true"></i>
                             </div>
-                            {card.name}
+                            <div onClick={(this.click.bind(this))} className='cardName col-md-11' id={card.id}>
+                              {card.name}          
+                            </div> 
+                            <Bs.ProgressBar bsStyle="success" active now={card.spendTotal/card.minSpend*100} />
+                            {'Spend Deadline:' + " "+ date}
                           </Bs.Panel>
                         </Bs.Col>
                       )
@@ -118,6 +129,12 @@ class CardsPage extends React.Component {
                   }
                 </Bs.Row>
               </Bs.Panel>
+            </Bs.Row>
+            <Bs.Row>
+                <Bs.DropdownButton bsSize="large" title="Add A Card" >
+                  <Bs.MenuItem eventKey="1" onSelect={(e) => this.setState({showQuick: true})}>Quick</Bs.MenuItem>
+                  <Bs.MenuItem eventKey="2" onSelect={(e) => this.setState({showDetailed: true})}>Detailed</Bs.MenuItem>
+                </Bs.DropdownButton>
             </Bs.Row>
           </Bs.Grid>
         </div>

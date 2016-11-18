@@ -1,4 +1,4 @@
-/*#progressBar{
+#progressBar{
   width: calc(1456/3000*100%);
 }
 
@@ -9,10 +9,6 @@
 .cardName:hover{
   color: red;
   cursor: pointer;
-}
-
-body {
-  font-family: Helvetica, sans-serif;
 }
 
 .react-autosuggest__container {
@@ -124,4 +120,4 @@ body {
 .modal-footer .btn-default {
     width: 80%;
 
-}*/
+}
