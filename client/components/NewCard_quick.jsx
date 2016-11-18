@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, ButtonGroup, Modal } from 'react-bootstrap'
+import * as Bs from 'react-bootstrap'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Action from '../actions/actions'
@@ -77,36 +77,73 @@ class QuickNewCard extends React.Component {
       value,
       onChange: this.onChange.bind(this)
     }
-
+    const FieldGroup = ({ id, label, help, ...props }) => {
+      return (
+        <Bs.FormGroup controlId={id}>
+          <Bs.ControlLabel>{label}</Bs.ControlLabel>
+          <Bs.FormControl {...props} />
+          {help && <Bs.HelpBlock>{help}</Bs.HelpBlock>}
+        </Bs.FormGroup>
+      )
+    }
     return (
-      <Modal show={this.props.show} onHide={this.props.onHide} >
-        <div className='col-lg-12'>
-          <div className="">
-            <div className='row'>
-              <Autosuggest className="col-xs-4" 
-                suggestions={suggestions}
-                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested.bind(this)}
-                onSuggestionsClearRequested={this.onSuggestionsClearRequested.bind(this)}
-                getSuggestionValue={this.getSuggestionValue.bind(this)}
-                renderSuggestion={this.renderSuggestion.bind(this)}
-                inputProps={inputProps} />
-              <input type="date" id="expDate" className="col-xs-2" placeholder="exp date"/>
-              <input type="number" id="spendTotal" placeholder="spendTotal" className="col-xs-1" />
-
-              <input type="number" id="minSpend" placeholder="minSpend" className="col-xs-1" /> 
-              <ButtonGroup className="buttonGroup">
-                <Button onClick={this.createCard.bind(this)} > Create Card </Button>
-                <Button onClick={(e) => this.props.switch(e) } > More Details </Button>
-                <Button onClick={this.props.onHide}> Cancel </Button>
-              </ButtonGroup>
-            </div>
-          </div>
-          <div className='progress row'>
-            <div id='progressBar'className="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="600" aria-valuemin="0" aria-valuemax="3000">
-            </div>
-          </div>
-        </div>
-      </Modal>
+      <Bs.Modal show={this.props.show} onHide={this.props.onHide} >
+        <Bs.Modal.Header>
+          <Bs.Col md={12}>
+            <h3>Create A New Card</h3>
+          </Bs.Col>
+        </Bs.Modal.Header>
+        <Bs.Grid>
+        <Bs.Col lg={12}>
+          <Bs.Row>
+            <Bs.Col lg={12}>
+            <Autosuggest
+              suggestions={suggestions}
+              onSuggestionsFetchRequested={this.onSuggestionsFetchRequested.bind(this)}
+              onSuggestionsClearRequested={this.onSuggestionsClearRequested.bind(this)}
+              getSuggestionValue={this.getSuggestionValue.bind(this)}
+              renderSuggestion={this.renderSuggestion.bind(this)}
+              inputProps={inputProps} />
+            </Bs.Col>
+            <Bs.Col md={4}>
+            <FieldGroup 
+            id='expDate'
+            type='date'
+            label='Expiration Date'
+            placeholder='XX/XX/XXXX'
+            />
+            </Bs.Col>
+            <Bs.Col md={4}>
+            <FieldGroup 
+            id='spendTotal'
+            type='number'
+            label='Spend Total'
+            placeholder='XXXX.XX'
+            />
+            </Bs.Col>
+            <Bs.Col md={4}>
+            <FieldGroup 
+            id='minSpend'
+            type='number'
+            label='Minumum Spend'
+            placeholder='XXXX.XX'
+            />
+            </Bs.Col>
+          </Bs.Row>
+        </Bs.Col>
+      </Bs.Grid>
+      <Bs.Modal.Footer>
+        <Bs.Col md={4}>
+          <Bs.Button onClick={this.createCard.bind(this)} > Create Card </Bs.Button>
+          </Bs.Col>
+          <Bs.Col md={4}>
+          <Bs.Button onClick={(e) => this.props.switch(e) } > More Details </Bs.Button>
+          </Bs.Col>
+          <Bs.Col md={4}>
+          <Bs.Button onClick={this.props.onHide}> Cancel </Bs.Button>
+        </Bs.Col>
+      </Bs.Modal.Footer>
+    </Bs.Modal>
     )
   }
 }
