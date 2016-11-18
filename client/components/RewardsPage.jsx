@@ -33,7 +33,7 @@ class RewardsPage extends React.Component {
 
   render() {
 
-    var links = 
+    var links =
       {
         'Chase Ultimate Rewards':'https://www.chase.com/ultimaterewards',
         'Marriott Rewards':'http://www.marriott.com/rewards/rewards-program.mi',
@@ -76,13 +76,13 @@ class RewardsPage extends React.Component {
                       <tbody>
                       {this.props.rewards.map(function(val, i){
                         var link = links[val.program] || null
-                        return (<tr className=""> 
+                        return (<tr className="">
                                 <th scope="row"> {i +1} </th>
                                   <td>{val.program}</td>
                                   <td>{val.category}</td>
                                   <td>{val.rewardsAmt}</td>
                                   <td>
-                                  { link ? <a href={link}> Reward Portal </a> 
+                                  { link ? <a href={link}> Reward Portal </a>
                                     : <div> ¯\_(ツ)_/¯ </div> }
                                   </td>
                               </tr>

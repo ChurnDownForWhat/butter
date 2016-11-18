@@ -1,8 +1,6 @@
 import React from 'react'
 import * as d3 from 'd3'
 import Slice from './Slice'
-// const scale = require('d3-scale')
-// const layout = require('d3-shape')
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Action from '../actions/actions'
@@ -26,6 +24,7 @@ class Pie extends React.Component {
   render () {
     let { x, y, data } = this.props
     let pie = d3.pie()
+    console.log(this.props.data)
 
     return (
       <g transform = { this.translate(x, y) }>
