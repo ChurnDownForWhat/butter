@@ -1,7 +1,7 @@
 import React from 'react'
 import * as Bs from 'react-bootstrap'
 
-const cardEditView = ({ defaults, props, card, addCard, FieldGroup, cancel }) => {
+const cardEditView = ({ dateIt,defaults, props, card, addCard, FieldGroup, cancel }) => {
   let form = {}
   return (
     <Bs.Grid>
@@ -83,7 +83,7 @@ const cardEditView = ({ defaults, props, card, addCard, FieldGroup, cancel }) =>
               type='date'
               label='Expiration Date'
               placeholder='XX/XX/XXXX'
-              defaultValue={card.expiration || ''}
+              defaultValue={dateIt(card.expiration) || ''}
             />
           </Bs.Col>
           <Bs.Col md={6}>
@@ -92,7 +92,7 @@ const cardEditView = ({ defaults, props, card, addCard, FieldGroup, cancel }) =>
               type='date'
               label='Monthly Bill Date'
               placeholder='XX/XX/XXXX'
-              defaultValue={card.monthlyBilldate || ''}
+              defaultValue={dateIt(card.monthlyBilldate) || ''}
             />
           </Bs.Col>
         </Bs.Row>
@@ -103,7 +103,7 @@ const cardEditView = ({ defaults, props, card, addCard, FieldGroup, cancel }) =>
               type='date'
               label='Application Date'
               placeholder='XX/XX/XXXX'
-              defaultValue={card.applicationDate || ''}
+              defaultValue={dateIt(card.applicationDate) || ''}
             />
           </Bs.Col>
           <Bs.Col md={6}>
@@ -112,7 +112,7 @@ const cardEditView = ({ defaults, props, card, addCard, FieldGroup, cancel }) =>
               type='date'
               label='Expected Cancel Date'
               placeholder='XX/XX/XXXX'
-              defaultValue={card.expCancelDate || ''}
+              defaultValue={dateIt(card.expCancelDate) || ''}
             />
           </Bs.Col>
         </Bs.Row>        
@@ -152,7 +152,7 @@ const cardEditView = ({ defaults, props, card, addCard, FieldGroup, cancel }) =>
               type='date'
               label='Spend Deadline'
               placeholder='XX/XX/XXXX'
-              defaultValue={card.spendDeadline || ''}
+              defaultValue={dateIt(card.spendDeadline) || ''}
             />
           </Bs.Col>
         </Bs.Row>
@@ -172,7 +172,7 @@ const cardEditView = ({ defaults, props, card, addCard, FieldGroup, cancel }) =>
               type='date'
               label='Annual Fee Date'
               placeholder='XX/XX/XXXX'
-              defaultValue={card.annFeeDate || ''}
+              defaultValue={dateIt(card.annFeeDate) || ''}
             />
           </Bs.Col>
           <Bs.Col md={3}>
