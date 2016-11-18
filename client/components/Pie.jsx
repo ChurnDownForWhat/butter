@@ -40,12 +40,13 @@ class Pie extends React.Component {
     startAngle = (value.data[1] * Math.PI * 2) / total
     endAngle = (value.data[1] * 2 * Math.PI * 2) / total
 
+
     if (value.data[1]) {
       return (
         <Slice key={i}
         innerRadius = { innerRadius }
-        startAngle = {startAngle}
-        endAngle = { endAngle}
+        startAngle = { startAngle }
+        endAngle = { endAngle }
         outerRadius = { outerRadius }
         cornerRadius = { cornerRadius }
         padAngle = { 0 }
@@ -73,7 +74,5 @@ function matchDispatchToProps(dispatch){
   }, dispatch)
 }
 
-
-export default connect(mapStateToProps, matchDispatchToProps)(Pie)
 
 export default connect(mapStateToProps, matchDispatchToProps)(Pie)
