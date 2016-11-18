@@ -17,7 +17,8 @@ class CardsPage extends React.Component {
       cards: [],
       showQuick: false,
       showDetailed: false,
-      showModal: false    
+      showModal: false,
+      hover: ''  
     }
   }  
 
@@ -36,6 +37,18 @@ class CardsPage extends React.Component {
     .then((card) => this.setState({showModal: true}))
   }
 
+  onHover(){
+    this.setState({
+      hover:'menuDisplayed'
+    })
+  }
+
+  exitHover(){
+    this.setState({
+      hover:''
+    })
+  }
+
 
   close(){
     this.setState({
@@ -44,8 +57,8 @@ class CardsPage extends React.Component {
   }
 
   deleteClick(e){
-    this.props.deleteCard(e.target.id, e.target.key)
-    e.target.parentElement.parentElement.remove()
+    this.props.deleteCard(e.target.parentElement.id)
+    e.target.parentElement.parentElement.parentElement.remove()
   }
 
   switchAddViews(e){
@@ -62,14 +75,52 @@ class CardsPage extends React.Component {
   render(){
     let closeQuick = () => this.setState({ showQuick: false })
     let closeDetailed = () => this.setState({ showDetailed: false })
+    const title = (
+      <div>
+        <h1 className='cards-panel-header'>Cards</h1>
+        <Bs.Button id='cards-panel-add' className='cards-panel-header'>
+          <i className="fa fa-plus fa-1x" aria-hidden="true"></i>
+        </Bs.Button>
+      </div>
+    )
 
     return (
-      <div id='page-content-wrapper'  className={this.state.hover}>
-        <Bs.Grid fluid={true}>
-          <CardView show={this.state.showModal} close={this.close.bind(this)}/>
-          <QuickNewCard show={this.state.showQuick} switch={this.switchAddViews.bind(this)} onHide={closeQuick} />
-          <DetailedNewCard show={this.state.showDetailed} switch={this.switchAddViews.bind(this)} onHide={closeDetailed} />
-        </Bs.Grid>
+      <div id='wrapper'>
+        <div id='sidebar-wrapper' onMouseOver={this.onHover.bind(this)} onMouseLeave={this.exitHover.bind(this)}>
+          <Sidebar display={this.state.hover}/>
+        </div>
+        <div id='page-content-wrapper' className={this.state.hover}>
+          <Bs.Grid fluid={true}>
+            <CardView show={this.state.showModal} close={this.close.bind(this)}/>
+            <QuickNewCard show={this.state.showQuick} switch={this.switchAddViews.bind(this)} onHide={closeQuick} />
+            <DetailedNewCard show={this.state.showDetailed} switch={this.switchAddViews.bind(this)} onHide={closeDetailed} />
+            <Bs.Row>
+              <div className='page-header'>
+                {'Welcome, ' + this.props.user.firstName + "!"}
+              </div>
+            </Bs.Row>
+            <Bs.Row>
+              <Bs.Panel className='cards-panel' header={title}>
+                <Bs.Row>
+                  {
+                    this.state.cards.map((card,i) =>{
+                      return (
+                        <Bs.Col md={4} key={i}>
+                          <Bs.Panel className='cards'>
+                            <div className='removeButton' onClick={(this.deleteClick.bind(this))} id={card.id} ref="removeButton">
+                              <i className="fa fa-times" aria-hidden="true"></i>
+                            </div>
+                            {card.name}
+                          </Bs.Panel>
+                        </Bs.Col>
+                      )
+                    })
+                  }
+                </Bs.Row>
+              </Bs.Panel>
+            </Bs.Row>
+          </Bs.Grid>
+        </div>
       </div>
     )
   }

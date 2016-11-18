@@ -90,9 +90,10 @@ body{
 }
 
 .cards{
-  background-color: red !important; 
+  background-color: #f6f7fa !important;
   width: 20em;
   height: 12em;
+  float: left;
 }
 
 .cards button{
@@ -116,4 +117,12 @@ body{
   float: right;
   margin-top: 1.7em;
   margin-left: 2em;
+}
+
+.removeButton{
+  float: right;
+  margin-right: -3em;
+  margin-top: -1em;
+  color:red;
+  cursor: pointer;
 }
