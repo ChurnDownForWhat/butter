@@ -11,10 +11,6 @@
   cursor: pointer;
 }
 
-body {
-  font-family: Helvetica, sans-serif;
-}
-
 .react-autosuggest__container {
   position: relative;
 }

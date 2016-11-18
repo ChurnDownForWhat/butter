@@ -1,53 +1,128 @@
-/*SideBar*/
-#sidebar-wrapper{
-  z-index: 1;
-  position: absolute;
-  width: 250px;
-  height: 100%;
-  overflow-y: hidden;
-  background: #333;
-}
+@import url('https://fonts.googleapis.com/css?family=Oswald');
 
-/*Main page content*/
-#page-content-wrapper{
+body{
+  background-color: #f6f7fa;
+  font-family: 'Oswald', sans-serif;
   width: 100%;
+}
+
+.sidebar {
+  background:#fbfbfb;
+  border-right:1px solid #e5e5e5;
+  position:fixed;
+  top:0;
+  bottom:0;
+  height:100%;
+  left:0;
+  width:70px;
+  overflow:hidden;
+  -webkit-transition:width .2s linear;
+  transition:width .2s linear;
+  -webkit-transform:translateZ(0) scale(1,1);
+  z-index:1;
+}
+
+.sidebar:hover{
+  width:250px;
+  overflow:visible;
+}
+
+#page-content-wrapper{
+  padding-left: 70px;
   position: absolute;
-  /*padding: 15px;*/
+  width: 100%;
+  transition: padding-left .2s linear;
+}
+
+#page-content-wrapper.menuDisplayed{
   padding-left: 250px;
-/*  opacity: .2
-*/
+  transition: padding-left .2s linear;
+  opacity: .2;
 }
 
-/*Change the width of the sidebar to display it */
-#wrapper.menuDisplayed #sidebar-wrapper{
-  width: 250px;
+.fa{
+  width: 45px;
 }
 
-#wrapper.menuDisplayed #page-content-wrapper{
-  padding-left: 250px;
-  opacity: .2
+
+.sidebar-text{
+  display: inline-block;
+  color: transparent;
+  transition: color .2s linear;
+  position: absolute;
 }
 
-.sidebar-nav{
-  margin-top: 200px;
-  padding:0;
-  list-style: none;
+
+.sidebar li{
+  margin-top: 2em;
+}
+.sidebar h4{
+  font-size: 1.3em;
 }
 
-.sidebar-nav li{
-  text-indent: 20px;
-  line-height: 80px;
+
+.sign-out{
+  margin-top: 27em !important; 
 }
 
-.sidebar-nav li a {
-  display: block;
-  text-decoration: none;
-  border:1px solid transparent;
-  color: white;
+.sidebar-textmenuDisplayed{
+  position: absolute;
+  color: black;
+  transition: color .2s linear;
+  display: inline-block;
 }
 
-.sidebar-nav li a:hover{
-  /*padding-left: 20px;*/
-  border-left: 1px solid white;
-/*  font-size: 20px;
-*/}
+.nav-title{
+  color:transparent;
+  text-align: center;
+  transition: color .2s linear;
+}
+.nav-titlemenuDisplayed{
+  color:black;
+  transition: color .2s linear;
+  text-align: center;
+}
+
+.page-header{
+  background-color: rgb(246, 247, 250);
+  margin-left: .3em;
+  font-size: 4em;
+}
+
+.cards{
+  background-color: #f6f7fa !important;
+  width: 20em;
+  height: 12em;
+  float: left;
+}
+
+.cards button{
+  background-color: transparent;
+  border-width: 0px;
+}
+.cards button:hover{
+  background-color: transparent;
+  border-width: 0px;
+}
+
+.cards-panel{
+  margin-left: 1em;
+}
+
+.cards-panel-header{
+ display: inline-block;
+}
+
+#cards-panel-add{
+  float: right;
+  margin-top: 1.7em;
+  margin-left: 2em;
+}
+
+.removeButton{
+  float: right;
+  margin-right: -3em;
+  margin-top: -1em;
+  color:red;
+  cursor: pointer;
+}

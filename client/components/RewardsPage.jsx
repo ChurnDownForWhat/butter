@@ -10,10 +10,25 @@ class RewardsPage extends React.Component {
 
   constructor(props){
     super(props)
+    this.state={
+      hover:''
+    }
   }
 
   componentDidMount(){
     this.props.viewAllRewards()
+  }
+
+  onHover(){
+    this.setState({
+      hover:'menuDisplayed'
+    })
+  }
+
+  exitHover(){
+    this.setState({
+      hover:''
+    })
   }
 
   render() {
@@ -36,9 +51,11 @@ class RewardsPage extends React.Component {
       }
 
     return (
-     <div id='wrapper'>
-       <Sidebar/>
-         <div id='page-content-wrapper'>
+      <div id='wrapper'>
+        <div id='sidebar-wrapper' onMouseOver={this.onHover.bind(this)} onMouseLeave={this.exitHover.bind(this)}>
+          <Sidebar display={this.state.hover}/>
+        </div>
+        <div id='page-content-wrapper' className={this.state.hover}>
            <div className='container-fluid'>
              <div className='row'>
                 <form className="form-inline">
@@ -93,7 +110,7 @@ class RewardsPage extends React.Component {
                 </div>
               </div>
             </div>
-        </div>
+      </div>
     )
   }
 }

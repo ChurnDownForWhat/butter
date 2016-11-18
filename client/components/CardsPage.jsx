@@ -1,6 +1,5 @@
 import CardView from './CardView'
 import React from 'react'
-import { ProgressBar } from 'react-bootstrap'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Action from '../actions/actions'
@@ -8,7 +7,7 @@ import Sidebar from './Sidebar'
 import Popup from "react-popup"
 import QuickNewCard from './NewCard_quick'
 import DetailedNewCard from './NewCard_detailed'
-import { DropdownButton, ButtonToolbar, MenuItem, Modal } from 'react-bootstrap'
+import * as Bs from 'react-bootstrap'
 
 class CardsPage extends React.Component {
   constructor(props){
@@ -17,7 +16,8 @@ class CardsPage extends React.Component {
       cards: [],
       showQuick: false,
       showDetailed: false,
-      showModal: false
+      showModal: false,
+      hover: ''  
     }
   }  
 
@@ -36,14 +36,28 @@ class CardsPage extends React.Component {
     .then((card) => this.setState({showModal: true}))
   }
 
+  onHover(){
+    this.setState({
+      hover:'menuDisplayed'
+    })
+  }
+
+  exitHover(){
+    this.setState({
+      hover:''
+    })
+  }
+
+
   close(){
     this.setState({
       showModal: false
     })
   }
+
   deleteClick(e){
-    this.props.deleteCard(e.target.id, e.target.key)
-    e.target.parentElement.parentElement.remove()
+    this.props.deleteCard(e.target.parentElement.id)
+    e.target.parentElement.parentElement.parentElement.remove()
   }
 
   switchAddViews(e){
@@ -60,77 +74,71 @@ class CardsPage extends React.Component {
   render(){
     let closeQuick = () => this.setState({ showQuick: false })
     let closeDetailed = () => this.setState({ showDetailed: false })
+    const title = (
+      <div>
+        <h1 className='cards-panel-header'>Cards</h1>
+        <Bs.Button id='cards-panel-add' className='cards-panel-header'>
+          <i className="fa fa-plus fa-1x" aria-hidden="true"></i>
+        </Bs.Button>
+      </div>
+    )
 
-    return (!this.props.cards ?
-        (<div></div>)
-      :
-       (
-        <div id='wrapper'>
-          <CardView show={this.state.showModal} close={this.close.bind(this)}/>
-          <QuickNewCard show={this.state.showQuick} switch={this.switchAddViews.bind(this)} onHide={closeQuick} />
-          <DetailedNewCard show={this.state.showDetailed} switch={this.switchAddViews.bind(this)} onHide={closeDetailed} />
-          <Sidebar/>
-          <div id='page-content-wrapper'>
-            <div className='container-fluid'>
-              <div className='row'>
-                <div className='col-lg-12'>
-                  <h1 className="page-header">
+    return (
+      <div id='wrapper'>
+        <div id='sidebar-wrapper' onMouseOver={this.onHover.bind(this)} onMouseLeave={this.exitHover.bind(this)}>
+          <Sidebar display={this.state.hover}/>
+        </div>
+        <div id='page-content-wrapper' className={this.state.hover}>
+          <Bs.Grid fluid={true}>
+            <CardView show={this.state.showModal} close={this.close.bind(this)}/>
+            <QuickNewCard show={this.state.showQuick} switch={this.switchAddViews.bind(this)} onHide={closeQuick} />
+            <DetailedNewCard show={this.state.showDetailed} switch={this.switchAddViews.bind(this)} onHide={closeDetailed} />
+            <Bs.Row>
+              <div className='page-header'>
+                {'Welcome, ' + this.props.user.firstName + "!"}
+              </div>
+            </Bs.Row>
+            <Bs.Row>
+              <Bs.Panel className='cards-panel' header={title}>
+                <input onKeyUp={this.filterCards.bind(this)} placeholder="filter cards"/> 
+                <Bs.Row>
                   {
-                    this.props.user.firstName
-                    +' '+
-                    this.props.user.lastName
-                  }
-                    <small> {this.props.user.email}</small>
-                    <small> 
-                      <input onKeyUp={this.filterCards.bind(this)} 
-                             placeholder="filter cards"/> 
-                    </small>
-                    <small>
-                      <ButtonToolbar>
-                        <DropdownButton bsSize="large" title="Add A Card" id="dropdown-size-large">
-                          <MenuItem eventKey="1" onSelect={(e) => this.setState({showQuick: true})}>Quick</MenuItem>
-                          <MenuItem eventKey="2" onSelect={(e) => this.setState({showDetailed: true})}>Detailed</MenuItem>
-                        </DropdownButton>
-                      </ButtonToolbar>
-                    </small>
-                  </h1> 
-                  <div className="row">
-                    <div className="col-lg-12">
-                      {
-                        this.state.cards.map((card, i) =>
-                        { 
-                          var date = 
-                          new Intl.DateTimeFormat('en', 
-                            {
-                              month: 'long',
-                              year:'numeric',
-                              day:'numeric' 
-                            }).format(new Date(card.spendDeadline))
-
-                          return (
-                          <div key={i} ref="cardDiv">
-                            <div className="row">
+                    this.state.cards.map((card,i) =>{
+                      var date = new Intl.DateTimeFormat('en', 
+                        {
+                          month: 'long',
+                          year:'numeric',
+                          day:'numeric' 
+                        }).format(new Date(card.spendDeadline))
+                      return (
+                        <Bs.Col md={4} key={i}>
+                          <Bs.Panel className='cards'>
+                            <div className='removeButton' onClick={(this.deleteClick.bind(this))} id={card.id} ref="removeButton">
+                              <i className="fa fa-times" aria-hidden="true"></i>
+                            </div>
                             <div onClick={(this.click.bind(this))} className='cardName col-md-11' id={card.id}>
                               {card.name}          
                             </div> 
-                              <button className="remove-comment col-md-1" 
-                                onClick={(this.deleteClick.bind(this))} id={card.id} ref="removeButton"> &times; 
-                              </button>
-                            </div>
-                            {date}
-                            <ProgressBar bsStyle="success" active now={card.spendTotal/card.minSpend*100} />
-                          </div>
-                          )
-                        })
-                      }
-                    </div>
-                </div>
-                </div>
-              </div>
-            </div>
-          </div>
+                            <Bs.ProgressBar bsStyle="success" active now={card.spendTotal/card.minSpend*100} />
+                            {'Spend Deadline:' + " "+ date}
+                          </Bs.Panel>
+                        </Bs.Col>
+                      )
+                    })
+                  }
+                </Bs.Row>
+              </Bs.Panel>
+            </Bs.Row>
+            <Bs.Row>
+                <Bs.DropdownButton bsSize="large" title="Add A Card" >
+                  <Bs.MenuItem eventKey="1" onSelect={(e) => this.setState({showQuick: true})}>Quick</Bs.MenuItem>
+                  <Bs.MenuItem eventKey="2" onSelect={(e) => this.setState({showDetailed: true})}>Detailed</Bs.MenuItem>
+                </Bs.DropdownButton>
+            </Bs.Row>
+          </Bs.Grid>
         </div>
-    ))
+      </div>
+    )
   }
 }
 
