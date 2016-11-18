@@ -16,14 +16,14 @@
 }
 
 .react-autosuggest__input {
-  width: 240px;
-  height: 30px;
-  padding: 10px 20px;
+  padding: 5px 20px;
   font-family: Helvetica, sans-serif;
   font-weight: 300;
   font-size: 16px;
   border: 1px solid #aaa;
   border-radius: 4px;
+  width: 100%;
+  margin-top: 1em;
 }
 
 .react-autosuggest__input:focus {
@@ -43,7 +43,7 @@
   display: block;
   position: absolute;
   top: 51px;
-  width: 300px;
+  width: 100%;
   border: 1px solid #aaa;
   background-color: #fff;
   font-family: Helvetica, sans-serif;
@@ -118,6 +118,6 @@
     float: left;
 }
 .modal-footer .btn-default {
-    width: 80%;
+    width: 100%;
 
 }
