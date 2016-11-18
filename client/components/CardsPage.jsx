@@ -77,9 +77,12 @@ class CardsPage extends React.Component {
     const title = (
       <div>
         <h1 className='cards-panel-header'>Cards</h1>
-        <Bs.Button id='cards-panel-add' className='cards-panel-header'>
-          <i className="fa fa-plus fa-1x" aria-hidden="true"></i>
-        </Bs.Button>
+        <div id='cards-panel-add' className='cards-panel-header'>
+        <Bs.DropdownButton id='cards-panel-add' className='cards-panel-header' bsSize="large" title="Add A Card" >
+          <Bs.MenuItem eventKey="1" onSelect={(e) => this.setState({showQuick: true})}>Quick</Bs.MenuItem>
+          <Bs.MenuItem eventKey="2" onSelect={(e) => this.setState({showDetailed: true})}>Detailed</Bs.MenuItem>
+        </Bs.DropdownButton>
+        </div>
       </div>
     )
     console.log("Cards Children",this.state.cards)
@@ -131,12 +134,6 @@ class CardsPage extends React.Component {
                   }
                 </Bs.Row>
               </Bs.Panel>
-            </Bs.Row>
-            <Bs.Row>
-                <Bs.DropdownButton bsSize="large" title="Add A Card" >
-                  <Bs.MenuItem eventKey="1" onSelect={(e) => this.setState({showQuick: true})}>Quick</Bs.MenuItem>
-                  <Bs.MenuItem eventKey="2" onSelect={(e) => this.setState({showDetailed: true})}>Detailed</Bs.MenuItem>
-                </Bs.DropdownButton>
             </Bs.Row>
           </Bs.Grid>
         </div>
