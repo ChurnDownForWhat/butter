@@ -7,7 +7,6 @@ import Sidebar from './Sidebar'
 import Popup from "react-popup"
 import QuickNewCard from './NewCard_quick'
 import DetailedNewCard from './NewCard_detailed'
-import { DropdownButton, ButtonToolbar, MenuItem, Modal,ProgressBar } from 'react-bootstrap'
 import * as Bs from 'react-bootstrap'
 
 class CardsPage extends React.Component {
