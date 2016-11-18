@@ -66,8 +66,6 @@ class Pie extends React.Component {
 
 function mapStateToProps(store){
   return {
-    //object w/ all user cards data
-    cards: store.cardStates.cards,
     data: store.cardStates.data
 
   }
@@ -75,7 +73,6 @@ function mapStateToProps(store){
 
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
-    viewAllCards: Action.viewAllCards,
     getPieData: Action.getPieData
   }, dispatch)
 }
