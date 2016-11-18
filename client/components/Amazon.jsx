@@ -8,11 +8,27 @@ import Sidebar from './Sidebar'
 class CardView extends React.Component {
   constructor(props) {
     super(props)
+    this.state ={
+      hover:''
+    }
   }  
 
   componentDidMount() {
     this.props.getAmazonDefault()
   }
+
+  onHover(){
+    this.setState({
+      hover:'menuDisplayed'
+    })
+  }
+
+  exitHover(){
+    this.setState({
+      hover:''
+    })
+  }
+
 
   onSearch(e){
     if(e.keyCode === 13){
@@ -49,8 +65,10 @@ class CardView extends React.Component {
       })
     return (
       <div id='wrapper'>
-          <Sidebar/>
-        <div id='page-content-wrapper'>
+        <div id='sidebar-wrapper' onMouseOver={this.onHover.bind(this)} onMouseLeave={this.exitHover.bind(this)}>
+          <Sidebar display={this.state.hover}/>
+        </div>
+        <div id='page-content-wrapper' className={this.state.hover}>
           <div className='container-fluid'>
           <input placeholder="Amazon Search" onKeyUp={this.onSearch.bind(this)}/>
             <div className='row'>
