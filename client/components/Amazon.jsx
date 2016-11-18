@@ -76,13 +76,14 @@ class CardView extends React.Component {
         <div id='page-content-wrapper' className={this.state.hover}>
           <div className='container-fluid'>
           <div className='row amazonTop'>
-            <h1> Welcome to the Amazon Search Page! </h1> 
+            <h1>    Welcome to the Amazon Search Page! </h1> 
           </div>
           <div className='row amazonTop'>
             <div className='input-group col-md-4 amazonSearchBar'>
               <input className='form-control' placeholder="Amazon Search" ref="inputVal" onKeyUp={this.onSearch.bind(this)}/>
               <span className='input-group-btn'>
-                <button className="btn btn-default" onClick={this.buttonClickSearch.bind(this)}> hey</button>
+                <button className="btn btn-default glyphicon glyphicon-search" onClick={this.buttonClickSearch.bind(this)}> 
+                </button>
               </span>
             </div>
           </div>
