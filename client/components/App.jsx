@@ -14,6 +14,21 @@ import Amazon from './Amazon'
 export default class App extends React.Component {
   constructor (props) {
     super(props)
+    this.state = {
+      hover: ''
+    }
+  }
+
+  onHover(){
+    this.setState({
+      hover:'menuDisplayed'
+    })
+  }
+
+  exitHover(){
+    this.setState({
+      hover:''
+    })
   }
 
   render () {
@@ -21,12 +36,17 @@ export default class App extends React.Component {
     return (
 
     <Provider store={ this.props.store } >
-      <Router history={hashHistory}>
+      <div id='wrapper'>
+        <div id='sidebar-wrapper' onMouseOver={this.onHover.bind(this)} onMouseLeave={this.exitHover.bind(this)}>
+          <Sidebar display={this.state.hover}/>
+        </div>
+        <Router history={hashHistory}>
         <Route path="/" component={CardsPage} />
         <Route path="/cards" component={CardsPage} />
         <Route path="/rewards" component={RewardsPage} />
         <Route path='/amazon' component={Amazon}/>
       </Router>
+      </div>
     </Provider>
     )
   }
