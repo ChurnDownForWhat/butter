@@ -119,9 +119,11 @@ class CardsPage extends React.Component {
                             </div>
                             <div onClick={(this.click.bind(this))} className='cardName col-md-11' id={card.id}>
                               {card.name}          
-                            </div> 
+                            </div>
+                            <Bs.Col md={12}> 
                             <Bs.ProgressBar bsStyle="success" active now={card.spendTotal/card.minSpend*100} />
                             {'Spend Deadline:' + " "+ date}
+                            </Bs.Col>
                           </Bs.Panel>
                         </Bs.Col>
                       )
