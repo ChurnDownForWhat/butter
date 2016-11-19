@@ -1,10 +1,8 @@
-import CardView from './CardView'
 import React from 'react'
+import CardView from './CardView'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Action from '../actions/actions'
-import Sidebar from './Sidebar'
-import Popup from "react-popup"
 import QuickNewCard from './NewCard_quick'
 import DetailedNewCard from './NewCard_detailed'
 import * as Bs from 'react-bootstrap'
@@ -16,8 +14,7 @@ class CardsPage extends React.Component {
       cards: [],
       showQuick: false,
       showDetailed: false,
-      showModal: false,
-      hover: ''  
+      showModal: false 
     }
   }  
 
@@ -35,19 +32,6 @@ class CardsPage extends React.Component {
     return this.props.viewCard(e.target.id)
     .then((card) => this.setState({showModal: true}))
   }
-
-  onHover(){
-    this.setState({
-      hover:'menuDisplayed'
-    })
-  }
-
-  exitHover(){
-    this.setState({
-      hover:''
-    })
-  }
-
 
   close(){
     this.setState({
@@ -85,58 +69,50 @@ class CardsPage extends React.Component {
         </div>
       </div>
     )
-    console.log("Cards Children",this.state.cards)
 
     return (
-      <div id='wrapper'>
-        <div id='sidebar-wrapper' onMouseOver={this.onHover.bind(this)} onMouseLeave={this.exitHover.bind(this)}>
-          <Sidebar display={this.state.hover}/>
-        </div>
-        <div id='page-content-wrapper' className={this.state.hover}>
-          <Bs.Grid fluid={true}>
-            <CardView show={this.state.showModal} close={this.close.bind(this)}/>
-            <QuickNewCard show={this.state.showQuick} switch={this.switchAddViews.bind(this)} onHide={closeQuick} />
-            <DetailedNewCard show={this.state.showDetailed} switch={this.switchAddViews.bind(this)} onHide={closeDetailed} />
+      <div>
+        <CardView show={this.state.showModal} close={this.close.bind(this)}/>
+        <QuickNewCard show={this.state.showQuick} switch={this.switchAddViews.bind(this)} onHide={closeQuick} />
+        <DetailedNewCard show={this.state.showDetailed} switch={this.switchAddViews.bind(this)} onHide={closeDetailed} />
+        <Bs.Row>
+          <div className='page-header'>
+            {'Welcome, ' + this.props.user.firstName + "!"}
+          </div>
+        </Bs.Row>
+        <Bs.Row>
+          <Bs.Panel className='cards-panel' header={title}>
+            <input onKeyUp={this.filterCards.bind(this)} placeholder="filter cards"/> 
             <Bs.Row>
-              <div className='page-header'>
-                {'Welcome, ' + this.props.user.firstName + "!"}
-              </div>
-            </Bs.Row>
-            <Bs.Row>
-              <Bs.Panel className='cards-panel' header={title}>
-                <input onKeyUp={this.filterCards.bind(this)} placeholder="filter cards"/> 
-                <Bs.Row>
-                  {
-                    this.state.cards.map((card,i) =>{
-                      var date = new Intl.DateTimeFormat('en', 
-                        {
-                          month: 'long',
-                          year:'numeric',
-                          day:'numeric' 
-                        }).format(new Date(card.spendDeadline))
-                      return (
-                        <Bs.Col md={4} key={i}>
-                          <Bs.Panel className='cards'>
-                            <div className='removeButton' onClick={(this.deleteClick.bind(this))} id={card.id} ref="removeButton">
-                              <i className="fa fa-times" aria-hidden="true"></i>
-                            </div>
-                            <div onClick={(this.click.bind(this))} className='cardName col-md-11' id={card.id}>
-                              {card.name}          
-                            </div>
-                            <Bs.Col md={12}> 
-                            <Bs.ProgressBar bsStyle="success" active now={card.spendTotal/card.minSpend*100} />
-                            {'Spend Deadline:' + " "+ date}
-                            </Bs.Col>
-                          </Bs.Panel>
+              {
+                this.state.cards.map((card,i) =>{
+                  var date = new Intl.DateTimeFormat('en', 
+                    {
+                      month: 'long',
+                      year:'numeric',
+                      day:'numeric' 
+                    }).format(new Date(card.spendDeadline))
+                  return (
+                    <Bs.Col md={4} key={i}>
+                      <Bs.Panel className='cards'>
+                        <div className='removeButton' onClick={(this.deleteClick.bind(this))} id={card.id} ref="removeButton">
+                          <i className="fa fa-times" aria-hidden="true"></i>
+                        </div>
+                        <div onClick={(this.click.bind(this))} className='cardName col-md-11' id={card.id}>
+                          {card.name}          
+                        </div>
+                        <Bs.Col md={12}> 
+                        <Bs.ProgressBar bsStyle="success" active now={card.spendTotal/card.minSpend*100} />
+                        {'Spend Deadline:' + " "+ date}
                         </Bs.Col>
-                      )
-                    })
-                  }
-                </Bs.Row>
-              </Bs.Panel>
+                      </Bs.Panel>
+                    </Bs.Col>
+                  )
+                })
+              }
             </Bs.Row>
-          </Bs.Grid>
-        </div>
+          </Bs.Panel>
+        </Bs.Row>
       </div>
     )
   }
