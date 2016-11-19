@@ -82,7 +82,7 @@ class RewardsPage extends React.Component {
                                   <td>{val.category}</td>
                                   <td>{val.rewardsAmt}</td>
                                   <td>
-                                  { link ? <a href={link}> Reward Portal </a>
+                                  { link ? <a href={link} target="_blank"> Reward Portal </a>
                                     : <div> ¯\_(ツ)_/¯ </div> }
                                   </td>
                               </tr>
