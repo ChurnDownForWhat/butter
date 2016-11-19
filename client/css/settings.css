@@ -1,0 +1,30 @@
+#feedbackBtn{
+  height: auto;
+  margin: 25px;
+}
+
+.settings_content{
+  margin: 20px 95px;
+}
+
+.settings_cards{
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+}
+
+.settings_cards .cardName{
+  font-size: 20px;
+  margin: 5px 0;
+  text-align: center;
+}
+
+.settings_cards img{
+  width: 45px;
+  height: 35px;
+  margin: 0px auto;
+}
+
+.delAcct{
+  margin-top: 30px;
+}

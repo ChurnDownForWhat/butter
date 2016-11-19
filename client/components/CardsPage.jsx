@@ -94,7 +94,6 @@ class CardsPage extends React.Component {
       </div>
     )
 
-    console.log("Cards Children",this.state.cards)
     return (
       <div>
         <CardView show={this.state.showModal} close={this.close.bind(this)}/>
@@ -131,7 +130,6 @@ class CardsPage extends React.Component {
                              confirmButtonText="Delete Card"
                                onConfirm={this.onConfirmDelete.bind(this)}
                                onCancel={() => {
-                                 console.log('cancel') 
                                  this.setState({ showAlert: false })
                                }}
                           />
