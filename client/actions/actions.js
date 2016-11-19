@@ -138,7 +138,6 @@ export function getPieData() {
       }
     }))
     .then(cards => {
-      console.log(cards)
       return cards.reduce((acc, curr) => {
         if (curr) {
           let data = [curr[0].toLowerCase(), curr[1]]
