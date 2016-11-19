@@ -8,6 +8,7 @@ import Popup from "react-popup"
 import QuickNewCard from './NewCard_quick'
 import DetailedNewCard from './NewCard_detailed'
 import * as Bs from 'react-bootstrap'
+import SweetAlert from 'sweetalert-react'
 
 class CardsPage extends React.Component {
   constructor(props){
@@ -17,6 +18,7 @@ class CardsPage extends React.Component {
       showQuick: false,
       showDetailed: false,
       showModal: false,
+      showAlert: false,
       hover: ''  
     }
   }  
@@ -82,6 +84,7 @@ class CardsPage extends React.Component {
         </Bs.Button>
       </div>
     )
+
     console.log("Cards Children",this.state.cards)
 
     return (
@@ -114,7 +117,22 @@ class CardsPage extends React.Component {
                       return (
                         <Bs.Col md={4} key={i}>
                           <Bs.Panel className='cards'>
-                            <div className='removeButton' onClick={(this.deleteClick.bind(this))} id={card.id} ref="removeButton">
+                            <div className='removeButton' onClick= {() =>this.setState({showAlert: true})} id={card.id} ref="removeButton">
+                              <SweetAlert
+                                 show={this.state.showAlert}
+                                 title="Demo with Cancel"
+                                 text="SweetAlert in React"
+                                 showCancelButton
+                                 onConfirm={() => {
+                                  console.log('confirm'); // eslint-disable-line no-console
+                                  this.setState({ showAlert: false });
+                                 }}
+                                 onCancel={() => {
+                                  console.log('cancel'); // eslint-disable-line no-console
+                                  this.setState({ showAlert: false });
+                                 }}
+                                 onClose={() => console.log('close')}
+                              />
                               <i className="fa fa-times" aria-hidden="true"></i>
                             </div>
                             <div onClick={(this.click.bind(this))} className='cardName col-md-11' id={card.id}>
@@ -168,5 +186,9 @@ function matchDispatchToProps(dispatch){
 
   }, dispatch)
 }
+
+// <div className='removeButton' onClick={(this.deleteClick.bind(this))} id={card.id} ref="removeButton">
+  // <i className="fa fa-times" aria-hidden="true"></i>
+ // </div>
 
 export default connect(mapStateToProps, matchDispatchToProps)(CardsPage)
