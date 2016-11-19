@@ -9,7 +9,6 @@ exports.up = function(knex, Promise) {
       table.string('firstName', 20).notNullable()
       table.string('lastName', 20).notNullable()
       table.string('email', 40).unique().notNullable()
-      table.integer('creditScore').nullable()
     }),
 
     knex.schema.createTableIfNotExists('Cards', function(table){
