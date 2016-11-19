@@ -22,8 +22,8 @@ class Settings extends React.Component {
   }
 
   deleteCard(e){
-    this.props.deleteCard(e.target.parentElement.id)
-    e.target.parentElement.remove()
+    this.props.deleteCard(e.target.id)
+    document.getElementById(e.target.id).remove()
   }
 
   sendFeedback(e){
@@ -53,13 +53,13 @@ class Settings extends React.Component {
           <Bs.Row>  
             { 
               this.props.cards.map((card, i) => 
-                <Bs.Col md={6} >
-                  <Bs.Panel key={i} id={card.id} className="settings_cards" >
+                <Bs.Col md={6} id={card.id}>
+                  <Bs.Panel key={i} className="settings_cards" >
                     <Bs.Row>
                       <Bs.Col md={2}><img src={card.cardImg} /></Bs.Col>
                       <Bs.Col md={8} className="cardName">{card.name}</Bs.Col>
                       <Bs.Col md={2}>
-                        <Bs.Button block bsStyle='danger' onClick={this.deleteCard.bind(this)}>X</Bs.Button>
+                        <Bs.Button block id={card.id} bsStyle='danger' onClick={this.deleteCard.bind(this)}>X</Bs.Button>
                       </Bs.Col>
                     </Bs.Row>
                   </Bs.Panel>
