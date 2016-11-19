@@ -3,7 +3,7 @@ import * as Bs from 'react-bootstrap'
 
 const cardEditView = ({ dateIt, defaults, props, card, addCard, FieldGroup, cancel, show, onHide }) => {
   let form = {}
-  console.log(show,onHide)
+
   return (
     <Bs.Modal show={show} onHide={onHide}>
     <Bs.Grid>
