@@ -16,12 +16,6 @@ export function deleteUser(){
       type: 'DELETE',
       url: `/api/user`
     })
-    .then(res => 
-      dispatch({
-        type: 'DELETE_USER',
-        payload: res
-      })
-    )
 }
 
 export function getDefaults() {

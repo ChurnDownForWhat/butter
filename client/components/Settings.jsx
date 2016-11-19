@@ -15,6 +15,7 @@ class Settings extends React.Component {
 
   deleteUser(){
     console.log('deleteUser')
+    this.props.deleteUser()
   }
 
   deleteCard(e){

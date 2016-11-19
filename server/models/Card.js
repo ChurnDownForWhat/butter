@@ -26,6 +26,12 @@ Card.delete = (id) =>
   .then(id => id[0])
   .catch(err => err)
 
+Card.whipe = (id) =>
+  db('Cards').where({user_id:id})
+  .del()
+  .then(rows => rows)
+  .catch(err => err)  
+
 Card.save = (cardData) => 
   db('Cards')
   .insert(cardData)

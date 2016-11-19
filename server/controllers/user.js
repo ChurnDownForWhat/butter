@@ -1,4 +1,5 @@
 const User = require('../models/user')
+const Card = require('../models/card')
 const uuid = require('uuid')
 module.exports = {
 
@@ -32,10 +33,9 @@ module.exports = {
 
   removeUser: (req, res) => {
     const user = req.user.id
-
-    User.remove(user)
-    .then(val => res.status(201).send({success: true}))
-    .catch(err => res.send({success: false}))
-
+    Card.whipe(user)
+    .then(v => User.remove(user))
+    .then(v => res.redirect('/landing'))
+    .catch(err => console.log(err))
   }
 }
