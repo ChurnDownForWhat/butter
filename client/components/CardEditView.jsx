@@ -1,9 +1,11 @@
 import React from 'react'
 import * as Bs from 'react-bootstrap'
 
-const cardEditView = ({ dateIt, defaults, props, card, addCard, FieldGroup, cancel }) => {
+const cardEditView = ({ dateIt, defaults, props, card, addCard, FieldGroup, cancel, show, onHide }) => {
   let form = {}
+  console.log(show,onHide)
   return (
+    <Bs.Modal show={show} onHide={onHide}>
     <Bs.Grid>
       <Bs.Row>
         <Bs.Modal.Header>
@@ -201,6 +203,7 @@ const cardEditView = ({ dateIt, defaults, props, card, addCard, FieldGroup, canc
         </form>
       </Bs.Row>
     </Bs.Grid>
+    </Bs.Modal>
   )
 }
 

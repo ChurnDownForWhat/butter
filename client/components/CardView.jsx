@@ -63,6 +63,7 @@ class CardView extends React.Component {
   render() {
     let cardCompView = (<div></div>)
     if(this.props.card) cardCompView = (
+    <Bs.Modal show={this.props.show} onHide={this.closeEdit.bind(this)}>
       <Bs.Grid>
         <Bs.Row>
         <Bs.Row>
@@ -141,12 +142,11 @@ class CardView extends React.Component {
          </Bs.Col>
          </Bs.Row>
       </Bs.Grid>
+    </Bs.Modal>
     )
-    if(this.state.edit) cardCompView = (<CardEdit addCard={this.collectForm.bind(this)} FieldGroup={this.FieldGroup} dateIt={this.dateIt} card={this.props.card} cancel={this.cancel.bind(this)}/>)
+    if(this.state.edit) cardCompView = (<CardEdit addCard={this.collectForm.bind(this)} show={this.props.show} onHide={this.closeEdit.bind(this)} FieldGroup={this.FieldGroup} dateIt={this.dateIt} card={this.props.card} cancel={this.cancel.bind(this)}/>)
     return (
-      <Bs.Modal show={this.props.show} onHide={this.closeEdit.bind(this)}>
-        {cardCompView}
-      </Bs.Modal>
+        cardCompView
     )
   }
 }
