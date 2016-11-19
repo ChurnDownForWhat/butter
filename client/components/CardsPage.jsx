@@ -58,7 +58,10 @@ class CardsPage extends React.Component {
   }
 
   deleteClick(e){
-    this.props.deleteCard(e.target.parentElement.id)
+    console.log("dasfadsfsdf",e)
+
+
+    // this.props.deleteCard(e.target.parentElement.id)
     e.target.parentElement.parentElement.parentElement.remove()
   }
 
@@ -86,7 +89,6 @@ class CardsPage extends React.Component {
     )
 
     console.log("Cards Children",this.state.cards)
-
     return (
       <div id='wrapper'>
         <div id='sidebar-wrapper' onMouseOver={this.onHover.bind(this)} onMouseLeave={this.exitHover.bind(this)}>
@@ -108,6 +110,7 @@ class CardsPage extends React.Component {
                 <Bs.Row>
                   {
                     this.state.cards.map((card,i) =>{
+                      var self = this
                       var date = new Intl.DateTimeFormat('en', 
                         {
                           month: 'long',
@@ -117,21 +120,25 @@ class CardsPage extends React.Component {
                       return (
                         <Bs.Col md={4} key={i}>
                           <Bs.Panel className='cards'>
-                            <div className='removeButton' onClick= {() =>this.setState({showAlert: true})} id={card.id} ref="removeButton">
+                            <div className='removeButton' onClick= {() => {this.setState({showAlert: true})}} 
+                              id={card.id} ref="removeButton">
                               <SweetAlert
                                  show={this.state.showAlert}
-                                 title="Demo with Cancel"
-                                 text="SweetAlert in React"
-                                 showCancelButton
-                                 onConfirm={() => {
-                                  console.log('confirm'); // eslint-disable-line no-console
-                                  this.setState({ showAlert: false });
-                                 }}
-                                 onCancel={() => {
-                                  console.log('cancel'); // eslint-disable-line no-console
-                                  this.setState({ showAlert: false });
-                                 }}
-                                 onClose={() => console.log('close')}
+                                 title="Are you sure you want to delete this card?"
+                                 text="you won't be able to recover it if you delete"
+                                 type="warning"
+                                 showCancelButton= {true}
+                                 confirmButtonText="Delete Card"
+                                   onConfirm={() => {
+                                     console.log('SELF IS', self)
+                                     self.deleteClick.bind(self)
+                                     console.log('DELETE CLICK IS ACCESSED HERE', this.deleteClick.bind(this))
+                                     this.setState({ showAlert: false })
+                                   }}
+                                   onCancel={() => {
+                                     console.log('cancel') 
+                                     this.setState({ showAlert: false })
+                                   }}
                               />
                               <i className="fa fa-times" aria-hidden="true"></i>
                             </div>
