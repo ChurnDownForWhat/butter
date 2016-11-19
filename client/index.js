@@ -11,6 +11,7 @@ import Settings from './components/Settings'
 require('./css/sidebar.css')
 require('./css/creditCardsPage.css')
 require('./css/amazon.css')
+require('./css/CardView.css')
 
 
 render(
