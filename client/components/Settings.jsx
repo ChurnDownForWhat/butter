@@ -2,6 +2,7 @@ import React from 'react'
 import * as Action from '../actions/actions'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import * as Bs from 'react-bootstrap'
 
 class Settings extends React.Component {
   constructor(props){
@@ -21,7 +22,26 @@ class Settings extends React.Component {
   }
 
   render(){
-    return (<div>SETTINGS</div>)
+    return (
+      <div>
+        <Bs.Row>
+          <div className='page-header'>Settings</div>
+        </Bs.Row>
+        <Bs.Row>  
+          { this.props.cards.map(card => 
+              <div>
+                <div>{card.name}</div>
+                <button onClick={this.deleteCard}>Remove</button>
+              </div>
+            )
+          }
+        </Bs.Row>
+        <Bs.Row>
+          <button onClick={this.deleteUser}>Cancel Account</button>
+        </Bs.Row>
+      </div>
+
+    )
   }
 }
 
