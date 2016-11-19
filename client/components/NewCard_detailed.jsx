@@ -20,7 +20,7 @@ class DetailedNewCard extends React.Component {
 
   componentDidMount(){
     this.props.getDefaults()
-    .then(res => 
+    .then(res =>
       this.setState({
         suggestions: this.props.defaults
       })
@@ -44,7 +44,7 @@ class DetailedNewCard extends React.Component {
   onChange(event, { newValue, method }){
     this.setState({ value: newValue })
   }
-  
+
   onSuggestionsFetchRequested({ value }){
     this.setState({ suggestions: this.getSuggestions(value) })
   }
@@ -60,9 +60,9 @@ class DetailedNewCard extends React.Component {
     return this.props.defaults.filter(defaultCard => regex.test(this.getSuggestionValue(defaultCard)))
   }
 
-  getSuggestionValue(suggestion) { 
+  getSuggestionValue(suggestion) {
     this.setState({newCard: suggestion, cardType:suggestion.cardType, category:suggestion.category})
-    return `${suggestion.name}` 
+    return `${suggestion.name}`
   }
   typeChange(event) {
     this.setState({cardType: event.target.value})
@@ -91,7 +91,7 @@ class DetailedNewCard extends React.Component {
     let form
     const { value, suggestions } = this.state
     const inputProps = {
-      placeholder: "Add A Card",
+      placeholder: "Card Name",
       value,
       onChange: this.onChange.bind(this)
     }
@@ -100,8 +100,11 @@ class DetailedNewCard extends React.Component {
         <Bs.Grid>
         <Bs.Row>
         <Bs.Modal.Header>
-          <Bs.Col md={12}>
+          <Bs.Col md={6}>
             <h3>Create a new Card</h3>
+          </Bs.Col>
+          <Bs.Col md={6} className='require'>
+          <span> * = Required Field </span>
           </Bs.Col>
         </Bs.Modal.Header>
         </Bs.Row>
@@ -114,8 +117,8 @@ class DetailedNewCard extends React.Component {
                     <Bs.Row>
                       <Bs.Col md={5}>
                         <Bs.FormGroup controlId="name">
-                          <Bs.ControlLabel>Card Name</Bs.ControlLabel>
-                          <Autosuggest 
+                          <Bs.ControlLabel>Card Name*</Bs.ControlLabel>
+                          <Autosuggest
                             suggestions={suggestions}
                             onSuggestionsFetchRequested={this.onSuggestionsFetchRequested.bind(this)}
                             onSuggestionsClearRequested={this.onSuggestionsClearRequested.bind(this)}
@@ -126,7 +129,7 @@ class DetailedNewCard extends React.Component {
                       </Bs.Col>
                       <Bs.Col md={4}>
                         <Bs.FormGroup controlId="cardType">
-                          <Bs.ControlLabel>Card Type</Bs.ControlLabel>
+                          <Bs.ControlLabel>Card Type*</Bs.ControlLabel>
                           <Bs.FormControl componentClass="select" value={this.state.cardType} onChange={this.typeChange.bind(this)}>
                             <option value="MasterCard">MasterCard</option>
                             <option value="Visa">Visa</option>
@@ -136,7 +139,7 @@ class DetailedNewCard extends React.Component {
                         </Bs.FormGroup>
                       </Bs.Col>
                       <Bs.Col md={3}>
-                        <FieldGroup 
+                        <FieldGroup
                           id='last4digits'
                           type='text'
                           label='Last 4 Digits'
@@ -147,7 +150,7 @@ class DetailedNewCard extends React.Component {
                     <Bs.Row>
                       <Bs.Col md={4}>
                         <Bs.FormGroup controlId="category">
-                          <Bs.ControlLabel>Reward Category</Bs.ControlLabel>
+                          <Bs.ControlLabel>Reward Category*</Bs.ControlLabel>
                           <Bs.FormControl componentClass="select" value={this.state.category} onChange={this.catChange.bind(this)}>
                             <option value="Cash Back">Cash Back</option>
                             <option value="General Points">General Points</option>
@@ -157,7 +160,7 @@ class DetailedNewCard extends React.Component {
                         </Bs.FormGroup>
                       </Bs.Col>
                       <Bs.Col md={4}>
-                        <FieldGroup 
+                        <FieldGroup
                           id='program'
                           type='text'
                           label='Program'
@@ -166,25 +169,25 @@ class DetailedNewCard extends React.Component {
                         />
                       </Bs.Col>
                       <Bs.Col md={4}>
-                        <FieldGroup 
+                        <FieldGroup
                           id='rewardsAmt'
                           type='number'
                           label='Rewards Amount'
-                          placeholder='XXXX.XX'                 
+                          placeholder='XXXX.XX'
                         />
                       </Bs.Col>
-                    </Bs.Row> 
+                    </Bs.Row>
                     <Bs.Row>
                       <Bs.Col md={6}>
-                        <FieldGroup 
+                        <FieldGroup
                           id='expiration'
                           type='date'
-                          label='Expiration Date'
+                          label='Expiration Date*'
                           placeholder='XX/XX/XXXX'
                         />
                       </Bs.Col>
                       <Bs.Col md={6}>
-                        <FieldGroup 
+                        <FieldGroup
                           id='monthlyBilldate'
                           type='number'
                           label='Monthly Bill Date'
@@ -194,7 +197,7 @@ class DetailedNewCard extends React.Component {
                     </Bs.Row>
                     <Bs.Row>
                       <Bs.Col md={6}>
-                        <FieldGroup 
+                        <FieldGroup
                           id='applicationDate'
                           type='date'
                           label='Application Date'
@@ -202,17 +205,17 @@ class DetailedNewCard extends React.Component {
                         />
                       </Bs.Col>
                       <Bs.Col md={6}>
-                        <FieldGroup 
+                        <FieldGroup
                           id='expCancelDate'
                           type='date'
                           label='Expected Cancel Date'
                           placeholder='XX/XX/XXXX'
                         />
                       </Bs.Col>
-                    </Bs.Row>        
+                    </Bs.Row>
                     <Bs.Row>
                       <Bs.Col md={6}>
-                        <FieldGroup 
+                        <FieldGroup
                           id='signupBonus'
                           type='text'
                           label='Sign Up Bonus'
@@ -221,17 +224,17 @@ class DetailedNewCard extends React.Component {
                           />
                       </Bs.Col>
                       <Bs.Col md={6}>
-                        <FieldGroup 
+                        <FieldGroup
                           id='spendTotal'
                           type='number'
                           label='Spent so far'
                           placeholder='XXXX.XX'
                           />
-                      </Bs.Col>                    
+                      </Bs.Col>
                     </Bs.Row>
                     <Bs.Row>
                       <Bs.Col md={6}>
-                        <FieldGroup 
+                        <FieldGroup
                           id='minSpend'
                           type='number'
                           label='Minimum Spend'
@@ -240,7 +243,7 @@ class DetailedNewCard extends React.Component {
                           />
                       </Bs.Col>
                       <Bs.Col md={6}>
-                        <FieldGroup 
+                        <FieldGroup
                           id='spendDeadline'
                           type='date'
                           label='Spend Deadline'
@@ -250,7 +253,7 @@ class DetailedNewCard extends React.Component {
                     </Bs.Row>
                     <Bs.Row>
                       <Bs.Col md={4}>
-                        <FieldGroup 
+                        <FieldGroup
                           id='annFeeAmt'
                           type='number'
                           label='Annual Fee'
@@ -259,7 +262,7 @@ class DetailedNewCard extends React.Component {
                           />
                       </Bs.Col>
                       <Bs.Col md={5}>
-                        <FieldGroup 
+                        <FieldGroup
                           id='annFeeDate'
                           type='date'
                           label='Annual Fee Date'

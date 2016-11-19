@@ -9,8 +9,11 @@ const cardEditView = ({ dateIt, defaults, props, card, addCard, FieldGroup, canc
     <Bs.Grid>
       <Bs.Row>
         <Bs.Modal.Header>
-          <Bs.Col md={12}>
+          <Bs.Col md={6}>
             <Bs.Modal.Title>Edit {card.name}</Bs.Modal.Title>
+          </Bs.Col>
+          <Bs.Col md={6} className='require'>
+          <span> * = Required Field </span>
           </Bs.Col>
         </Bs.Modal.Header>
       </Bs.Row>
@@ -50,7 +53,7 @@ const cardEditView = ({ dateIt, defaults, props, card, addCard, FieldGroup, canc
         <Bs.Row>
           <Bs.Col md={4}>
             <Bs.FormGroup controlId="category">
-              <Bs.ControlLabel>Reward Category</Bs.ControlLabel>
+              <Bs.ControlLabel>Reward Category*</Bs.ControlLabel>
               <Bs.FormControl componentClass="select" placeholder="select">
                 <option value="Cash Back">Cash Back</option>
                 <option value="General Points">General Points</option>
@@ -180,7 +183,6 @@ const cardEditView = ({ dateIt, defaults, props, card, addCard, FieldGroup, canc
           <Bs.Col md={3}>
             <Bs.FormGroup>
               <Bs.Checkbox>Annual Fee Waived?</Bs.Checkbox>
-              <span> * = Required Field </span>
             </Bs.FormGroup>
           </Bs.Col>
         </Bs.Row>
