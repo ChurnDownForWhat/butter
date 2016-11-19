@@ -35,7 +35,6 @@ module.exports = {
     const user = req.user.id
     Card.whipe(user)
     .then(v => User.remove(user))
-    .then(v => res.redirect('/landing'))
     .catch(err => console.log(err))
   }
 }

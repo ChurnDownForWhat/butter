@@ -58,7 +58,8 @@ function matchDispatchToProps(dispatch){
   return bindActionCreators({
     deleteCard: Action.deleteCard,
     viewAllCards: Action.viewAllCards,
-    deleteUser: Action.deleteUser
+    deleteUser: Action.deleteUser,
+    
 
   }, dispatch)
 }

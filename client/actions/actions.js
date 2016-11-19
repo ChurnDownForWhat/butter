@@ -16,6 +16,12 @@ export function deleteUser(){
       type: 'DELETE',
       url: `/api/user`
     })
+    .then(res =>
+      $.ajax({
+        type: 'GET',
+        url: '/api/logout'
+      })
+    )
 }
 
 export function getDefaults() {
