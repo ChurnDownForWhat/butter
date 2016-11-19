@@ -7,6 +7,11 @@ const userReducer = function (state = {}, action) {
       ...state,
       user: action.payload
     }
+  case 'DELETE_USER':
+    return {
+      ...state,
+      success: action.payload
+    }  
   default:
     return state
   }
