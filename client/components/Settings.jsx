@@ -1,5 +1,7 @@
-import { deleteUser } from '../actions/actions'
 import React from 'react'
+import * as Action from '../actions/actions'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
 class Settings extends React.Component {
   constructor(props){
@@ -34,7 +36,7 @@ function matchDispatchToProps(dispatch){
   return bindActionCreators({
     deleteCard: Action.deleteCard,
     viewAllCards: Action.viewAllCards,
-    deleteUser: deleteUser
+    deleteUser: Action.deleteUser
 
   }, dispatch)
 }

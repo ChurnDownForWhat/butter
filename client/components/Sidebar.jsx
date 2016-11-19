@@ -29,10 +29,12 @@ const Sidebar = (props) => {
           </Bs.NavItem>
         </LinkContainer>
 
-        <Bs.NavItem>
-          <i className="fa fa-cogs fa-2x" aria-hidden="true"></i>
-          <h4 className={'sidebar-text' + display}> Settings</h4>
-        </Bs.NavItem>
+        <LinkContainer to='/settings'>
+          <Bs.NavItem>
+            <i className="fa fa-cogs fa-2x" aria-hidden="true"></i>
+            <h4 className={'sidebar-text' + display}> Settings</h4>
+          </Bs.NavItem>
+        </LinkContainer>  
 
         <Bs.NavItem className="sign-out"  href='/api/logout'>
           <i className="fa fa-sign-out fa-2x" aria-hidden="true"></i>
