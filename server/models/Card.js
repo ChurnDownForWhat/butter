@@ -26,7 +26,7 @@ Card.delete = (id) =>
   .then(id => id[0])
   .catch(err => err)
 
-Card.whipe = (id) =>
+Card.wipe = (id) =>
   db('Cards').where({user_id:id})
   .del()
   .then(rows => rows)

@@ -14,7 +14,6 @@ class Settings extends React.Component {
   }
 
   deleteUser(){
-    console.log('deleteUser')
     this.props.deleteUser()
   }
 
@@ -39,7 +38,7 @@ class Settings extends React.Component {
           }
         </Bs.Row>
         <Bs.Row>
-          <Bs.Button bsStyle='danger' bsSize='large' onClick={this.deleteUser.bind(this)}>Cancel Account</Bs.Button>
+          <Bs.Button bsStyle='danger' bsSize='large' href='/api/logout' onClick={this.deleteUser.bind(this)}>Cancel Account</Bs.Button>
         </Bs.Row>
       </div>
 
@@ -59,7 +58,7 @@ function matchDispatchToProps(dispatch){
     deleteCard: Action.deleteCard,
     viewAllCards: Action.viewAllCards,
     deleteUser: Action.deleteUser,
-    
+
 
   }, dispatch)
 }

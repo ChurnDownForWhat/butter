@@ -33,7 +33,7 @@ module.exports = {
 
   removeUser: (req, res) => {
     const user = req.user.id
-    Card.whipe(user)
+    Card.wipe(user)
     .then(v => User.remove(user))
     .catch(err => console.log(err))
   }
