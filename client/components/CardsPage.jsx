@@ -17,6 +17,7 @@ class CardsPage extends React.Component {
       showDetailed: false,
       showModal: false,
       showAlert: false,
+      currentID: null,
       hover: ''  
     }
   }  
@@ -45,9 +46,26 @@ class CardsPage extends React.Component {
   deleteClick(e){
     console.log("dasfadsfsdf",e)
 
+    this.setState({
+      currentID: e.target.parentElement.id,
+      showAlert: true
+    })
+  }
 
-    // this.props.deleteCard(e.target.parentElement.id)
-    e.target.parentElement.parentElement.parentElement.remove()
+  onConfirmDelete(){
+    var self = this
+    this.props.deleteCard(this.state.currentID)
+    .then(function(){
+      self.props.viewAllCards()
+      .then(res => 
+        self.setState({
+          cards: self.props.cards
+        })
+      )
+    })
+    this.setState({
+      showAlert: false
+    })
   }
 
   switchAddViews(e){
@@ -102,7 +120,21 @@ class CardsPage extends React.Component {
                   return (
                     <Bs.Col md={4} key={i}>
                       <Bs.Panel className='cards'>
-                        <div className='removeButton' onClick={(this.deleteClick.bind(this))} id={card.id} ref="removeButton">
+                        <div className='removeButton' onClick={(this.deleteClick.bind(this))} 
+                          id={card.id} ref="removeButton">
+                          <SweetAlert
+                             show={this.state.showAlert}
+                             title="Are you sure you want to delete this card?"
+                             text="you won't be able to recover it if you delete it"
+                             type="warning"
+                             showCancelButton= {true}
+                             confirmButtonText="Delete Card"
+                               onConfirm={this.onConfirmDelete.bind(this)}
+                               onCancel={() => {
+                                 console.log('cancel') 
+                                 this.setState({ showAlert: false })
+                               }}
+                          />
                           <i className="fa fa-times" aria-hidden="true"></i>
                         </div>
                         <div onClick={(this.click.bind(this))} className='cardName col-md-11' id={card.id}>
@@ -111,7 +143,6 @@ class CardsPage extends React.Component {
                         <Bs.Col md={12}> 
                         <Bs.ProgressBar bsStyle="success" active now={card.spendTotal/card.minSpend*100} />
                         {'Spend Deadline:' + " "+ date}
->>>>>>> 54ee2bea24a1a1093cbb0f2c9e0f679bda7be3d7
                         </Bs.Col>
                       </Bs.Panel>
                     </Bs.Col>
