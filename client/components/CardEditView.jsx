@@ -1,7 +1,7 @@
 import React from 'react'
 import * as Bs from 'react-bootstrap'
 
-const cardEditView = ({ dateIt, defaults, props, card, addCard, FieldGroup, cancel, close }) => {
+const cardEditView = ({ dateIt, defaults, props, card, addCard, FieldGroup, cancel }) => {
   let form = {}
   return (
     <Bs.Grid>
@@ -13,7 +13,7 @@ const cardEditView = ({ dateIt, defaults, props, card, addCard, FieldGroup, canc
       </Bs.Col>
       </Bs.Row>
       <Bs.Row>
-        <form onSubmit={(e) => addCard(e,form).then((res) => close)} id="credit-card-form" ref={(el)=> form = el}>
+        <form onSubmit={(e) => addCard(e,form)} id="credit-card-form" ref={(el)=> form = el}>
         <Bs.Row>
           <Bs.Col md={4}>
             <FieldGroup
@@ -25,7 +25,7 @@ const cardEditView = ({ dateIt, defaults, props, card, addCard, FieldGroup, canc
             />
           </Bs.Col>
           <Bs.Col md={4}>
-            <Bs.FormGroup controlId="cardType" required>
+            <Bs.FormGroup controlId="cardType">
               <Bs.ControlLabel>Card Type*</Bs.ControlLabel>
               <Bs.FormControl componentClass="select" placeholder="select">
                 <option value="MasterCard">MasterCard</option>

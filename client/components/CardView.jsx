@@ -142,7 +142,7 @@ class CardView extends React.Component {
          </Bs.Row>
       </Bs.Grid>
     )
-    if(this.state.edit) cardCompView = (<CardEdit addCard={this.collectForm.bind(this)} FieldGroup={this.FieldGroup} dateIt={this.dateIt} card={this.props.card} cancel={this.cancel.bind(this)} close={this.closeEdit.bind(this)}/>)
+    if(this.state.edit) cardCompView = (<CardEdit addCard={this.collectForm.bind(this)} FieldGroup={this.FieldGroup} dateIt={this.dateIt} card={this.props.card} cancel={this.cancel.bind(this)}/>)
     return (
       <Bs.Modal show={this.props.show} onHide={this.closeEdit.bind(this)}>
         {cardCompView}
