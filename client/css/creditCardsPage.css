@@ -123,3 +123,7 @@
 .modal-footer .btn-default {
     width: 100%;
 }
+
+.require {
+  text-align: right;
+}
