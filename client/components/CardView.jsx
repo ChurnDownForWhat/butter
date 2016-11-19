@@ -67,25 +67,32 @@ class CardView extends React.Component {
       <Bs.Grid>
         <Bs.Row>
         <Bs.Row>
-          <Bs.Col md={6} className="viewCardName">
+          <Bs.Col md={6} className="viewCardName cardView">
             {this.props.card.name}
           </Bs.Col>
-          <Bs.Col md={6} className= "viewCardType">
+        </Bs.Row>
+        <Bs.Row>
+          <Bs.Col md={3} className= "viewCardType ">
             Card Type: {this.props.card.cardType}
           </Bs.Col> 
+          <Bs.Col md={3} className= "viewCardDigits">
+            Last Four Digits: {this.props.card.last4digits}
+          </Bs.Col>
         </Bs.Row>
         <Bs.Row>
-          <Bs.Col md={4}>
+          <Bs.Col md={4} className= "cardView">
             Minimum Spend: {this.props.card.minSpend}
           </Bs.Col>
-        </Bs.Row>
-        <Bs.Row>
-          <Bs.Col md={6}>
-            Sign Up bonus:    {this.props.card.signupBonus}
+          <Bs.Col md={4} className= "cardView">
             Spend Total:  {this.props.card.spendTotal}
           </Bs.Col>
-          <Bs.Col md={6}>
-            Deadline:   {new Intl.DateTimeFormat('en',
+        </Bs.Row>
+        <Bs.Row>
+          <Bs.Col md={4} className= "cardView">
+            Sign-Up Bonus:    {this.props.card.signupBonus}  {this.props.card.program}
+          </Bs.Col>
+          <Bs.Col md={4} className= "cardView">
+            Sign-Up Bonus Deadline:   {new Intl.DateTimeFormat('en',
               {
                 month: 'long',
                 year:'numeric',
@@ -94,37 +101,37 @@ class CardView extends React.Component {
           </Bs.Col>
         </Bs.Row>
         <Bs.Row>
-          <Bs.Col md={8}>
-            {this.props.card.cardType}/{this.props.card.category}
+          <Bs.Col md={4} className= "cardView">
+            Rewards Program:  {this.props.card.program}
           </Bs.Col>
-          <Bs.Col md={4}>
-            {this.props.card.program}
+          <Bs.Col md={4} className= "cardView">
+            Reward Points Earned:  {this.props.card.rewardsAmt}
           </Bs.Col>
         </Bs.Row>
         <Bs.Row>
-          <Bs.Col md={4}>
-            Points:{this.props.card.rewardsAmt}
+          <Bs.Col md={4} className= "cardView">
+            Reward Category: {this.props.card.category}
           </Bs.Col>
-          <Bs.Col md={4}>
-            Application Date:{new Intl.DateTimeFormat('en',
+          <Bs.Col md={4} className= "cardView">
+            Application Date:  {new Intl.DateTimeFormat('en',
               {
                 month: 'long',
                 year:'numeric',
                 day:'numeric'
               }).format(new Date(this.props.card.applicationDate))}
           </Bs.Col>
-          <Bs.Col md={4}>
-            Cancel Date:{new Intl.DateTimeFormat('en',
+        </Bs.Row>
+        <Bs.Row>
+          <Bs.Col md={4} className= "cardView">
+            Cancel Date:  {new Intl.DateTimeFormat('en',
               {
                 month: 'long',
                 year:'numeric',
                 day:'numeric'
               }).format(new Date(this.props.card.expCancelDate))}
           </Bs.Col>
-        </Bs.Row>
-        <Bs.Row>
-          <Bs.Col md={12}>
-            Expiration:{new Intl.DateTimeFormat('en',
+          <Bs.Col md={4} className= "cardView">
+            Expiration:  {new Intl.DateTimeFormat('en',
               {
                 month: 'long',
                 year:'numeric',
@@ -132,6 +139,28 @@ class CardView extends React.Component {
               }).format(new Date(this.props.card.expiration))}
           </Bs.Col>
         </Bs.Row>
+        <Bs.Row>
+          <Bs.Col md={4} className= "cardView">
+            Annual Fee Amount: {this.props.card.annFeeAmt}
+          </Bs.Col>
+          <Bs.Col md={4} className= "cardView">
+            Monthly Bill Date: {this.props.card.monthlyBilldate}
+          </Bs.Col>
+        </Bs.Row>
+        <Bs.Row>
+          <Bs.Col md={4} className= "cardView">
+            Annual Fee Date:  {new Intl.DateTimeFormat('en',
+              {
+                month: 'long',
+                year:'numeric',
+                day:'numeric'
+              }).format(new Date(this.props.card.annFeeDate))}
+          </Bs.Col>
+          <Bs.Col md={4} className= "cardView">
+            Annual Fee Waived First Year? {this.props.card.waivedFees}
+          </Bs.Col>
+        </Bs.Row>
+
         <Bs.Col md={12}>
         <Bs.Modal.Footer>
           <Bs.Col md={6} className="left-button">

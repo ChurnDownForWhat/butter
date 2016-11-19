@@ -63,8 +63,8 @@ const cardEditView = ({ dateIt, defaults, props, card, addCard, FieldGroup, canc
             <FieldGroup
               id='program'
               type='text'
-              label='Program'
-              placeholder='Program Title'
+              label='Rewards Program'
+              placeholder='Program Name'
               defaultValue={card.program || ''}
             />
           </Bs.Col>
@@ -72,7 +72,7 @@ const cardEditView = ({ dateIt, defaults, props, card, addCard, FieldGroup, canc
             <FieldGroup
               id='rewardsAmt'
               type='number'
-              label='Rewards Amount'
+              label='Reward Points Earned'
               placeholder='XXXX.XX'
               defaultValue={card.rewardsAmt || ''}
             />
@@ -132,7 +132,7 @@ const cardEditView = ({ dateIt, defaults, props, card, addCard, FieldGroup, canc
             <FieldGroup
               id='spendTotal'
               type='number'
-              label='Spent so far'
+              label='Spend Total'
               placeholder='XXXX.XX'
               defaultValue={card.spendTotal || ''}
             />
@@ -152,7 +152,7 @@ const cardEditView = ({ dateIt, defaults, props, card, addCard, FieldGroup, canc
             <FieldGroup
               id='spendDeadline'
               type='date'
-              label='Spend Deadline'
+              label='Sign-Up Bonus Deadline'
               placeholder='XX/XX/XXXX'
               defaultValue={dateIt(card.spendDeadline) || ''}
             />

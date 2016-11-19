@@ -4,5 +4,16 @@
 
 .viewCardType {
   text-align: left;
-  margin-top: 8px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.cardView {
+  margin-top: 10px;
+}
+
+.viewCardDigits {
+  text-align: left;
+  margin-top: 5px;
+  margin-bottom: 20px;
 }
