@@ -15,7 +15,7 @@ const cardEditView = ({ dateIt,defaults, props, card, addCard, FieldGroup, cance
       <Bs.Row>
         <form onSubmit={(e) => addCard(e,form)} id="credit-card-form" ref={(el)=> form = el}>
         <Bs.Row>
-          <Bs.Col md={5}>
+          <Bs.Col md={4}>
             <FieldGroup 
               id='name'
               type='text'
@@ -35,7 +35,7 @@ const cardEditView = ({ dateIt,defaults, props, card, addCard, FieldGroup, cance
               </Bs.FormControl>
             </Bs.FormGroup>
           </Bs.Col>
-          <Bs.Col md={3}>
+          <Bs.Col md={4}>
             <FieldGroup 
               id='last4digits'
               type='text'
