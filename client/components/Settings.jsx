@@ -17,8 +17,9 @@ class Settings extends React.Component {
     console.log('deleteUser')
   }
 
-  deleteCard(){
-    console.log('deleteCard')
+  deleteCard(e){
+    this.props.deleteCard(e.target.parentElement.id)
+    e.target.parentElement.remove()
   }
 
   render(){
@@ -28,16 +29,16 @@ class Settings extends React.Component {
           <div className='page-header'>Settings</div>
         </Bs.Row>
         <Bs.Row>  
-          { this.props.cards.map(card => 
-              <div>
+          { this.props.cards.map((card, i) => 
+              <div key={i} id={card.id} >
                 <div>{card.name}</div>
-                <button onClick={this.deleteCard}>Remove</button>
+                <Bs.Button bsStyle='danger' onClick={this.deleteCard.bind(this)}>Remove</Bs.Button>
               </div>
             )
           }
         </Bs.Row>
         <Bs.Row>
-          <button onClick={this.deleteUser}>Cancel Account</button>
+          <Bs.Button bsStyle='danger' bsSize='large' onClick={this.deleteUser.bind(this)}>Cancel Account</Bs.Button>
         </Bs.Row>
       </div>
 
