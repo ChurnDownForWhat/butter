@@ -67,19 +67,25 @@ class CardView extends React.Component {
       <Bs.Grid>
         <Bs.Row>
         <Bs.Row>
-          <Bs.Col md={12}>
-            <h3>{this.props.card.name}</h3>
+          <Bs.Col md={6} className="viewCardName">
+            {this.props.card.name}
           </Bs.Col>
-          <Bs.Col md={1}>
-            {this.props.card.spendTotal}/{this.props.card.minSpend}
+          <Bs.Col md={6} className= "viewCardType">
+            Card Type: {this.props.card.cardType}
+          </Bs.Col> 
+        </Bs.Row>
+        <Bs.Row>
+          <Bs.Col md={4}>
+            Minimum Spend: {this.props.card.minSpend}
           </Bs.Col>
         </Bs.Row>
         <Bs.Row>
           <Bs.Col md={6}>
-            Sign Up bonus:{this.props.card.signupBonus}
+            Sign Up bonus:    {this.props.card.signupBonus}
+            Spend Total:  {this.props.card.spendTotal}
           </Bs.Col>
           <Bs.Col md={6}>
-            Deadline:{new Intl.DateTimeFormat('en',
+            Deadline:   {new Intl.DateTimeFormat('en',
               {
                 month: 'long',
                 year:'numeric',

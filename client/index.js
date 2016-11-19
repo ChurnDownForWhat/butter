@@ -10,6 +10,7 @@ import Amazon from './components/Amazon'
 require('./css/sidebar.css')
 require('./css/creditCardsPage.css')
 require('./css/amazon.css')
+require('./css/CardView.css')
 
 
 render(
