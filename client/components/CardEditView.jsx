@@ -6,11 +6,11 @@ const cardEditView = ({ dateIt,defaults, props, card, addCard, FieldGroup, cance
   return (
     <Bs.Grid>
       <Bs.Row>
-      <Bs.Col md={12}>
         <Bs.Modal.Header>
-          <Bs.Modal.Title>Edit {card.name}</Bs.Modal.Title>
+          <Bs.Col md={12}>
+            <Bs.Modal.Title>Edit {card.name}</Bs.Modal.Title>
+          </Bs.Col>
         </Bs.Modal.Header>
-      </Bs.Col>
       </Bs.Row>
       <Bs.Row>
         <form onSubmit={(e) => addCard(e,form)} id="credit-card-form" ref={(el)=> form = el}>
@@ -47,7 +47,7 @@ const cardEditView = ({ dateIt,defaults, props, card, addCard, FieldGroup, cance
         </Bs.Row>
         <Bs.Row>
           <Bs.Col md={4}>
-            <Bs.FormGroup controlId="cardType">
+            <Bs.FormGroup controlId="category">
               <Bs.ControlLabel>Reward Category</Bs.ControlLabel>
               <Bs.FormControl componentClass="select" placeholder="select">
                 <option value="Cash Back">Cash Back</option>
