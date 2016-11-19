@@ -1,7 +1,7 @@
 import React from 'react'
 import * as Bs from 'react-bootstrap'
 
-const cardEditView = ({ dateIt,defaults, props, card, addCard, FieldGroup, cancel }) => {
+const cardEditView = ({ dateIt, defaults, props, card, addCard, FieldGroup, cancel }) => {
   let form = {}
   return (
     <Bs.Grid>
@@ -16,17 +16,17 @@ const cardEditView = ({ dateIt,defaults, props, card, addCard, FieldGroup, cance
         <form onSubmit={(e) => addCard(e,form)} id="credit-card-form" ref={(el)=> form = el}>
         <Bs.Row>
           <Bs.Col md={4}>
-            <FieldGroup 
+            <FieldGroup
               id='name'
               type='text'
-              label='Card Name'
+              label='Card Name*'
               placeholder='Insert Card Name'
               defaultValue={card.name}
             />
           </Bs.Col>
           <Bs.Col md={4}>
             <Bs.FormGroup controlId="cardType">
-              <Bs.ControlLabel>Card Type</Bs.ControlLabel>
+              <Bs.ControlLabel>Card Type*</Bs.ControlLabel>
               <Bs.FormControl componentClass="select" placeholder="select">
                 <option value="MasterCard">MasterCard</option>
                 <option value="Visa">Visa</option>
@@ -36,7 +36,7 @@ const cardEditView = ({ dateIt,defaults, props, card, addCard, FieldGroup, cance
             </Bs.FormGroup>
           </Bs.Col>
           <Bs.Col md={4}>
-            <FieldGroup 
+            <FieldGroup
               id='last4digits'
               type='text'
               label='Last 4 Digits'
@@ -58,7 +58,7 @@ const cardEditView = ({ dateIt,defaults, props, card, addCard, FieldGroup, cance
             </Bs.FormGroup>
           </Bs.Col>
           <Bs.Col md={4}>
-            <FieldGroup 
+            <FieldGroup
               id='program'
               type='text'
               label='Program'
@@ -67,7 +67,7 @@ const cardEditView = ({ dateIt,defaults, props, card, addCard, FieldGroup, cance
             />
           </Bs.Col>
           <Bs.Col md={4}>
-            <FieldGroup 
+            <FieldGroup
               id='rewardsAmt'
               type='number'
               label='Rewards Amount'
@@ -75,19 +75,19 @@ const cardEditView = ({ dateIt,defaults, props, card, addCard, FieldGroup, cance
               defaultValue={card.rewardsAmt || ''}
             />
           </Bs.Col>
-        </Bs.Row>        
+        </Bs.Row>
         <Bs.Row>
           <Bs.Col md={6}>
-            <FieldGroup 
+            <FieldGroup
               id='expiration'
               type='date'
-              label='Expiration Date'
+              label='Expiration Date*'
               placeholder='XX/XX/XXXX'
               defaultValue={dateIt(card.expiration) || ''}
             />
           </Bs.Col>
           <Bs.Col md={6}>
-            <FieldGroup 
+            <FieldGroup
               id='monthlyBilldate'
               type='number'
               label='Monthly Bill Date'
@@ -98,7 +98,7 @@ const cardEditView = ({ dateIt,defaults, props, card, addCard, FieldGroup, cance
         </Bs.Row>
         <Bs.Row>
           <Bs.Col md={6}>
-            <FieldGroup 
+            <FieldGroup
               id='applicationDate'
               type='date'
               label='Application Date'
@@ -107,7 +107,7 @@ const cardEditView = ({ dateIt,defaults, props, card, addCard, FieldGroup, cance
             />
           </Bs.Col>
           <Bs.Col md={6}>
-            <FieldGroup 
+            <FieldGroup
               id='expCancelDate'
               type='date'
               label='Expected Cancel Date'
@@ -115,10 +115,10 @@ const cardEditView = ({ dateIt,defaults, props, card, addCard, FieldGroup, cance
               defaultValue={dateIt(card.expCancelDate) || ''}
             />
           </Bs.Col>
-        </Bs.Row>        
+        </Bs.Row>
         <Bs.Row>
           <Bs.Col md={6}>
-            <FieldGroup 
+            <FieldGroup
               id='signupBonus'
               type='text'
               label='Sign Up Bonus'
@@ -127,18 +127,18 @@ const cardEditView = ({ dateIt,defaults, props, card, addCard, FieldGroup, cance
             />
           </Bs.Col>
           <Bs.Col md={6}>
-            <FieldGroup 
+            <FieldGroup
               id='spendTotal'
               type='number'
               label='Spent so far'
               placeholder='XXXX.XX'
               defaultValue={card.spendTotal || ''}
             />
-          </Bs.Col>                    
+          </Bs.Col>
         </Bs.Row>
         <Bs.Row>
           <Bs.Col md={6}>
-            <FieldGroup 
+            <FieldGroup
               id='minSpend'
               type='number'
               label='Minimum Spend'
@@ -147,7 +147,7 @@ const cardEditView = ({ dateIt,defaults, props, card, addCard, FieldGroup, cance
             />
           </Bs.Col>
           <Bs.Col md={6}>
-            <FieldGroup 
+            <FieldGroup
               id='spendDeadline'
               type='date'
               label='Spend Deadline'
@@ -158,7 +158,7 @@ const cardEditView = ({ dateIt,defaults, props, card, addCard, FieldGroup, cance
         </Bs.Row>
         <Bs.Row>
           <Bs.Col md={4}>
-            <FieldGroup 
+            <FieldGroup
               id='annFeeAmt'
               type='number'
               label='Annual Fee'
@@ -167,7 +167,7 @@ const cardEditView = ({ dateIt,defaults, props, card, addCard, FieldGroup, cance
             />
           </Bs.Col>
           <Bs.Col md={5}>
-            <FieldGroup 
+            <FieldGroup
               id='annFeeDate'
               type='date'
               label='Annual Fee Date'
@@ -178,6 +178,7 @@ const cardEditView = ({ dateIt,defaults, props, card, addCard, FieldGroup, cance
           <Bs.Col md={3}>
             <Bs.FormGroup>
               <Bs.Checkbox>Annual Fee Waived?</Bs.Checkbox>
+              <span> * = Required Field </span>
             </Bs.FormGroup>
           </Bs.Col>
         </Bs.Row>
