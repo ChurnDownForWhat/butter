@@ -109,7 +109,9 @@
 .buttonGroup {
   float: right;
 }
-
+.modal-dialog {
+  width: 75%;
+}
 .modal .container {
     width: 100%;
     padding: 0 30px;
