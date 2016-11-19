@@ -12,7 +12,7 @@ class CardView extends React.Component {
     this.state = {
       edit: false
     }
-  }  
+  }
 
   collectForm(e,el) {
     e.preventDefault()
@@ -62,7 +62,7 @@ class CardView extends React.Component {
   }
   render() {
     let cardCompView = (<div></div>)
-    if(this.props.card) cardCompView = (      
+    if(this.props.card) cardCompView = (
       <Bs.Grid>
         <Bs.Row>
         <Bs.Row>
@@ -78,14 +78,14 @@ class CardView extends React.Component {
             Sign Up bonus:{this.props.card.signupBonus}
           </Bs.Col>
           <Bs.Col md={6}>
-            Deadline:{new Intl.DateTimeFormat('en', 
+            Deadline:{new Intl.DateTimeFormat('en',
               {
                 month: 'long',
                 year:'numeric',
-                day:'numeric' 
+                day:'numeric'
               }).format(new Date(this.props.card.spendDeadline))}
           </Bs.Col>
-        </Bs.Row> 
+        </Bs.Row>
         <Bs.Row>
           <Bs.Col md={8}>
             {this.props.card.cardType}/{this.props.card.category}
@@ -99,29 +99,29 @@ class CardView extends React.Component {
             Points:{this.props.card.rewardsAmt}
           </Bs.Col>
           <Bs.Col md={4}>
-            Application Date:{new Intl.DateTimeFormat('en', 
+            Application Date:{new Intl.DateTimeFormat('en',
               {
                 month: 'long',
                 year:'numeric',
-                day:'numeric' 
+                day:'numeric'
               }).format(new Date(this.props.card.applicationDate))}
           </Bs.Col>
           <Bs.Col md={4}>
-            Cancel Date:{new Intl.DateTimeFormat('en', 
+            Cancel Date:{new Intl.DateTimeFormat('en',
               {
                 month: 'long',
                 year:'numeric',
-                day:'numeric' 
+                day:'numeric'
               }).format(new Date(this.props.card.expCancelDate))}
           </Bs.Col>
         </Bs.Row>
         <Bs.Row>
           <Bs.Col md={12}>
-            Expiration:{new Intl.DateTimeFormat('en', 
+            Expiration:{new Intl.DateTimeFormat('en',
               {
                 month: 'long',
                 year:'numeric',
-                day:'numeric' 
+                day:'numeric'
               }).format(new Date(this.props.card.expiration))}
           </Bs.Col>
         </Bs.Row>
@@ -142,12 +142,12 @@ class CardView extends React.Component {
          </Bs.Row>
       </Bs.Grid>
     )
-    if(this.state.edit) cardCompView = (<CardEdit addCard={this.collectForm.bind(this)} FieldGroup={this.FieldGroup} dateIt={this.dateIt} card={this.props.card} cancel={this.cancel.bind(this)} />)
+    if(this.state.edit) cardCompView = (<CardEdit addCard={this.collectForm.bind(this)} FieldGroup={this.FieldGroup} dateIt={this.dateIt} card={this.props.card} cancel={this.cancel.bind(this)} close={this.closeEdit.bind(this)}/>)
     return (
       <Bs.Modal show={this.props.show} onHide={this.closeEdit.bind(this)}>
         {cardCompView}
       </Bs.Modal>
-    )   
+    )
   }
 }
 function mapStateToProps(store){
