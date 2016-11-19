@@ -14,5 +14,8 @@ User.save = (user) =>
     .returning('id')
     .then(id => id[0])
 
+User.remove = (id) => 
+  db('Users').where({id: id}).del()
+  .then(rows => rows)
 
 module.exports = User

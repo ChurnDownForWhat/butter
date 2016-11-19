@@ -10,6 +10,14 @@ export function getUser() {
     )
 }
 
+export function deleteUser(){
+  return dispatch => 
+    $.ajax({
+      type: 'DELETE',
+      url: `/api/user`
+    })
+}
+
 export function getDefaults() {
   return dispatch =>
     $.get('/api/defaults')
@@ -138,7 +146,6 @@ export function getPieData() {
       }
     }))
     .then(cards => {
-      console.log(cards)
       return cards.reduce((acc, curr) => {
         if (curr) {
           let data = [curr[0].toLowerCase(), curr[1]]

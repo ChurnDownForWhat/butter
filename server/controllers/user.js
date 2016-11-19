@@ -1,4 +1,5 @@
 const User = require('../models/user')
+const Card = require('../models/card')
 const uuid = require('uuid')
 module.exports = {
 
@@ -28,5 +29,12 @@ module.exports = {
       }
 
     })
+  },
+
+  removeUser: (req, res) => {
+    const user = req.user.id
+    Card.wipe(user)
+    .then(v => User.remove(user))
+    .catch(err => console.log(err))
   }
 }

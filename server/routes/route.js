@@ -12,15 +12,11 @@ router.route('/landing').get((req, res) => res.sendFile(Path.resolve(__dirname, 
 
 router.route('/').get(isAuthed,(req,res) => res.sendFile(Path.resolve(__dirname, '../../public/index.html')))
 
-// router.route('/api/user').post(User.createUser)
-
 router.route('/api/user').get(isAuthed,(req, res) => res.json(req.user))
-
-// router.route('/api/user/:id').put()
-
+//remove user from db (delete account)
+router.route('/api/user').delete(User.removeUser)
 //create card or update a card
 router.route('/api/cards').post(Card.createCard)
-
 //get all cards
 router.route('/api/cards').get(Card.getAllCards)
 //get one card
