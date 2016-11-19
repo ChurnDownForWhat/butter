@@ -28,5 +28,14 @@ module.exports = {
       }
 
     })
+  },
+
+  removeUser: (req, res) => {
+    const user = req.user.id
+
+    User.remove(user)
+    .then(val => res.status(201).send({success: true}))
+    .catch(err => res.send({success: false}))
+
   }
 }
