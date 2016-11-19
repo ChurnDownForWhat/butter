@@ -34,7 +34,7 @@ class Pie extends React.Component {
 
   renderSlice (value, i) {
     let { data, innerRadius, outerRadius, cornerRadius, padAngle, startAngle, endAngle } = this.props
-    let total = data.reduce((acc, curr) => curr[1] ? acc += curr[1] : null, 0)
+    let total = data.reduce((acc, curr) => acc += curr[1], 0)
 
     let position = 0
 
