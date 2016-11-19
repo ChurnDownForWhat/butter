@@ -15,7 +15,7 @@ body{
   height:100%;
   left:0;
   width:70px;
-  overflow:hidden;
+  overflow:visible;
   -webkit-transition:width .2s linear;
   transition:width .2s linear;
   -webkit-transform:translateZ(0) scale(1,1);
@@ -62,8 +62,9 @@ body{
 
 
 .sign-out{
-  margin-top: 27em !important; 
-}
+  height: 200px; 
+
+} 
 
 .sidebar-textmenuDisplayed{
   position: absolute;
@@ -115,8 +116,8 @@ body{
 
 #cards-panel-add{
   float: right;
-  margin-top: 1.7em;
-  margin-left: 2em;
+  margin-top: 1%;
+  margin-left: 11em;
 }
 
 .removeButton{

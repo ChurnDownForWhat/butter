@@ -1,5 +1,5 @@
 export function getUser() {
-  return dispatch =>
+  return dispatch => 
     $.get('/api/user')
     .then(res => res)
     .then(user =>
@@ -34,7 +34,7 @@ export function addCard(cardData){
 }
 
 export function deleteCard(id, i){
-  return dispatch =>
+  return dispatch => 
     $.ajax({
       type: 'DELETE',
       url: `/api/cards/${id}`
@@ -44,7 +44,7 @@ export function deleteCard(id, i){
 export function viewAllCards() {
   return dispatch =>
     $.get('/api/cards')
-    .then(cards =>
+    .then(cards => 
       dispatch({
         type: 'VIEW_ALL_CARDS',
         payload: cards
@@ -67,8 +67,8 @@ export function viewAllRewards() {
       // }
       // return noRepeats
       let rewardAmount = rewards.reduce((acc, card) =>
-          (acc[card.program] ?
-          acc[card.program]['rewardsAmt'] += card.rewardsAmt :
+          (acc[card.program] ? 
+          acc[card.program]['rewardsAmt'] += card.rewardsAmt : 
           acc[card.program] = {rewardsAmt:card.rewardsAmt,program:card.program,category:card.category}
         ,acc),{})
       return Object.keys(rewardAmount).map((it) => rewardAmount[it])
@@ -108,20 +108,20 @@ export function updateCard(id, data){
 }
 
 export function getAmazonDefault() {
-  return dispatch =>
+  return dispatch => 
     $.get('/api/amazonSearch/')
-    .then(items =>
+    .then(items => 
       dispatch({
         type: 'GET_AMAZON_DEFAULTS',
         payload: items
       })
-    )
+    ) 
 }
 
 export function getAmazonSearch(searchTerm) {
-  return dispatch =>
+  return dispatch => 
     $.post('/api/amazonSearch/',{searchTerm:searchTerm})
-    .then(items =>
+    .then(items => 
       dispatch({
         type: 'GET_AMAZON_SEARCH',
         payload: items
@@ -132,7 +132,29 @@ export function getAmazonSearch(searchTerm) {
 export function getPieData() {
   return dispatch =>
     $.get('/api/cards')
-    .then(res => res.map(card => [card.category.toLowerCase(), card.rewardsAmt]))
+    .then(res => res.map(card => { 
+      if (card.category && card.rewardsAmt) {
+        return [card.category.toLowerCase(), card.rewardsAmt] 
+      }
+    }))
+    .then(cards => {
+      console.log(cards)
+      return cards.reduce((acc, curr) => {
+        if (curr) {
+          let data = [curr[0].toLowerCase(), curr[1]]
+          if (acc[data[0]]) { acc[data[0]][1] += data[1] }
+          else { acc[data[0]] = data }
+        }
+        return acc
+      }, {} )
+    })
+    .then(data => { 
+      let pieData = []
+      for (var k in data) {
+        pieData.push(data[k])
+      }
+      return pieData
+    })
     .then(data =>
       dispatch({
         type: 'GET_PIE_DATA',
