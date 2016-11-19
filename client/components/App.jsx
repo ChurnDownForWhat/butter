@@ -23,7 +23,7 @@ export default class App extends React.Component {
     return (
       <div>
     <Provider store={ this.props.store } >
-        <Router blah='hey' history={hashHistory}>
+        <Router history={hashHistory}>
         <Route path="/" component={CardsPage}/>
         <Route path="/cards" component={CardsPage} />
         <Route path="/rewards" component={RewardsPage} />
