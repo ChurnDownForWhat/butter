@@ -38,7 +38,7 @@ class Settings extends React.Component {
           }
         </Bs.Row>
         <Bs.Row>
-          <Bs.Button bsStyle='danger' bsSize='large' href='/api/logout' onClick={this.deleteUser.bind(this)}>Cancel Account</Bs.Button>
+          <Bs.Button bsStyle='danger' bsSize='large' href='/api/logout' onClick={this.deleteUser.bind(this)}>Delete Account</Bs.Button>
         </Bs.Row>
       </div>
 
