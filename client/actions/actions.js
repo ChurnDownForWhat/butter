@@ -10,6 +10,20 @@ export function getUser() {
     )
 }
 
+export function deleteUser(){
+  return dispatch => 
+    $.ajax({
+      type: 'DELETE',
+      url: `/api/user`
+    })
+    .then(res => 
+      dispatch({
+        type: 'DELETE_USER',
+        payload: res
+      })
+    )
+}
+
 export function getDefaults() {
   return dispatch =>
     $.get('/api/defaults')
