@@ -6,6 +6,7 @@ import * as Action from '../actions/actions'
 import QuickNewCard from './NewCard_quick'
 import DetailedNewCard from './NewCard_detailed'
 import * as Bs from 'react-bootstrap'
+import SweetAlert from 'sweetalert-react'
 
 class CardsPage extends React.Component {
   constructor(props){
@@ -14,7 +15,10 @@ class CardsPage extends React.Component {
       cards: [],
       showQuick: false,
       showDetailed: false,
-      showModal: false 
+      showModal: false,
+      showAlert: false,
+      currentID: null,
+      hover: ''  
     }
   }  
 
@@ -40,8 +44,28 @@ class CardsPage extends React.Component {
   }
 
   deleteClick(e){
-    this.props.deleteCard(e.target.parentElement.id)
-    e.target.parentElement.parentElement.parentElement.remove()
+    console.log("dasfadsfsdf",e)
+
+    this.setState({
+      currentID: e.target.parentElement.id,
+      showAlert: true
+    })
+  }
+
+  onConfirmDelete(){
+    var self = this
+    this.props.deleteCard(this.state.currentID)
+    .then(function(){
+      self.props.viewAllCards()
+      .then(res => 
+        self.setState({
+          cards: self.props.cards
+        })
+      )
+    })
+    this.setState({
+      showAlert: false
+    })
   }
 
   switchAddViews(e){
@@ -70,6 +94,7 @@ class CardsPage extends React.Component {
       </div>
     )
 
+    console.log("Cards Children",this.state.cards)
     return (
       <div>
         <CardView show={this.state.showModal} close={this.close.bind(this)}/>
@@ -95,7 +120,21 @@ class CardsPage extends React.Component {
                   return (
                     <Bs.Col md={4} key={i}>
                       <Bs.Panel className='cards'>
-                        <div className='removeButton' onClick={(this.deleteClick.bind(this))} id={card.id} ref="removeButton">
+                        <div className='removeButton' onClick={(this.deleteClick.bind(this))} 
+                          id={card.id} ref="removeButton">
+                          <SweetAlert
+                             show={this.state.showAlert}
+                             title="Are you sure you want to delete this card?"
+                             text="you won't be able to recover it if you delete it"
+                             type="warning"
+                             showCancelButton= {true}
+                             confirmButtonText="Delete Card"
+                               onConfirm={this.onConfirmDelete.bind(this)}
+                               onCancel={() => {
+                                 console.log('cancel') 
+                                 this.setState({ showAlert: false })
+                               }}
+                          />
                           <i className="fa fa-times" aria-hidden="true"></i>
                         </div>
                         <div onClick={(this.click.bind(this))} className='cardName col-md-11' id={card.id}>
@@ -143,5 +182,9 @@ function matchDispatchToProps(dispatch){
 
   }, dispatch)
 }
+
+// <div className='removeButton' onClick={(this.deleteClick.bind(this))} id={card.id} ref="removeButton">
+  // <i className="fa fa-times" aria-hidden="true"></i>
+ // </div>
 
 export default connect(mapStateToProps, matchDispatchToProps)(CardsPage)
