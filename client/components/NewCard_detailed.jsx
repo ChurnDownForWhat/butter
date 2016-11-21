@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Action from '../actions/actions'
 import Autosuggest from 'react-autosuggest'
+import SweetAlert from 'sweetalert-react'
 
 class DetailedNewCard extends React.Component {
   constructor(props){
@@ -14,7 +15,8 @@ class DetailedNewCard extends React.Component {
       suggestions: [],
       newCard: {},
       cardType: '',
-      category: ''
+      category: '',
+      showAlert: false
     }
   }
 
@@ -27,8 +29,7 @@ class DetailedNewCard extends React.Component {
     )
   }
 
-  createCard(e,el){
-    e.preventDefault()
+  createCard(el){
     const domForm = el.elements
     const name = domForm[0].value
     const submitItem = Object.keys(domForm).slice(17)
@@ -38,6 +39,9 @@ class DetailedNewCard extends React.Component {
     },{})
     submitItem.name = name
     this.props.addCard(submitItem)
+    .then(() => {
+      this.setState({showAlert: false})
+    })
     .then(() =>{
       this.props.viewAllCards()
     }).then(() => {
@@ -117,7 +121,7 @@ class DetailedNewCard extends React.Component {
           <Bs.Modal.Body>
               <Bs.Row>
                 <Bs.Col md={12}>
-                  <form onSubmit={(e) => this.createCard(e,form)} id="credit-card-form" ref={(el)=> form = el}>
+                  <form id="credit-card-form" ref={(el)=> form = el}>
                     <Bs.Row>
                       <Bs.Col md={5}>
                         <Bs.FormGroup controlId="name">
@@ -288,7 +292,14 @@ class DetailedNewCard extends React.Component {
         <Bs.Row>
         <Bs.Modal.Footer>
           <Bs.Col md={4}>
-          <Bs.Button onClick={(e) => this.createCard(e,form)} > Create Card </Bs.Button>
+          <Bs.Button onClick={() => this.setState({showAlert: true})} > Create Card </Bs.Button>
+          <SweetAlert
+             show={this.state.showAlert}
+             title="Card Added!"
+             text="Click on the card for more edit options"
+             type="success"
+             onConfirm={() => this.createCard(form)}
+          />
           </Bs.Col>
           <Bs.Col md={4}>
           <Bs.Button onClick={(e) => this.props.switch(e) } > Less Details </Bs.Button>
