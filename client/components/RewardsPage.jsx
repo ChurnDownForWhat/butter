@@ -42,9 +42,9 @@ class RewardsPage extends React.Component {
       <div>
         
         <Bs.Row className='page-header'>
-          <Bs.Col md={11}>Rewards</Bs.Col>
+          <Bs.Col md={12}>Rewards</Bs.Col>
         </Bs.Row>
-        <Bs.Col md={11} className='rewardContent'>
+        <Bs.Col md={12} className='rewardContent'>
           <Bs.Row> 
             <Bs.Col md={7}>
               <Bs.Panel bsStyle='primary' header={<h1>Program Breakdown</h1>}>
