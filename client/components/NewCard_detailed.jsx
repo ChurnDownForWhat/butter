@@ -227,7 +227,7 @@ class DetailedNewCard extends React.Component {
                         <FieldGroup
                           id='spendTotal'
                           type='number'
-                          label='Spent so far'
+                          label='Spend so far'
                           placeholder='XXXX.XX'
                           />
                       </Bs.Col>
@@ -246,7 +246,7 @@ class DetailedNewCard extends React.Component {
                         <FieldGroup
                           id='spendDeadline'
                           type='date'
-                          label='Spend Deadline'
+                          label='Sign-Up Bonus Deadline'
                           placeholder='XX/XX/XXXX'
                         />
                       </Bs.Col>

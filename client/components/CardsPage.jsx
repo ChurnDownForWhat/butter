@@ -140,7 +140,7 @@ class CardsPage extends React.Component {
                         </div>
                         <Bs.Col md={12}> 
                         <Bs.ProgressBar bsStyle="success" active now={card.spendTotal/card.minSpend*100} />
-                        {'Spend Deadline:' + " "+ date}
+                        {'Sign-Up Bonus Deadline:' + " "+ date}
                         </Bs.Col>
                       </Bs.Panel>
                     </Bs.Col>
