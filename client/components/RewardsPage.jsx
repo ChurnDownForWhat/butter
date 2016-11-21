@@ -45,9 +45,9 @@ class RewardsPage extends React.Component {
           <Bs.Col md={11}>Rewards</Bs.Col>
         </Bs.Row>
         <Bs.Col md={11} className='rewardContent'>
-          <Bs.Row>
-            <Bs.Panel>
-              <Bs.Col md={7}>
+          <Bs.Row> 
+            <Bs.Col md={7}>
+              <Bs.Panel bsStyle='primary' header={<h1>Program Breakdown</h1>}>
                 <Bs.Table responsive hover>
                   <thead>
                     <tr>
@@ -77,9 +77,11 @@ class RewardsPage extends React.Component {
                   })}
                     </tbody>
                   </Bs.Table>
-              </Bs.Col>
-              <Bs.Col md={5} className='pie'>
-                <svg width = "100%" height = "100%">
+              </Bs.Panel>    
+            </Bs.Col>
+            <Bs.Col md={5} >
+              <Bs.Panel bsStyle='primary' header={<h1>Category Breakdown</h1>}>  
+                <svg width = "100%" height = "100%" className='pie'>
                   <Pie x={window.innerWidth/6}
                         y={window.innerHeight/4}
                         innerRadius={( Math.min( window.innerWidth, window.innerHeight ) * .9 ) / 4 *.35}
@@ -87,8 +89,8 @@ class RewardsPage extends React.Component {
                         cornerRadius={5}
                         padAngle={0}/>
                 </svg>
-              </Bs.Col>
-            </Bs.Panel>
+              </Bs.Panel>
+            </Bs.Col>
           </Bs.Row>
         </Bs.Col>
       </div>
