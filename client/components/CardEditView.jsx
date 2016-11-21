@@ -29,7 +29,7 @@ const cardEditView = ({ dateIt, defaults, props, card, addCard, FieldGroup, canc
           <Bs.Col md={4}>
             <Bs.FormGroup controlId="cardType">
               <Bs.ControlLabel>Card Type*</Bs.ControlLabel>
-              <Bs.FormControl componentClass="select" placeholder="select">
+              <Bs.FormControl componentClass="select" defaultValue={card.cardType} placeholder="select">
                 <option value="MasterCard">MasterCard</option>
                 <option value="Visa">Visa</option>
                 <option value="American Express">American Express</option>
@@ -51,7 +51,7 @@ const cardEditView = ({ dateIt, defaults, props, card, addCard, FieldGroup, canc
           <Bs.Col md={4}>
             <Bs.FormGroup controlId="category">
               <Bs.ControlLabel>Reward Category</Bs.ControlLabel>
-              <Bs.FormControl componentClass="select" placeholder="select">
+              <Bs.FormControl componentClass="select" defaultValue={card.category} placeholder="select">
                 <option value="Cash Back">Cash Back</option>
                 <option value="General Points">General Points</option>
                 <option value="Miles">Miles</option>
