@@ -1,4 +1,5 @@
 import React from 'react'
+import * as Bs from 'react-bootstrap'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Action from '../actions/actions'
@@ -37,41 +38,49 @@ class CardView extends React.Component {
         }if(x.ItemAttributes.Title.length > 100){
           x.ItemAttributes.Title = x.ItemAttributes.Title.slice(0, 100)
         }
-        return <div  key={i}id="amazonArray" className="col-md-4">
-          <div className='row'>
-          <a href= {x.DetailPageURL} className="col-md-6" >
-            <img className="amazonImage" src={x.MediumImage.URL}/>
-          </a>
-          <div className="formattedPrice col-md-6">
-              {x.ItemAttributes.ListPrice.FormattedPrice}
-          </div>
-          </div>
-          <div className='row amazonRow col-md-8'>
-            {x.ItemAttributes.Title}
-          </div>
-        </div>
+        return (
+            <Bs.Col md={4}  xs={12} key={i} className="amazonArray">
+             <Bs.Col className="amImg" md={6}>
+                <a href= {x.DetailPageURL}>
+                  <img className="amazonImage" src={x.MediumImage.URL}/>
+                </a>
+              </Bs.Col>
+              <Bs.Col md={6} className="formattedPrice">
+                <div className="priceBanner">
+                  {x.ItemAttributes.ListPrice.FormattedPrice}
+                </div>
+              </Bs.Col>
+            <Bs.Col md={12} className='amazonRow'>
+              <Bs.Row>
+                <Bs.Col md={12}>
+                  {x.ItemAttributes.Title}
+                </Bs.Col>
+              </Bs.Row>
+              </Bs.Col>
+            </Bs.Col>
+        )
       })
     return (
-      <div>
-        <div className='container-fluid'>
-        <div className='row amazonTop'>
-          <h1> Welcome to the Amazon Search Page! </h1> 
-        </div>
-        <div className='row amazonTop'>
-          <div className='input-group col-md-4 amazonSearchBar'>
+      <Bs.Grid>
+        <Bs.Row className='amazonTop'>
+          <Bs.Col md={12}>
+            <h1> Welcome to the Amazon Search Page! </h1> 
+          </Bs.Col>
+        </Bs.Row>
+        <Bs.Row className='amazonTop'>
+          <Bs.Col md={4} className='input-group amazonSearchBar'>
             <input className='form-control' placeholder="Amazon Search" ref="inputVal" onKeyUp={this.onSearch.bind(this)}/>
             <span className='input-group-btn'>
               <button className="btn btn-default glyphicon glyphicon-search" onClick={this.buttonClickSearch.bind(this)}></button>
             </span>
-          </div>
-        </div>
-          <div className='row'>
-            <div className="col-md-12">
-            {itemArr}
-            </div>
-          </div>
-        </div>
-      </div>
+          </Bs.Col>
+        </Bs.Row>
+          <Bs.Row>
+            <Bs.Col md={12}>
+              {itemArr}
+            </Bs.Col>
+          </Bs.Row>
+      </Bs.Grid>
     )
   }
 }
