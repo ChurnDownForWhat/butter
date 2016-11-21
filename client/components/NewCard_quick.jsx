@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Action from '../actions/actions'
 import Autosuggest from 'react-autosuggest'
+import SweetAlert from 'sweetalert-react'
 
 
 class QuickNewCard extends React.Component {
@@ -14,21 +15,20 @@ class QuickNewCard extends React.Component {
       value: '',
       suggestions: [],
       newCard: {},
-      buttonState: ''
+      showAlert: false
     }
   }
 
   componentDidMount(){
     this.props.getDefaults()
-    .then(res => 
+    .then(res =>
       this.setState({
         suggestions: this.props.defaults
       })
     )
   }
 
-  createCard(e,el){
-    e.preventDefault()
+  createCard(el){
     const domForm = el.elements
     const name = domForm[0].value
     const submitItem = Object.keys(domForm).slice(17)
@@ -39,6 +39,8 @@ class QuickNewCard extends React.Component {
     submitItem.name = name
     this.props.addCard(submitItem)
     .then(() =>{
+      this.setState({showAlert: false})
+    }).then(() => {
       this.props.viewAllCards()
     }).then(() => {
       this.props.onHide()
@@ -47,7 +49,7 @@ class QuickNewCard extends React.Component {
   onChange(event, { newValue, method }){
     this.setState({ value: newValue })
   }
-  
+
   onSuggestionsFetchRequested({ value }){
     this.setState({ suggestions: this.getSuggestions(value) })
   }
@@ -63,9 +65,9 @@ class QuickNewCard extends React.Component {
     return this.props.defaults.filter(defaultCard => regex.test(this.getSuggestionValue(defaultCard)))
   }
 
-  getSuggestionValue(suggestion) { 
+  getSuggestionValue(suggestion) {
     this.setState({newCard: suggestion, cardType:suggestion.cardType, category:suggestion.category})
-    return `${suggestion.name}` 
+    return `${suggestion.name}`
   }
   typeChange(event) {
     this.setState({cardType: event.target.value})
@@ -114,12 +116,12 @@ class QuickNewCard extends React.Component {
           <Bs.Modal.Body>
               <Bs.Row>
                 <Bs.Col md={12}>
-                  <form onSubmit={(e) => this.createCard(e,form)} id="credit-card-form" ref={(el)=> form = el}>
+                  <form id="credit-card-form" ref={(el)=> form = el}>
                     <Bs.Row>
                       <Bs.Col md={12}>
                         <Bs.FormGroup controlId="name">
                           <Bs.ControlLabel>Card Name</Bs.ControlLabel>
-                          <Autosuggest 
+                          <Autosuggest
                             suggestions={suggestions}
                             onSuggestionsFetchRequested={this.onSuggestionsFetchRequested.bind(this)}
                             onSuggestionsClearRequested={this.onSuggestionsClearRequested.bind(this)}
@@ -131,7 +133,7 @@ class QuickNewCard extends React.Component {
                     </Bs.Row>
                     <Bs.Row>
                       <Bs.Col md={4}>
-                        <FieldGroup 
+                        <FieldGroup
                           id='expiration'
                           type='date'
                           label='Expiration Date'
@@ -139,16 +141,16 @@ class QuickNewCard extends React.Component {
                         />
                       </Bs.Col>
                       <Bs.Col md={4}>
-                        <FieldGroup 
+                        <FieldGroup
                           id='spendTotal'
                           type='number'
 
                           label='Spent so far'
                           placeholder='XXXX.XX'
                           />
-                      </Bs.Col>                    
+                      </Bs.Col>
                       <Bs.Col md={4}>
-                        <FieldGroup 
+                        <FieldGroup
                           id='minSpend'
                           type='number'
                           label='Minimum Spend'
@@ -166,7 +168,15 @@ class QuickNewCard extends React.Component {
         <Bs.Row>
         <Bs.Modal.Footer>
           <Bs.Col md={4}>
-          <Bs.Button onClick={(e) => this.createCard(e,form)} > Create Card </Bs.Button>
+          <Bs.Button onClick={() => this.setState({showAlert: true})} > Create Card </Bs.Button>
+          <SweetAlert
+             show={this.state.show}
+             title="Card Added!"
+             text="Click on the card for more edit options"
+             type="success"
+             onConfirm={() => this.createCard(form)}
+             onCancel={() => this.setState({ showAlert: false })}
+          />
           </Bs.Col>
           <Bs.Col md={4}>
           <Bs.Button onClick={(e) => this.props.switch(e) } > More Details </Bs.Button>

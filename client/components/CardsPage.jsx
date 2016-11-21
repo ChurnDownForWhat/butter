@@ -18,20 +18,20 @@ class CardsPage extends React.Component {
       showModal: false,
       showAlert: false,
       currentID: null,
-      hover: ''  
+      hover: ''
     }
-  }  
+  }
 
   componentDidMount(){
     this.props.getUser()
     this.props.viewAllCards()
-    .then(res => 
+    .then(res =>
       this.setState({
         cards: this.props.cards
       })
     )
   }
-  
+
   click(e){
     return this.props.viewCard(e.target.id)
     .then((card) => this.setState({showModal: true}))
@@ -55,7 +55,7 @@ class CardsPage extends React.Component {
     this.props.deleteCard(this.state.currentID)
     .then(function(){
       self.props.viewAllCards()
-      .then(res => 
+      .then(res =>
         self.setState({
           cards: self.props.cards
         })
@@ -106,26 +106,25 @@ class CardsPage extends React.Component {
         </Bs.Row>
         <Bs.Row>
           <Bs.Panel className='cards-panel' header={title}>
-            <input onKeyUp={this.filterCards.bind(this)} placeholder="filter cards"/> 
+            <input onKeyUp={this.filterCards.bind(this)} placeholder="filter cards"/>
             <Bs.Row>
               {
-                this.props.cards.map((card,i) =>{
-
-                  var date = new Intl.DateTimeFormat('en', 
+                this.state.cards.map((card,i) =>{
+                  var date = new Intl.DateTimeFormat('en',
                     {
                       month: 'long',
                       year:'numeric',
-                      day:'numeric' 
+                      day:'numeric'
                     }).format(new Date(card.spendDeadline))
                   return (
                     <Bs.Col md={4} key={i}>
                       <Bs.Panel className='cards'>
-                        <div className='removeButton' onClick={(this.deleteClick.bind(this))} 
+                        <div className='removeButton' onClick={(this.deleteClick.bind(this))}
                           id={card.id} ref="removeButton">
                           <SweetAlert
                              show={this.state.showAlert}
                              title="Are you sure you want to delete this card?"
-                             text="you won't be able to recover it if you delete it"
+                             text="You won't be able to recover it if you delete it"
                              type="warning"
                              showCancelButton= {true}
                              confirmButtonText="Delete Card"
@@ -137,9 +136,9 @@ class CardsPage extends React.Component {
                           <i className="fa fa-times" aria-hidden="true"></i>
                         </div>
                         <div onClick={(this.click.bind(this))} className='cardName col-md-11' id={card.id}>
-                          {card.name}          
+                          {card.name}
                         </div>
-                        <Bs.Col md={12}> 
+                        <Bs.Col md={12}>
                         <Bs.ProgressBar bsStyle="success" active now={card.spendTotal/card.minSpend*100} />
                         {'Sign-Up Bonus Deadline:' + " "+ date}
                         </Bs.Col>
