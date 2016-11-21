@@ -38,30 +38,27 @@ class CardView extends React.Component {
         }if(x.ItemAttributes.Title.length > 100){
           x.ItemAttributes.Title = x.ItemAttributes.Title.slice(0, 100)
         }
-        return 
-        <Bs.Grid>
-          <Bs.Row>
-            <Bs.Col md={4}  key={i}id="amazonArray">
-              <Bs.Row>
-              <Bs.Col md={6}>
+        return (
+            <Bs.Col md={4}  xs={12} key={i} className="amazonArray">
+             <Bs.Col className="amImg" md={6}>
                 <a href= {x.DetailPageURL}>
                   <img className="amazonImage" src={x.MediumImage.URL}/>
                 </a>
               </Bs.Col>
               <Bs.Col md={6} className="formattedPrice">
+                <div className="priceBanner">
                   {x.ItemAttributes.ListPrice.FormattedPrice}
+                </div>
               </Bs.Col>
-              </Bs.Row>
-              </Bs.Col>
-            <Bs.Col md={8} className='amazonRow'>
+            <Bs.Col md={12} className='amazonRow'>
               <Bs.Row>
                 <Bs.Col md={12}>
                   {x.ItemAttributes.Title}
                 </Bs.Col>
               </Bs.Row>
               </Bs.Col>
-          </Bs.Row>
-        </Bs.Grid>
+            </Bs.Col>
+        )
       })
     return (
       <Bs.Grid>
