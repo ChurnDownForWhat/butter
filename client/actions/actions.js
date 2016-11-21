@@ -82,7 +82,7 @@ export function viewAllRewards() {
           acc[card.program] = {rewardsAmt:card.rewardsAmt,program:card.program,category:card.category, count: 1 }
         }
 
-          return acc
+        return acc
       },{})
 
       return Object.keys(rewardAmount).map((it) => rewardAmount[it])
