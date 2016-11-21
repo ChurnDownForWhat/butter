@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Action from '../actions/actions'
 import Autosuggest from 'react-autosuggest'
+import SweetAlert from 'sweetalert-react'
 
 class DetailedNewCard extends React.Component {
   constructor(props){
@@ -14,7 +15,8 @@ class DetailedNewCard extends React.Component {
       suggestions: [],
       newCard: {},
       cardType: '',
-      category: ''
+      category: '',
+      show: false
     }
   }
 
@@ -28,6 +30,7 @@ class DetailedNewCard extends React.Component {
   }
 
   createCard(e,el){
+    this.setState({show: true})
     e.preventDefault()
     const domForm = el.elements
     const name = domForm[0].value
@@ -289,6 +292,13 @@ class DetailedNewCard extends React.Component {
         <Bs.Modal.Footer>
           <Bs.Col md={4}>
           <Bs.Button onClick={(e) => this.createCard(e,form)} > Create Card </Bs.Button>
+          <SweetAlert
+             show={this.state.show}
+             title="Card Added!"
+             text="Click on the card for more edit options"
+             type="success"
+             onConfirm={() => this.setState({ show: false })}
+          />
           </Bs.Col>
           <Bs.Col md={4}>
           <Bs.Button onClick={(e) => this.props.switch(e) } > Less Details </Bs.Button>
