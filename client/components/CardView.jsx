@@ -25,6 +25,7 @@ class CardView extends React.Component {
     console.log(submitItem)
     submitItem.id = this.props.card.id
     this.props.addCard(submitItem)
+    this.closeEdit()
   }
 
   edit(){
