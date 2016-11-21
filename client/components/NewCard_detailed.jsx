@@ -30,7 +30,6 @@ class DetailedNewCard extends React.Component {
   }
 
   createCard(e,el){
-    this.setState({show: true})
     e.preventDefault()
     const domForm = el.elements
     const name = domForm[0].value
@@ -297,7 +296,7 @@ class DetailedNewCard extends React.Component {
              title="Card Added!"
              text="Click on the card for more edit options"
              type="success"
-             onConfirm={() => this.setState({ show: false })}
+             onConfirm={() => this.setState({show: false})}
           />
           </Bs.Col>
           <Bs.Col md={4}>
