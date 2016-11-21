@@ -1,8 +1,11 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { viewAllCards, viewAllRewards, getPieData } from '../actions/actions'
+// import { viewAllCards, viewAllRewards, getPieData } from '../actions/actions'
 import Pie from './Pie'
+import * as Action from '../actions/actions'
+import * as Bs from 'react-bootstrap'
+import SweetAlert from 'sweetalert-react'
 
 // want to add getAllCards. and display those in the rewards table.
 class RewardsPage extends React.Component {
@@ -13,7 +16,11 @@ class RewardsPage extends React.Component {
 
   componentDidMount(){
     this.props.viewAllRewards()
+    this.props.getUser()
+    this.props.viewAllCards()
   }
+
+
 
   render() {
 
@@ -47,12 +54,14 @@ class RewardsPage extends React.Component {
                   <th>Category</th>
                   <th>Points</th>
                   <th>Redeem</th>
+                  <th>Cards In Program</th>
                 </tr>
               </thead>
               <tbody>
+               
               {this.props.rewards.map(function(val, i){
                 var link = links[val.program] || null
-                return (<tr className="">
+                return (<tr className="" key={i}>
                         <th scope="row"> {i +1} </th>
                           <td>{val.program}</td>
                           <td>{val.category}</td>
@@ -61,6 +70,7 @@ class RewardsPage extends React.Component {
                           { link ? <a href={link} target="_blank"> Reward Portal </a>
                             : <div> ¯\_(ツ)_/¯ </div> }
                           </td>
+                          <td>{val.count}</td>
                       </tr>
                 )
               })}
@@ -88,13 +98,17 @@ class RewardsPage extends React.Component {
 
 function mapStateToProps(store){
   return {
-    rewards: store.cardStates.rewards
+    rewards: store.cardStates.rewards,
+    cards: store.cardStates.cards,
+    user: store.cardStates.user
   }
 }
 
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
-    viewAllRewards: viewAllRewards
+    viewAllRewards: Action.viewAllRewards,
+    viewAllCards: Action.viewAllCards,
+    getUser: Action.getUser
   }, dispatch)
 
 }
