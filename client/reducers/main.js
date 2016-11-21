@@ -3,7 +3,7 @@ import { combineReducers, createStore, applyMiddleware } from 'redux'
 import cardReducer from './cardReducer'
 import userReducer from './userReducer'
 import amazonReducer from './amazonReducer'
-import loadingReducer from "./loadingReducer";
+import loadingReducer from "./loadingReducer"
 
 const logMiddleware = ({ dispatch, getState }) => {
   // console.log('Enter logMiddleware')
