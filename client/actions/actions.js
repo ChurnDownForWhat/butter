@@ -32,13 +32,6 @@ export function getDefaults() {
 export function addCard(cardData){
   return dispatch =>
     $.post('/api/cards', cardData)
-    .then($.get('/api/cards'))
-    .then(cards =>
-      dispatch({
-        type: 'VIEW_ALL_CARDS',
-        payload: cards
-      })
-    )
 }
 
 export function deleteCard(id, i){
