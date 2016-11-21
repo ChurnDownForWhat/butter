@@ -37,9 +37,6 @@ class RewardsPage extends React.Component {
     return (
      <div className='container-fluid'>
       <div className='row'>
-        <form className="form-inline">
-          <input className="col-lg-offset-2 col-md-5" placeholder="filter rewards"></input>
-        </form>
         <div className="col-md-6">
           <div className="tableContainer">
             <table className="table table-responsive table-hover">
@@ -71,7 +68,7 @@ class RewardsPage extends React.Component {
               </table>
             </div>
         </div>
-        <div className="col-md-6 col-md-offset-1">
+        <div className="col-md-6">
            <div className="piechart">
              <svg width = "100%" height = "100%">
                <Pie x={window.innerWidth/6}
