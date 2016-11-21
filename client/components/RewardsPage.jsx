@@ -55,8 +55,8 @@ class RewardsPage extends React.Component {
                       <th>Program</th>
                       <th>Category</th>
                       <th>Points</th>
+                      <th>Cards</th>
                       <th>Redeem</th>
-                      <th>Cards In Program</th>
                     </tr>
                   </thead>
                   <tbody>     
@@ -67,18 +67,18 @@ class RewardsPage extends React.Component {
                               <td>{val.program}</td>
                               <td>{val.category}</td>
                               <td>{val.rewardsAmt}</td>
+                              <td>{val.count}</td>
                               <td>
                               { link ? <a href={link} target="_blank"> Reward Portal </a>
                                 : <div> ¯\_(ツ)_/¯ </div> }
                               </td>
-                              <td>{val.count}</td>
                           </tr>
                     )
                   })}
                     </tbody>
                   </Bs.Table>
               </Bs.Col>
-              <Bs.Col md={5}>
+              <Bs.Col md={5} className='pie'>
                 <svg width = "100%" height = "100%">
                   <Pie x={window.innerWidth/6}
                         y={window.innerHeight/4}
