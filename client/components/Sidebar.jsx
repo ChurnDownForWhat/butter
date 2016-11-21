@@ -36,6 +36,13 @@ const Sidebar = (props) => {
           </Bs.NavItem>
         </LinkContainer>  
 
+        <LinkContainer to='/about'>
+          <Bs.NavItem>
+            <i className="fa fa-question fa-2x" aria-hidden="true"></i>
+            <h4 className={'sidebar-text' + display}> About </h4>
+          </Bs.NavItem>
+        </LinkContainer>  
+
         <Bs.NavItem className="sign-out"  href='/api/logout'>
           <i className="fa fa-sign-out fa-2x" aria-hidden="true"></i>
           <h4 className={'sidebar-text' + display}> Logout</h4>
