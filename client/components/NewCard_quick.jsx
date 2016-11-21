@@ -39,10 +39,13 @@ class QuickNewCard extends React.Component {
     submitItem.name = name
     this.props.addCard(submitItem)
     .then(() =>{
+      console.log('1')
       this.setState({showAlert: false})
     }).then(() => {
+      console.log('2')
       this.props.viewAllCards()
     }).then(() => {
+      console.log('3')
       this.props.onHide()
     })
   }
@@ -170,12 +173,11 @@ class QuickNewCard extends React.Component {
           <Bs.Col md={4}>
           <Bs.Button onClick={() => this.setState({showAlert: true})} > Create Card </Bs.Button>
           <SweetAlert
-             show={this.state.show}
+             show={this.state.showAlert}
              title="Card Added!"
              text="Click on the card for more edit options"
              type="success"
              onConfirm={() => this.createCard(form)}
-             onCancel={() => this.setState({ showAlert: false })}
           />
           </Bs.Col>
           <Bs.Col md={4}>
