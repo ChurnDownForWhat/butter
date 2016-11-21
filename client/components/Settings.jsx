@@ -49,7 +49,7 @@ class Settings extends React.Component {
               </Bs.Col>
           </Bs.Row>
         </Bs.Col>
-        <Bs.Col className='settings_content' md={10}>
+        <Bs.Col className='settings_content' md={11}>
           <Bs.Row>  
             { 
               this.props.cards.map((card, i) => 
