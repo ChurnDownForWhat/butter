@@ -116,14 +116,24 @@ export function updateCard(id, data){
 }
 
 export function getAmazonDefault() {
-  return dispatch => 
+  return dispatch => {
+    dispatch({
+      type: 'LOADING'
+    })
     $.get('/api/amazonSearch/')
     .then(items => 
       dispatch({
         type: 'GET_AMAZON_DEFAULTS',
         payload: items
       })
-    ) 
+    )
+    .then(dis =>
+      dispatch({
+        type: 'LOADING_COMPLETE',
+        payload: false
+      })
+    )
+  } 
 }
 
 export function getAmazonSearch(searchTerm) {
@@ -136,7 +146,6 @@ export function getAmazonSearch(searchTerm) {
       })
     )
 }
-
 export function getPieData() {
   return dispatch =>
     $.get('/api/cards')

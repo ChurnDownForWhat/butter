@@ -27,6 +27,8 @@ class CardView extends React.Component {
   }
 
   render() {
+    console.log(this.props.loading.loading)
+    if(this.props.loading.loading) return <div>LOADING...</div>
     const itemArr = this.props.amazonItems.name === "No Results" ? 
       <h1>No Results</h1> 
      :
@@ -64,7 +66,8 @@ class CardView extends React.Component {
       <Bs.Grid>
         <Bs.Row className='amazonTop'>
           <Bs.Col md={12}>
-            <h1> Welcome to the Amazon Search Page! </h1> 
+            <h1> Welcome to the Amazon Search Page!</h1> 
+            <h2>{this.props.loading.loading}</h2>
           </Bs.Col>
         </Bs.Row>
         <Bs.Row className='amazonTop'>
@@ -86,14 +89,16 @@ class CardView extends React.Component {
 }
 function mapStateToProps(store){
   return {
-    amazonItems: store.amazonItems
+    amazonItems: store.amazonItems,
+    loading: store.loading
   }
 }
 
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({
     getAmazonDefault: Action.getAmazonDefault,
-    getAmazonSearch: Action.getAmazonSearch
+    getAmazonSearch: Action.getAmazonSearch,
+    loadNow: Action.loadingNow
   }, dispatch)
 }
 
