@@ -41,15 +41,17 @@
 .priceBanner {
     width: 40%;
     margin: 0 auto;
-    background: orange;
+    background: #337AB7;
     height: 5em;
     position: absolute;
     right: 1em;
     top: -.75em;
     padding-top:.75em;
+    color: #eee;
+    text-shadow: 2px 1px 1px #333;
 }
 .priceBanner:after {
-    border-right: 3em solid orange;
+    border-right: 3.75em solid #337AB7;
     border-bottom: 2em solid transparent;
     position: absolute;
     right: 0;
@@ -58,7 +60,7 @@
     height: 3em;
 }
 .priceBanner:before {
-    border-left: 3em solid orange;
+    border-left: 3.75em solid #337AB7;
     border-bottom: 2em solid transparent;
     position: absolute;
     left: 0;
@@ -68,12 +70,12 @@
 }
 .amazonTop {
   background-color: #eee;
-  color:orange;
+  color:#337AB7;
   box-shadow: 2px 2px 5px #bbb;
 }
 @media (max-width: 767px) {
   .amazonTop {
-    background-color: orange;
+    background-color: #337AB7;
     color:inherit;
   }
   .amazonArray {
