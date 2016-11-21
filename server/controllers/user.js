@@ -1,5 +1,5 @@
 const User = require('../models/user')
-const Card = require('../models/card')
+const Card = require('../models/Card')
 const uuid = require('uuid')
 module.exports = {
 
