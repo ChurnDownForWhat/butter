@@ -67,11 +67,24 @@ export function viewAllRewards() {
       //   }
       // }
       // return noRepeats
-      let rewardAmount = rewards.reduce((acc, card) =>
-          (acc[card.program] ? 
-          acc[card.program]['rewardsAmt'] += card.rewardsAmt : 
-          acc[card.program] = {rewardsAmt:card.rewardsAmt,program:card.program,category:card.category}
-        ,acc),{})
+        // Previous reduce implementation. 
+      //   let rewardAmount = rewards.reduce((acc, card) =>
+      //   (acc[card.program] ? 
+      //   acc[card.program]['rewardsAmt'] += card.rewardsAmt : 
+      //   acc[card.program] = {rewardsAmt:card.rewardsAmt,program:card.program,category:card.category, count: 4}
+      // ,acc),{})
+
+      let rewardAmount = rewards.reduce((acc, card) => {
+        if(acc[card.program]){
+          acc[card.program]['rewardsAmt'] += card.rewardsAmt
+          acc[card.program]['count'] += 1 
+        }else{
+          acc[card.program] = {rewardsAmt:card.rewardsAmt,program:card.program,category:card.category, count: 1 }
+        }
+
+          return acc
+      },{})
+
       return Object.keys(rewardAmount).map((it) => rewardAmount[it])
     })
     .then(rewards =>
