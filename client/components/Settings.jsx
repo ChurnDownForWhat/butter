@@ -49,7 +49,11 @@ class Settings extends React.Component {
               </Bs.Col>
           </Bs.Row>
         </Bs.Col>
+<<<<<<< c7c37da026e9d046aa275918c3eb2efe20ae3280
         <Bs.Col className='settings_content' md={11}>
+=======
+        <Bs.Col className='settings_content' md={10}>
+>>>>>>> Fixed import
           <Bs.Row>  
             { 
               this.props.cards.map((card, i) => 

@@ -18,7 +18,7 @@ class CardsPage extends React.Component {
       showModal: false,
       showAlert: false,
       currentID: null,
-      show: false
+      hover: ''  
     }
   }  
 
@@ -44,9 +44,11 @@ class CardsPage extends React.Component {
   }
 
   deleteClick(e){
+    console.log("dasfadsfsdf",e)
+
     this.setState({
       currentID: e.target.parentElement.id,
-      show:true
+      showAlert: true
     })
   }
 
@@ -62,9 +64,8 @@ class CardsPage extends React.Component {
       )
     })
     this.setState({
-      show:false
+      showAlert: false
     })
-    document.getElementById(this.state.currentID).parentElement.parentElement.remove()
   }
 
   switchAddViews(e){
@@ -133,12 +134,6 @@ class CardsPage extends React.Component {
                                }}
                           />
                           <i className="fa fa-times" aria-hidden="true"></i>
-                          <SweetAlert
-                            show={this.state.show}
-                            title="Demo"
-                            text="SweetAlert in React"
-                            onConfirm={this.onConfirmDelete.bind(this)}
-                          />
                         </div>
                         <div onClick={(this.click.bind(this))} className='cardName col-md-11' id={card.id}>
                           {card.name}          
