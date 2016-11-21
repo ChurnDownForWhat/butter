@@ -38,7 +38,11 @@ class DetailedNewCard extends React.Component {
     },{})
     submitItem.name = name
     this.props.addCard(submitItem)
-    this.props.onHide()
+    .then(() =>{
+      this.props.viewAllCards()
+    }).then(() => {
+      this.props.onHide()
+    })
   }
 
   onChange(event, { newValue, method }){
@@ -227,7 +231,7 @@ class DetailedNewCard extends React.Component {
                         <FieldGroup
                           id='spendTotal'
                           type='number'
-                          label='Spend so far'
+                          label='Spent so far'
                           placeholder='XXXX.XX'
                           />
                       </Bs.Col>
@@ -246,7 +250,7 @@ class DetailedNewCard extends React.Component {
                         <FieldGroup
                           id='spendDeadline'
                           type='date'
-                          label='Sign-Up Bonus Deadline'
+                          label='Spend Deadline'
                           placeholder='XX/XX/XXXX'
                         />
                       </Bs.Col>
@@ -309,7 +313,8 @@ function mapStateToProps(store){
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
     getDefaults: Action.getDefaults,
-    addCard: Action.addCard
+    addCard: Action.addCard,
+    viewAllCards: Action.viewAllCards
   }, dispatch)
 }
 

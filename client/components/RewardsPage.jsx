@@ -35,7 +35,7 @@ class RewardsPage extends React.Component {
       }
 
     return (
-     <div className='container-fluid'>
+      <div className='container-fluid'>
       <div className='row'>
         <div className="col-md-6">
           <div className="tableContainer">

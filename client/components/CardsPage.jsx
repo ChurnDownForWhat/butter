@@ -44,8 +44,6 @@ class CardsPage extends React.Component {
   }
 
   deleteClick(e){
-    console.log("dasfadsfsdf",e)
-
     this.setState({
       currentID: e.target.parentElement.id,
       showAlert: true
@@ -109,7 +107,8 @@ class CardsPage extends React.Component {
             <input onKeyUp={this.filterCards.bind(this)} placeholder="filter cards"/> 
             <Bs.Row>
               {
-                this.state.cards.map((card,i) =>{
+                this.props.cards.map((card,i) =>{
+
                   var date = new Intl.DateTimeFormat('en', 
                     {
                       month: 'long',
@@ -119,6 +118,7 @@ class CardsPage extends React.Component {
                   return (
                     <Bs.Col md={4} key={i}>
                       <Bs.Panel className='cards'>
+                        <img src={card.img}/>
                         <div className='removeButton' onClick={(this.deleteClick.bind(this))} 
                           id={card.id} ref="removeButton">
                           <SweetAlert

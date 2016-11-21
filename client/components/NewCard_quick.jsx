@@ -36,7 +36,11 @@ class QuickNewCard extends React.Component {
     },{})
     submitItem.name = name
     this.props.addCard(submitItem)
-    this.props.onHide()
+    .then(() =>{
+      this.props.viewAllCards()
+    }).then(() => {
+      this.props.onHide()
+    })
   }
   onChange(event, { newValue, method }){
     this.setState({ value: newValue })
@@ -136,7 +140,8 @@ class QuickNewCard extends React.Component {
                         <FieldGroup 
                           id='spendTotal'
                           type='number'
-                          label='Spend so far'
+
+                          label='Spent so far'
                           placeholder='XXXX.XX'
                           />
                       </Bs.Col>                    
@@ -184,7 +189,8 @@ function mapStateToProps(store){
 function matchDispatchToProps(dispatch){
   return bindActionCreators({
     getDefaults: Action.getDefaults,
-    addCard: Action.addCard
+    addCard: Action.addCard,
+    viewAllCards: Action.viewAllCards
   }, dispatch)
 }
 
