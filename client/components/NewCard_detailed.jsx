@@ -41,8 +41,7 @@ class DetailedNewCard extends React.Component {
     this.props.addCard(submitItem)
     .then(() => {
       this.setState({showAlert: false})
-    })
-    .then(() =>{
+    }).then(() =>{
       this.props.viewAllCards()
     }).then(() => {
       this.props.onHide()

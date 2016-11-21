@@ -169,12 +169,11 @@ class QuickNewCard extends React.Component {
           <Bs.Col md={4}>
           <Bs.Button onClick={() => this.setState({showAlert: true})} > Create Card </Bs.Button>
           <SweetAlert
-             show={this.state.show}
+             show={this.state.showAlert}
              title="Card Added!"
              text="Click on the card for more edit options"
              type="success"
              onConfirm={() => this.createCard(form)}
-             onCancel={() => this.setState({ showAlert: false })}
           />
           </Bs.Col>
           <Bs.Col md={4}>
