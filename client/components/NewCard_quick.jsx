@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import * as Action from '../actions/actions'
 import Autosuggest from 'react-autosuggest'
 
+
 class QuickNewCard extends React.Component {
   constructor(props){
     super(props)
@@ -13,6 +14,7 @@ class QuickNewCard extends React.Component {
       value: '',
       suggestions: [],
       newCard: {},
+      buttonState: ''
     }
   }
 

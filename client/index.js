@@ -13,6 +13,8 @@ require('./css/creditCardsPage.css')
 require('./css/amazon.css')
 require('./css/CardView.css')
 require('./css/settings.css')
+require('../node_modules/react-progress-button/react-progress-button.css')
+
 
 
 render(

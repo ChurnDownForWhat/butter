@@ -13,6 +13,7 @@ class CardView extends React.Component {
   }
 
   onSearch(e){
+    console.log("dispatch",this.props)
     if(e.keyCode === 13){
       this.props.getAmazonSearch(e.target.value)
       //clears the input box after the search has been entered.
@@ -77,7 +78,8 @@ class CardView extends React.Component {
 }
 function mapStateToProps(store){
   return {
-    amazonItems: store.amazonItems
+    amazonItems: store.amazonItems,
+    dispatch: store
   }
 }
 

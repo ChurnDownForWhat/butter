@@ -8,7 +8,7 @@ const logMiddleware = ({ dispatch, getState }) => {
   // console.log('Enter logMiddleware')
   return function(next) {
     return function(action) {
-      // console.log('Action received:', action)
+      console.log('Action received:', action)
       return next(action)
     }
   }

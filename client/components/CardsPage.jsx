@@ -92,6 +92,8 @@ class CardsPage extends React.Component {
       </div>
     )
 
+    console.log('cards',this.props.cards)
+
     return (
       <div>
         <CardView show={this.state.showModal} close={this.close.bind(this)}/>
@@ -118,7 +120,6 @@ class CardsPage extends React.Component {
                   return (
                     <Bs.Col md={4} key={i}>
                       <Bs.Panel className='cards'>
-                        <img src={card.img}/>
                         <div className='removeButton' onClick={(this.deleteClick.bind(this))} 
                           id={card.id} ref="removeButton">
                           <SweetAlert
