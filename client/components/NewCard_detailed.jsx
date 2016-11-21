@@ -40,6 +40,7 @@ class DetailedNewCard extends React.Component {
     submitItem.name = name
     this.props.addCard(submitItem)
     .then(() => {
+      console.log("hey")
       this.setState({showAlert: false})
     })
     .then(() =>{

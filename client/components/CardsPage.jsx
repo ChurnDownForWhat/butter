@@ -109,7 +109,7 @@ class CardsPage extends React.Component {
             <input onKeyUp={this.filterCards.bind(this)} placeholder="filter cards"/>
             <Bs.Row>
               {
-                this.state.cards.map((card,i) =>{
+                this.props.cards.map((card,i) =>{
                   var date = new Intl.DateTimeFormat('en',
                     {
                       month: 'long',
