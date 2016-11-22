@@ -284,6 +284,15 @@ class DetailedNewCard extends React.Component {
                         </Bs.FormGroup>
                       </Bs.Col>
                     </Bs.Row>
+                    <Bs.Row>
+                      <Bs.Col md={10} >
+                        <FieldGroup
+                          id='benefit'
+                          type='textarea'
+                          label='Benefits of card'
+                        />
+                      </Bs.Col>
+                    </Bs.Row>
                   </form>
                 </Bs.Col>
               </Bs.Row>
