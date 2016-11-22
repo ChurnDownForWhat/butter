@@ -1,6 +1,6 @@
 module.exports = [
   {
-  'name': 'Chase Sapphire Preferred Credit Card',
+  'name': 'Chase Sapphire Preferred',
   'cardType': 'Chase',
   'benefit': 'No foreign transaction fees',
   'annFeeAmt': 95,
@@ -9,10 +9,10 @@ module.exports = [
   'program': 'Chase Ultimate Rewards',
   'signupBonus': 50000,
   'minSpend': 4000,
-  'cardImg': 'http://content.linkoffers.net/sharedimages/products/204650/599890.png'
+  'cardImg': '../../cardPics/chaseSapphire.png'
   },
   {
-  'name': 'Marriott Rewards Credit Card',
+  'name': 'Marriott Rewards',
   'cardType': 'Visa',
   'benefit': 'One free night stay annually',
   'annFeeAmt': 85,
@@ -21,10 +21,10 @@ module.exports = [
   'program': 'Marriott Rewards',
   'signupBonus': 80000,
   'minSpend': 3000,
-  'cardImg': 'http://content.linkoffers.net/sharedimages/products/220564/605681.png'
+  'cardImg': 'marriottRewards.png'
   },
   {
-  'name': 'Citi DoubleCash Card',
+  'name': 'Citi DoubleCash',
   'cardType': 'Citi',
   'benefit': 'Earn 2% cash back',
   'annFeeAmt': 0,
@@ -33,10 +33,10 @@ module.exports = [
   'program': 'Cash',
   'signupBonus': 0,
   'minSpend': 0,
-  'cardImg': 'http://content.linkoffers.net/sharedimages/products/220264/602414.png'
+  'cardImg': '../../cardPics/citiDouble.png'
   },
   {
-  'name': 'Capital One Venture Card',
+  'name': 'Capital One Venture',
   'cardType': 'Capital One',
   'benefit': 'No foreign transaction fees',
   'annFeeAmt': 59,
@@ -45,10 +45,10 @@ module.exports = [
   'program': 'Capital One Miles',
   'signupBonus': 40000,
   'minSpend': 3000,
-  'cardImg': 'http://media.linkoffers.com/200x200/capital-one-venture-rewards-credit-card-101614.png'
+  'cardImg': '../../cardPics/capOneVenture.png'
   },
   {
-  'name': 'Citi Prestige Credit Card',
+  'name': 'Citi Prestige',
   'cardType': 'Citi',
   'benefit': 'No foreign transaction fees',
   'annFeeAmt': 450,
@@ -57,10 +57,10 @@ module.exports = [
   'program': 'Citi ThankYou Rewards',
   'signupBonus': 50000,
   'minSpend': 5000,
-  'cardImg': 'http://content.linkoffers.net/SharedImages/Products/220307/603102.png'
+  'cardImg': '../../cardPics/citiPrestige.png'
   },
   {
-  'name': 'Discover It Card',
+  'name': 'Discover It',
   'cardType': 'Discover',
   'benefit': 'No foreign transaction fees',
   'annFeeAmt': 0,
@@ -69,10 +69,10 @@ module.exports = [
   'program': 'Cash',
   'signupBonus': 0,
   'minSpend': 0,
-  'cardImg': 'http://travelwithmiles.com/wp-content/uploads/2012/07/Discover-Card.png'
+  'cardImg': '../../cardPics/discoverIt.png'
   },
   {
-  'name': 'Chase Freedom Credit Card',
+  'name': 'Chase Freedom',
   'cardType': 'Visa',
   'benefit': '5% rewards on rotating categories',
   'annFeeAmt': 0,
@@ -81,10 +81,10 @@ module.exports = [
   'program': 'Chase Ultimate Rewards',
   'signupBonus': 150,
   'minSpend': 500,
-  'cardImg': 'http://savingsbeagle.com/wp-content/uploads/2015/11/599919.png'
+  'cardImg': '../../cardPics/chaseFreedom.png'
   },
   {
-  'name': 'Fidelity Rewards Visa Signature Card',
+  'name': 'Fidelity Rewards Visa Signature',
   'cardType': 'Visa',
   'benefit': 'Get 2% cash back',
   'annFeeAmt': 0,
@@ -93,10 +93,10 @@ module.exports = [
   'program': 'Fidelity',
   'signupBonus': 0,
   'minSpend': 0,
-  'cardImg': 'https://www.fidelity.com/bin-public/060_www_fidelity_com/images/fidelity_rewards_cc.jpg' // needs resizing
+  'cardImg': '../../cardPics/fidelityRewardsTransparent.png' // needs resizing
   },
   {
-  'name': 'IHG Rewards Credit Card',
+  'name': 'IHG Rewards',
   'cardType': 'MasterCard',
   'benefit': 'No foreign transaction fees',
   'annFeeAmt': 49,
@@ -105,10 +105,10 @@ module.exports = [
   'program': 'IHG Rewards Club',
   'signupBonus': 60000,
   'minSpend': 1000,
-  'cardImg': 'http://content.linkoffers.net/sharedimages/products/220367/603643.png'
+  'cardImg': '../../cardPics/IHGRewards.png'
   },
   {
-  'name': 'Chase Ink Cash Business Credit Card',
+  'name': 'Chase Ink Cash Business',
   'cardType': 'Chase',
   'benefit': 'Get 1% cash back',
   'annFeeAmt': 0,
@@ -117,10 +117,10 @@ module.exports = [
   'program': 'Cash',
   'signupBonus': 300,
   'minSpend': 3000,
-  'cardImg': 'http://content.linkoffers.net/SharedImages/Products/209475/598222.png'
+  'cardImg': '../../cardPics/chaseInk.png'
   },
   {
-  'name': 'Hyatt Credit Card',///////************************************
+  'name': 'Chase Hyatt',
   'cardType': 'Visa',
   'benefit': '2 free nights',
   'annFeeAmt': 75,
@@ -129,10 +129,10 @@ module.exports = [
   'program': 'Hyatt Gold Passport',
   'signupBonus': 0,
   'minSpend': 2000,
-  'cardImg': 'http://www.creditcardquestions.com/wp-content/uploads/2015/05/Chase-Hyatt-Credit-Card.jpg'
+  'cardImg': '../../cardPics/hyattVisa.png'
   },
   {
-  'name': 'Southwest Rapid Rewards Plus Visa Credit Card', ////////**************************
+  'name': 'Southwest Rapid Rewards Plus Visa',
   'cardType': 'Visa',
   'benefit': '3000 points annually',
   'annFeeAmt': 69,
@@ -141,10 +141,10 @@ module.exports = [
   'program': 'Southwest Rapid Rewards',
   'signupBonus': 0,
   'minSpend': 0,
-  'cardImg': 'https://creditcards.chase.com/R-SWA/6000381/images/hp_plus_card.png'
+  'cardImg': '../../cardPics/southwestPlus.png'
   },
   {
-  'name': 'Southwest Rapid Rewards Premier Visa Credit Card',
+  'name': 'Southwest Rapid Rewards Premier Visa',
   'cardType': 'Visa',
   'benefit': '6000 points annually with no foreign transaction fees',
   'annFeeAmt': 99,
@@ -153,10 +153,10 @@ module.exports = [
   'program': 'Southwest Rapid Rewards',
   'signupBonus': 0,
   'minSpend': 0,
-  'cardImg': 'http://content.linkoffers.net/SharedImages/Products/209558/600362.png'
+  'cardImg': '../../cardPics/southwestPremier.png'
   },
   {
-  'name': 'Blue Cash Preferred Card',
+  'name': 'Blue Cash Preferred',
   'cardType': 'American Express',
   'benefit': 'Get 1% cash back',
   'annFeeAmt': 95,
@@ -165,7 +165,7 @@ module.exports = [
   'program': 'Cash',
   'signupBonus': 250,
   'minSpend': 1000,
-  'cardImg': 'http://content.linkoffers.net/sharedimages/products/165588/603471.png'
+  'cardImg': '../../cardPics/amExCashTransparent.png'
   },
   {
   'name': 'Sallie Mae Upromise MasterCard',
@@ -177,10 +177,10 @@ module.exports = [
   'program': 'Cash',
   'signupBonus': 0,
   'minSpend': 25,
-  'cardImg': 'https://gif.barclaycardus.com/apply/img/upa/credit/plastics/UPA_masterCard.png' // needs resizing
+  'cardImg': '../../cardPics/sallieMae.png'
   },
   {
-  'name': 'BankAmericard Travel Rewards Credit Card',
+  'name': 'BankAmericard Travel Rewards',
   'cardType': 'Visa',
   'benefit': '1.5 points for every dollar spent',
   'annFeeAmt': 0,
@@ -189,10 +189,10 @@ module.exports = [
   'program': 'Bank of America Preferred Rewards',
   'signupBonus': 20000,
   'minSpend': 1000,
-  'cardImg': 'http://content.linkoffers.net/sharedimages/products/209868/604904.png'
+  'cardImg': '../../cardPics/boaTravel.png'
   },
   {
-  'name': 'Capital One Quicksilver Cash Rewards Credit Card',
+  'name': 'Capital One Quicksilver Cash Rewards',
   'cardType': 'Visa',
   'benefit': 'Get 1.5% cash back',
   'annFeeAmt': 0,
@@ -201,10 +201,10 @@ module.exports = [
   'program': 'Cash',
   'signupBonus': 100,
   'minSpend': 500,
-  'cardImg': 'http://media.linkoffers.com/200x200/capital-one-quicksilver-cash-rewards-credit-card-040815.png'
+  'cardImg': '../../cardPics/capOneQuicksilver.png'
   },
   {
-  'name': 'Wells Fargo Cash Wise Visa Card',
+  'name': 'Wells Fargo Cash Wise Visa',
   'cardType': 'Visa',
   'benefit': 'Get 1.5% cash back',
   'annFeeAmt': '0',
@@ -213,10 +213,10 @@ module.exports = [
   'program': 'Cash',
   'signupBonus': 0,
   'minSpend': 0,
-  'cardImg': 'https://www04.wellsfargomedia.com/assets/images/photography/product/290x150/cash_back_college_visa_card.png' // needs resizing
+  'cardImg': '../../cardPics/wellsFargoCashWise.png'
   },
   {
-  'name': 'Chase Freedom Unlimited Card',
+  'name': 'Chase Freedom Unlimited',
   'cardType': 'Visa',
   'benefit': 'Get 1.5 % cash back',
   'annFeeAmt': 0,
@@ -225,10 +225,10 @@ module.exports = [
   'program': 'Cash',
   'signupBonus': 150,
   'minSpend': 500,
-  'cardImg': 'https://applynow.chase.com/FlexAppWeb/image/06610_card_C0002_RSP.png' //needs resizing
+  'cardImg': '../../cardPics/chaseFreedomUnlimited.png'
   },
   {
-  'name': 'BankAmericard Cash Rewards Credit Cards',
+  'name': 'BankAmericard Cash Rewards',
   'cardType': 'Visa',
   'benefit': 'Get 1% cash back on up to $2500 spend per quarter',
   'annFeeAmt': 0,
@@ -237,10 +237,10 @@ module.exports = [
   'program': 'Cash',
   'signupBonus': 100,
   'minSpend': 500,
-  'cardImg': 'http://promo.bankofamerica.com/mobile/ccsearchlp6/assets/images/60fd9a71.cardart_cash.png'
+  'cardImg': '../../cardPics/boaCash.png'
   },
   {
-  'name': 'Chase British Airways Visa Signature Card',
+  'name': 'Chase British Airways Visa Signature',
   'cardType': 'Visa',
   'benefit': 'No foreign transaction fees',
   'annFeeAmt': 95,
@@ -249,7 +249,7 @@ module.exports = [
   'program': 'Avios',
   'signupBonus': 50000,
   'minSpend': 3000,
-  'cardImg': 'http://content.linkoffers.net/sharedimages/products/218528/603035.png'
+  'cardImg': '../../cardPics/britishAirways.png'
   },
   {
   'name': 'Barclays Arrival Plus World Elite MasterCard',
@@ -261,10 +261,10 @@ module.exports = [
   'program': 'Barclay',
   'signupBonus': 50000,
   'minSpend': 3000,
-  'cardImg': 'http://content.linkoffers.net/SharedImages/Products/217189/605947.png'
+  'cardImg': '../../cardPics/barclayPlus.png'
   },
   {
-  'name': 'Barclays JetBlue Plus Card',
+  'name': 'Barclays JetBlue Plus',
   'cardType': 'MasterCard',
   'benefit': 'Get 5000 bonus points annually',
   'annFeeAmt': 99,
@@ -273,10 +273,10 @@ module.exports = [
   'program': 'JetBlue TrueBlue',
   'signupBonus': 30000,
   'minSpend': 1000,
-  'cardImg': 'http://content.linkoffers.net/SharedImages/Products/220678/607513.png'
+  'cardImg': '../../cardPics/jetBlue.png'
   },
   {
-  'name': 'Citi Hilton HHonors Reserve Credit Card',
+  'name': 'Citi Hilton HHonors Reserve',
   'cardType': 'Visa',
   'benefit': 'Hilton gold membership and two free nights after meeting minimum spend',
   'annFeeAmt': 95,
@@ -285,10 +285,10 @@ module.exports = [
   'program': 'HHonors',
   'signupBonus': 0,
   'minSpend': 2500,
-  'cardImg': 'http://content.linkoffers.net/sharedimages/products/198429/598688.png'
+  'cardImg': '../../cardPics/hhonors.png'
   },
   {
-  'name': 'Starwood Preferred Guest Credit Card',
+  'name': 'Starwood Preferred Guest',
   'cardType': 'American Express',
   'benefit': 'No foreign transaction fees',
   'annFeeAmt': 95,
@@ -297,6 +297,6 @@ module.exports = [
   'program': 'Starpoints',
   'signupBonus': 30000,
   'minSpend': 3000,
-  'cardImg': 'http://content.linkoffers.net/sharedimages/products/70/605863.png'
+  'cardImg': '../../cardPics/spg.png'
   }
 ]
