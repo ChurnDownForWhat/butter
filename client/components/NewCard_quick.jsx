@@ -6,6 +6,7 @@ import * as Action from '../actions/actions'
 import Autosuggest from 'react-autosuggest'
 import SweetAlert from 'sweetalert-react'
 
+
 class QuickNewCard extends React.Component {
   constructor(props){
     super(props)

@@ -127,3 +127,12 @@
 .require {
   text-align: right;
 }
+
+.numCards{
+  float: right;
+  margin-top: 0em;
+}
+
+.searchHeader{
+ border:none; 
+}

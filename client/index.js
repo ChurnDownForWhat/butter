@@ -34,4 +34,3 @@ render(
 )
 
 module.hot.accept()
-

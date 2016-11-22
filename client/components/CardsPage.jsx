@@ -18,18 +18,25 @@ class CardsPage extends React.Component {
       showModal: false,
       showAlert: false,
       currentID: null,
-      hover: ''
+      cardLength: 0,
+      filteredLength:0
     }
   }
 
   componentDidMount(){
     this.props.getUser()
     this.props.viewAllCards()
-    .then(res =>
+    .then(res =>{
       this.setState({
-        cards: this.props.cards
+        cards: this.props.cards,
+        cardLength: this.props.cards.length
       })
-    )
+      if(this.state.filteredLength === 0){
+        this.setState({
+          filteredLength: this.state.cardLength
+        })
+      }
+    })
   }
 
   click(e){
@@ -66,6 +73,16 @@ class CardsPage extends React.Component {
     })
   }
 
+  setCards(){
+    // this.props.viewAllCards()
+    // .then((cards) => {
+    //   this.setState({
+    //     cards
+    //   })
+    // })
+    console.log("hey")
+  }
+
   switchAddViews(e){
     this.setState({ showQuick: !this.state.showQuick })
     this.setState({ showDetailed: !this.state.showDetailed })
@@ -74,7 +91,7 @@ class CardsPage extends React.Component {
   filterCards(e){
     var filtered = this.props.cards.filter(card =>
       card.name.toLowerCase().includes(e.target.value.toLowerCase()))
-    this.setState({cards: filtered})
+    this.setState({cards: filtered, filteredLength:filtered.length})
   }
 
   render(){
@@ -91,7 +108,6 @@ class CardsPage extends React.Component {
         </div>
       </div>
     )
-
     return (
       <div>
         <CardView show={this.state.showModal} close={this.close.bind(this)}/>
@@ -103,52 +119,53 @@ class CardsPage extends React.Component {
           </div>
         </Bs.Row>
         <Bs.Row>
-          <Bs.Col md={12}>
-            <Bs.Panel className='cards-panel' bsStyle='primary' header={title}>
-              <input onKeyUp={this.filterCards.bind(this)} placeholder="filter cards"/>
-              <Bs.Row>
-                {
-                  this.state.cards.map((card,i) =>{
-                    var date = new Intl.DateTimeFormat('en',
-                      {
-                        month: 'long',
-                        year:'numeric',
-                        day:'numeric'
-                      }).format(new Date(card.spendDeadline))
-                    return (
-                      <Bs.Col md={4} key={i}>
-                        <Bs.Panel className='cards'>
-                          <div className='removeButton' onClick={(this.deleteClick.bind(this))}
-                            id={card.id} ref="removeButton">
-                            <SweetAlert
-                               show={this.state.showAlert}
-                               title="Are you sure you want to delete this card?"
-                               text="You won't be able to recover it if you delete it"
-                               type="warning"
-                               showCancelButton= {true}
-                               confirmButtonText="Delete Card"
-                                 onConfirm={this.onConfirmDelete.bind(this)}
-                                 onCancel={() => {
-                                   this.setState({ showAlert: false })
-                                 }}
-                            />
-                            <i className="fa fa-times" aria-hidden="true"></i>
-                          </div>
-                          <div onClick={(this.click.bind(this))} className='cardName col-md-11' id={card.id}>
-                            {card.name}
-                          </div>
-                          <Bs.Col md={12}>
-                          <Bs.ProgressBar bsStyle="success" active now={card.spendTotal/card.minSpend*100} />
-                          {'Sign-Up Bonus Deadline:' + " "+ date}
-                          </Bs.Col>
-                        </Bs.Panel>
-                      </Bs.Col>
-                    )
-                  })
-                }
-              </Bs.Row>
+          <Bs.Panel className='cards-panel' header={title}>
+            <Bs.Panel className='searchHeader'>
+              <input onKeyUp={this.filterCards.bind(this)} placeholder="Search Cards"/>
+              <h4 className='numCards'>{this.state.filteredLength + "/" + this.state.cardLength + ' Cards'}</h4>
             </Bs.Panel>
-          </Bs.Col>
+            <Bs.Row>
+              {
+                this.state.cards.map((card,i) =>{
+                  var date = new Intl.DateTimeFormat('en',
+                    {
+                      month: 'long',
+                      year:'numeric',
+                      day:'numeric'
+                    }).format(new Date(card.spendDeadline))
+                  return (
+                    <Bs.Col md={4} key={i}>
+                      <Bs.Panel className='cards'>
+                        <div className='removeButton' onClick={(this.deleteClick.bind(this))}
+                          id={card.id} ref="removeButton">
+                          <SweetAlert
+                             show={this.state.showAlert}
+                             title="Are you sure you want to delete this card?"
+                             text="You won't be able to recover it if you delete it"
+                             type="warning"
+                             showCancelButton= {true}
+                             confirmButtonText="Delete Card"
+                               onConfirm={this.onConfirmDelete.bind(this)}
+                               onCancel={() => {
+                                 this.setState({ showAlert: false })
+                               }}
+                          />
+                          <i className="fa fa-times" aria-hidden="true"></i>
+                        </div>
+                        <div onClick={(this.click.bind(this))} className='cardName col-md-11' id={card.id}>
+                          {card.name}
+                        </div>
+                        <Bs.Col md={12}>
+                        <Bs.ProgressBar bsStyle="success" active now={card.spendTotal/card.minSpend*100} />
+                        {'Sign-Up Bonus Deadline:' + " "+ date}
+                        </Bs.Col>
+                      </Bs.Panel>
+                    </Bs.Col>
+                  )
+                })
+              }
+            </Bs.Row>
+          </Bs.Panel>
         </Bs.Row>
       </div>
     )
