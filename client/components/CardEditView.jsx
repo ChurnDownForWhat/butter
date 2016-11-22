@@ -218,7 +218,7 @@ const cardEditView = ({showAlert, hideAlerts, dateIt, defaults, props, card, add
     </Bs.Grid>
       <SweetAlert
      show={showAlert}
-     title="Card Added!"
+     title="Card Edited!"
      text="Click on the card for more edit options"
      type="success"
      onConfirm={() => hideAlerts()}
