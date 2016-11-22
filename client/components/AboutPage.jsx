@@ -79,10 +79,8 @@ class AboutPage extends React.Component {
               points in.  If you're close to a sign-up bonus deadline and you need to meet minimum spend, you can manfacture 
               spend by buying an Amazon eGift Card or anything else you need from Amazon the Amazon page.  Butter was made for
               churners by churners.
-
               <br/>
               <br/>
-
               Try it out and tell us what you think!
             </p>
           </Bs.Panel>
