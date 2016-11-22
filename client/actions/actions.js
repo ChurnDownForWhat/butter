@@ -44,24 +44,14 @@ export function deleteCard(id, i){
 
 
 export function viewAllCards() {
-  return dispatch => {
-    dispatch({
-      type: 'LOADING'
-    })
-    return $.get('/api/cards')
+  return dispatch =>
+    $.get('/api/cards')
     .then(cards => 
       dispatch({
         type: 'VIEW_ALL_CARDS',
         payload: cards
       })
     )
-    .then(dis =>
-      dispatch({
-        type: 'LOADING_COMPLETE',
-        payload: false
-      })
-    )
-  }
 }
 
 export function viewAllRewards() {
