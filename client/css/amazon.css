@@ -77,10 +77,37 @@
   color:#337AB7;
   box-shadow: 2px 2px 5px #bbb;
 }
+@media (max-width: 992px) {
+  .amazonArray {
+    width: 47%;
+    margin: 1em 1.5%;
+    height: 210px;
+  }
+  .formattedPrice{
+    width:100%;
+  }
+  .priceBanner {
+    width: 100%;
+    margin: 0 auto;
+    height: 2em;
+    position: inherit;
+    right: 0;
+    top: 0;
+    padding-top: .25em;
+  }
+  .priceBanner:before, .priceBanner:after {
+    display: none;
+  }
+  .amazonRow{
+    margin-top:0;
+    text-align: center;
+  }
+}
 @media (max-width: 767px) {
   .amazonTop {
     background-color: #337AB7;
-    color:inherit;
+    color: #eee;
+    text-shadow: 2px 2px 2px #333;
   }
   .amazonArray {
     width: 95%;
@@ -99,8 +126,7 @@
     width: calc(100% + 1.5em);
     top: 3em;
     height: 3em;
+    position: absolute;
   }
-  .priceBanner:before, .priceBanner:after {
-    display: none;
-  }
+
 }
