@@ -127,3 +127,11 @@ body{
   color:red;
   cursor: pointer;
 }
+i.fa.fa-spinner.fa-spin.fa-3x.fa-fw{
+  width:90px;
+  margin: 5em auto;
+  display: block;
+}
+.fa-spinner:before{
+  font-size: 2em;
+}
