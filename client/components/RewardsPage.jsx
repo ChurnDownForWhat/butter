@@ -109,7 +109,7 @@ function mapStateToProps(store){
   return {
     rewards: store.cardStates.rewards,
     cards: store.cardStates.cards,
-    user: store.cardStates.user
+    user: store.cardStates.user,
     loading: store.loading
   }
 }
