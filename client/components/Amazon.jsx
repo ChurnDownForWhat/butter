@@ -31,7 +31,6 @@ class CardView extends React.Component {
       return (
         <div>
         <i className="fa fa-spinner fa-spin fa-3x fa-fw"></i>
-        <span class="sr-only">Loading...</span>
         </div>
       )
     }
