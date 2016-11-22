@@ -1,6 +1,4 @@
 let DefaultCards = require('../dbDefaultCards')
-let RewardLinks = require('../rewardLinks')
-
 
 exports.up = function(knex, Promise) {
   return Promise.all([
