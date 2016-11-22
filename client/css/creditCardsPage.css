@@ -6,10 +6,10 @@
   background-color: rgb(119, 221, 119);
 }
 
-.cardName:hover{
+/*.cardName:hover{
   color: red;
   cursor: pointer;
-}
+}*/
 
 .react-autosuggest__container {
   position: relative;
@@ -135,4 +135,19 @@
 
 .searchHeader{
  border:none; 
+}
+
+.addCard{
+  color: rgba(128, 128, 128, 0.38);
+}
+.addCard:hover{
+  color: black; 
+}
+
+.addCardIcon{
+  margin-top: 16%;
+  margin-left: 40%;
+}
+.addACard{
+  margin-left: 28%;
 }
