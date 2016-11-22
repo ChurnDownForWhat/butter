@@ -22,7 +22,6 @@ class CardsPage extends React.Component {
       filteredLength:0
     }
   }
-  componentWillMount(){}
 
   componentDidMount(){
     this.props.getUser()
