@@ -9,7 +9,7 @@ module.exports = [
   'program': 'Chase Ultimate Rewards',
   'signupBonus': 50000,
   'minSpend': 4000,
-  'cardImg': '../cardPics/chaseSapphire.png'
+  'cardImg': 'http://localhost:4000/cardPics/chaseSapphire.png'
   },
   {
   'name': 'Marriott Rewards',
@@ -21,7 +21,7 @@ module.exports = [
   'program': 'Marriott Rewards',
   'signupBonus': 80000,
   'minSpend': 3000,
-  'cardImg': '../cardPics/marriottRewards.png'
+  'cardImg': 'http://localhost:4000/cardPics/marriottRewards.png'
   },
   {
   'name': 'Citi DoubleCash',
@@ -33,7 +33,7 @@ module.exports = [
   'program': 'Cash',
   'signupBonus': 0,
   'minSpend': 0,
-  'cardImg': '../cardPics/citiDouble.png'
+  'cardImg': 'http://localhost:4000/cardPics/citiDouble.png'
   },
   {
   'name': 'Capital One Venture',
@@ -45,7 +45,7 @@ module.exports = [
   'program': 'Capital One Miles',
   'signupBonus': 40000,
   'minSpend': 3000,
-  'cardImg': '../cardPics/capOneVenture.png'
+  'cardImg': 'http://localhost:4000/cardPics/capOneVenture.png'
   },
   {
   'name': 'Citi Prestige',
@@ -57,7 +57,7 @@ module.exports = [
   'program': 'Citi ThankYou Rewards',
   'signupBonus': 50000,
   'minSpend': 5000,
-  'cardImg': '../cardPics/citiPrestige.png'
+  'cardImg': 'http://localhost:4000/cardPics/citiPrestige.png'
   },
   {
   'name': 'Discover It',
@@ -69,7 +69,7 @@ module.exports = [
   'program': 'Cash',
   'signupBonus': 0,
   'minSpend': 0,
-  'cardImg': '../cardPics/discoverIt.png'
+  'cardImg': 'http://localhost:4000/cardPics/discoverIt.png'
   },
   {
   'name': 'Chase Freedom',
@@ -81,7 +81,7 @@ module.exports = [
   'program': 'Chase Ultimate Rewards',
   'signupBonus': 150,
   'minSpend': 500,
-  'cardImg': '../cardPics/chaseFreedom.png'
+  'cardImg': 'http://localhost:4000/cardPics/chaseFreedom.png'
   },
   {
   'name': 'Fidelity Rewards Visa Signature',
@@ -93,7 +93,7 @@ module.exports = [
   'program': 'Fidelity',
   'signupBonus': 0,
   'minSpend': 0,
-  'cardImg': '../cardPics/fidelityRewardsTransparent.png' // needs resizing
+  'cardImg': 'http://localhost:4000/cardPics/fidelityRewardsTransparent.png' // needs resizing
   },
   {
   'name': 'IHG Rewards',
@@ -105,7 +105,7 @@ module.exports = [
   'program': 'IHG Rewards Club',
   'signupBonus': 60000,
   'minSpend': 1000,
-  'cardImg': '../cardPics/IHGRewards.png'
+  'cardImg': 'http://localhost:4000/cardPics/IHGRewards.png'
   },
   {
   'name': 'Chase Ink Cash Business',
@@ -117,7 +117,7 @@ module.exports = [
   'program': 'Cash',
   'signupBonus': 300,
   'minSpend': 3000,
-  'cardImg': '../cardPics/chaseInk.png'
+  'cardImg': 'http://localhost:4000/cardPics/chaseInk.png'
   },
   {
   'name': 'Chase Hyatt',
@@ -129,7 +129,7 @@ module.exports = [
   'program': 'Hyatt Gold Passport',
   'signupBonus': 0,
   'minSpend': 2000,
-  'cardImg': '../cardPics/hyattVisa.png'
+  'cardImg': 'http://localhost:4000/cardPics/hyattVisa.png'
   },
   {
   'name': 'Southwest Rapid Rewards Plus Visa',
@@ -141,7 +141,7 @@ module.exports = [
   'program': 'Southwest Rapid Rewards',
   'signupBonus': 0,
   'minSpend': 0,
-  'cardImg': '../cardPics/southwestPlus.png'
+  'cardImg': 'http://localhost:4000/cardPics/southwestPlus.png'
   },
   {
   'name': 'Southwest Rapid Rewards Premier Visa',
@@ -153,7 +153,7 @@ module.exports = [
   'program': 'Southwest Rapid Rewards',
   'signupBonus': 0,
   'minSpend': 0,
-  'cardImg': '../cardPics/southwestPremier.png'
+  'cardImg': 'http://localhost:4000/cardPics/southwestPremier.png'
   },
   {
   'name': 'Blue Cash Preferred',
@@ -165,7 +165,7 @@ module.exports = [
   'program': 'Cash',
   'signupBonus': 250,
   'minSpend': 1000,
-  'cardImg': '../cardPics/amExCashTransparent.png'
+  'cardImg': 'http://localhost:4000/cardPics/amExCashTransparent.png'
   },
   {
   'name': 'Sallie Mae Upromise MasterCard',
@@ -177,7 +177,7 @@ module.exports = [
   'program': 'Cash',
   'signupBonus': 0,
   'minSpend': 25,
-  'cardImg': '../cardPics/sallieMae.png'
+  'cardImg': 'http://localhost:4000/cardPics/sallieMae.png'
   },
   {
   'name': 'BankAmericard Travel Rewards',
@@ -189,7 +189,7 @@ module.exports = [
   'program': 'Bank of America Preferred Rewards',
   'signupBonus': 20000,
   'minSpend': 1000,
-  'cardImg': '../cardPics/boaTravel.png'
+  'cardImg': 'http://localhost:4000/cardPics/boaTravel.png'
   },
   {
   'name': 'Capital One Quicksilver Cash Rewards',
@@ -201,7 +201,7 @@ module.exports = [
   'program': 'Cash',
   'signupBonus': 100,
   'minSpend': 500,
-  'cardImg': '../cardPics/capOneQuicksilver.png'
+  'cardImg': 'http://localhost:4000/cardPics/capOneQuicksilver.png'
   },
   {
   'name': 'Wells Fargo Cash Wise Visa',
@@ -213,7 +213,7 @@ module.exports = [
   'program': 'Cash',
   'signupBonus': 0,
   'minSpend': 0,
-  'cardImg': '../cardPics/wellsFargoCashWise.png'
+  'cardImg': 'http://localhost:4000/cardPics/wellsFargoCashWise.png'
   },
   {
   'name': 'Chase Freedom Unlimited',
@@ -225,7 +225,7 @@ module.exports = [
   'program': 'Cash',
   'signupBonus': 150,
   'minSpend': 500,
-  'cardImg': '../cardPics/chaseFreedomUnlimited.png'
+  'cardImg': 'http://localhost:4000/cardPics/chaseFreedomUnlimited.png'
   },
   {
   'name': 'BankAmericard Cash Rewards',
@@ -237,7 +237,7 @@ module.exports = [
   'program': 'Cash',
   'signupBonus': 100,
   'minSpend': 500,
-  'cardImg': '../cardPics/boaCash.png'
+  'cardImg': 'http://localhost:4000/cardPics/boaCash.png'
   },
   {
   'name': 'Chase British Airways Visa Signature',
@@ -249,7 +249,7 @@ module.exports = [
   'program': 'Avios',
   'signupBonus': 50000,
   'minSpend': 3000,
-  'cardImg': '../cardPics/britishAirways.png'
+  'cardImg': 'http://localhost:4000/cardPics/britishAirways.png'
   },
   {
   'name': 'Barclays Arrival Plus World Elite MasterCard',
@@ -261,7 +261,7 @@ module.exports = [
   'program': 'Barclay',
   'signupBonus': 50000,
   'minSpend': 3000,
-  'cardImg': '../cardPics/barclayPlus.png'
+  'cardImg': 'http://localhost:4000/cardPics/barclayPlus.png'
   },
   {
   'name': 'Barclays JetBlue Plus',
@@ -273,7 +273,7 @@ module.exports = [
   'program': 'JetBlue TrueBlue',
   'signupBonus': 30000,
   'minSpend': 1000,
-  'cardImg': '../cardPics/jetBlue.png'
+  'cardImg': 'http://localhost:4000/cardPics/jetBlue.png'
   },
   {
   'name': 'Citi Hilton HHonors Reserve',
@@ -285,7 +285,7 @@ module.exports = [
   'program': 'HHonors',
   'signupBonus': 0,
   'minSpend': 2500,
-  'cardImg': '../cardPics/hhonors.png'
+  'cardImg': 'http://localhost:4000/cardPics/hhonors.png'
   },
   {
   'name': 'Starwood Preferred Guest',
@@ -297,6 +297,6 @@ module.exports = [
   'program': 'Starpoints',
   'signupBonus': 30000,
   'minSpend': 3000,
-  'cardImg': '../cardPics/spg.png'
+  'cardImg': 'http://localhost:4000/cardPics/spg.png'
   }
 ]
