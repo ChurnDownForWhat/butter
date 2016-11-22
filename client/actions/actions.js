@@ -54,6 +54,12 @@ export function viewAllCards() {
         payload: cards
       })
     )
+    .then(dis =>
+      dispatch({
+        type: 'LOADING_COMPLETE',
+        payload: false
+      })
+    )
 }
 
 export function viewAllRewards() {
