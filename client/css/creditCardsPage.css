@@ -139,15 +139,26 @@
 
 .addCard{
   color: rgba(128, 128, 128, 0.38);
+  transition:color .2s linear;
 }
+
 .addCard:hover{
-  color: black; 
+  color: transparent;
+  transition:color .2s linear;
 }
 
 .addCardIcon{
   margin-top: 16%;
-  margin-left: 40%;
+  margin-left: 42%;
 }
 .addACard{
-  margin-left: 28%;
+  margin-left: 30%;
+}
+
+#addQuick{
+  position: absolute;
+  color: blue;
+  background-color: red;
+  margin-top: 16%;
+  margin-left: -23%;
 }
