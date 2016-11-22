@@ -27,8 +27,14 @@ class CardView extends React.Component {
   }
 
   render() {
-    console.log(this.props.loading.loading)
-    if(this.props.loading.loading) return <div>LOADING...</div>
+    if(this.props.loading.loading) { 
+      return (
+        <div>
+        <i className="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+        <span class="sr-only">Loading...</span>
+        </div>
+      )
+    }
     const itemArr = this.props.amazonItems.name === "No Results" ? 
       <h1>No Results</h1> 
      :
@@ -41,11 +47,10 @@ class CardView extends React.Component {
           x.ItemAttributes.Title = x.ItemAttributes.Title.slice(0, 100)
         }
         return (
+          <a href= {x.DetailPageURL}>
             <Bs.Col md={4}  xs={12} key={i} className="amazonArray">
              <Bs.Col className="amImg" md={6}>
-                <a href= {x.DetailPageURL}>
                   <img className="amazonImage" src={x.MediumImage.URL}/>
-                </a>
               </Bs.Col>
               <Bs.Col md={6} className="formattedPrice">
                 <div className="priceBanner">
@@ -60,6 +65,7 @@ class CardView extends React.Component {
               </Bs.Row>
               </Bs.Col>
             </Bs.Col>
+          </a>
         )
       })
     return (
@@ -97,8 +103,7 @@ function mapStateToProps(store){
 function matchDispatchToProps(dispatch) {
   return bindActionCreators({
     getAmazonDefault: Action.getAmazonDefault,
-    getAmazonSearch: Action.getAmazonSearch,
-    loadNow: Action.loadingNow
+    getAmazonSearch: Action.getAmazonSearch
   }, dispatch)
 }
 
