@@ -68,6 +68,10 @@
     bottom: -1.25em;
     height: 3em;
 }
+.amazonRow {
+    margin-top: 1em;
+    line-height: 2;
+}
 .amazonTop {
   background-color: #eee;
   color:#337AB7;

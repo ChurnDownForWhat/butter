@@ -44,18 +44,31 @@ export function deleteCard(id, i){
 
 
 export function viewAllCards() {
-  return dispatch =>
-    $.get('/api/cards')
-    .then(cards =>
+  return dispatch => {
+    dispatch({
+      type: 'LOADING'
+    })
+    return $.get('/api/cards')
+    .then(cards => 
       dispatch({
         type: 'VIEW_ALL_CARDS',
         payload: cards
       })
     )
+    .then(dis =>
+      dispatch({
+        type: 'LOADING_COMPLETE',
+        payload: false
+      })
+    )
+  }
 }
 
 export function viewAllRewards() {
-  return dispatch =>
+  return dispatch => { 
+    dispatch({
+      type: 'LOADING'
+    })
     $.get('/api/cards')
     .then((rewards) => {
       let rewardAmount = rewards.reduce((acc, card) => {
@@ -77,6 +90,13 @@ export function viewAllRewards() {
         payload: rewards
       })
     )
+    .then(dis =>
+      dispatch({
+        type: 'LOADING_COMPLETE',
+        payload: false
+      })
+    )
+  }
 }
 
 export function viewCard(id) {

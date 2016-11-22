@@ -98,6 +98,14 @@ class CardsPage extends React.Component {
 
 
   render(){
+    if(this.props.loading.loading) { 
+      return (
+        <div>
+        <i className="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+        <span className="sr-only">Loading...</span>
+        </div>
+      )
+    }
     let closeQuick = () => {
       this.updateCards()
       this.setState({ showQuick: false })
@@ -190,7 +198,9 @@ function mapStateToProps(store){
     //object w/ all user cards data
     cards: store.cardStates.cards,
     //object w/ default cards data
-    defaults: store.cardStates.defaults
+    defaults: store.cardStates.defaults,
+    //boolean for loading
+    loading: store.loading
   }
 }
 
@@ -202,8 +212,8 @@ function matchDispatchToProps(dispatch){
     viewAllCards: Action.viewAllCards,
     viewCard: Action.viewCard,
     updateCard: Action.updateCard,
-    getUser: Action.getUser
-
+    getUser: Action.getUser,
+    doneLoad: Action.doneLoading
   }, dispatch)
 }
 
