@@ -114,12 +114,6 @@ class CardsPage extends React.Component {
     const title = (
       <div>
         <h1 className='cards-panel-header'>Cards</h1>
-        <div id='cards-panel-add' className='cards-panel-header'>
-        <Bs.DropdownButton id='cards-panel-add' className='cards-panel-header' bsSize="large" title="Add A Card" >
-          <Bs.MenuItem eventKey="1" onSelect={(e) => this.setState({showQuick: true})}>Quick</Bs.MenuItem>
-          <Bs.MenuItem eventKey="2" onSelect={(e) => this.setState({showDetailed: true})}>Detailed</Bs.MenuItem>
-        </Bs.DropdownButton>
-        </div>
       </div>
     )
     return (
@@ -179,6 +173,18 @@ class CardsPage extends React.Component {
                     )
                   })
                 }
+                <Bs.Col md={4}>
+                  <Bs.Panel className='cards addCard'>
+                    <div className='col-md-12'>
+                      <i className="fa fa-plus fa-2x addCardIcon " aria-hidden="true"></i>
+                        <div id='addQuick'  onClick={(e) => this.setState({showQuick: true})}>Quick</div>
+                        <div id='addDetailed' onClick={(e) => this.setState({showDetailed: true})}>Detailed</div>
+                    </div>
+                    <Bs.Col md={12}>
+                      <h4 className='addACard'>Add a card</h4>
+                    </Bs.Col>
+                  </Bs.Panel>
+                </Bs.Col>
               </Bs.Row>
             </Bs.Panel>
           </Bs.Col>

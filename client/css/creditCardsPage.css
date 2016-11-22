@@ -139,7 +139,7 @@
 
 .addCard{
   color: rgba(128, 128, 128, 0.38);
-  transition:color .2s linear;
+  transition:color .3s linear;
 }
 
 
@@ -158,33 +158,34 @@
 
 .addCard:hover{
   color: transparent;
-  transition: .2s linear;
+  transition: .3s linear;
 }
 
 .addCard:hover {
-  color: d;
-  transition: .2s linear;
+  transition: .3s linear;
   margin-top: 0px;
 }
 
 .addCard:hover #addQuick{
   position: absolute;
   color: black;
-  transition: color .2s linear;
+  transition: color .3s linear;
 }
 
 .addCard:hover #addDetailed{
   position: absolute;
   color: black;
-  transition: color .2s linear;
+  transition: color .3s linear;
 }
 
 #addQuick{
   position: absolute;
   color: transparent;
-  transition: color .2s linear;
+  padding-left: 1em;
+  padding-right: 1em;
+  transition: color .3s linear;
   margin-top: -11%;
-  margin-left: 35%;
+  margin-left: 30%;
 }
 
 #addQuick:hover{
@@ -194,7 +195,7 @@
 #addDetailed{
   position: absolute;
   color: transparent;
-  transition: color .2s linear;
+  transition: color .3s linear;
   margin-left: 31%;
   margin-top: 10%;
 }
