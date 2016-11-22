@@ -187,6 +187,16 @@ const cardEditView = ({ dateIt, defaults, props, card, addCard, FieldGroup, canc
           </Bs.Col>
         </Bs.Row>
         <Bs.Row>
+          <Bs.Col md={10} >
+            <FieldGroup
+              id='benefit'
+              type='textarea'
+              label='Benefits of card'
+              defaultValue={card.benefit || ''}
+            />
+          </Bs.Col>
+        </Bs.Row>
+        <Bs.Row>
         <Bs.Modal.Footer>
           <Bs.Col md={12}>
             <Bs.Col md={6} className="left-button">
