@@ -110,6 +110,7 @@ class CardsPage extends React.Component {
       this.updateCards()
       this.setState({ showDetailed: false })
     }
+
     const title = (
       <div>
         <h1 className='cards-panel-header'>Cards</h1>
