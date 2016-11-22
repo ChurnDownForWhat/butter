@@ -1,7 +1,8 @@
 import React from 'react'
 import * as Bs from 'react-bootstrap'
+import SweetAlert from 'sweetalert-react'
 
-const cardEditView = ({ dateIt, defaults, props, card, addCard, FieldGroup, cancel, show, onHide }) => {
+const cardEditView = ({showAlert, hideAlerts, dateIt, defaults, props, card, addCard, FieldGroup, cancel, show, onHide }) => {
   let form = {}
 
   return (
@@ -215,6 +216,13 @@ const cardEditView = ({ dateIt, defaults, props, card, addCard, FieldGroup, canc
         </form>
       </Bs.Row>
     </Bs.Grid>
+      <SweetAlert
+     show={showAlert}
+     title="Card Added!"
+     text="Click on the card for more edit options"
+     type="success"
+     onConfirm={() => hideAlerts()}
+      />
     </Bs.Modal>
   )
 }
