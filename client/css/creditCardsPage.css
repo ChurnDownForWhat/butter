@@ -128,7 +128,11 @@
   text-align: right;
 }
 
-.cardImg{
-  width: 100%;
-  height: 100%;
+.numCards{
+  float: right;
+  margin-top: 0em;
+}
+
+.searchHeader{
+ border:none; 
 }

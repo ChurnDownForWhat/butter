@@ -18,18 +18,25 @@ class CardsPage extends React.Component {
       showModal: false,
       showAlert: false,
       currentID: null,
-      hover: ''
+      cardLength: 0,
+      filteredLength:0
     }
   }
 
   componentDidMount(){
     this.props.getUser()
     this.props.viewAllCards()
-    .then(res =>
+    .then(res =>{
       this.setState({
-        cards: this.props.cards
+        cards: this.props.cards,
+        cardLength: this.props.cards.length
       })
-    )
+      if(this.state.filteredLength === 0){
+        this.setState({
+          filteredLength: this.state.cardLength
+        })
+      }
+    })
   }
 
   click(e){
@@ -66,6 +73,16 @@ class CardsPage extends React.Component {
     })
   }
 
+  setCards(){
+    // this.props.viewAllCards()
+    // .then((cards) => {
+    //   this.setState({
+    //     cards
+    //   })
+    // })
+    console.log("hey")
+  }
+
   switchAddViews(e){
     this.setState({ showQuick: !this.state.showQuick })
     this.setState({ showDetailed: !this.state.showDetailed })
@@ -74,7 +91,7 @@ class CardsPage extends React.Component {
   filterCards(e){
     var filtered = this.props.cards.filter(card =>
       card.name.toLowerCase().includes(e.target.value.toLowerCase()))
-    this.setState({cards: filtered})
+    this.setState({cards: filtered, filteredLength:filtered.length})
   }
 
   render(){
@@ -91,9 +108,6 @@ class CardsPage extends React.Component {
         </div>
       </div>
     )
-
-    console.log('cards',this.props.cards)
-
     return (
       <div>
         <CardView show={this.state.showModal} close={this.close.bind(this)}/>
@@ -106,10 +120,13 @@ class CardsPage extends React.Component {
         </Bs.Row>
         <Bs.Row>
           <Bs.Panel className='cards-panel' header={title}>
-            <input onKeyUp={this.filterCards.bind(this)} placeholder="filter cards"/>
+            <Bs.Panel className='searchHeader'>
+              <input onKeyUp={this.filterCards.bind(this)} placeholder="Search Cards"/>
+              <h4 className='numCards'>{this.state.filteredLength + "/" + this.state.cardLength + ' Cards'}</h4>
+            </Bs.Panel>
             <Bs.Row>
               {
-                this.props.cards.map((card,i) =>{
+                this.state.cards.map((card,i) =>{
                   var date = new Intl.DateTimeFormat('en',
                     {
                       month: 'long',
