@@ -30,8 +30,10 @@ export function getDefaults() {
 }
 
 export function addCard(cardData){
-  return dispatch =>
-    $.post('/api/cards', cardData)
+  return dispatch => {
+    console.log('CARD DATA IS', cardData)
+    return $.post('/api/cards', cardData)
+  }
 }
 
 export function deleteCard(id, i){

@@ -161,7 +161,11 @@ class CardView extends React.Component {
             Annual Fee Waived First Year? {this.props.card.waivedFees}
           </Bs.Col>
         </Bs.Row>
-
+        <Bs.Row>
+          <Bs.Col md={12} className= "cardView">
+            Card Benefits: {this.props.card.benefit}
+          </Bs.Col>
+        </Bs.Row>
         <Bs.Col md={12}>
         <Bs.Modal.Footer>
           <Bs.Col md={6} className="left-button">

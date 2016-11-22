@@ -32,7 +32,7 @@ class DetailedNewCard extends React.Component {
   createCard(el){
     const domForm = el.elements
     const name = domForm[0].value
-    const submitItem = Object.keys(domForm).slice(17)
+    const submitItem = Object.keys(domForm).slice(18)
     .reduce((acc,id) =>{
       if(id != 'submit' && domForm[id].value != "") acc[id] = domForm[id].value
       return acc
@@ -225,7 +225,7 @@ class DetailedNewCard extends React.Component {
                           id='signupBonus'
                           type='text'
                           label='Sign Up Bonus'
-                          placeholder='Sign up bonus'
+                          placeholder='Sign-Up Bonus'
                           defaultValue={this.state.newCard.signupBonus || ''}
                           />
                       </Bs.Col>
@@ -233,7 +233,7 @@ class DetailedNewCard extends React.Component {
                         <FieldGroup
                           id='spendTotal'
                           type='number'
-                          label='Spent so far'
+                          label='Spend so far'
                           placeholder='XXXX.XX'
                           />
                       </Bs.Col>
@@ -285,8 +285,10 @@ class DetailedNewCard extends React.Component {
                       <Bs.Col md={10} >
                         <FieldGroup
                           id='benefit'
-                          type='textarea'
+                          type='text'
                           label='Benefits of card'
+                          placeholder="Describe this card's benefits"
+                          defaultValue={this.state.newCard.benefit || ''}
                         />
                       </Bs.Col>
                     </Bs.Row>
