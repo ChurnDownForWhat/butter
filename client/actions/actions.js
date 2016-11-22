@@ -96,13 +96,6 @@ export function updateCard(id, data){
       type: 'PUT',
       data: data
     })
-    .then($.get('/api/cards'))
-    .then(cards =>
-      dispatch({
-        type: 'VIEW_ALL_CARDS',
-        payload: cards
-      })
-    )
 }
 
 export function getAmazonDefault() {
