@@ -22,9 +22,7 @@ class CardsPage extends React.Component {
       filteredLength:0
     }
   }
-  componentWillMount(){
-    console.log("will mount")
-  }
+  componentWillMount(){}
 
   componentDidMount(){
     this.props.getUser()
@@ -135,53 +133,55 @@ class CardsPage extends React.Component {
           </div>
         </Bs.Row>
         <Bs.Row>
-          <Bs.Panel className='cards-panel' header={title}>
-            <Bs.Panel className='searchHeader'>
-              <input onKeyUp={this.filterCards.bind(this)} placeholder="Search Cards"/>
-              <h4 className='numCards'>{this.state.filteredLength + "/" + this.state.cardLength + ' Cards'}</h4>
+          <Bs.Col md={12}>
+            <Bs.Panel className='cards-panel' bsStyle='primary' header={title}>
+              <Bs.Panel className='searchHeader'>
+                <input onKeyUp={this.filterCards.bind(this)} placeholder="Search Cards"/>
+                <h4 className='numCards'>{this.state.filteredLength + "/" + this.state.cardLength + ' Cards'}</h4>
+              </Bs.Panel>
+              <Bs.Row>
+                {
+                  this.state.cards.map((card,i) =>{
+                    var date = new Intl.DateTimeFormat('en',
+                      {
+                        month: 'long',
+                        year:'numeric',
+                        day:'numeric'
+                      }).format(new Date(card.spendDeadline))
+                    return (
+                      <Bs.Col md={4} key={i}>
+                        <Bs.Panel className='cards'>
+                          <div className='removeButton' onClick={(this.deleteClick.bind(this))}
+                            id={card.id} ref="removeButton">
+                            <SweetAlert
+                               show={this.state.showAlert}
+                               title="Are you sure you want to delete this card?"
+                               text="You won't be able to recover it if you delete it"
+                               type="warning"
+                               showCancelButton= {true}
+                               confirmButtonText="Delete Card"
+                                 onConfirm={this.onConfirmDelete.bind(this)}
+                                 onCancel={() => {
+                                   this.setState({ showAlert: false })
+                                 }}
+                            />
+                            <i className="fa fa-times" aria-hidden="true"></i>
+                          </div>
+                          <div onClick={(this.click.bind(this))} className='cardName col-md-11' id={card.id}>
+                            {card.name}
+                          </div>
+                          <Bs.Col md={12}>
+                          <Bs.ProgressBar bsStyle="success" active now={card.spendTotal/card.minSpend*100} />
+                          {'Sign-Up Bonus Deadline:' + " "+ date}
+                          </Bs.Col>
+                        </Bs.Panel>
+                      </Bs.Col>
+                    )
+                  })
+                }
+              </Bs.Row>
             </Bs.Panel>
-            <Bs.Row>
-              {
-                this.state.cards.map((card,i) =>{
-                  var date = new Intl.DateTimeFormat('en',
-                    {
-                      month: 'long',
-                      year:'numeric',
-                      day:'numeric'
-                    }).format(new Date(card.spendDeadline))
-                  return (
-                    <Bs.Col md={4} key={i}>
-                      <Bs.Panel className='cards'>
-                        <div className='removeButton' onClick={(this.deleteClick.bind(this))}
-                          id={card.id} ref="removeButton">
-                          <SweetAlert
-                             show={this.state.showAlert}
-                             title="Are you sure you want to delete this card?"
-                             text="You won't be able to recover it if you delete it"
-                             type="warning"
-                             showCancelButton= {true}
-                             confirmButtonText="Delete Card"
-                               onConfirm={this.onConfirmDelete.bind(this)}
-                               onCancel={() => {
-                                 this.setState({ showAlert: false })
-                               }}
-                          />
-                          <i className="fa fa-times" aria-hidden="true"></i>
-                        </div>
-                        <div onClick={(this.click.bind(this))} className='cardName col-md-11' id={card.id}>
-                          {card.name}
-                        </div>
-                        <Bs.Col md={12}>
-                        <Bs.ProgressBar bsStyle="success" active now={card.spendTotal/card.minSpend*100} />
-                        {'Sign-Up Bonus Deadline:' + " "+ date}
-                        </Bs.Col>
-                      </Bs.Panel>
-                    </Bs.Col>
-                  )
-                })
-              }
-            </Bs.Row>
-          </Bs.Panel>
+          </Bs.Col>
         </Bs.Row>
       </div>
     )
