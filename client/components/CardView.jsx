@@ -10,21 +10,33 @@ class CardView extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      edit: false
+      edit: false,
+      showAlert: false
     }
   }
 
   collectForm(e,el) {
-    e.preventDefault()
+     e.preventDefault()
     const domForm = el.elements
+    const name = domForm[0].value
     const submitItem = Object.keys(domForm).slice(18)
     .reduce((acc,id) =>{
       if(id != 'submit' && domForm[id].value != "") acc[id] = domForm[id].value
       return acc
     },{})
-    console.log(submitItem)
     submitItem.id = this.props.card.id
+    submitItem.name = name
     this.props.addCard(submitItem)
+    .then(() => {
+      this.setState({showAlert: true})
+    })
+  }
+
+  hideAlerts(){
+    this.setState({showAlert: false})
+    this.props.viewAllCards().then(() =>
+      this.props.updateCards()
+    )
     this.closeEdit()
   }
 
@@ -184,7 +196,7 @@ class CardView extends React.Component {
       </Bs.Grid>
     </Bs.Modal>
     )
-    if(this.state.edit) cardCompView = (<CardEdit addCard={this.collectForm.bind(this)} show={this.props.show} onHide={this.closeEdit.bind(this)} FieldGroup={this.FieldGroup} dateIt={this.dateIt} card={this.props.card} cancel={this.cancel.bind(this)}/>)
+    if(this.state.edit) cardCompView = (<CardEdit addCard={this.collectForm.bind(this)} showAlert={this.state.showAlert} show={this.props.show} onHide={this.closeEdit.bind(this)} FieldGroup={this.FieldGroup} hideAlerts={this.hideAlerts.bind(this)} dateIt={this.dateIt} card={this.props.card} cancel={this.cancel.bind(this)}/>)
     return (
         cardCompView
     )
@@ -204,6 +216,7 @@ function matchDispatchToProps(dispatch) {
     addCard: Action.addCard,
     deleteCard: Action.deleteCard,
     viewCard: Action.viewCard,
+    viewAllCards: Action.viewAllCards,
     updateCard: Action.updateCard
   }, dispatch)
 }

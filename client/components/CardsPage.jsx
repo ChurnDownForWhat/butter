@@ -126,7 +126,7 @@ class CardsPage extends React.Component {
     )
     return (
       <div>
-        <CardView show={this.state.showModal} close={this.close.bind(this)}/>
+        <CardView show={this.state.showModal} updateCards={this.updateCards.bind(this)} close={this.close.bind(this)}/>
         <QuickNewCard show={this.state.showQuick} switch={this.switchAddViews.bind(this)} onHide={closeQuick} />
         <DetailedNewCard show={this.state.showDetailed} switch={this.switchAddViews.bind(this)} onHide={closeDetailed} />
         <Bs.Row>
