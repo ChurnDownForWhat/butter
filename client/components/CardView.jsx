@@ -16,7 +16,7 @@ class CardView extends React.Component {
   }
 
   collectForm(e,el) {
-     e.preventDefault()
+    e.preventDefault()
     const domForm = el.elements
     const name = domForm[0].value
     const submitItem = Object.keys(domForm).slice(18)
