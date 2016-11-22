@@ -42,38 +42,35 @@ export function deleteCard(id, i){
     })
 }
 
+
 export function viewAllCards() {
-  return dispatch =>
-    $.get('/api/cards')
-    .then(cards =>
+  return dispatch => {
+    dispatch({
+      type: 'LOADING'
+    })
+    return $.get('/api/cards')
+    .then(cards => 
       dispatch({
         type: 'VIEW_ALL_CARDS',
         payload: cards
       })
     )
+    .then(dis =>
+      dispatch({
+        type: 'LOADING_COMPLETE',
+        payload: false
+      })
+    )
+  }
 }
 
 export function viewAllRewards() {
-  return dispatch =>
+  return dispatch => { 
+    dispatch({
+      type: 'LOADING'
+    })
     $.get('/api/cards')
     .then((rewards) => {
-      // var noRepeats = rewards
-      // for(var i = 0; i < noRepeats.length; i++){
-      //   for(var k = 0; k < noRepeats.length; k++){
-      //     if(noRepeats[i].program === noRepeats[k].program && k !== i){
-      //       noRepeats[i].rewardsAmt += noRepeats[k].rewardsAmt
-      //       noRepeats.splice(k, 1)
-      //     }
-      //   }
-      // }
-      // return noRepeats
-        // Previous reduce implementation.
-      //   let rewardAmount = rewards.reduce((acc, card) =>
-      //   (acc[card.program] ?
-      //   acc[card.program]['rewardsAmt'] += card.rewardsAmt :
-      //   acc[card.program] = {rewardsAmt:card.rewardsAmt,program:card.program,category:card.category, count: 4}
-      // ,acc),{})
-
       let rewardAmount = rewards.reduce((acc, card) => {
         if(acc[card.program]){
           acc[card.program]['rewardsAmt'] += card.rewardsAmt
@@ -93,6 +90,13 @@ export function viewAllRewards() {
         payload: rewards
       })
     )
+    .then(dis =>
+      dispatch({
+        type: 'LOADING_COMPLETE',
+        payload: false
+      })
+    )
+  }
 }
 
 export function viewCard(id) {
@@ -112,13 +116,6 @@ export function updateCard(id, data){
       type: 'PUT',
       data: data
     })
-    .then($.get('/api/cards'))
-    .then(cards =>
-      dispatch({
-        type: 'VIEW_ALL_CARDS',
-        payload: cards
-      })
-    )
 }
 
 export function getAmazonDefault() {

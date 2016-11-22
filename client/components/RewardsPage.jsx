@@ -20,7 +20,14 @@ class RewardsPage extends React.Component {
   }
 
   render() {
-
+    if(this.props.loading.loading) { 
+      return (
+        <div>
+        <i className="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+        <span className="sr-only">Loading...</span>
+        </div>
+      )
+    }
     var links =
       {
         'Chase Ultimate Rewards':'https://www.chase.com/ultimaterewards',
@@ -102,7 +109,8 @@ function mapStateToProps(store){
   return {
     rewards: store.cardStates.rewards,
     cards: store.cardStates.cards,
-    user: store.cardStates.user
+    user: store.cardStates.user,
+    loading: store.loading
   }
 }
 

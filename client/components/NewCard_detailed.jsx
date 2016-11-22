@@ -42,11 +42,8 @@ class DetailedNewCard extends React.Component {
     .then(() => {
       this.setState({showAlert: false})
     }).then(() =>{
-      console.log('2')
       this.props.viewAllCards()
-    }).then(() => {
-      console.log('3')
-      this.props.onHide()
+      .then(() => this.props.onHide())
     })
   }
 

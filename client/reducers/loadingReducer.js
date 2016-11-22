@@ -2,7 +2,6 @@ const loadingReducer = function (state = {loading: true}, action) {
 
   switch (action.type) {
   case 'LOADING':
-    console.log('HIT',action.payload)
     return {
       ...state,
       loading: true

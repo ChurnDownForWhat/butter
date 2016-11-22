@@ -22,6 +22,9 @@ class CardsPage extends React.Component {
       filteredLength:0
     }
   }
+  componentWillMount(){
+    console.log("will mount")
+  }
 
   componentDidMount(){
     this.props.getUser()
@@ -73,14 +76,12 @@ class CardsPage extends React.Component {
     })
   }
 
-  setCards(){
-    // this.props.viewAllCards()
-    // .then((cards) => {
-    //   this.setState({
-    //     cards
-    //   })
-    // })
-    console.log("hey")
+  updateCards(){
+    this.setState({
+      cards:this.props.cards,
+      cardLength: this.props.cards.length,
+      filteredLength: this.props.cards.length
+    })
   }
 
   switchAddViews(e){
@@ -94,9 +95,25 @@ class CardsPage extends React.Component {
     this.setState({cards: filtered, filteredLength:filtered.length})
   }
 
+
+
   render(){
-    let closeQuick = () => this.setState({ showQuick: false })
-    let closeDetailed = () => this.setState({ showDetailed: false })
+    if(this.props.loading.loading) { 
+      return (
+        <div>
+        <i className="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+        <span className="sr-only">Loading...</span>
+        </div>
+      )
+    }
+    let closeQuick = () => {
+      this.updateCards()
+      this.setState({ showQuick: false })
+    }
+    let closeDetailed = () => {
+      this.updateCards()
+      this.setState({ showDetailed: false })
+    }
     const title = (
       <div>
         <h1 className='cards-panel-header'>Cards</h1>
@@ -181,7 +198,9 @@ function mapStateToProps(store){
     //object w/ all user cards data
     cards: store.cardStates.cards,
     //object w/ default cards data
-    defaults: store.cardStates.defaults
+    defaults: store.cardStates.defaults,
+    //boolean for loading
+    loading: store.loading
   }
 }
 
@@ -193,8 +212,8 @@ function matchDispatchToProps(dispatch){
     viewAllCards: Action.viewAllCards,
     viewCard: Action.viewCard,
     updateCard: Action.updateCard,
-    getUser: Action.getUser
-
+    getUser: Action.getUser,
+    doneLoad: Action.doneLoading
   }, dispatch)
 }
 

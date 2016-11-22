@@ -22,6 +22,10 @@ class Pie extends React.Component {
   }
 
   render () {
+    if(!this.props.data) { 
+      return <div></div>
+    }
+    console.log(this.props.data)
     let { x, y, data } = this.props
     let pie = d3.pie()
 
@@ -63,7 +67,6 @@ class Pie extends React.Component {
 function mapStateToProps(store){
   return {
     data: store.cardStates.data
-
   }
 }
 
