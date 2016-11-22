@@ -14,7 +14,6 @@ require('./css/creditCardsPage.css')
 require('./css/amazon.css')
 require('./css/CardView.css')
 require('./css/settings.css')
-
 require('./css/AboutPage.css')
 require('./css/rewards.css')
 
@@ -34,4 +33,4 @@ render(
   document.getElementById('app')
 )
 
-
+module.hot.accept()
