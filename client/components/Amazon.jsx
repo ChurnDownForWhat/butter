@@ -42,8 +42,8 @@ class CardView extends React.Component {
           x.MediumImage = 'Cannot Find Image'
         }if(!x.ItemAttributes.ListPrice){
           x.ItemAttributes.ListPrice = 'Cannot Find Price'
-        }if(x.ItemAttributes.Title.length > 100){
-          x.ItemAttributes.Title = x.ItemAttributes.Title.slice(0, 100)
+        }if(x.ItemAttributes.Title.length > 75){
+          x.ItemAttributes.Title = x.ItemAttributes.Title.slice(0, 75)
         }
         return (
           <a href= {x.DetailPageURL}>
