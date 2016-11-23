@@ -28,23 +28,45 @@ class QuickNewCard extends React.Component {
     )
   }
 
-  createCard(el){
+  dateIt(date) {
+    let d = new Date(date),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear()
+
+    if (month.length < 2) month = '0' + month
+    if (day.length < 2) day = '0' + day
+
+    return [year, month, day].join('-')
+  }
+
+  createCard(e,el){
+    e.preventDefault()
     const domForm = el.elements
     const name = domForm[0].value
-    const submitItem = Object.keys(domForm).slice(17)
+    console.log(domForm)
+    const submitItem = Object.keys(domForm).slice(6)
     .reduce((acc,id) =>{
       if(id != 'submit' && domForm[id].value != "") acc[id] = domForm[id].value
       return acc
     },{})
     submitItem.name = name
+    submitItem.applicationDate = this.dateIt(new Date())
+    submitItem.spendDeadline = this.dateIt(new Date())
+    submitItem.annFeeDate = this.dateIt(new Date())
+    submitItem.expCancelDate = this.dateIt(new Date())
     this.props.addCard(submitItem)
-    .then(() =>{
-      this.setState({showAlert: false})
-    }).then(() => {
+    .then(() => {
       this.props.viewAllCards()
-      .then(() => this.props.onHide())
+      this.setState({showAlert: true})
     })
   }
+
+  hideAlerts(){
+    this.setState({showAlert: false})
+    this.props.onHide()
+  }
+
   onChange(event, { newValue, method }){
     this.setState({ value: newValue })
   }
@@ -110,12 +132,12 @@ class QuickNewCard extends React.Component {
           </Bs.Col>
         </Bs.Modal.Header>
         </Bs.Row>
+        <form onSubmit={(e) => this.createCard(e,form)}id="credit-card-form" ref={(el)=> form = el}>
         <Bs.Row>
         <Bs.Col md={12}>
           <Bs.Modal.Body>
               <Bs.Row>
                 <Bs.Col md={12}>
-                  <form id="credit-card-form" ref={(el)=> form = el}>
                     <Bs.Row>
                       <Bs.Col md={12}>
                         <Bs.FormGroup controlId="name">
@@ -158,7 +180,6 @@ class QuickNewCard extends React.Component {
                           />
                       </Bs.Col>
                     </Bs.Row>
-                  </form>
                 </Bs.Col>
               </Bs.Row>
           </Bs.Modal.Body>
@@ -167,13 +188,13 @@ class QuickNewCard extends React.Component {
         <Bs.Row>
         <Bs.Modal.Footer>
           <Bs.Col md={4}>
-          <Bs.Button onClick={() => this.setState({showAlert: true})} > Create Card </Bs.Button>
+          <Bs.Button type="submit" > Create Card </Bs.Button>
           <SweetAlert
              show={this.state.showAlert}
              title="Card Added!"
              text="Click on the card for more edit options"
              type="success"
-             onConfirm={() => this.createCard(form)}
+             onConfirm={() => this.hideAlerts()}
           />
           </Bs.Col>
           <Bs.Col md={4}>
@@ -184,6 +205,7 @@ class QuickNewCard extends React.Component {
           </Bs.Col>
         </Bs.Modal.Footer>
         </Bs.Row>
+        </form>
         </Bs.Grid>
       </Bs.Modal>
     )

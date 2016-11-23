@@ -22,9 +22,6 @@ class CardsPage extends React.Component {
       filteredLength:0
     }
   }
-  componentWillMount(){
-    console.log("will mount")
-  }
 
   componentDidMount(){
     this.props.getUser()
@@ -98,7 +95,7 @@ class CardsPage extends React.Component {
 
 
   render(){
-    if(this.props.loading.loading) { 
+    if(this.props.loading.loading || !this.props.user) { 
       return (
         <div>
         <i className="fa fa-spinner fa-spin fa-3x fa-fw"></i>
@@ -113,20 +110,15 @@ class CardsPage extends React.Component {
       this.updateCards()
       this.setState({ showDetailed: false })
     }
+
     const title = (
       <div>
         <h1 className='cards-panel-header'>Cards</h1>
-        <div id='cards-panel-add' className='cards-panel-header'>
-        <Bs.DropdownButton id='cards-panel-add' className='cards-panel-header' bsSize="large" title="Add A Card" >
-          <Bs.MenuItem eventKey="1" onSelect={(e) => this.setState({showQuick: true})}>Quick</Bs.MenuItem>
-          <Bs.MenuItem eventKey="2" onSelect={(e) => this.setState({showDetailed: true})}>Detailed</Bs.MenuItem>
-        </Bs.DropdownButton>
-        </div>
       </div>
     )
     return (
       <div>
-        <CardView show={this.state.showModal} close={this.close.bind(this)}/>
+        <CardView show={this.state.showModal} updateCards={this.updateCards.bind(this)} close={this.close.bind(this)}/>
         <QuickNewCard show={this.state.showQuick} switch={this.switchAddViews.bind(this)} onHide={closeQuick} />
         <DetailedNewCard show={this.state.showDetailed} switch={this.switchAddViews.bind(this)} onHide={closeDetailed} />
         <Bs.Row>
@@ -135,53 +127,67 @@ class CardsPage extends React.Component {
           </div>
         </Bs.Row>
         <Bs.Row>
-          <Bs.Panel className='cards-panel' header={title}>
-            <Bs.Panel className='searchHeader'>
-              <input onKeyUp={this.filterCards.bind(this)} placeholder="Search Cards"/>
-              <h4 className='numCards'>{this.state.filteredLength + "/" + this.state.cardLength + ' Cards'}</h4>
-            </Bs.Panel>
-            <Bs.Row>
-              {
-                this.state.cards.map((card,i) =>{
-                  var date = new Intl.DateTimeFormat('en',
-                    {
-                      month: 'long',
-                      year:'numeric',
-                      day:'numeric'
-                    }).format(new Date(card.spendDeadline))
-                  return (
-                    <Bs.Col md={4} key={i}>
-                      <Bs.Panel className='cards'>
-                        <div className='removeButton' onClick={(this.deleteClick.bind(this))}
-                          id={card.id} ref="removeButton">
-                          <SweetAlert
-                             show={this.state.showAlert}
-                             title="Are you sure you want to delete this card?"
-                             text="You won't be able to recover it if you delete it"
-                             type="warning"
-                             showCancelButton= {true}
-                             confirmButtonText="Delete Card"
-                               onConfirm={this.onConfirmDelete.bind(this)}
-                               onCancel={() => {
-                                 this.setState({ showAlert: false })
-                               }}
-                          />
-                          <i className="fa fa-times" aria-hidden="true"></i>
-                        </div>
-                        <div onClick={(this.click.bind(this))} className='cardName col-md-11' id={card.id}>
-                          {card.name}
-                        </div>
-                        <Bs.Col md={12}>
-                        <Bs.ProgressBar bsStyle="success" active now={card.spendTotal/card.minSpend*100} />
-                        {'Sign-Up Bonus Deadline:' + " "+ date}
-                        </Bs.Col>
-                      </Bs.Panel>
+          <Bs.Col md={12}>
+            <Bs.Panel className='cards-panel' bsStyle='primary' header={title}>
+              <Bs.Panel className='searchHeader'>
+                <input onKeyUp={this.filterCards.bind(this)} placeholder="Search Cards"/>
+                <h4 className='numCards'>{this.state.filteredLength + "/" + this.state.cardLength + ' Cards'}</h4>
+              </Bs.Panel>
+              <Bs.Row>
+                {
+                  this.state.cards.map((card,i) =>{
+                    var date = new Intl.DateTimeFormat('en',
+                      {
+                        month: 'long',
+                        year:'numeric',
+                        day:'numeric'
+                      }).format(new Date(card.spendDeadline))
+                    return (
+                      <Bs.Col md={4} key={i}>
+                        <Bs.Panel className='cards'>
+                          <div className='removeButton' onClick={(this.deleteClick.bind(this))}
+                            id={card.id} ref="removeButton">
+                            <SweetAlert
+                               show={this.state.showAlert}
+                               title="Are you sure you want to delete this card?"
+                               text="You won't be able to recover it if you delete it"
+                               type="warning"
+                               showCancelButton= {true}
+                               confirmButtonText="Delete Card"
+                                 onConfirm={this.onConfirmDelete.bind(this)}
+                                 onCancel={() => {
+                                   this.setState({ showAlert: false })
+                                 }}
+                            />
+                            <i className="fa fa-times" aria-hidden="true"></i>
+                          </div>
+                          <div onClick={(this.click.bind(this))} className='cardName col-md-11' id={card.id}>
+                            {card.name}
+                          </div>
+                          <Bs.Col md={12}>
+                          <Bs.ProgressBar bsStyle="success" active now={card.spendTotal/card.minSpend*100} />
+                          {'Sign-Up Bonus Deadline:' + " "+ date}
+                          </Bs.Col>
+                        </Bs.Panel>
+                      </Bs.Col>
+                    )
+                  })
+                }
+                <Bs.Col md={4}>
+                  <Bs.Panel className='cards addCard'>
+                    <div className='col-md-12'>
+                      <i className="fa fa-plus fa-2x addCardIcon " aria-hidden="true"></i>
+                        <div id='addQuick'  onClick={(e) => this.setState({showQuick: true})}>Quick</div>
+                        <div id='addDetailed' onClick={(e) => this.setState({showDetailed: true})}>Detailed</div>
+                    </div>
+                    <Bs.Col md={12}>
+                      <h4 className='addACard'>Add a card</h4>
                     </Bs.Col>
-                  )
-                })
-              }
-            </Bs.Row>
-          </Bs.Panel>
+                  </Bs.Panel>
+                </Bs.Col>
+              </Bs.Row>
+            </Bs.Panel>
+          </Bs.Col>
         </Bs.Row>
       </div>
     )

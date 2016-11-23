@@ -91,7 +91,6 @@ class RewardsPage extends React.Component {
 
     return (
       <div>
-        
         <Bs.Row className='page-header'>
           <Bs.Col md={12}>Rewards</Bs.Col>
         </Bs.Row>
