@@ -15,7 +15,8 @@ class QuickNewCard extends React.Component {
       value: '',
       suggestions: [],
       newCard: {},
-      showAlert: false
+      showAlert: false,
+      showError: false
     }
   }
 
@@ -50,6 +51,9 @@ class QuickNewCard extends React.Component {
       if(id != 'submit' && domForm[id].value != "") acc[id] = domForm[id].value
       return acc
     },{})
+    if(!submitItem.expiration || !submitItem.spendTotal || !submitItem.minSpend){
+      return this.setState({showError: true})
+    }
     submitItem.name = name
     submitItem.applicationDate = this.dateIt(new Date())
     submitItem.spendDeadline = this.dateIt(new Date())
@@ -61,7 +65,9 @@ class QuickNewCard extends React.Component {
       this.setState({showAlert: true})
     })
   }
-
+  hideError(){
+    this.setState({showError: false})
+  }
   hideAlerts(){
     this.setState({showAlert: false})
     this.props.onHide()
@@ -195,6 +201,13 @@ class QuickNewCard extends React.Component {
              text="Click on the card for more edit options"
              type="success"
              onConfirm={() => this.hideAlerts()}
+          />
+          <SweetAlert
+             show={this.state.showError}
+             title="Submit Failed!"
+             text="Please fill in all necessary fields!"
+             type="warning"
+             onConfirm={() => this.hideError()}
           />
           </Bs.Col>
           <Bs.Col md={4}>
