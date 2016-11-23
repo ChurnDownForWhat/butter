@@ -28,6 +28,18 @@ class QuickNewCard extends React.Component {
     )
   }
 
+  dateIt(date) {
+    let d = new Date(date),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear()
+
+    if (month.length < 2) month = '0' + month
+    if (day.length < 2) day = '0' + day
+
+    return [year, month, day].join('-')
+  }
+
   createCard(e,el){
     e.preventDefault()
     const domForm = el.elements
@@ -39,6 +51,10 @@ class QuickNewCard extends React.Component {
       return acc
     },{})
     submitItem.name = name
+    submitItem.applicationDate = this.dateIt(new Date())
+    submitItem.spendDeadline = this.dateIt(new Date())
+    submitItem.annFeeDate = this.dateIt(new Date())
+    submitItem.expCancelDate = this.dateIt(new Date())
     this.props.addCard(submitItem)
     .then(() => {
       this.props.viewAllCards()

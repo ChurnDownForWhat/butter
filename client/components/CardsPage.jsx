@@ -95,7 +95,7 @@ class CardsPage extends React.Component {
 
 
   render(){
-    if(this.props.loading.loading) { 
+    if(this.props.loading.loading || !this.props.user) { 
       return (
         <div>
         <i className="fa fa-spinner fa-spin fa-3x fa-fw"></i>
