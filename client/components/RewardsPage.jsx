@@ -20,6 +20,13 @@ class RewardsPage extends React.Component {
   }
 
   render() {
+    if(this.props.loading.loading) { 
+      return (
+        <div>
+        <i className="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+        </div>
+      )
+    }
     let isThereData
     let Rewards
     let links =
@@ -38,7 +45,7 @@ class RewardsPage extends React.Component {
         'Starpoints':'http://www.starwoodhotels.com/preferredguest/account/starpoints/redeem/index.html?language=en_US',
         'HHonors':'http://hhonors3.hilton.com/en/index.html?WT.srch=1'
       }
-    if (this.props.cards.length > 0){
+    if (this.props.cards && this.props.cards.length){
       isThereData = (
          <svg width = "100%" height = "100%" className='pie'>
           <Pie x={window.innerWidth/6}
@@ -80,14 +87,6 @@ class RewardsPage extends React.Component {
                 </tr>
                 )
     }
-    if(this.props.loading.loading) { 
-      return (
-        <div>
-        <i className="fa fa-spinner fa-spin fa-3x fa-fw"></i>
-        </div>
-      )
-    }
-
 
     return (
       <div>
