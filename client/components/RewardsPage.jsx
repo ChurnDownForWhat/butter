@@ -20,6 +20,23 @@ class RewardsPage extends React.Component {
   }
 
   render() {
+    let isThereData
+    if (this.props.cards.length > 0){
+      isThereData = (
+         <svg width = "100%" height = "100%" className='pie'>
+          <Pie x={window.innerWidth/6}
+            y={window.innerHeight/4}
+            innerRadius={( Math.min( window.innerWidth, window.innerHeight ) * .9 ) / 4 *.35}
+            outerRadius={( Math.min( window.innerWidth, window.innerHeight ) * .9 ) / 4}
+            cornerRadius={5}
+            padAngle={0}/>
+        </svg>
+      )
+    }
+    else {
+      isThereData =  <div>You'll need to add a card that's earned reward points to see your category breakdown!</div>
+    }
+
     if(this.props.loading.loading) { 
       return (
         <div>
@@ -86,15 +103,8 @@ class RewardsPage extends React.Component {
               </Bs.Panel>    
             </Bs.Col>
             <Bs.Col md={5} >
-              <Bs.Panel bsStyle='primary' header={<h1>Category Breakdown</h1>}>  
-                <svg width = "100%" height = "100%" className='pie'>
-                  <Pie x={window.innerWidth/6}
-                        y={window.innerHeight/4}
-                        innerRadius={( Math.min( window.innerWidth, window.innerHeight ) * .9 ) / 4 *.35}
-                        outerRadius={( Math.min( window.innerWidth, window.innerHeight ) * .9 ) / 4}
-                        cornerRadius={5}
-                        padAngle={0}/>
-                </svg>
+              <Bs.Panel bsStyle='primary' header={<h1>Category Breakdown</h1>}>
+                {isThereData}
               </Bs.Panel>
             </Bs.Col>
           </Bs.Row>
