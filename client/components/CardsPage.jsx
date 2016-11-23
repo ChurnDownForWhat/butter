@@ -92,8 +92,6 @@ class CardsPage extends React.Component {
     this.setState({cards: filtered, filteredLength:filtered.length})
   }
 
-
-
   render(){
     if(this.props.loading.loading || !this.props.user) { 
       return (
@@ -136,6 +134,13 @@ class CardsPage extends React.Component {
               <Bs.Row>
                 {
                   this.state.cards.map((card,i) =>{
+                    
+                    this.props.defaults.map((defaults, i) => {
+                      if(defaults.name === card.name){
+                        card.cardImg = defaults.cardImg
+                      }
+                    })
+
                     var date = new Intl.DateTimeFormat('en',
                       {
                         month: 'long',
@@ -145,6 +150,7 @@ class CardsPage extends React.Component {
                     return (
                       <Bs.Col md={4} key={i}>
                         <Bs.Panel className='cards'>
+                          <img id='cardImg' src={card.cardImg}/>
                           <div className='removeButton' onClick={(this.deleteClick.bind(this))}
                             id={card.id} ref="removeButton">
                             <SweetAlert
@@ -221,9 +227,5 @@ function matchDispatchToProps(dispatch){
     doneLoad: Action.doneLoading
   }, dispatch)
 }
-
-// <div className='removeButton' onClick={(this.deleteClick.bind(this))} id={card.id} ref="removeButton">
-  // <i className="fa fa-times" aria-hidden="true"></i>
- // </div>
 
 export default connect(mapStateToProps, matchDispatchToProps)(CardsPage)
