@@ -203,3 +203,8 @@
 #addDetailed:hover{
   cursor: pointer;
 }
+
+#cardImg{
+  margin-top: -15%;
+  margin-left: 9%;
+}
