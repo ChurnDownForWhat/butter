@@ -83,13 +83,13 @@
 }
 
 .suggestion img {
-  width: 60px;
-  height: 60px;
+  width: 17%;
+  height: 10%;
 }
 
 .suggestion .name{
-  width: 150px;
-  height: auto;
+  margin-top: 3%;
+  width: 80%;
   float: right;
 }
 
