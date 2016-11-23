@@ -95,7 +95,7 @@ class DetailedNewCard extends React.Component {
   }
 
   getSuggestionValue(suggestion) {
-    let cardNew = Object.assign({}, this.state.cardSub)
+    let cardNew = {...this.state.cardSub}
     for(let key in suggestion) {cardNew[key] = suggestion[key]}
     this.setState({newCard: suggestion, cardSub: cardNew, cardType:suggestion.cardType, category:suggestion.category})
     return `${suggestion.name}`
@@ -181,6 +181,7 @@ class DetailedNewCard extends React.Component {
                           label='Last 4 Digits'
                           placeholder='XXXX'
                           defaultValue={this.state.cardSub.last4digits}
+                          maxLength="4"
                         />
                       </Bs.Col>
                     </Bs.Row>
