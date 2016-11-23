@@ -48,6 +48,7 @@ const cardEditView = ({showAlert, hideAlerts, dateIt, defaults, props, card, add
               label='Last 4 Digits'
               placeholder='XXXX'
               defaultValue={card.last4digits || ''}
+              maxLength="4"
             />
           </Bs.Col>
         </Bs.Row>

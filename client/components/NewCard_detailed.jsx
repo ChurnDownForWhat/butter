@@ -181,6 +181,7 @@ class DetailedNewCard extends React.Component {
                           label='Last 4 Digits'
                           placeholder='XXXX'
                           defaultValue={this.state.cardSub.last4digits}
+                          maxLength="4"
                         />
                       </Bs.Col>
                     </Bs.Row>
