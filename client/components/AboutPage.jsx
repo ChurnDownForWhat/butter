@@ -1,9 +1,8 @@
 import React from 'react'
 import * as Bs from 'react-bootstrap'
 
-class AboutPage extends React.Component {
-  render () {
-    return (
+const AboutPage = ({ props }) =>
+  (
     <div>
     <Bs.Row className='page-header'>
       <Bs.Col md={11}>What Is Churning?</Bs.Col>
@@ -89,8 +88,5 @@ class AboutPage extends React.Component {
 
     </div>
     )
-  }
-
-}
 
 export default AboutPage

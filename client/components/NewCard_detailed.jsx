@@ -16,7 +16,8 @@ class DetailedNewCard extends React.Component {
       newCard: {},
       cardType: '',
       category: '',
-      showAlert: false
+      showAlert: false,
+      cardSub: {}
     }
   }
 
@@ -55,6 +56,9 @@ class DetailedNewCard extends React.Component {
     submitItem.spendDeadline = submitItem.spendDeadline || this.dateIt(new Date())
     submitItem.annFeeDate = submitItem.annFeeDate || this.dateIt(new Date())
     submitItem.expCancelDate = submitItem.expCancelDate || this.dateIt(new Date())
+    if(!submitItem.expiration || !submitItem.spendTotal || !submitItem.minSpend){
+      return this.setState({showError: true,cardSub: submitItem})
+    }
     this.props.addCard(submitItem)
     .then(() => {
       this.props.viewAllCards()
@@ -65,6 +69,10 @@ class DetailedNewCard extends React.Component {
   hideAlerts(){
     this.setState({showAlert: false})
     this.props.onHide()
+  }
+
+  hideError(){
+    this.setState({showError: false})
   }
 
   onChange(event, { newValue, method }){
@@ -87,7 +95,9 @@ class DetailedNewCard extends React.Component {
   }
 
   getSuggestionValue(suggestion) {
-    this.setState({newCard: suggestion, cardType:suggestion.cardType, category:suggestion.category})
+    let cardNew = Object.assign({}, this.state.cardSub)
+    for(let key in suggestion) {cardNew[key] = suggestion[key]}
+    this.setState({newCard: suggestion, cardSub: cardNew, cardType:suggestion.cardType, category:suggestion.category})
     return `${suggestion.name}`
   }
   typeChange(event) {
@@ -156,7 +166,7 @@ class DetailedNewCard extends React.Component {
                       <Bs.Col md={4}>
                         <Bs.FormGroup controlId="cardType">
                           <Bs.ControlLabel>Card Type*</Bs.ControlLabel>
-                          <Bs.FormControl componentClass="select" value={this.state.cardType} onChange={this.typeChange.bind(this)}>
+                          <Bs.FormControl componentClass="select" value={this.state.cardSub.cardType || this.state.cardType} onChange={this.typeChange.bind(this)}>
                             <option value="MasterCard">MasterCard</option>
                             <option value="Visa">Visa</option>
                             <option value="American Express">American Express</option>
@@ -170,6 +180,7 @@ class DetailedNewCard extends React.Component {
                           type='text'
                           label='Last 4 Digits'
                           placeholder='XXXX'
+                          defaultValue={this.state.cardSub.last4digits}
                         />
                       </Bs.Col>
                     </Bs.Row>
@@ -177,7 +188,7 @@ class DetailedNewCard extends React.Component {
                       <Bs.Col md={4}>
                         <Bs.FormGroup controlId="category">
                           <Bs.ControlLabel>Reward Category*</Bs.ControlLabel>
-                          <Bs.FormControl componentClass="select" value={this.state.category} onChange={this.catChange.bind(this)}>
+                          <Bs.FormControl componentClass="select" value={this.state.cardSub.category || this.state.category} onChange={this.catChange.bind(this)}>
                             <option value="Cash Back">Cash Back</option>
                             <option value="General Points">General Points</option>
                             <option value="Miles">Miles</option>
@@ -191,7 +202,7 @@ class DetailedNewCard extends React.Component {
                           type='text'
                           label='Program'
                           placeholder='Program Title'
-                          defaultValue={this.state.newCard.program || ''}
+                          defaultValue={this.state.cardSub.program || this.state.newCard.program || ''}
                         />
                       </Bs.Col>
                       <Bs.Col md={4}>
@@ -200,6 +211,7 @@ class DetailedNewCard extends React.Component {
                           type='number'
                           label='Rewards Amount'
                           placeholder='XXXX.XX'
+                          defaultValue={this.state.cardSub.rewardsAmt}
                         />
                       </Bs.Col>
                     </Bs.Row>
@@ -218,6 +230,7 @@ class DetailedNewCard extends React.Component {
                           type='number'
                           label='Monthly Bill Date'
                           placeholder='XX'
+                          defaultValue={this.state.cardSub.monthlyBilldate}
                           />
                       </Bs.Col>
                     </Bs.Row>
@@ -228,6 +241,7 @@ class DetailedNewCard extends React.Component {
                           type='date'
                           label='Application Date'
                           placeholder='XX/XX/XXXX'
+                          defaultValue={this.state.cardSub.applicationDate}
                         />
                       </Bs.Col>
                       <Bs.Col md={6}>
@@ -236,6 +250,7 @@ class DetailedNewCard extends React.Component {
                           type='date'
                           label='Expected Cancel Date'
                           placeholder='XX/XX/XXXX'
+                          defaultValue={this.state.cardSub.expCancelDate}
                         />
                       </Bs.Col>
                     </Bs.Row>
@@ -246,7 +261,7 @@ class DetailedNewCard extends React.Component {
                           type='text'
                           label='Sign Up Bonus'
                           placeholder='Sign-Up Bonus'
-                          defaultValue={this.state.newCard.signupBonus || ''}
+                          defaultValue={this.state.cardSub.signupBonus || this.state.newCard.signupBonus}
                           />
                       </Bs.Col>
                       <Bs.Col md={6}>
@@ -255,6 +270,7 @@ class DetailedNewCard extends React.Component {
                           type='number'
                           label='Spend so far'
                           placeholder='XXXX.XX'
+                          defaultValue={this.state.cardSub.spendTotal}
                           />
                       </Bs.Col>
                     </Bs.Row>
@@ -265,7 +281,7 @@ class DetailedNewCard extends React.Component {
                           type='number'
                           label='Minimum Spend'
                           placeholder='XXXX.XX'
-                          defaultValue={this.state.newCard.minSpend || ''}
+                          defaultValue={this.state.cardSub.minSpend || this.state.newCard.minSpend}
                           />
                       </Bs.Col>
                       <Bs.Col md={6}>
@@ -274,6 +290,7 @@ class DetailedNewCard extends React.Component {
                           type='date'
                           label='Spend Deadline'
                           placeholder='XX/XX/XXXX'
+                          defaultValue={this.state.cardSub.spendDeadline }
                         />
                       </Bs.Col>
                     </Bs.Row>
@@ -284,7 +301,7 @@ class DetailedNewCard extends React.Component {
                           type='number'
                           label='Annual Fee'
                           placeholder='XXXX.XX'
-                          defaultValue={this.state.newCard.annFeeAmt || ''}
+                          defaultValue={this.state.cardSub.annFeeAmt || this.state.newCard.annFeeAmt }
                           />
                       </Bs.Col>
                       <Bs.Col md={5}>
@@ -293,6 +310,7 @@ class DetailedNewCard extends React.Component {
                           type='date'
                           label='Annual Fee Date'
                           placeholder='XX/XX/XXXX'
+                          defaultValue={this.state.cardSub.annFeeDate}
                         />
                       </Bs.Col>
                       <Bs.Col md={3}>
@@ -308,7 +326,7 @@ class DetailedNewCard extends React.Component {
                           type='text'
                           label='Benefits of card'
                           placeholder="Describe this card's benefits"
-                          defaultValue={this.state.newCard.benefit || ''}
+                          defaultValue={this.state.cardSub.benefit || this.state.newCard.benefit}
                         />
                       </Bs.Col>
                     </Bs.Row>
@@ -327,6 +345,13 @@ class DetailedNewCard extends React.Component {
              text="Click on the card for more edit options"
              type="success"
              onConfirm={() => this.hideAlerts()}
+          />
+          <SweetAlert
+             show={this.state.showError}
+             title="Submit Failed!"
+             text="Please fill in all necessary fields!"
+             type="warning"
+             onConfirm={() => this.hideError()}
           />
           </Bs.Col>
           <Bs.Col md={4}>
