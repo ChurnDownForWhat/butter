@@ -144,7 +144,7 @@ class QuickNewCard extends React.Component {
                           id='spendTotal'
                           type='number'
 
-                          label='Spent so far'
+                          label='Spend so far'
                           placeholder='XXXX.XX'
                           />
                       </Bs.Col>
