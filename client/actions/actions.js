@@ -48,7 +48,7 @@ export function deleteCard(id, i){
 export function viewAllCards() {
   return dispatch =>
     $.get('/api/cards')
-    .then(cards => 
+    .then(cards =>
       dispatch({
         type: 'VIEW_ALL_CARDS',
         payload: cards
@@ -63,7 +63,7 @@ export function viewAllCards() {
 }
 
 export function viewAllRewards() {
-  return dispatch => { 
+  return dispatch => {
     dispatch({
       type: 'LOADING'
     })
@@ -178,4 +178,13 @@ export function getPieData() {
         payload: data
       })
     )
+}
+
+export function sendEmail (data) {
+  console.log(`I AM DATA ${data}`)
+  return dispatch =>
+    $.ajax('/api/contactUs',{
+      type: 'POST',
+      data: {text: data}
+    })
 }

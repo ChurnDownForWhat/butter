@@ -34,7 +34,7 @@ class Settings extends React.Component {
 
   sendFeedback(e){
     e.preventDefault()
-    console.log(this.state.feedback)
+    this.props.sendEmail(this.state.feedback)
     this.setState({show: false})
   }
 
@@ -73,9 +73,9 @@ class Settings extends React.Component {
           </Bs.Row>
         </Bs.Col>
         <Bs.Col className='settings_content' md={10}>
-          <Bs.Row>  
-            { 
-              this.props.cards.map((card, i) => 
+          <Bs.Row>
+            {
+              this.props.cards.map((card, i) =>
                 <Bs.Col md={6} id={card.id}>
                   <Bs.Panel key={i} className="settings_cards" >
                     <Bs.Row>
@@ -94,7 +94,7 @@ class Settings extends React.Component {
             <Bs.Button block bsStyle='danger' bsSize='large' onClick={this.deleteUser.bind(this)}>Delete Account</Bs.Button>
           </Bs.Row>
         </Bs.Col>
-        
+
         <Bs.Modal show={this.state.show} onHide={() => this.setState({ show: false })}>
           <Bs.Modal.Header>
             <Bs.Col md={12}>
@@ -104,14 +104,14 @@ class Settings extends React.Component {
           <Bs.Row>
             <Bs.Col md={12}>
               <Bs.Modal.Body>
-                <form onSubmit={(e) => this.sendFeedback(e)}> 
+                <form onSubmit={(e) => this.sendFeedback(e)}>
                   <Bs.FormGroup controlId="formControlsTextarea">
                     <Bs.FormControl onChange={(e) => this.onChange(e)} componentClass="textarea" />
                     <br/>
                     <Bs.Button block type='submit' bsStyle='primary' bsSize='large'>Thanks</Bs.Button>
-                  </Bs.FormGroup> 
-                </form> 
-              </Bs.Modal.Body>    
+                  </Bs.FormGroup>
+                </form>
+              </Bs.Modal.Body>
             </Bs.Col>
           </Bs.Row>
         </Bs.Modal>
@@ -134,8 +134,7 @@ function matchDispatchToProps(dispatch){
     deleteCard: Action.deleteCard,
     viewAllCards: Action.viewAllCards,
     deleteUser: Action.deleteUser,
-
-
+    sendEmail: Action.sendEmail
   }, dispatch)
 }
 
