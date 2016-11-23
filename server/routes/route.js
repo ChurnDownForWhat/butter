@@ -5,8 +5,9 @@ const User = require('../controllers/user')
 const Card = require('../controllers/card')
 const Amazon = require('../controllers/amazonController')
 const DefaultCard = require('../controllers/DefaultCardController')
+const Feedback = require('../controllers/feedback')
 
-isAuthed = (req,res,next) => req.isAuthenticated() ? next() : res.redirect('/landing')   
+isAuthed = (req,res,next) => req.isAuthenticated() ? next() : res.redirect('/landing')
 
 router.route('/landing').get((req, res) => res.sendFile(Path.resolve(__dirname, '../../public/landing.html')))
 
@@ -25,10 +26,12 @@ router.route('/api/cards/:id').get(Card.getOneCard)
 router.route('/api/cards/:id').delete(Card.removeCard)
 //get default cards
 router.route('/api/defaults').get(DefaultCard.getAllDefaults)
-// amazon cards 
+// amazon cards
 router.route('/api/amazonSearch/').get(Amazon.getDefault)
 // router.route
 router.route('/api/amazonSearch/').post(Amazon.getAll)
+
+router.route('/api/contactUs').post(Feedback.sendEmail)
 
 router.route('/auth/google').get(passport.authenticate('google',
   {
@@ -42,7 +45,7 @@ router.route('/auth/google').get(passport.authenticate('google',
 
 router.route('/auth/google/callback').get(passport.authenticate('google',
   { failureRedirect: '/landing',
-    successRedirect: '/' 
+    successRedirect: '/'
   })
 )
 
