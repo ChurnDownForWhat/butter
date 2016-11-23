@@ -20,14 +20,9 @@ class RewardsPage extends React.Component {
   }
 
   render() {
-    if(this.props.loading.loading) { 
-      return (
-        <div>
-        <i className="fa fa-spinner fa-spin fa-3x fa-fw"></i>
-        </div>
-      )
-    }
-    var links =
+    let isThereData
+    let Rewards
+    let links =
       {
         'Chase Ultimate Rewards':'https://www.chase.com/ultimaterewards',
         'Marriott Rewards':'http://www.marriott.com/rewards/rewards-program.mi',
@@ -43,6 +38,56 @@ class RewardsPage extends React.Component {
         'Starpoints':'http://www.starwoodhotels.com/preferredguest/account/starpoints/redeem/index.html?language=en_US',
         'HHonors':'http://hhonors3.hilton.com/en/index.html?WT.srch=1'
       }
+    if (this.props.cards.length > 0){
+      isThereData = (
+         <svg width = "100%" height = "100%" className='pie'>
+          <Pie x={window.innerWidth/6}
+            y={window.innerHeight/4}
+            innerRadius={( Math.min( window.innerWidth, window.innerHeight ) * .9 ) / 4 *.35}
+            outerRadius={( Math.min( window.innerWidth, window.innerHeight ) * .9 ) / 4}
+            cornerRadius={5}
+            padAngle={0}/>
+        </svg>
+      )
+    }
+    else {
+      isThereData =  <div>You'll need to add a card that's earned reward points to see your category breakdown!</div>
+    }
+    if(this.props.rewards.length !== 0){
+      Rewards = this.props.rewards.map(function(val, i){
+        var link = links[val.program] || null
+        return (<tr className="" key={i}>
+                <th scope="row"> {i +1} </th>
+                  <td>{val.program}</td>
+                  <td>{val.category}</td>
+                  <td>{val.rewardsAmt}</td>
+                  <td>{val.count}</td>
+                  <td>
+                  { link ? <a href={link} target="_blank"> Reward Portal </a>
+                    : <div> ¯\_(ツ)_/¯ </div> }
+                  </td>
+              </tr>
+        )
+      })
+    } else {
+      Rewards = (<tr className="">
+                <th scope="row"> {1} </th>
+                  <td>You</td>
+                  <td>Should</td>
+                  <td>Add</td>
+                  <td>A</td>
+                  <td>Card!</td>
+                </tr>
+                )
+    }
+    if(this.props.loading.loading) { 
+      return (
+        <div>
+        <i className="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+        </div>
+      )
+    }
+
 
     return (
       <div>
@@ -65,35 +110,14 @@ class RewardsPage extends React.Component {
                     </tr>
                   </thead>
                   <tbody>     
-                  {this.props.rewards.map(function(val, i){
-                    var link = links[val.program] || null
-                    return (<tr className="" key={i}>
-                            <th scope="row"> {i +1} </th>
-                              <td>{val.program}</td>
-                              <td>{val.category}</td>
-                              <td>{val.rewardsAmt}</td>
-                              <td>{val.count}</td>
-                              <td>
-                              { link ? <a href={link} target="_blank"> Reward Portal </a>
-                                : <div> ¯\_(ツ)_/¯ </div> }
-                              </td>
-                          </tr>
-                    )
-                  })}
+                  {Rewards}
                     </tbody>
                   </Bs.Table>
               </Bs.Panel>    
             </Bs.Col>
             <Bs.Col md={5} >
-              <Bs.Panel bsStyle='primary' header={<h1>Category Breakdown</h1>}>  
-                <svg width = "100%" height = "100%" className='pie'>
-                  <Pie x={window.innerWidth/6}
-                        y={window.innerHeight/4}
-                        innerRadius={( Math.min( window.innerWidth, window.innerHeight ) * .9 ) / 4 *.35}
-                        outerRadius={( Math.min( window.innerWidth, window.innerHeight ) * .9 ) / 4}
-                        cornerRadius={5}
-                        padAngle={0}/>
-                </svg>
+              <Bs.Panel bsStyle='primary' header={<h1>Category Breakdown</h1>}>
+                {isThereData}
               </Bs.Panel>
             </Bs.Col>
           </Bs.Row>
