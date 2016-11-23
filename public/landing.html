@@ -16,16 +16,6 @@
   <script src='./landingPage/ScrollMagic.min.js'></script>
 </head>
 <body>
- 
-  <section id='navbar'>
-    <nav class="navbar navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-brand">
-          <h1>Butter</h1>
-        </div>
-      </div>
-    </nav>
-  </section>
   
     <section class='scene' id="section1">
       <div class="cell">
@@ -130,7 +120,6 @@
     var slides = document.querySelectorAll(".scene");
     // create scene for every slide
     for (var i=0; i<slides.length; i++) {
-      console.log(slides[i])
       new ScrollMagic.Scene({
           triggerElement: slides[i]
         })
