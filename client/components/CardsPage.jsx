@@ -150,7 +150,7 @@ class CardsPage extends React.Component {
                     return (
                       <Bs.Col md={4} key={i}>
                         <Bs.Panel className='cards'>
-                          <img id='cardImg' src={card.cardImg}/>
+                          <img  onClick={(this.click.bind(this))} id={card.id} className='cardImg' src={card.cardImg}/>
                           <div className='removeButton' onClick={(this.deleteClick.bind(this))}
                             id={card.id} ref="removeButton">
                             <SweetAlert
@@ -167,13 +167,15 @@ class CardsPage extends React.Component {
                             />
                             <i className="fa fa-times" aria-hidden="true"></i>
                           </div>
-                          <div onClick={(this.click.bind(this))} className='cardName col-md-11' id={card.id}>
+                          {
+                          <div className='cardName col-md-11'>
                             {card.name}
                           </div>
-                          <Bs.Col md={12}>
-                          <Bs.ProgressBar bsStyle="success" active now={card.spendTotal/card.minSpend*100} />
-                          {'Sign-Up Bonus Deadline:' + " "+ date}
-                          </Bs.Col>
+                          // <Bs.Col md={12}>
+                          // <Bs.ProgressBar bsStyle="success" active now={card.spendTotal/card.minSpend*100} />
+                          // {'Sign-Up Bonus Deadline:' + " "+ date}
+                          // </Bs.Col>
+                          }
                         </Bs.Panel>
                       </Bs.Col>
                     )

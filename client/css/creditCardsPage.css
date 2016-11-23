@@ -6,10 +6,13 @@
   background-color: rgb(119, 221, 119);
 }
 
-/*.cardName:hover{
-  color: red;
+.cardName{
+  text-align: center;
+}
+.cardName:hover{
+  color: #337ab7;
   cursor: pointer;
-}*/
+}
 
 .react-autosuggest__container {
   position: relative;
@@ -204,7 +207,13 @@
   cursor: pointer;
 }
 
-#cardImg{
-  margin-top: -15%;
-  margin-left: 9%;
+.cardImg{
+  margin-top: 0%;
+  margin-left: 10%;
+  margin-bottom: 2%;
+}
+
+.cardImg:hover{
+  cursor: pointer;
+  opacity: .8;
 }
