@@ -93,6 +93,7 @@ class CardsPage extends React.Component {
   }
 
   render(){
+    console.log("CARDS",this.props.cards)
     if(this.props.loading.loading || !this.props.user) { 
       return (
         <div>
@@ -150,30 +151,62 @@ class CardsPage extends React.Component {
                     return (
                       <Bs.Col md={4} key={i}>
                         <Bs.Panel className='cards'>
-                          <img  onClick={(this.click.bind(this))} id={card.id} className='cardImg' src={card.cardImg}/>
-                          <div className='removeButton' onClick={(this.deleteClick.bind(this))}
-                            id={card.id} ref="removeButton">
-                            <SweetAlert
-                               show={this.state.showAlert}
-                               title="Are you sure you want to delete this card?"
-                               text="You won't be able to recover it if you delete it"
-                               type="warning"
-                               showCancelButton= {true}
-                               confirmButtonText="Delete Card"
-                                 onConfirm={this.onConfirmDelete.bind(this)}
-                                 onCancel={() => {
-                                   this.setState({ showAlert: false })
-                                 }}
-                            />
-                            <i className="fa fa-times" aria-hidden="true"></i>
-                          </div>
+                          <Bs.Row>
+                            <Bs.Col>
+                              <div className='removeButton' onClick={(this.deleteClick.bind(this))}
+                                id={card.id} ref="removeButton">
+                                <SweetAlert
+                                   show={this.state.showAlert}
+                                   title="Are you sure you want to delete this card?"
+                                   text="You won't be able to recover it if you delete it"
+                                   type="warning"
+                                   showCancelButton= {true}
+                                   confirmButtonText="Delete Card"
+                                     onConfirm={this.onConfirmDelete.bind(this)}
+                                     onCancel={() => {
+                                       this.setState({ showAlert: false })
+                                     }}
+                                />
+                                <i className="fa fa-times" aria-hidden="true"></i>
+                              </div>
+                            </Bs.Col>
+                          </Bs.Row>
+                          <Bs.Row>
+                            <Bs.Col md={6}>
+                              <img  onClick={(this.click.bind(this))} id={card.id} className='cardImg' src={card.cardImg}/>
+                            </Bs.Col>
+                          </Bs.Row>
+                          <Bs.Row>
+                            <Bs.Col md={12}>
+                            <div className='cardName col-md-11'>
+                                {card.name}
+                            </div>
+                            </Bs.Col>
+                          </Bs.Row>
+                          <Bs.Row>
+                            <Bs.Col md={12}>
+                              <div id='spent'>
+                                {'Spent: $' + card.spendTotal} 
+                              </div>
+                            </Bs.Col>
+                          </Bs.Row>
+                          <Bs.Row>
+                            <Bs.Col md={12}>
+                              <div id='monthlySpend'>
+                                {'Goal: $'  + card.minSpend}
+                              </div>
+                            </Bs.Col>
+                          </Bs.Row>
+                          <Bs.Row>
+                            <Bs.Col md={12}>
+                              <div id='deadline'>
+                                {'Deadline: ' + date}
+                              </div>
+                            </Bs.Col>
+                          </Bs.Row>
                           {
-                          <div className='cardName col-md-11'>
-                            {card.name}
-                          </div>
                           // <Bs.Col md={12}>
                           // <Bs.ProgressBar bsStyle="success" active now={card.spendTotal/card.minSpend*100} />
-                          // {'Sign-Up Bonus Deadline:' + " "+ date}
                           // </Bs.Col>
                           }
                         </Bs.Panel>

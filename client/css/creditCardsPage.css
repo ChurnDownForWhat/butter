@@ -6,9 +6,6 @@
   background-color: rgb(119, 221, 119);
 }
 
-.cardName{
-  text-align: center;
-}
 .cardName:hover{
   color: #337ab7;
   cursor: pointer;
@@ -83,13 +80,13 @@
 }
 
 .suggestion img {
-  width: 17%;
+  width: 7%;
   height: 10%;
 }
 
 .suggestion .name{
-  margin-top: 3%;
-  width: 80%;
+  margin-top: 1%;
+  width: 92%;
   float: right;
 }
 
@@ -147,7 +144,7 @@
 
 
 .addCardIcon{
-  margin-top: 16%;
+  margin-top: 48%;
   margin-left: 42%;
 }
 .addACard{
@@ -155,8 +152,8 @@
 }
 
 .addCard:hover h4{
-  margin-top: 0px;
-  transition: margin-top 1.2s linear;
+/*  margin-top: 0px;
+  transition: margin-top 1.2s linear;*/
 }
 
 .addCard:hover{
@@ -172,26 +169,34 @@
 .addCard:hover #addQuick{
   position: absolute;
   color: black;
-  transition: color .3s linear;
+  font-size: 2em;
+  border-bottom: 2px solid black;
+ 
+  transition: color .3s linear, border .3s linear;
 }
 
 .addCard:hover #addDetailed{
   position: absolute;
   color: black;
+  font-size: 2em;
   transition: color .3s linear;
 }
 
 #addQuick{
   position: absolute;
   color: transparent;
-  padding-left: 1em;
-  padding-right: 1em;
-  transition: color .3s linear;
+  padding-left: 0em;
+  font-size: 2em;
+  border-bottom: 2px solid black;
+  border-bottom-color: transparent;
+  transition: color .3s linear, border-bottom-color .3s linear;
   margin-top: -11%;
   margin-left: 30%;
+  padding-bottom: 4%;
 }
 
 #addQuick:hover{
+  opacity: .7;
   cursor: pointer;
 }
 
@@ -199,21 +204,48 @@
   position: absolute;
   color: transparent;
   transition: color .3s linear;
-  margin-left: 32%;
-  margin-top: 10%;
+  margin-left: 25%;
+  font-size: 2em;
+  margin-top: 14%;
 }
 
 #addDetailed:hover{
+  opacity: .7;
   cursor: pointer;
 }
 
-.cardImg{
+.cardImg {  
   margin-top: 0%;
-  margin-left: 10%;
-  margin-bottom: 2%;
+  margin-left: 18%;
+  height: 40%;
+  margin-bottom: 16%;
 }
 
 .cardImg:hover{
   cursor: pointer;
   opacity: .8;
+}
+
+.cardName{
+  text-align: center;
+  margin-top: 0%;
+  margin-bottom: 10%;
+  border-bottom: 1px solid #d8d8d8;
+  padding-bottom: 4%;
+  font-size: 1.3em;
+}
+
+#spent{
+  font-size: 1.2em;
+  margin-bottom: 4%;
+}
+
+#monthlySpend{
+  font-size: 1.2em;
+  margin-bottom: 4%;
+}
+
+#deadline{
+  font-size: 1.2em;
+  margin-bottom: 4%;
 }

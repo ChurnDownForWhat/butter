@@ -1,19 +1,12 @@
-.viewCardName{
-  font-size: 25px;
+.cardImgView {
+  margin-top: 2%;
+  margin-left: 38%;
+  height: 21%;
 }
 
-.viewCardType {
-  text-align: left;
-  margin-top: 5px;
-  margin-bottom: 20px;
-}
-
-.cardView {
-  margin-top: 10px;
-}
-
-.viewCardDigits {
-  text-align: left;
-  margin-top: 5px;
-  margin-bottom: 20px;
+.viewCardName {
+  font-size: 4em;
+  text-align: center;
+  border-bottom: 1px solid rgba(123, 124, 125, 0.31);
+  padding-bottom: 2%
 }
