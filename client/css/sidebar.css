@@ -41,7 +41,7 @@ body{
 }
 
 .fa{
-  width: 45px;
+  width: 58px;
 }
 
 
@@ -90,11 +90,12 @@ body{
   font-size: 4em;
 }
 
-.cards{
+.cards {
   background-color: #f6f7fa !important;
   width: 20em;
-  height: 12em;
   float: left;
+  height: 23em;
+
 }
 
 .cards button{
