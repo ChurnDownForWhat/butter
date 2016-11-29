@@ -2,7 +2,7 @@ const db = require('../config/db')
 
 const Card = {}
 
-Card.fetchOne = (id) => 
+Card.fetchOne = (id) =>
   db('Cards').where({id: id})
   .then(row => row[0])
   .catch(err => err )
@@ -12,7 +12,7 @@ Card.fetchAll = (userId) =>
   .then(rows => rows)
   .catch(err => err)
 
-Card.update = (id,info) => 
+Card.update = (id,info) =>
   db('Cards').where({id:id})
   .update(info)
   .returning('id')
@@ -30,14 +30,14 @@ Card.wipe = (id) =>
   db('Cards').where({user_id:id})
   .del()
   .then(rows => rows)
-  .catch(err => err)  
+  .catch(err => err)
 
-Card.save = (cardData) => 
+Card.save = (cardData) =>
   db('Cards')
   .insert(cardData)
   .returning('id')
   .then(id => id[0])
-  .catch(err => { console.log(err) })
+  .catch(err => err)
 
 
 module.exports = Card

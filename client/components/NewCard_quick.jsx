@@ -45,7 +45,6 @@ class QuickNewCard extends React.Component {
     e.preventDefault()
     const domForm = el.elements
     const name = domForm[0].value
-    console.log(domForm)
     const submitItem = Object.keys(domForm).slice(6)
     .reduce((acc,id) =>{
       if(id != 'submit' && domForm[id].value != "") acc[id] = domForm[id].value
