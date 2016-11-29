@@ -35,6 +35,5 @@ module.exports = {
     const user = req.user.id
     Card.wipe(user)
     .then(v => User.remove(user))
-    .catch(err => console.log(err))
   }
 }

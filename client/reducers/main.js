@@ -6,21 +6,16 @@ import amazonReducer from './amazonReducer'
 import loadingReducer from "./loadingReducer"
 
 const logMiddleware = ({ dispatch, getState }) => {
-  // console.log('Enter logMiddleware')
   return function(next) {
     return function(action) {
-      console.log('Action received:', action)
       return next(action)
     }
   }
 }
 
 const thunkMiddleware = ({ dispatch, getState }) => {
-  // console.log('Enter thunkMiddleware')
   return function(next) {
-    // console.log('Function "next" provided:', next)
     return function (action) {
-      // console.log('Handling action:', action)
       return typeof action === 'function' ?
         action(dispatch, getState) :
         next(action)
@@ -39,6 +34,3 @@ const allReducers = combineReducers({
 })
 
 export const store = finalCreateStore(allReducers)
-
-// console.log('store state after initialization:', store.getState())
-

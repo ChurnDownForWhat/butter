@@ -7,7 +7,6 @@ const loadingReducer = function (state = {loading: true}, action) {
       loading: true
     }
   case 'LOADING_COMPLETE':
-    console.log('Hit',action.payload)
     return {
       ...state,
       loading: false

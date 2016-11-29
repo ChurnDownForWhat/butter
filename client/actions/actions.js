@@ -31,7 +31,6 @@ export function getDefaults() {
 
 export function addCard(cardData){
   return dispatch => {
-    console.log('CARD DATA IS', cardData)
     return $.post('/api/cards', cardData)
   }
 }
@@ -181,7 +180,6 @@ export function getPieData() {
 }
 
 export function sendEmail (data) {
-  console.log(`I AM DATA ${data}`)
   return dispatch =>
     $.ajax('/api/contactUs',{
       type: 'POST',

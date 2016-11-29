@@ -35,9 +35,7 @@ module.exports = {
     .then(() => res.end())
   },
   removeCard: (req, res) => {
-    console.log('REQUEST IS', req.body)
     const cardId = req.params.id
-    console.log('HIT REMOVE CARD', cardId)
     Card.delete(cardId)
     .then(numDel => res.status(200).send({id: numDel}))
     .then(() => res.end())

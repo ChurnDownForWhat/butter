@@ -93,7 +93,6 @@ class CardsPage extends React.Component {
   }
 
   render(){
-    console.log("CARDS",this.props.cards)
     if(this.props.loading.loading || !this.props.user) { 
       return (
         <div>
@@ -135,7 +134,7 @@ class CardsPage extends React.Component {
               <Bs.Row>
                 {
                   this.state.cards.map((card,i) =>{
-                    
+
                     this.props.defaults.map((defaults, i) => {
                       if(defaults.name === card.name){
                         card.cardImg = defaults.cardImg
@@ -186,7 +185,7 @@ class CardsPage extends React.Component {
                           <Bs.Row>
                             <Bs.Col md={12}>
                               <div id='spent'>
-                                {'Spent: $' + card.spendTotal} 
+                                {'Spent: $' + card.spendTotal}
                               </div>
                             </Bs.Col>
                           </Bs.Row>

@@ -1,6 +1,4 @@
 const cardReducer = function (state = {}, action) {
-  // console.log('cardReducer was called with state', state, 'and action', action)
-
   switch (action.type) {
   case 'VIEW_CARD':
     return {
@@ -26,7 +24,7 @@ const cardReducer = function (state = {}, action) {
     return {
       ...state,
       data: action.payload
-    } 
+    }
   case 'DELETE':
     return {
       ...state,

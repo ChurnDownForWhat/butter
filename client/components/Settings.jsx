@@ -43,7 +43,6 @@ class Settings extends React.Component {
   }
 
   render(){
-    console.log("show",this.state.showAlert)
     var self = this
     return (
       <div>

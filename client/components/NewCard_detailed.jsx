@@ -269,7 +269,7 @@ class DetailedNewCard extends React.Component {
                         <FieldGroup
                           id='spendTotal'
                           type='number'
-                          label='Spend so far'
+                          label='Spent so far*'
                           placeholder='XXXX.XX'
                           defaultValue={this.state.cardSub.spendTotal}
                           />
