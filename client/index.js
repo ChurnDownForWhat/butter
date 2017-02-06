@@ -17,7 +17,6 @@ require('./css/settings.css')
 require('./css/AboutPage.css')
 require('./css/rewards.css')
 
-
 render(
   <Provider store={ store } >
       <Router history={hashHistory}>
@@ -32,5 +31,3 @@ render(
     </Provider>,
   document.getElementById('app')
 )
-
-module.hot.accept()

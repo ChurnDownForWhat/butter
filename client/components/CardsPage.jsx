@@ -133,7 +133,7 @@ class CardsPage extends React.Component {
               </Bs.Panel>
               <Bs.Row>
                 {
-                  this.state.cards.map((card,i) =>{
+                  this.state.cards.map((card,i) => {
 
                     this.props.defaults.map((defaults, i) => {
                       if(defaults.name === card.name){
@@ -147,6 +147,7 @@ class CardsPage extends React.Component {
                         year:'numeric',
                         day:'numeric'
                       }).format(new Date(card.spendDeadline))
+
                     return (
                       <Bs.Col md={4} key={i}>
                         <Bs.Panel className='cards'>
