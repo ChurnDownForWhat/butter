@@ -5,7 +5,6 @@ const merge = require('webpack-merge')
 
 const common = {
   entry: [
-    'webpack-hot-middleware/client',
     path.resolve(__dirname, 'client')
   ],
   output: {
@@ -23,7 +22,7 @@ const common = {
         exclude: /node_modules/,
         loader: 'babel',
         query: {
-          presets: ['es2015', 'react', 'react-hmre']
+          presets: ['es2015', 'react']
         }
       },
       {
@@ -47,19 +46,13 @@ const common = {
   plugins: [
     new ExtractTextPlugin('styles.css'),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ]
 }
 
 //config for dev setup
 const devConfig = {
-  devtool: 'source-maps',
-  devServer: {
-    inline: true,
-    hot: true,
-    historyApiFallback: true
-  }
+  devtool: 'source-maps'
 }
 
 const prodConfig = {
