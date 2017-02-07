@@ -10,7 +10,8 @@
     "build": "webpack",
     "build:watch": "webpack --watch",
     "dev": "webpack-dev-server",
-    "lint": "./node_modules/.bin/eslint ./server ./client ./client/Components/**.jsx"
+    "lint": "./node_modules/.bin/eslint ./server ./client ./client/Components/**.jsx",
+    "postinstall": "node server/index.js --ignore client/components"
   },
   "author": "Darion Freeman, Calvin Kniffin, Robert Guajardo, Jason Barnett, Joey Steinberger",
   "license": "MIT",
