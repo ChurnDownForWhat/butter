@@ -3,11 +3,13 @@ import {LinkContainer} from 'react-router-bootstrap'
 import * as Bs from 'react-bootstrap'
 
 const Sidebar = (props) => {
-  const display = props.display
+  const { display } = props
+
   return (
     <Bs.Navbar bsClass ='nav sidebar fixed-top'>
       <Bs.Nav bsClass='nav sidebar'>
-        <h1 className={'nav-title' + display}>Butter</h1>
+        {// <h1 className={'nav-title' + display}>Butter</h1>
+        }
         <LinkContainer to='/'>
           <Bs.NavItem>
             <i className="fa fa-credit-card-alt fa-2x" aria-hidden="true"></i>
