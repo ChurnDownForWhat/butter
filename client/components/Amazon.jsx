@@ -34,39 +34,46 @@ class CardView extends React.Component {
         </div>
       )
     }
-    const itemArr = this.props.amazonItems.name === "No Results" ? 
+
+    const itemArr = this.props.amazonItems.name === "No Results" ? (
       <h1>No Results</h1> 
-     :
-      this.props.amazonItems.name.Item.map((x,i) => {
-        if(!x.MediumImage){
-          x.MediumImage = 'Cannot Find Image'
-        }if(!x.ItemAttributes.ListPrice){
-          x.ItemAttributes.ListPrice = 'Cannot Find Price'
-        }if(x.ItemAttributes.Title.length > 75){
-          x.ItemAttributes.Title = x.ItemAttributes.Title.slice(0, 75)
-        }
-        return (
-          <a href= {x.DetailPageURL}>
-            <Bs.Col md={4}  xs={12} key={i} className="amazonArray">
-             <Bs.Col className="amImg" md={6}>
-                  <img className="amazonImage" src={x.MediumImage.URL}/>
-              </Bs.Col>
-              <Bs.Col md={6} className="formattedPrice">
-                <div className="priceBanner">
-                  {x.ItemAttributes.ListPrice.FormattedPrice}
-                </div>
-              </Bs.Col>
-            <Bs.Col md={12} className='amazonRow'>
-              <Bs.Row>
-                <Bs.Col md={12}>
-                  {x.ItemAttributes.Title}
+     ) : (
+      this.props.amazonItems.name ? (
+        this.props.amazonItems.name.Item.map((x,i) => {   
+          if(!x.MediumImage){
+            x.MediumImage = 'Cannot Find Image'
+          }
+          if(!x.ItemAttributes.ListPrice){
+            x.ItemAttributes.ListPrice = 'Cannot Find Price'
+          }
+          if(x.ItemAttributes.Title.length > 75){
+            x.ItemAttributes.Title = x.ItemAttributes.Title.slice(0, 75)
+          }
+          
+          return (
+            <a href= {x.DetailPageURL}>
+              <Bs.Col md={4}  xs={12} key={i} className="amazonArray">
+               <Bs.Col className="amImg" md={6}>
+                    <img className="amazonImage" src={x.MediumImage.URL}/>
                 </Bs.Col>
-              </Bs.Row>
+                <Bs.Col md={6} className="formattedPrice">
+                  <div className="priceBanner">
+                    {x.ItemAttributes.ListPrice.FormattedPrice}
+                  </div>
+                </Bs.Col>
+              <Bs.Col md={12} className='amazonRow'>
+                <Bs.Row>
+                  <Bs.Col md={12}>
+                    {x.ItemAttributes.Title}
+                  </Bs.Col>
+                </Bs.Row>
+                </Bs.Col>
               </Bs.Col>
-            </Bs.Col>
-          </a>
-        )
-      })
+            </a>
+          )
+        })
+      ) : null )
+
     return (
       <Bs.Grid>
         <Bs.Row className='amazonTop'>
@@ -92,6 +99,7 @@ class CardView extends React.Component {
     )
   }
 }
+
 function mapStateToProps(store){
   return {
     amazonItems: store.amazonItems,

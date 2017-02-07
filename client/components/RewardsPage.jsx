@@ -29,6 +29,7 @@ class RewardsPage extends React.Component {
     }
     let isThereData
     let Rewards
+    
     let links =
       {
         'Chase Ultimate Rewards':'https://www.chase.com/ultimaterewards',
@@ -45,6 +46,7 @@ class RewardsPage extends React.Component {
         'Starpoints':'http://www.starwoodhotels.com/preferredguest/account/starpoints/redeem/index.html?language=en_US',
         'HHonors':'http://hhonors3.hilton.com/en/index.html?WT.srch=1'
       }
+
     if (this.props.cards && this.props.cards.length){
       isThereData = (
          <svg width = "100%" height = "100%" className='pie'>
@@ -60,7 +62,8 @@ class RewardsPage extends React.Component {
     else {
       isThereData =  <div>You'll need to add a card that's earned reward points to see your category breakdown!</div>
     }
-    if(this.props.rewards.length !== 0){
+
+    if (this.props.rewards && this.props.rewards.length !== 0){
       Rewards = this.props.rewards.map(function(val, i){
         var link = links[val.program] || null
         return (<tr className="" key={i}>
@@ -84,8 +87,7 @@ class RewardsPage extends React.Component {
                   <td>Add</td>
                   <td>A</td>
                   <td>Card!</td>
-                </tr>
-                )
+                </tr>)
     }
 
     return (
