@@ -4,9 +4,9 @@
   "description": "The next big thing, created with Concatapult.",
   "main": "server/index.js",
   "scripts": {
-    "start": "nodemon server/index.js --ignore client/components",
+    "start": "node server/index.js --ignore client/components",
     "test": "./test/run.sh",
-    "start:dev": "nodemon server/ --ignore client/components --progress --inline --hot",
+    "start.dev": "nodemon server/ --ignore client/components",
     "build": "webpack",
     "build:watch": "webpack --watch",
     "dev": "webpack-dev-server",
