@@ -6,3 +6,4 @@ public/*.css
 public/*.map
 .env
 ./knexfile.js
+dump.rdb
