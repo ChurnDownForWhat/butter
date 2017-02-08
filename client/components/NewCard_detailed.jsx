@@ -56,6 +56,13 @@ class DetailedNewCard extends React.Component {
     submitItem.spendDeadline = submitItem.spendDeadline || this.dateIt(new Date())
     submitItem.annFeeDate = submitItem.annFeeDate || this.dateIt(new Date())
     submitItem.expCancelDate = submitItem.expCancelDate || this.dateIt(new Date())
+
+    this.props.defaults.map((defaults, i) => {
+      if(defaults.name === submitItem.name){
+        submitItem.cardImg = defaults.cardImg
+      }
+    })
+
     if(!submitItem.expiration || !submitItem.spendTotal || !submitItem.minSpend){
       return this.setState({showError: true,cardSub: submitItem})
     }

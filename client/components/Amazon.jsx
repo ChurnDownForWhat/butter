@@ -51,8 +51,8 @@ class CardView extends React.Component {
           }
           
           return (
-            <a href= {x.DetailPageURL}>
-              <Bs.Col md={4}  xs={12} key={i} className="amazonArray">
+            <a href= {x.DetailPageURL} key={i}>
+              <Bs.Col md={4}  xs={12} className="amazonArray">
                <Bs.Col className="amImg" md={6}>
                     <img className="amazonImage" src={x.MediumImage.URL}/>
                 </Bs.Col>
