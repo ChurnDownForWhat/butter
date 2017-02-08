@@ -3,12 +3,14 @@ require('dotenv').config({silent: true})
 
 const express = require('express')
 const Path = require('path')
+const redis = require('redis')
 const session = require('express-session')
+const redisStore = require('connect-redis')(session)
+const client = redis.createClient(process.env.REDIS_URL) || redis.createClient()
 const routes = require('./routes/route')
 const webpack = require('webpack')
 const config = require('../webpack.config.js')
 const webpackDevMiddleware = require('webpack-dev-middleware')
-const webpackHotMiddleware = require('webpack-hot-middleware')
 const bodyParser = require('body-parser')
 
 
@@ -35,15 +37,18 @@ if (process.env.NODE_ENV !== 'test') {
 
   const compiler = webpack(config)
   app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }))
-  app.use(webpackHotMiddleware(compiler))
+  
   // Parse incoming request bodies as JSON
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({extended: true}))
+  
   app.use(session({
     secret: process.env.SUPERSECRET,
+    store: new redisStore(),
     resave: true,
     saveUninitialized: true
   }))
+
   require('./config/passport')(app)
   app.use((req,res,next) => {
     return next()
