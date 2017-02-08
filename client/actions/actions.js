@@ -1,7 +1,9 @@
+import axios from 'axios'
+
 export function getUser() {
   return dispatch =>
-    $.get('/api/user')
-    .then(res => res)
+    axios.get('/api/user')
+    .then(res => res.data)
     .then(user =>
       dispatch({
         type: 'GET_USER',
@@ -12,15 +14,13 @@ export function getUser() {
 
 export function deleteUser(){
   return dispatch =>
-    $.ajax({
-      type: 'DELETE',
-      url: `/api/user`
-    })
+    axios.delete(`/api/user`)
 }
 
 export function getDefaults() {
   return dispatch =>
-    $.get('/api/defaults')
+    axios.get('/api/defaults')
+    .then(res => res.data)
     .then(defaults =>
       dispatch({
         type: 'GET_DEFAULTS',
@@ -30,23 +30,20 @@ export function getDefaults() {
 }
 
 export function addCard(cardData){
-  return dispatch => {
-    return $.post('/api/cards', cardData)
-  }
+  return dispatch => 
+     axios.post('/api/cards', cardData)
 }
 
 export function deleteCard(id, i){
   return dispatch =>
-    $.ajax({
-      type: 'DELETE',
-      url: `/api/cards/${id}`
-    })
+    axios.delete(`/api/cards/${id}`)
 }
 
 
 export function viewAllCards() {
   return dispatch =>
-    $.get('/api/cards')
+    axios.get('/api/cards')
+    .then(res => res.data)
     .then(cards =>
       dispatch({
         type: 'VIEW_ALL_CARDS',
@@ -66,7 +63,8 @@ export function viewAllRewards() {
     dispatch({
       type: 'LOADING'
     })
-    $.get('/api/cards')
+    axios.get('/api/cards')
+    .then(res => res.data)
     .then((rewards) => {
       let rewardAmount = rewards.reduce((acc, card) => {
         if(acc[card.program]){
@@ -98,7 +96,8 @@ export function viewAllRewards() {
 
 export function viewCard(id) {
   return dispatch =>
-    $.get(`/api/cards/${id}`)
+    axios.get(`/api/cards/${id}`)
+    .then(res => res.data)
     .then(card =>
       dispatch({
         type: 'VIEW_CARD',
@@ -109,10 +108,7 @@ export function viewCard(id) {
 
 export function updateCard(id, data){
   return dispatch =>
-    $.ajax(`/api/cards/${id}`,{
-      type: 'PUT',
-      data: data
-    })
+    axios.put(`/api/cards/${id}`, data)
 }
 
 export function getAmazonDefault() {
@@ -120,7 +116,8 @@ export function getAmazonDefault() {
     dispatch({
       type: 'LOADING'
     })
-    $.get('/api/amazonSearch/')
+    axios.get('/api/amazonSearch/')
+    .then(res => res.data)
     .then(items =>
       dispatch({
         type: 'GET_AMAZON_DEFAULTS',
@@ -138,7 +135,8 @@ export function getAmazonDefault() {
 
 export function getAmazonSearch(searchTerm) {
   return dispatch =>
-    $.post('/api/amazonSearch/',{searchTerm:searchTerm})
+    axios.post('/api/amazonSearch/',{searchTerm: searchTerm})
+    .then(res => res.data)
     .then(items =>
       dispatch({
         type: 'GET_AMAZON_SEARCH',
@@ -148,7 +146,8 @@ export function getAmazonSearch(searchTerm) {
 }
 export function getPieData() {
   return dispatch =>
-    $.get('/api/cards')
+    axios.get('/api/cards')
+    .then(res => res.data)
     .then(res => res.map(card => {
       if (card.category && card.rewardsAmt) {
         return [card.category.toLowerCase(), card.rewardsAmt]
@@ -181,8 +180,5 @@ export function getPieData() {
 
 export function sendEmail (data) {
   return dispatch =>
-    $.ajax('/api/contactUs',{
-      type: 'POST',
-      data: {text: data}
-    })
+    axios.post('/api/contactUs',{text: data})
 }
