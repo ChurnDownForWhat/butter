@@ -5,8 +5,6 @@ import { connect } from 'react-redux'
 import * as Bs from 'react-bootstrap'
 import SweetAlert from 'sweetalert-react'
 
-
-
 class Settings extends React.Component {
   constructor(props){
     super(props)
@@ -73,20 +71,19 @@ class Settings extends React.Component {
         </Bs.Col>
         <Bs.Col className='settings_content' md={10}>
           <Bs.Row>
-            {
-              this.props.cards.map((card, i) =>
-                <Bs.Col md={6} id={card.id}>
-                  <Bs.Panel key={i} className="settings_cards" >
-                    <Bs.Row>
-                      <Bs.Col md={2}><img src={card.cardImg} /></Bs.Col>
-                      <Bs.Col md={8} className="cardName">{card.name}</Bs.Col>
-                      <Bs.Col md={2}>
-                        <Bs.Button block id={card.id} bsStyle='danger' onClick={this.deleteCard.bind(this)}>X</Bs.Button>
-                      </Bs.Col>
-                    </Bs.Row>
-                  </Bs.Panel>
-                </Bs.Col>
-              )
+            { this.props.cards ? (
+                this.props.cards.map((card, i) =>
+                  <Bs.Col md={6} id={card.id} key={i}>
+                    <Bs.Panel className="settings_cards" >
+                      <Bs.Row>
+                        <Bs.Col md={2}><img src={card.cardImg} /></Bs.Col>
+                        <Bs.Col md={8} className="cardName">{card.name}</Bs.Col>
+                        <Bs.Col md={2}>
+                          <Bs.Button block id={card.id} bsStyle='danger' onClick={this.deleteCard.bind(this)}>X</Bs.Button>
+                        </Bs.Col>
+                      </Bs.Row>
+                    </Bs.Panel>
+                  </Bs.Col> )) : (null)
             }
           </Bs.Row>
           <Bs.Row className="delAcct">

@@ -135,12 +135,6 @@ class CardsPage extends React.Component {
                 {
                   this.state.cards.map((card,i) => {
 
-                    this.props.defaults.map((defaults, i) => {
-                      if(defaults.name === card.name){
-                        card.cardImg = defaults.cardImg
-                      }
-                    })
-
                     var date = new Intl.DateTimeFormat('en',
                       {
                         month: 'long',

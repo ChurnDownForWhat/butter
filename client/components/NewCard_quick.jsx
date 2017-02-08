@@ -58,6 +58,13 @@ class QuickNewCard extends React.Component {
     submitItem.spendDeadline = this.dateIt(new Date())
     submitItem.annFeeDate = this.dateIt(new Date())
     submitItem.expCancelDate = this.dateIt(new Date())
+    
+    this.props.defaults.map((defaults, i) => {
+      if(defaults.name === submitItem.name){
+        submitItem.cardImg = defaults.cardImg
+      }
+    })
+
     this.props.addCard(submitItem)
     .then(() => {
       this.props.viewAllCards()
