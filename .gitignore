@@ -1,6 +1,7 @@
 .DS_store
 node_modules
 yarn.lock
+yarn-error.log
 public/*.js
 public/*.css
 public/*.map
