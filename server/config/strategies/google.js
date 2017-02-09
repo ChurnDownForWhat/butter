@@ -4,11 +4,16 @@ const User = require('../../models/user')
 const uuid = require('uuid')
 
 const GoogleStrategy = Strategy.OAuth2Strategy
+
+const callbackURL = process.env.NODE_ENV !== 'production' ? 
+                'http://localhost:4000/auth/google/callback' :
+                'https://abutterapp.herokuapp.com/auth/google/callback'
+
 module.exports = function(){
   passport.use(new GoogleStrategy({
     clientID: process.env.CONKEY,
     clientSecret: process.env.CONSECRET,
-    callbackURL: 'http://localhost:4000/auth/google/callback'
+    callbackURL
   },
   function(token, tokenSecret, profile, done) {
     const email = profile.emails[0].value
