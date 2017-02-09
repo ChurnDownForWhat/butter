@@ -6,7 +6,7 @@ const Path = require('path')
 const redis = require('redis')
 const session = require('express-session')
 const redisStore = require('connect-redis')(session)
-const client = redis.createClient(process.env.REDIS_URL) || redis.createClient()
+const client = redis.createClient(process.env.REDIS_URL)
 const routes = require('./routes/route')
 const webpack = require('webpack')
 const config = require('../webpack.config.js')
@@ -44,7 +44,7 @@ if (process.env.NODE_ENV !== 'test') {
   
   app.use(session({
     secret: process.env.SUPERSECRET,
-    store: new redisStore(),
+    store: new redisStore({ client }),
     resave: true,
     saveUninitialized: true
   }))
